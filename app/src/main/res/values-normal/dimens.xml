@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- right panel -->
+    <dimen name="right_panel_margin_top">10dp</dimen>
+    <dimen name="rightpanel_margin_left">10dp</dimen>
+    <dimen name="rightpanel_margin_rigth">10dp</dimen>
+
+    <!-- right control -->
+    <dimen name="rightpanel_control_margin_top">50dp</dimen>
+    <dimen name="rightpanel_control_margin_bottom">15dp</dimen>
+
+    <!-- title count room -->
+    <dimen name="titles_margin_top">25dp</dimen>
+    <dimen name="titles_margin_bottom">25dp</dimen>
+    <dimen name="titles_before_seekbar_margin_bottom">15dp</dimen>
+
+
+    <!-- genplan -->
+    <dimen name="genplan_margin_bottom">25dp</dimen>
+
+    <!-- bar count room -->
+    <dimen name="bar_countroom_margin_top">25dp</dimen>
+    <dimen name="bar_countroom_margin_bottom">45dp</dimen>
+    <dimen name="button_room_margin_right">30dp</dimen>
+
+    <!-- bar count room -->
+    <dimen name="check_srok_margin_right">40dp</dimen>
+
+    <!-- buttons remont -->
+    <dimen name="buttons_remont_margin_right">30dp</dimen>
+
+    <!-- period -->
+    <dimen name="checkbox_period_margin_right">40dp</dimen>
+
+    <!-- buttons type of house -->
+    <dimen name="buttons1_house_margin_right">30dp</dimen>
+    <dimen name="buttons1_house_margin_bottom">25dp</dimen>
+
+    <dimen name="buttons2_house_margin_right">30dp</dimen>
+    <dimen name="buttons2_house_margin_bottom">40dp</dimen>
+</resources>

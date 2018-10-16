@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorBackGround">#ffffff</color>
+    <color name="seekbarColor">#428bc0</color>
+    <color name="colorEditOfSeekBar">#e7f6ff</color>
+    <color name="colorTextEditOfSeekBar">#428bc0</color>
+    <color name="colorTextEditWaitTime">#eef9ff</color>
+    <color name="colorTextListitems">#303f9f</color>
+    <color name="itemFirstBG_ListView">#e7f6ff</color>
+    <color name="itemSecondBG_ListView">#E6E6E6</color>
+    <color name="colorTableItemSelected">#8C8EE3</color>
+    <color name="titleOfForms">#428BC0</color>
+    <color name="titleListView">#b3b2b3</color>
+</resources>

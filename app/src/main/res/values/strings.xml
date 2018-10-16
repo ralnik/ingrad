@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">INGRAD</string>
+    <string name="title_attention1">Смена адреса сервера и пароль влияют на работоспособность всей системы \n
+        Перед внесением изменений рекомендуем связаться с \n
+        системным администратором
+    </string>
+    <string name="section">
+        КОРПУС/\n
+        СЕКЦИЯ
+    </string>
+    <string name="num_flat">№ КВАРТИРЫ</string>
+    <string name="floor">ЭТАЖ</string>
+    <string name="count_room">КОМНАТНОСТЬ</string>
+    <string name="square">ПЛОЩАДЬ</string>
+    <string name="cost">СТОИМОСТЬ</string>
+    <string name="srok">СРОК ГК</string>
+    <string name="Other">ПРИМЕЧАНИЕ</string>
+</resources>
