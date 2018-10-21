@@ -1,6 +1,7 @@
 package ru.ralnik.ingrad.httpPlayer;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.auth.AuthScope;
@@ -64,8 +65,9 @@ public class HttpPlayer {
 
                 String url = (port != 0) ? "http://"+host+":"+port+"/"+this.url :  "http://"+host+"/"+this.url;
 
+                Log.d("myDebug",url);
+
                 HttpGet httpget = new HttpGet(url);
-                //Log.d("myDebug",url);
 
                 CloseableHttpResponse response = client.execute(httpget,httpContext);
                 HttpEntity entity = response.getEntity();
@@ -82,6 +84,7 @@ public class HttpPlayer {
                     in.close();
                 }
             } catch (IOException e) {
+                Log.d("myDebug","error motherFucker: "+e.toString());
                 e.printStackTrace();
             }
             return null;

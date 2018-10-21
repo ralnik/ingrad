@@ -1,6 +1,6 @@
 package ru.ralnik.ingrad.httpPlayer;
 
-public class VLCPlayer extends HttpPlayer implements PlayerCommands {
+public abstract class VLCPlayer extends HttpPlayer implements PlayerCommands {
 
     public VLCPlayer(String host, int port, String username, String password) {
         super(host, port, username, password);

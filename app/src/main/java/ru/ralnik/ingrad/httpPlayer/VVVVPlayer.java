@@ -38,6 +38,7 @@ public class VVVVPlayer extends HttpPlayer implements PlayerCommands {
 
     @Override
     public void selectById(int id) {
+        this.playStop = 1;
         this.numberTrack = id;
         super.executeCommand(getFullLink());
     }

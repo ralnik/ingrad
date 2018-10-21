@@ -19,7 +19,7 @@ public class Flat {
     private String  ArticleSubType;         //Тип объекта недвижимости
 
     @ColumnInfo(name = "LayoutUrl")
-    private String  LayoutUrl = "";              //Планировка квартиры (ссылка)
+    private String  LayoutUrl;              //Планировка квартиры (ссылка)
 
     @ColumnInfo(name = "BeforeBtiNumber")
     private int BeforeBtiNumber;        //№ квартиры / № машино - места
@@ -28,58 +28,58 @@ public class Flat {
     private String  AddressId;              //Идентификатор корпуса: AddressId 
 
     @ColumnInfo(name = "AddressName")
-    private String  AddressName = "";            //Наименование корпуса: AddressName
+    private String  AddressName;            //Наименование корпуса: AddressName
 
     @ColumnInfo(name = "SectionNumber")
-    private String  SectionNumber = "";          //№ секции
+    private String  SectionNumber;          //№ секции
 
     @ColumnInfo(name = "Floor")
-    private int Floor = 0;                  //Этаж
+    private int Floor;                  //Этаж
 
     @ColumnInfo(name = "Rooms")
-    private int Rooms = 0;                  //Количество комнат
+    private int Rooms;                  //Количество комнат
 
     @ColumnInfo(name = "Quantity")
-    private Float   Quantity = 0.0f;               //Общая площадь / Площадь машиноместа
+    private Float   Quantity;               //Общая площадь / Площадь машиноместа
 
     @ColumnInfo(name = "DiscountMax")
-    private Float   DiscountMax = 0.0f;            //Общая стоимость (с учетом максимальной скидки)
+    private Float   DiscountMax;            //Общая стоимость (с учетом максимальной скидки)
 
     @ColumnInfo(name = "FinishTypeId")
-    private String  FinishTypeId = "";           //Отделка
+    private String  FinishTypeId;           //Отделка
 
     @ColumnInfo(name = "StatusCodeName")
     private String  StatusCodeName;         //Статус квартиры (уточнить у РОП)
 
     @ColumnInfo(name = "TownHouse")
-    private String  TownHouse = "0";              //TownHouse
+    private String  TownHouse;              //TownHouse
 
     @ColumnInfo(name = "PentHouse")
-    private String  PentHouse = "0";              //PentHouse
+    private String  PentHouse;              //PentHouse
 
     @ColumnInfo(name = "TwoLevel")
-    private String  TwoLevel = "0";               //TwoLevel
+    private String  TwoLevel;               //TwoLevel
 
     @ColumnInfo(name = "SeparateEntrance")
-    private String  SeparateEntrance = "0";       //SeparateEntrance ; TwoEnter
+    private String  SeparateEntrance;       //SeparateEntrance ; TwoEnter
 
     @ColumnInfo(name = "WithWindow")
-    private String  WithWindow = "0";             //WithWingow
+    private String  WithWindow;             //WithWingow
 
     @ColumnInfo(name = "FirePlace")
-    private String  FirePlace = "0";              //С камином
+    private String  FirePlace;              //С камином
 
     @ColumnInfo(name = "Terrace")
-    private String  Terrace = "0";                //Terrace;
+    private String  Terrace;                //Terrace;
 
     @ColumnInfo(name = "CountBalcony")
-    private int CountBalcony = 0;           //CountBalcony
+    private int CountBalcony;           //CountBalcony
 
     @ColumnInfo(name = "CountLoggia")
-    private int CountLoggia = 0;            //CountLoggia
+    private int CountLoggia;            //CountLoggia
 
     @ColumnInfo(name = "CountTerrace")
-    private int CountTerrace = 0;           //CountTerrace
+    private int CountTerrace;           //CountTerrace
 
     public Flat(){
     }
@@ -303,21 +303,21 @@ public class Flat {
 //                "CountLoggia=" + CountLoggia + "&" +
 //                "CountTerrace=" + CountTerrace;
                 return
-                "LayoutUrl='" + LayoutUrl + "&" +
-                "AddressName='" + AddressName + "&" +
-                "SectionNumber='" + SectionNumber + "&" +
-                "Floor=" + Floor +
-                "Rooms=" + Rooms +
-                "Quantity=" + Quantity +
-                "DiscountMax=" + DiscountMax +
-                "FinishTypeId='" + FinishTypeId + "&" +
-                "TownHouse='" + TownHouse + "&" +
-                "PentHouse='" + PentHouse + "&" +
-                "TwoLevel='" + TwoLevel + "&" +
-                "SeparateEntrance='" + SeparateEntrance + "&" +
-                "WithWindow='" + WithWindow + "&" +
-                "FirePlace='" + FirePlace + "&" +
-                "Terrace='" + Terrace + "&" +
+                "LayoutUrl=" + LayoutUrl + "&" +
+                "AddressId=" + AddressId + "&" +
+                "SectionNumber=" + SectionNumber + "&" +
+                "Floor=" + Floor + "&" +
+                "Rooms=" + Rooms + "&" +
+                "Quantity=" + Quantity + "&" +
+                "DiscountMax=" + DiscountMax + "&" +
+                "FinishTypeId=" + FinishTypeId + "&" +
+                "TownHouse=" + TownHouse + "&" +
+                "PentHouse=" + PentHouse + "&" +
+                "TwoLevel=" + TwoLevel + "&" +
+                "SeparateEntrance=" + SeparateEntrance + "&" +
+                "WithWindow=" + WithWindow + "&" +
+                "FirePlace=" + FirePlace + "&" +
+                "Terrace=" + Terrace + "&" +
                 "CountBalcony=" + CountBalcony + "&" +
                 "CountLoggia=" + CountLoggia + "&" +
                 "CountTerrace=" + CountTerrace;

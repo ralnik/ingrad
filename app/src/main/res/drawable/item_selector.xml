@@ -3,7 +3,7 @@
 
     <!-- Пункт активирован.  В режиме SINGLE_CHOICE_MODE пункт подсвечивается -->
     <item android:state_activated="true"
-        android:drawable="@color/colorTableItemSelected"
+        android:drawable="@drawable/select"
         />
 
     <!-- По умолчанию -->
