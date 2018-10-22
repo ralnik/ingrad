@@ -15,7 +15,8 @@
         android:background="@color/titleOfForms"
         android:gravity="center"
         android:text="НАСТРОЙКИ"
-        android:textSize="10sp" />
+        android:textColor="@color/colorTextTitleBeforeTable"
+        android:textSize="8sp" />
 
     <TextView
         android:id="@+id/txtMusic"

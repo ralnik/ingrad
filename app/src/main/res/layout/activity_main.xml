@@ -199,7 +199,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -682,6 +682,7 @@
                         android:id="@+id/barButtonsFilter"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
                         android:layout_weight="1"
                         android:orientation="horizontal"
                         android:weightSum="100">
@@ -724,16 +725,17 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
+                android:layout_height="20dp"
                 android:background="@color/titleOfForms"
                 android:gravity="center"
                 android:text="ПЛАНИРОВКА"
-                android:textSize="8sp" />
+                android:textColor="@color/colorTextTitleBeforeTable"
+                android:textSize="6sp" />
 
             <LinearLayout
                 android:id="@+id/layout"
@@ -746,142 +748,120 @@
                     android:id="@+id/colKorpus"
                     android:layout_width="22dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:background="@color/titleListView"
                     android:gravity="center"
                     android:onClick="titleOfListviewOnClick"
                     android:text="@string/section"
                     android:textColor="@color/colorBackGround"
-                    android:textSize="8sp"
+                    android:textSize="4sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/imageView7"
+                <FrameLayout
                     android:layout_width="1dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="false"
-                    app:srcCompat="@drawable/table_splitter" />
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBorderTitleTable" />
 
                 <TextView
                     android:id="@+id/colFlat"
                     android:layout_width="22dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:background="@color/titleListView"
                     android:gravity="center"
                     android:onClick="titleOfListviewOnClick"
                     android:text="@string/num_flat"
                     android:textColor="@color/colorBackGround"
-                    android:textSize="8sp"
+                    android:textSize="4sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/imageView8"
+                <FrameLayout
                     android:layout_width="1dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/table_splitter" />
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBorderTitleTable" />
 
                 <TextView
                     android:id="@+id/colFloor"
                     android:layout_width="22dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:background="@color/titleListView"
                     android:gravity="center"
                     android:onClick="titleOfListviewOnClick"
                     android:text="@string/floor"
                     android:textColor="@color/colorBackGround"
-                    android:textSize="8sp"
+                    android:textSize="4sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/imageView9"
+                <FrameLayout
                     android:layout_width="1dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/table_splitter" />
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBorderTitleTable" />
 
                 <TextView
                     android:id="@+id/colRooms"
                     android:layout_width="30dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:background="@color/titleListView"
                     android:gravity="center"
                     android:onClick="titleOfListviewOnClick"
                     android:text="@string/count_room"
                     android:textColor="@color/colorBackGround"
-                    android:textSize="8sp"
+                    android:textSize="4sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/imageView10"
+                <FrameLayout
                     android:layout_width="1dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/table_splitter" />
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBorderTitleTable" />
 
                 <TextView
                     android:id="@+id/colSquare"
                     android:layout_width="30dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:background="@color/titleListView"
                     android:gravity="center"
                     android:onClick="titleOfListviewOnClick"
                     android:text="@string/square"
                     android:textColor="@color/colorBackGround"
-                    android:textSize="8sp"
+                    android:textSize="4sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/imageView11"
+                <FrameLayout
                     android:layout_width="1dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/table_splitter" />
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBorderTitleTable" />
 
                 <TextView
                     android:id="@+id/colCost"
                     android:layout_width="41dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:background="@color/titleListView"
                     android:gravity="center"
                     android:onClick="titleOfListviewOnClick"
                     android:text="@string/cost"
                     android:textColor="@color/colorBackGround"
-                    android:textSize="8sp"
+                    android:textSize="4sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/imageView12"
+                <FrameLayout
                     android:layout_width="1dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/table_splitter" />
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBorderTitleTable" />
 
                 <TextView
                     android:id="@+id/colSrok"
                     android:layout_width="30dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:background="@color/titleListView"
                     android:gravity="center"
                     android:onClick="titleOfListviewOnClick"
                     android:text="@string/srok"
                     android:textColor="@color/colorBackGround"
-                    android:textSize="8sp"
+                    android:textSize="4sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/imageView13"
+                <FrameLayout
                     android:layout_width="1dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/table_splitter" />
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBorderTitleTable" />
 
                 <TextView
                     android:id="@+id/colOther"
@@ -893,7 +873,7 @@
                     android:onClick="titleOfListviewOnClick"
                     android:text="@string/Other"
                     android:textColor="@color/colorBackGround"
-                    android:textSize="8sp"
+                    android:textSize="4sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -902,7 +882,8 @@
                 android:id="@+id/listview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:choiceMode="singleChoice" />
+                android:choiceMode="singleChoice"
+                android:divider="#00000000" />
         </LinearLayout>
 
         <LinearLayout

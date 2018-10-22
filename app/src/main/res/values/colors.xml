@@ -9,9 +9,12 @@
     <color name="colorTextEditOfSeekBar">#428bc0</color>
     <color name="colorTextEditWaitTime">#eef9ff</color>
     <color name="colorTextListitems">#303f9f</color>
-    <color name="itemFirstBG_ListView">#e7f6ff</color>
+    <color name="itemFirstBG_ListView">#ffffff</color>
     <color name="itemSecondBG_ListView">#E6E6E6</color>
     <color name="colorTableItemSelected">#8C8EE3</color>
     <color name="titleOfForms">#428BC0</color>
     <color name="titleListView">#b3b2b3</color>
+    <color name="colorBorderTable">#b3b2b3</color>
+    <color name="colorBorderTitleTable">#ffffff</color>
+    <color name="colorTextTitleBeforeTable">#ffffff</color>
 </resources>

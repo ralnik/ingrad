@@ -14,7 +14,7 @@
 
     <LinearLayout
         android:id="@+id/row"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="17dp"
         android:background="@drawable/item_selector"
         android:orientation="horizontal">
@@ -23,123 +23,101 @@
             android:id="@+id/colKorpus"
             android:layout_width="22dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:text="13/5"
             android:textColor="@color/colorTextListitems"
-            android:textSize="8sp" />
+            android:textSize="6sp" />
 
         <ImageView
-            android:id="@+id/imageView7"
             android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:adjustViewBounds="false"
-            app:srcCompat="@drawable/table_splitter" />
+            android:layout_height="match_parent"
+            android:background="@color/colorBorderTable" />
 
         <TextView
             android:id="@+id/colFlat"
             android:layout_width="22dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:text="174"
             android:textColor="@color/colorTextListitems"
-            android:textSize="8sp" />
+            android:textSize="6sp" />
 
         <ImageView
-            android:id="@+id/imageView8"
             android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/table_splitter" />
+            android:layout_height="match_parent"
+            android:background="@color/colorBorderTable" />
 
         <TextView
             android:id="@+id/colFloor"
             android:layout_width="22dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="18"
             android:textColor="@color/colorTextListitems"
-            android:textSize="8sp" />
+            android:textSize="6sp" />
 
         <ImageView
-            android:id="@+id/imageView9"
             android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/table_splitter" />
+            android:layout_height="match_parent"
+            android:background="@color/colorBorderTable" />
 
         <TextView
             android:id="@+id/colRooms"
             android:layout_width="30dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="4"
             android:textColor="@color/colorTextListitems"
-            android:textSize="8sp" />
+            android:textSize="6sp" />
 
         <ImageView
-            android:id="@+id/imageView10"
             android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/table_splitter" />
+            android:layout_height="match_parent"
+            android:background="@color/colorBorderTable" />
 
         <TextView
             android:id="@+id/colSquare"
             android:layout_width="30dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="123.8"
             android:textColor="@color/colorTextListitems"
-            android:textSize="8sp" />
+            android:textSize="6sp" />
 
         <ImageView
-            android:id="@+id/imageView11"
             android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/table_splitter" />
+            android:layout_height="match_parent"
+            android:background="@color/colorBorderTable" />
 
         <TextView
             android:id="@+id/colCost"
             android:layout_width="41dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="1 568 000"
             android:textColor="@color/colorTextListitems"
-            android:textSize="8sp" />
+            android:textSize="6sp" />
 
         <ImageView
-            android:id="@+id/imageView12"
             android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/table_splitter" />
+            android:layout_height="match_parent"
+            android:background="@color/colorBorderTable" />
 
         <TextView
             android:id="@+id/colSrok"
             android:layout_width="30dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="-------"
             android:textColor="@color/colorTextListitems"
-            android:textSize="8sp" />
+            android:textSize="6sp" />
 
         <ImageView
-            android:id="@+id/imageView13"
             android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/table_splitter" />
+            android:layout_height="match_parent"
+            android:background="@color/colorBorderTable" />
 
         <LinearLayout
             android:layout_width="55dp"

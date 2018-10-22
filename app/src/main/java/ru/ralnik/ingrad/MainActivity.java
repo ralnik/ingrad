@@ -612,7 +612,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btnRoom2:
-                if(btnRoom2.getTag() == (Object) 1 ){
+                if(btnRoom2.getTag() == (Object) 2 ){
                     btnRoom2.setImageResource(R.drawable.button_room2);
                     btnRoom2.setTag(0);
                 }else{
@@ -621,7 +621,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btnRoom3:
-                if(btnRoom3.getTag() == (Object) 1 ){
+                if(btnRoom3.getTag() == (Object) 3 ){
                     btnRoom3.setImageResource(R.drawable.button_room3);
                     btnRoom3.setTag(0);
                 }else{
@@ -630,7 +630,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btnRoom4:
-                if(btnRoom4.getTag() == (Object) 1 ){
+                if(btnRoom4.getTag() == (Object) 4 ){
                     btnRoom4.setImageResource(R.drawable.button_room4);
                     btnRoom4.setTag(0);
                 }else{
@@ -639,7 +639,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btnRoom5:
-                if(btnRoom5.getTag() == (Object) 1 ){
+                if(btnRoom5.getTag() == (Object) 5 ){
                     btnRoom5.setImageResource(R.drawable.button_room5);
                     btnRoom5.setTag(0);
                 }else{
@@ -653,7 +653,7 @@ public class MainActivity extends AppCompatActivity {
                     btnRoomEvro.setTag(0);
                 }else{
                     btnRoomEvro.setImageResource(R.drawable.button_room_evro_down);
-                    btnRoomEvro.setTag(6);
+                    btnRoomEvro.setTag(1);
                 }
                 break;
         }
@@ -867,6 +867,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //remont
+
 
         //additional parameter
         if(Integer.valueOf(btnTownHouse.getTag().toString())>0){query = query + " and TownHouse > 0"; }

@@ -16,7 +16,8 @@
         android:background="@color/titleOfForms"
         android:gravity="center"
         android:text="НАСТРОЙКИ"
-        android:textSize="14sp" />
+        android:textColor="@color/colorTextTitleBeforeTable"
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/txtMusic"
@@ -35,7 +36,7 @@
         android:layout_marginBottom="40dp"
         android:max="100"
         android:progressDrawable="@drawable/seekbar_progress"
-        android:thumb="@drawable/thumb" />
+        android:thumb="@drawable/seekbar_thumb" />
 
     <TextView
         android:id="@+id/txtEffects"
@@ -54,7 +55,7 @@
         android:layout_marginBottom="40dp"
         android:max="100"
         android:progressDrawable="@drawable/seekbar_progress"
-        android:thumb="@drawable/thumb" />
+        android:thumb="@drawable/seekbar_thumb" />
 
     <LinearLayout
         android:layout_width="match_parent"
