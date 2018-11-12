@@ -24,6 +24,9 @@ public class Flat {
     @ColumnInfo(name = "BeforeBtiNumber")
     private int BeforeBtiNumber;        //№ квартиры / № машино - места
 
+    @ColumnInfo(name = "Category")
+    private String Category;
+
     @ColumnInfo(name = "AddressId")
     private String  AddressId;              //Идентификатор корпуса: AddressId 
 
@@ -275,6 +278,14 @@ public class Flat {
 
     public void setCountTerrace(Integer countTerrace) {
         CountTerrace = countTerrace;
+    }
+
+    public String getCategory() {
+        return Category;
+    }
+
+    public void setCategory(String category) {
+        Category = category;
     }
 
     @Override

@@ -123,6 +123,36 @@ public class MainActivity extends AppCompatActivity {
     private TextView colCost;
     private TextView colOther;
 
+  // -------BUILDs-------------
+
+    private ImageView build_3_1;
+    private ImageView build_3_2;
+    private ImageView build_4;
+    private ImageView build_5;
+    private ImageView build_6;
+    private ImageView build_7;
+    private ImageView build_8;
+    private ImageView build_9;
+    private ImageView build_10;
+    private ImageView build_11;
+    private ImageView build_12;
+    private ImageView build_13;
+    private ImageView build_14;
+    private ImageView build_15;
+    private ImageView build_16;
+    private ImageView build_17;
+    private ImageView build_18;
+    private ImageView build_19;
+    private ImageView build_20;
+    private ImageView build_21_1;
+    private ImageView build_21_2;
+    private ImageView build_21_3;
+    private ImageView build_23;
+
+    //------title cost and budget
+    private ImageView titleCost;
+    private ImageView titleBudget;
+
     //My variables
     AlertDialog alertDialog;
     String TAG = "myDebug";
@@ -286,6 +316,13 @@ public class MainActivity extends AppCompatActivity {
         btnClear = (ImageView) findViewById(R.id.btnClear);
         btnSearch = (ImageView) findViewById(R.id.btnSearch);
 
+        titleCost = (ImageView) findViewById(R.id.titleCost);
+        titleBudget = (ImageView) findViewById(R.id.titleBudget);
+        titleCost.setTag(1);
+        titleBudget.setTag(0);
+        titleBudget.setImageResource(R.drawable.title_budget);
+        titleCost .setImageResource(R.drawable.title_cost_down);
+
         seekbarFloor  = (CrystalRangeSeekbar) findViewById(R.id.seekBarFloor);
         seekbarCost   = (CrystalRangeSeekbar) findViewById(R.id.seekBarCost);
         seekbarSquare = (CrystalRangeSeekbar) findViewById(R.id.seekBarSquare);
@@ -309,10 +346,84 @@ public class MainActivity extends AppCompatActivity {
         colSquare = (TextView) findViewById(R.id.colSquare);
         colCost = (TextView) findViewById(R.id.colCost);
         colOther = (TextView) findViewById(R.id.colOther);
+
+        build_3_1 = (ImageView) findViewById(R.id.build_3_1);
+        build_3_2 = (ImageView) findViewById(R.id.build_3_2);
+        build_4   = (ImageView) findViewById(R.id.build_4);
+        build_5   = (ImageView) findViewById(R.id.build_5);
+        build_6   = (ImageView) findViewById(R.id.build_6);
+        build_7   = (ImageView) findViewById(R.id.build_7);
+        build_8   = (ImageView) findViewById(R.id.build_8);
+        build_9   = (ImageView) findViewById(R.id.build_9);
+        build_10  = (ImageView) findViewById(R.id.build_10);
+        build_11  = (ImageView) findViewById(R.id.build_11);
+        build_12  = (ImageView) findViewById(R.id.build_12);
+        build_13  = (ImageView) findViewById(R.id.build_13);
+        build_14  = (ImageView) findViewById(R.id.build_14);
+        build_15  = (ImageView) findViewById(R.id.build_15);
+        build_16  = (ImageView) findViewById(R.id.build_16);
+        build_17  = (ImageView) findViewById(R.id.build_17);
+        build_18  = (ImageView) findViewById(R.id.build_18);
+        build_19  = (ImageView) findViewById(R.id.build_19);
+        build_20  = (ImageView) findViewById(R.id.build_20);
+        build_21_1 = (ImageView) findViewById(R.id.build_21_1);
+        build_21_2 = (ImageView) findViewById(R.id.build_21_2);
+        build_21_3 = (ImageView) findViewById(R.id.build_21_3);
+        build_23  = (ImageView) findViewById(R.id.build_23);
+
+        build_3_1.setImageResource(R.drawable.empty);
+        build_3_2.setImageResource(R.drawable.empty);
+        build_4.setImageResource(R.drawable.empty);
+        build_5.setImageResource(R.drawable.empty);
+        build_6.setImageResource(R.drawable.empty);
+        build_7.setImageResource(R.drawable.empty);
+        build_8.setImageResource(R.drawable.empty);
+        build_9.setImageResource(R.drawable.empty);
+        build_10.setImageResource(R.drawable.empty);
+        build_11.setImageResource(R.drawable.empty);
+        build_12.setImageResource(R.drawable.empty);
+        build_13.setImageResource(R.drawable.empty);
+        build_14.setImageResource(R.drawable.empty);
+        build_15.setImageResource(R.drawable.empty);
+        build_16.setImageResource(R.drawable.empty);
+        build_17.setImageResource(R.drawable.empty);
+        build_18.setImageResource(R.drawable.empty);
+        build_19.setImageResource(R.drawable.empty);
+        build_20.setImageResource(R.drawable.empty);
+        build_21_1.setImageResource(R.drawable.empty);
+        build_21_2.setImageResource(R.drawable.empty);
+        build_21_3.setImageResource(R.drawable.empty);
+        build_23.setImageResource(R.drawable.empty);
+
+        build_3_1.setTag(0);
+        build_3_2.setTag(0);
+        build_4.setTag(0);
+        build_5.setTag(0);
+        build_6.setTag(0);
+        build_7.setTag(0);
+        build_8.setTag(0);
+        build_9.setTag(0);
+        build_10.setTag(0);
+        build_11.setTag(0);
+        build_12.setTag(0);
+        build_13.setTag(0);
+        build_14.setTag(0);
+        build_15.setTag(0);
+        build_16.setTag(0);
+        build_17.setTag(0);
+        build_18.setTag(0);
+        build_19.setTag(0);
+        build_20.setTag(0);
+        build_21_1.setTag(0);
+        build_21_2.setTag(0);
+        build_21_3.setTag(0);
+        build_23.setTag(0);
     }
 
     private void setValuesToSeekBar(){
 //    try {
+        cfg.setMinBudget(Float.valueOf(new FlatRepository(this).getMin("Budget").toString()));
+        cfg.setMaxBudget(Float.valueOf(new FlatRepository(this).getMax("Budget").toString()));
         cfg.setMinCost(Float.valueOf(new FlatRepository(this).getMin("Cost").toString()));
         cfg.setMaxCost(Float.valueOf(new FlatRepository(this).getMax("Cost").toString()));
         cfg.setMinFloor((int) new FlatRepository(this).getMin("Floor"));
@@ -323,10 +434,7 @@ public class MainActivity extends AppCompatActivity {
 //        e.printStackTrace();
 //    }
 
-        seekbarCost.setMinValue(cfg.getMinCost());
-        seekbarCost.setMaxValue(cfg.getMaxCost());
-        minCostEdit.setText(String.valueOf(cfg.getMinCost()));
-        maxCostEdit.setText(String.valueOf(cfg.getMaxCost()));
+        setDataToCostSeekBar();
 
         seekbarFloor.setMinValue(cfg.getMinFloor());
         seekbarFloor.setMaxValue(cfg.getMaxFloor());
@@ -338,6 +446,32 @@ public class MainActivity extends AppCompatActivity {
         minSquareEdit.setText(String.valueOf(cfg.getMinSquare()));
         maxSquareEdit.setText(String.valueOf(cfg.getMaxSquare()));
 
+    }
+
+    private void setDataToCostSeekBar() {
+        float min = 0;
+        float max = 0;
+        if((Integer) titleCost.getTag() == 1) {
+            seekbarCost.setMinValue(cfg.getMinCost());
+            seekbarCost.setMaxValue(cfg.getMaxCost());
+            min = cfg.getMinCost() / 1000000;
+            max = cfg.getMaxCost() / 1000000;
+        }
+        if((Integer) titleBudget.getTag() == 1){
+            seekbarCost.setMinValue(cfg.getMinBudget());
+            seekbarCost.setMaxValue(cfg.getMaxBudget());
+            min = cfg.getMinBudget() / 100000;
+            max = cfg.getMaxBudget() / 100000;
+        }
+
+        //Log.d(TAG,"min="+min);
+        String formattedDoubleMin = String.valueOf(min).substring(0,String.valueOf(min).indexOf(".")+2);
+        String formattedDoubleMax = String.valueOf(max).substring(0,String.valueOf(max).indexOf(".")+2);
+        //Log.d(TAG,"minSork="+formattedDouble);
+        minCostEdit.setText(formattedDoubleMin.replace(",","."));
+        maxCostEdit.setText(formattedDoubleMax.replace(",","."));
+//        minCostEdit.setText(seekbarCost.getSelectedMinValue().toString());
+//        maxCostEdit.setText(seekbarCost.getSelectedMaxValue().toString());
     }
 
     public void SeekbarSquareOnChange(){
@@ -367,9 +501,16 @@ public class MainActivity extends AppCompatActivity {
         seekbarCost.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
             @Override
             public void valueChanged(Number minValue, Number maxValue) {
-
-                float min = Float.valueOf(minValue.toString()) / 1000000 ;
-                float max = Float.valueOf(maxValue.toString()) / 1000000 ;
+                float min = 0;
+                float max = 0;
+                if((Integer) titleCost.getTag() == 1) {
+                    min = Float.valueOf(minValue.toString()) / 1000000;
+                    max = Float.valueOf(maxValue.toString()) / 1000000;
+                }
+                if((Integer) titleBudget.getTag() == 1){
+                    min = Float.valueOf(minValue.toString()) / 100000;
+                    max = Float.valueOf(maxValue.toString()) / 100000;
+                }
                 //Log.d(TAG,"min="+min);
                 String formattedDoubleMin = String.valueOf(min).substring(0,String.valueOf(min).indexOf(".")+2);
                 String formattedDoubleMax = String.valueOf(max).substring(0,String.valueOf(max).indexOf(".")+2);
@@ -827,6 +968,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadFromSqlite(String sql){
         //Log.d(TAG, "mas_size" + new FlatRepository(getApplicationContext()).getAll().size());
         myAdapter adapter = new myAdapter(this, new FlatRepository(this).getFlatsByQuery(sql),0);
+        Log.d("myDebug","adapter.size="+adapter.getCount());
         listview.setAdapter(adapter);
         listview.setOnItemClickListener(new listviewItemSelected(this));
 
@@ -840,7 +982,12 @@ public class MainActivity extends AppCompatActivity {
 
         query = query + " (floor >= "+seekbarFloor.getSelectedMinValue() + " and floor <= "+seekbarFloor.getSelectedMaxValue()+") ";
         query = query + " and (Quantity >= " + seekbarSquare.getSelectedMinValue() + " and Quantity <= "+seekbarSquare.getSelectedMaxValue() + ") ";
-        query = query + " and (DiscountMax >= " + seekbarCost.getSelectedMinValue() + " and DiscountMax <= " + seekbarCost.getSelectedMaxValue() + ") ";
+        if((Integer) titleCost.getTag() == 1) {
+            query = query + " and (DiscountMax >= " + minCostEdit.getText() + "*1000000" + " and DiscountMax <= " + maxCostEdit.getText() + "*1000000" + ") ";
+        }
+        if((Integer) titleBudget.getTag() == 1){
+            query = query + " and ((DiscountMax/Quantity) >= " + minCostEdit.getText() + "*100000" + " and (DiscountMax/Quantity) <= " + maxCostEdit.getText() + "*100000" + ") ";
+        }
 
         //Count ROOMS;
         List<Integer> countRoom = new ArrayList<>();
@@ -864,20 +1011,22 @@ public class MainActivity extends AppCompatActivity {
             query = query + countRoomString;
         }
 
-
+        //evro %E% - cyrillic symbol
+        if((Integer) btnRoomEvro.getTag() == 1){
+            query = query + " and Category like '%Е%' ";
+        }
 
         //remont
 
 
         //additional parameter
-        if(Integer.valueOf(btnTownHouse.getTag().toString())>0){query = query + " and TownHouse > 0"; }
-        if(Integer.valueOf(btnPentHouse.getTag().toString())>0){query = query + " and PentHouse > 0"; }
-        if(Integer.valueOf(btnDoubleFloorHouse.getTag().toString())>0){query = query + " and TwoLevel > 0"; }
-        if(Integer.valueOf(btnTwoEnterHouse.getTag().toString())>0){query = query + " and SeparateEntrance > 0"; }
-        if(Integer.valueOf(btnTwoEnterHouse.getTag().toString())>0){query = query + " and SeparateEntrance > 0"; }
-        if(Integer.valueOf(btnTerrasa.getTag().toString())>0){ query = query + " and Terrace > 0";}
-        if(Integer.valueOf(btnWithFirePlace.getTag().toString())>0){ query = query + " and FirePlace > 0";}
-        if(Integer.valueOf(btnBathRoomWithWindow.getTag().toString())>0){ query = query + " and WithWindow > 0";}
+        if(Integer.valueOf(btnTownHouse.getTag().toString())>0){query = query + " and TownHouse = 'True'"; }
+        if(Integer.valueOf(btnPentHouse.getTag().toString())>0){query = query + " and PentHouse = 'True'"; }
+        if(Integer.valueOf(btnDoubleFloorHouse.getTag().toString())>0){query = query + " and TwoLevel = 'True'"; }
+        if(Integer.valueOf(btnTwoEnterHouse.getTag().toString())>0){query = query + " and SeparateEntrance = 'True'"; }
+        if(Integer.valueOf(btnTerrasa.getTag().toString())>0){ query = query + " and Terrace = 'True'";}
+        if(Integer.valueOf(btnWithFirePlace.getTag().toString())>0){ query = query + " and FirePlace = 'True'";}
+        if(Integer.valueOf(btnBathRoomWithWindow.getTag().toString())>0){ query = query + " and WithWindow = 'True'";}
 
         Log.d(TAG, query);
         loadFromSqlite(query);
@@ -937,6 +1086,242 @@ public class MainActivity extends AppCompatActivity {
         btnTerrasa.setTag(0);
         btnWithFirePlace.setTag(0);
         btnBathRoomWithWindow.setTag(0);
+    }
+
+
+    public void buildsOnClick(View v){
+        switch (v.getId()){
+            case R.id.build_3_1:
+                if((Integer) build_3_1.getTag() == 0){
+                   build_3_1.setTag(1);
+                   build_3_1.setImageResource(R.drawable.build_3_1);
+                } else{
+                    build_3_1.setTag(0);
+                    build_3_1.setImageResource(R.drawable.empty);
+                }
+            break;
+            case R.id.build_3_2:
+                if((Integer) build_3_2.getTag() == 0){
+                    build_3_2.setTag(1);
+                    build_3_2.setImageResource(R.drawable.build_3_2);
+                } else{
+                    build_3_2.setTag(0);
+                    build_3_2.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_4:
+                if((Integer) build_4.getTag() == 0){
+                    build_4.setTag(1);
+                    build_4.setImageResource(R.drawable.build_4);
+                } else{
+                    build_4.setTag(0);
+                    build_4.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_5:
+                if((Integer) build_5.getTag() == 0){
+                    build_5.setTag(1);
+                    build_5.setImageResource(R.drawable.build_5);
+                } else{
+                    build_5.setTag(0);
+                    build_5.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_6:
+                if((Integer) build_6.getTag() == 0){
+                    build_6.setTag(1);
+                    build_6.setImageResource(R.drawable.build_6);
+                } else{
+                    build_6.setTag(0);
+                    build_6.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_7:
+                if((Integer) build_7.getTag() == 0){
+                    build_7.setTag(1);
+                    build_7.setImageResource(R.drawable.build_7);
+                } else{
+                    build_7.setTag(0);
+                    build_7.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_8:
+                if((Integer) build_8.getTag() == 0){
+                    build_8.setTag(1);
+                    build_8.setImageResource(R.drawable.build_8);
+                } else{
+                    build_8.setTag(0);
+                    build_8.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_9:
+                if((Integer) build_9.getTag() == 0){
+                    build_9.setTag(1);
+                    build_9.setImageResource(R.drawable.build_9);
+                } else{
+                    build_9.setTag(0);
+                    build_9.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_10:
+                if((Integer) build_10.getTag() == 0){
+                    build_10.setTag(1);
+                    build_10.setImageResource(R.drawable.build_10);
+                } else{
+                    build_10.setTag(0);
+                    build_10.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_11:
+                if((Integer) build_11.getTag() == 0){
+                    build_11.setTag(1);
+                    build_11.setImageResource(R.drawable.build_11);
+                } else{
+                    build_11.setTag(0);
+                    build_11.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_12:
+                if((Integer) build_12.getTag() == 0){
+                    build_12.setTag(1);
+                    build_12.setImageResource(R.drawable.build_12);
+                } else{
+                    build_12.setTag(0);
+                    build_12.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_13:
+                if((Integer) build_13.getTag() == 0){
+                    build_13.setTag(1);
+                    build_13.setImageResource(R.drawable.build_13);
+                } else{
+                    build_13.setTag(0);
+                    build_13.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_14:
+                if((Integer) build_14.getTag() == 0){
+                    build_14.setTag(1);
+                    build_14.setImageResource(R.drawable.build_14);
+                } else{
+                    build_14.setTag(0);
+                    build_14.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_15:
+                if((Integer) build_15.getTag() == 0){
+                    build_15.setTag(1);
+                    build_15.setImageResource(R.drawable.build_15);
+                } else{
+                    build_15.setTag(0);
+                    build_15.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_16:
+                if((Integer) build_16.getTag() == 0){
+                    build_16.setTag(1);
+                    build_16.setImageResource(R.drawable.build_16);
+                } else{
+                    build_16.setTag(0);
+                    build_16.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_17:
+                if((Integer) build_17.getTag() == 0){
+                    build_17.setTag(1);
+                    build_17.setImageResource(R.drawable.build_17);
+                } else{
+                    build_17.setTag(0);
+                    build_17.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_18:
+                if((Integer) build_18.getTag() == 0){
+                    build_18.setTag(1);
+                    build_18.setImageResource(R.drawable.build_18);
+                } else{
+                    build_18.setTag(0);
+                    build_18.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_19:
+                if((Integer) build_19.getTag() == 0){
+                    build_19.setTag(1);
+                    build_19.setImageResource(R.drawable.build_19);
+                } else{
+                    build_19.setTag(0);
+                    build_19.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_20:
+                if((Integer) build_20.getTag() == 0){
+                    build_20.setTag(1);
+                    build_20.setImageResource(R.drawable.build_20);
+                } else{
+                    build_20.setTag(0);
+                    build_20.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_21_1:
+                if((Integer) build_21_1.getTag() == 0){
+                    build_21_1.setTag(1);
+                    build_21_1.setImageResource(R.drawable.build_21_1);
+                } else{
+                    build_21_1.setTag(0);
+                    build_21_1.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_21_2:
+                if((Integer) build_21_2.getTag() == 0){
+                    build_21_2.setTag(1);
+                    build_21_2.setImageResource(R.drawable.build_21_2);
+                } else{
+                    build_21_2.setTag(0);
+                    build_21_2.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_21_3:
+                if((Integer) build_21_3.getTag() == 0){
+                    build_21_3.setTag(1);
+                    build_21_3.setImageResource(R.drawable.build_21_3);
+                } else{
+                    build_21_3.setTag(0);
+                    build_21_3.setImageResource(R.drawable.empty);
+                }
+                break;
+            case R.id.build_23:
+                if((Integer) build_23.getTag() == 0){
+                    build_23.setTag(1);
+                    build_23.setImageResource(R.drawable.build_23);
+                } else{
+                    build_23.setTag(0);
+                    build_23.setImageResource(R.drawable.empty);
+                }
+                break;
+        }
+    }
+
+    public void titleCost_BudgetOnClick(View v){
+        switch (v.getId()){
+            case R.id.titleCost:
+                if((Integer) titleCost.getTag() == 0){
+                    titleCost.setTag(1);
+                    titleCost.setImageResource(R.drawable.title_cost_down);
+                    titleBudget.setTag(0);
+                    titleBudget.setImageResource(R.drawable.title_budget);
+                    setDataToCostSeekBar();
+                }
+                break;
+            case R.id.titleBudget:
+                if((Integer) titleBudget.getTag() == 0){
+                    titleBudget.setTag(1);
+                    titleBudget.setImageResource(R.drawable.title_budget_down);
+                    titleCost.setTag(0);
+                    titleCost.setImageResource(R.drawable.title_cost);
+                    setDataToCostSeekBar();
+                }
+                break;
+        }
     }
 
     @Override

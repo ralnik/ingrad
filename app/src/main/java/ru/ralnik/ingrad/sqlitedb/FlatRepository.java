@@ -12,7 +12,6 @@ import ru.ralnik.ingrad.model.Flat;
 
 public class FlatRepository {
     private FlatDao mFlatDao;
-
     public FlatRepository(Context context) {
         AppDatabase db = AppDatabase.getInstance(context);
         mFlatDao = db.flatDao();
@@ -32,6 +31,10 @@ public class FlatRepository {
     public void insert(Flat flat){
         new insertAsyncTask(mFlatDao).execute(flat);
         //mFlatDao.insertAll(flat);
+    }
+
+    public void update(Flat flat){
+        new updateAsyncTask(mFlatDao).execute(flat);
     }
 
     public List<Flat> findByIds(String[] strings){
@@ -140,6 +143,9 @@ public class FlatRepository {
             if(param[0].equals("Square")){
                 return mAsyncFlatDao.getMinSquare();
             }
+            if(param[0].equals("Budget")){
+                return mAsyncFlatDao.getMinBudget();
+            }
             return null;
         }
     }
@@ -160,6 +166,9 @@ public class FlatRepository {
             }
             if(param[0].equals("Square")){
                 return mAsyncFlatDao.getMaxSquare();
+            }
+            if(param[0].equals("Budget")){
+                return mAsyncFlatDao.getMaxBudget();
             }
             return null;
         }
@@ -188,6 +197,20 @@ public class FlatRepository {
         @Override
         protected Void doInBackground(final Flat... param) {
             mAsyncFlatDao.insertAll(param[0]);
+            return null;
+        }
+    }
+
+    public class updateAsyncTask extends AsyncTask<Flat, Void, Void>{
+        private FlatDao mAsyncFlatDao;
+
+        public updateAsyncTask(FlatDao mAsyncFlatDao) {
+            this.mAsyncFlatDao = mAsyncFlatDao;
+        }
+
+        @Override
+        protected Void doInBackground(final Flat... param) {
+            mAsyncFlatDao.update(param[0]);
             return null;
         }
     }

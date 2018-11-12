@@ -26,6 +26,8 @@ public class myConfig {
     private String APP_PREF_MAXCOST = "maxCost";
     private String APP_PREF_MINFLOOR = "minFloor";
     private String APP_PREF_MAXFLOOR = "maxFloor";
+    private String APP_PREF_MINBUDGET = "minBudget";
+    private String APP_PREF_MAXBUDGET = "maxBudget";
 
     private static float minSquare=13.40F, maxSquare=149.77F, minCost=0, maxCost=17.7F;
     private static int minFloor=0,maxFloor=23;
@@ -74,6 +76,18 @@ public class myConfig {
         return 0;
     }
 
+    public void setMinBudget(float min){
+        editor.putFloat(APP_PREF_MINBUDGET,min);
+        editor.apply();
+    }
+
+    public float getMinBudget(){
+        if(mSettings.contains(APP_PREF_MINBUDGET)){
+            return mSettings.getFloat(APP_PREF_MINBUDGET,0);
+        }
+        return 0;
+    }
+
     public void setMaxCost(float max){
         editor.putFloat(APP_PREF_MAXCOST,max);
         editor.apply();
@@ -82,6 +96,18 @@ public class myConfig {
     public float getMaxCost(){
         if(mSettings.contains(APP_PREF_MAXCOST)){
             return mSettings.getFloat(APP_PREF_MAXCOST,0);
+        }
+        return 0;
+    }
+
+    public void setMaxBudget(float max){
+        editor.putFloat(APP_PREF_MAXBUDGET,max);
+        editor.apply();
+    }
+
+    public float getMaxBudget(){
+        if(mSettings.contains(APP_PREF_MAXBUDGET)){
+            return mSettings.getFloat(APP_PREF_MAXBUDGET,0);
         }
         return 0;
     }

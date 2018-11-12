@@ -1,6 +1,7 @@
 package ru.ralnik.ingrad;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,6 +20,7 @@ public class OuterInfraActivity {
     private ImageView btnObjectOfCreation;
     private ImageView btnBusiness;
     private ImageView btnShops;
+    private ImageView btnClose;
 
     private myConfig cfg;
     private VVVVPlayer vvvv;
@@ -26,9 +28,11 @@ public class OuterInfraActivity {
     public OuterInfraActivity(Activity activity) {
         this.activity = activity;
         view = activity.getLayoutInflater().inflate(R.layout.outer_infra_layout, null); // Получаем layout по его ID
-        show();
-        //alertDialog.show();
+        //initialize all components
         init();
+        // show activity
+        show();
+
         cfg = new myConfig(activity.getApplicationContext());
 
         vvvv = new VVVVPlayer(cfg.getHost());
@@ -39,7 +43,8 @@ public class OuterInfraActivity {
         builder.setView(this.view);
         builder.setCancelable(true);
         builder.create();
-        builder.show();
+        Dialog dialog = builder.show();
+        btnClose.setOnClickListener(new btnCloseOnClick(dialog));
         /*
         //Если нужно добавить снизу диалогового окна 2 кнопки ОК и Отмена
         builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() { // Кнопка ОК
@@ -54,6 +59,9 @@ public class OuterInfraActivity {
             }
         });
         */
+
+
+
     }
 
     private void init() {
@@ -65,6 +73,7 @@ public class OuterInfraActivity {
         btnObjectOfCreation = (ImageView) view.findViewById(R.id.btnObjectOfCreation);
         btnBusiness = (ImageView) view.findViewById(R.id.btnBusinessCenter);
         btnShops = (ImageView) view.findViewById(R.id.btnShops);
+        btnClose = (ImageView) view.findViewById(R.id.btnClose);
 
         btnChildGarden.setOnClickListener(new onClick());
         btnSchools.setOnClickListener(new onClick());
@@ -73,6 +82,7 @@ public class OuterInfraActivity {
         btnObjectOfCreation.setOnClickListener(new onClick());
         btnBusiness.setOnClickListener(new onClick());
         btnShops.setOnClickListener(new onClick());
+
     }
 
     private class onClick implements View.OnClickListener{
@@ -114,9 +124,24 @@ public class OuterInfraActivity {
                     btnShops.setImageResource(R.drawable.button_shops_down);
                     vvvv.selectById(19);
                     break;
+                /*case R.id.btnClose:
+                    this.a
+                    */
                 default:
                     break;
             }
+        }
+    }
+
+    private class btnCloseOnClick implements View.OnClickListener{
+        Dialog dialog;
+        public btnCloseOnClick(Dialog dialog) {
+            this.dialog = dialog;
+        }
+
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
         }
     }
 }

@@ -11,10 +11,14 @@ import ru.ralnik.ingrad.model.Flat;
 
 @Database(entities = {Flat.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
+    private static Context context;
+
     public abstract FlatDao flatDao();
     private static volatile AppDatabase INSTANCE;
 
-    public static AppDatabase getInstance(final Context context)  {
+
+    public static AppDatabase getInstance(Context arg)  {
+        context = arg;
         if (INSTANCE == null) {
             synchronized (AppDatabase.class) {
                 if (INSTANCE == null) {
@@ -30,7 +34,6 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
-
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
@@ -42,6 +45,8 @@ public abstract class AppDatabase extends RoomDatabase {
             // If you want to keep the data through app restarts,
             // comment out the following line.
             //new PopulateDbAsync(INSTANCE).execute();
+
         }
+
     };
 }

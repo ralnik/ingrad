@@ -199,7 +199,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -212,14 +212,229 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/imgGenplan"
+                    <FrameLayout
+                        android:id="@+id/genPlanLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/genplan_margin_bottom"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        app:srcCompat="@drawable/genplan" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/imgGenplan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/genplan_margin_bottom"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/genplan" />
+
+                        <ImageView
+                            android:id="@+id/build_3_1"
+                            android:layout_width="48dp"
+                            android:layout_height="46dp"
+                            android:translationX="19dp"
+                            android:translationY="83dp"
+                            app:srcCompat="@drawable/build_3_1"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_3_2"
+                            android:layout_width="46dp"
+                            android:layout_height="43dp"
+                            android:translationX="53dp"
+                            android:translationY="64dp"
+                            app:srcCompat="@drawable/build_3_2"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_4"
+                            android:layout_width="50dp"
+                            android:layout_height="48dp"
+                            android:translationX="83dp"
+                            android:translationY="40dp"
+                            app:srcCompat="@drawable/build_4"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_5"
+                            android:layout_width="46dp"
+                            android:layout_height="30dp"
+                            android:translationX="125dp"
+                            android:translationY="40dp"
+                            app:srcCompat="@drawable/build_5"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_6"
+                            android:layout_width="43dp"
+                            android:layout_height="27dp"
+                            android:translationX="169dp"
+                            android:translationY="40dp"
+                            app:srcCompat="@drawable/build_6"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_7"
+                            android:layout_width="46dp"
+                            android:layout_height="27dp"
+                            android:translationX="201dp"
+                            android:translationY="41dp"
+                            app:srcCompat="@drawable/build_7"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_8"
+                            android:layout_width="86dp"
+                            android:layout_height="65dp"
+                            android:translationX="223dp"
+                            android:translationY="46dp"
+                            app:srcCompat="@drawable/build_8"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_9"
+                            android:layout_width="45dp"
+                            android:layout_height="56dp"
+                            android:translationX="315dp"
+                            android:translationY="90dp"
+                            app:srcCompat="@drawable/build_9"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_10"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:translationX="341dp"
+                            android:translationY="68dp"
+                            app:srcCompat="@drawable/build_10"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_11"
+                            android:layout_width="56dp"
+                            android:layout_height="38dp"
+                            android:translationX="370dp"
+                            android:translationY="57dp"
+                            app:srcCompat="@drawable/build_11"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_12"
+                            android:layout_width="75dp"
+                            android:layout_height="74dp"
+                            android:translationX="419dp"
+                            android:translationY="56dp"
+                            app:srcCompat="@drawable/build_12"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_13"
+                            android:layout_width="43dp"
+                            android:layout_height="48dp"
+                            android:translationX="455dp"
+                            android:translationY="99dp"
+                            app:srcCompat="@drawable/build_13"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_14"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:translationX="463dp"
+                            android:translationY="146dp"
+                            app:srcCompat="@drawable/build_14"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_15"
+                            android:layout_width="49dp"
+                            android:layout_height="47dp"
+                            android:translationX="430dp"
+                            android:translationY="165dp"
+                            app:srcCompat="@drawable/build_15"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_16"
+                            android:layout_width="47dp"
+                            android:layout_height="30dp"
+                            android:translationX="392dp"
+                            android:translationY="185dp"
+                            app:srcCompat="@drawable/build_16"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_17"
+                            android:layout_width="40dp"
+                            android:layout_height="30dp"
+                            android:translationX="355dp"
+                            android:translationY="185dp"
+                            app:srcCompat="@drawable/build_17"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_18"
+                            android:layout_width="45dp"
+                            android:layout_height="31dp"
+                            android:translationX="315dp"
+                            android:translationY="185dp"
+                            app:srcCompat="@drawable/build_18"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_19"
+                            android:layout_width="37dp"
+                            android:layout_height="50dp"
+                            android:translationX="280dp"
+                            android:translationY="167dp"
+                            app:srcCompat="@drawable/build_19"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_20"
+                            android:layout_width="61dp"
+                            android:layout_height="72dp"
+                            android:translationX="231dp"
+                            android:translationY="145dp"
+                            app:srcCompat="@drawable/build_20"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_21_1"
+                            android:layout_width="50dp"
+                            android:layout_height="28dp"
+                            android:translationX="90dp"
+                            android:translationY="192dp"
+                            app:srcCompat="@drawable/build_21_1"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_21_2"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:translationX="119dp"
+                            android:translationY="167dp"
+                            app:srcCompat="@drawable/build_21_2"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_21_3"
+                            android:layout_width="50dp"
+                            android:layout_height="40dp"
+                            android:translationX="144dp"
+                            android:translationY="148dp"
+                            app:srcCompat="@drawable/build_21_3"
+                            android:onClick="buildsOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/build_23"
+                            android:layout_width="86dp"
+                            android:layout_height="64dp"
+                            android:translationX="24dp"
+                            android:translationY="135dp"
+                            app:srcCompat="@drawable/build_23"
+                            android:onClick="buildsOnClick"/>
+
+                    </FrameLayout>
 
                     <ImageView
                         android:id="@+id/imgTitleCountRoom"
@@ -359,14 +574,35 @@
                         </TableRow>
                     </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/titleCost"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="@dimen/titles_margin_top"
                         android:layout_marginBottom="@dimen/titles_before_seekbar_margin_bottom"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/title_cost" />
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/titleBudget"
+                            android:layout_width="wrap_content"
+                            android:layout_height="15dp"
+                            android:layout_marginEnd="23dp"
+                            android:layout_weight="0"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitStart"
+                            app:srcCompat="@drawable/title_budget"
+                            android:onClick="titleCost_BudgetOnClick"/>
+
+                        <ImageView
+                            android:id="@+id/titleCost"
+                            android:layout_width="wrap_content"
+                            android:layout_height="15dp"
+                            android:layout_weight="0"
+                            android:scaleType="fitStart"
+                            app:srcCompat="@drawable/title_cost"
+                            android:onClick="titleCost_BudgetOnClick"/>
+
+                    </LinearLayout>
 
                     <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
                         android:id="@+id/seekBarCost"
@@ -725,7 +961,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/title"

@@ -81,6 +81,10 @@ public class Parser extends Thread implements Runnable {
                             flat.setBeforeBtiNumber(Integer.valueOf(parser.getText()));
                         }
 
+                        if(nameTAG.equals("a:Category")) {
+                            flat.setCategory(parser.getText());
+                        }
+
                         if(nameTAG.equals("a:AddressId")) {
                             flat.setAddressId(parser.getText());
                         }
@@ -162,10 +166,14 @@ public class Parser extends Thread implements Runnable {
                         //Log.d(TAG,"</"+parser.getName()+">");
 
                         if(parser.getName().equals("a:Apartment")){
-                            int f = new FlatRepository(context).findByIds(new String[]{flat.getArticleId()}).size();
+                            //будет вставленa новая запись, если запись уже есть, то тогда она обновится полностью по всем полям
+                            new FlatRepository(context).insert(flat);
+                            /*int f = new FlatRepository(context).findByIds(new String[]{flat.getArticleId()}).size();
                             if(f == 0) {
                                 new FlatRepository(context).insert(flat);
-                            }
+                            }else {
+                                new FlatRepository(context).update(flat);
+                            }*/
 
                         }
                         break;
