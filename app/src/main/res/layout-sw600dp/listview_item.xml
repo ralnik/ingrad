@@ -169,6 +169,15 @@
                 android:layout_weight="1"
                 android:visibility="visible"
                 app:srcCompat="@drawable/button_terrasa_little" />
+
+            <ImageView
+                android:id="@+id/picBalcon"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:visibility="visible"
+                app:srcCompat="@drawable/button_balcon_little" />
         </LinearLayout>
     </LinearLayout>
 

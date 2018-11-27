@@ -52,6 +52,8 @@ public class listviewItemSelected implements AdapterView.OnItemClickListener {
             //на текущем ставим новое выделение
             //String fname = "pic_"+GlobalVar.razdelFilter.toLowerCase() + currentViewHolder.column2.getText() + "_" + currentViewHolder.column4.getText();
             //currentViewHolder.column1.setImageResource(context.getResources().getIdentifier(fname + "_p", "drawable", context.getPackageName()));
+
+        /*
             currentViewHolder.column1.setTextColor(context.getResources().getColor(R.color.colorTableItemSelected));
             currentViewHolder.column2.setTextColor(context.getResources().getColor(R.color.colorTableItemSelected));
             currentViewHolder.column3.setTextColor(context.getResources().getColor(R.color.colorTableItemSelected));
@@ -59,6 +61,7 @@ public class listviewItemSelected implements AdapterView.OnItemClickListener {
             currentViewHolder.column5.setTextColor(context.getResources().getColor(R.color.colorTableItemSelected));
             currentViewHolder.column6.setTextColor(context.getResources().getColor(R.color.colorTableItemSelected));
             currentViewHolder.column7.setTextColor(context.getResources().getColor(R.color.colorTableItemSelected));
+        */
 
         //выводим данные на сервер vvvv
 //        myDBHelper tempDB = new myDBHelper(context);
@@ -84,7 +87,8 @@ public class listviewItemSelected implements AdapterView.OnItemClickListener {
         // Log.d(TAG,"position: "+position+" id: "+id+" number: "+viewHolder.column4.getText());
         Flat flat = new FlatRepository(context).findById(ArticleID);
         HttpPlayerFactory.getInstance(context).getCommand().setFlatInfo(flat);
-        HttpPlayerFactory.getInstance(context).getCommand().play();
+        HttpPlayerFactory.getInstance(context).getCommand().selectById(13);
+
 
 
     }

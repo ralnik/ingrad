@@ -7,7 +7,6 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.RawQuery;
-import android.arch.persistence.room.Update;
 import android.database.Cursor;
 
 import java.util.List;
@@ -57,19 +56,19 @@ public interface FlatDao {
     Float getMaxSquare();
 
     //**************COST
-    @Query("SELECT min(DiscountMax) FROM flats")
+    @Query("SELECT min(DiscountMax) FROM flats where (discountmax/Quantity) > 1")
     Float getMinCost();
 
-    @Query("SELECT max(DiscountMax) FROM flats")
+    @Query("SELECT max(DiscountMax) FROM flats where (discountmax/Quantity) > 1")
     Float getMaxCost();
 
     //**************Budget
-    @Query("SELECT min(DiscountMax/Quantity) FROM flats")
+    @Query("SELECT min(DiscountMax/Quantity) FROM flats where (discountmax/Quantity) > 1")
     Float getMinBudget();
 
-    @Query("SELECT max(DiscountMax/Quantity) FROM flats")
+    @Query("SELECT max(DiscountMax/Quantity) FROM flats where (discountmax/Quantity) > 1")
     Float getMaxBudget();
 
-    @Update
-    void update(Flat flat);
+    @Query("UPDATE flats set ArticleSubType = :ArticleSubType, LayoutUrl = :LayoutUrl, BeforeBtiNumber = :BeforeBtiNumber, Category = :Category, AddressId = :AddressId, AddressName = :AddressName, AddressNumber = :AddressNumber, SectionNumber = :SectionNumber, Floor = :Floor, Rooms = :Rooms, Quantity = :Quantity, DiscountMax = :DiscountMax,FinishTypeId = :FinishTypeId, StatusCodeName = :StatusCodeName, TownHouse = :TownHouse, PentHouse = :PentHouse, TwoLevel = :TwoLevel, SeparateEntrance = :SeparateEntrance, WithWindow = :WithWindow, FirePlace = :FirePlace, Terrace = :Terrace, CountBalcony = :CountBalcony, CountLoggia = :CountLoggia, CountTerrace = :CountTerrace, DeliveryPeriod = :DeliveryPeriod where ArticleId = :ArticleId")
+    void update(String ArticleId, String ArticleSubType, String LayoutUrl, int BeforeBtiNumber, String Category, String AddressId, String AddressName, int AddressNumber,String SectionNumber, int Floor, int Rooms, Float Quantity, Float DiscountMax, String FinishTypeId, String StatusCodeName, String TownHouse, String PentHouse, String TwoLevel, String SeparateEntrance, String WithWindow, String FirePlace, String Terrace, int CountBalcony, int CountLoggia, int CountTerrace, String DeliveryPeriod);
  }

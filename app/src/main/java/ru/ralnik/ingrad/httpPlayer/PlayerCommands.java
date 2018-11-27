@@ -8,6 +8,7 @@ public interface PlayerCommands {
     void pause();
     void stop();
     void selectById(int id);
+    void selectBySubId(int id);
     void volume(int vol);
     void volEffect(int vol);
     void volumeOnOff();
@@ -21,5 +22,6 @@ public interface PlayerCommands {
     void deleteById(int id);
 
     void setFlatInfo(Flat flat);
+    void changeHost(String host);
 
 }

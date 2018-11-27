@@ -33,6 +33,9 @@ public class Flat {
     @ColumnInfo(name = "AddressName")
     private String  AddressName;            //Наименование корпуса: AddressName
 
+    @ColumnInfo(name = "AddressNumber")     //№ корпуса
+    private int AddressNumber;
+
     @ColumnInfo(name = "SectionNumber")
     private String  SectionNumber;          //№ секции
 
@@ -83,6 +86,9 @@ public class Flat {
 
     @ColumnInfo(name = "CountTerrace")
     private int CountTerrace;           //CountTerrace
+
+    @ColumnInfo(name = "DeliveryPeriod")
+    private String DeliveryPeriod;      //Период ввода в эксплуатацию
 
     public Flat(){
     }
@@ -282,6 +288,22 @@ public class Flat {
 
     public String getCategory() {
         return Category;
+    }
+
+    public int getAddressNumber() {
+        return AddressNumber;
+    }
+
+    public void setAddressNumber(int addressNumber) {
+        AddressNumber = addressNumber;
+    }
+
+    public String getDeliveryPeriod() {
+        return DeliveryPeriod;
+    }
+
+    public void setDeliveryPeriod(String deliveryPeriod) {
+        DeliveryPeriod = deliveryPeriod;
     }
 
     public void setCategory(String category) {

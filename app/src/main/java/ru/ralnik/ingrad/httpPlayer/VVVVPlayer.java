@@ -10,6 +10,7 @@ public class VVVVPlayer extends HttpPlayer implements PlayerCommands {
     private int volume = 1;
     private int volEffect = 1;
     private int numberTrack;
+    private int numberSubTrack;
     private Flat flat = null;
 
 
@@ -20,6 +21,10 @@ public class VVVVPlayer extends HttpPlayer implements PlayerCommands {
         }
     }
 
+    @Override
+    public void changeHost(String host) {
+        setHost(host);
+    }
 
     @Override
     public void play() {
@@ -40,6 +45,13 @@ public class VVVVPlayer extends HttpPlayer implements PlayerCommands {
     public void selectById(int id) {
         this.playStop = 1;
         this.numberTrack = id;
+        super.executeCommand(getFullLink());
+    }
+
+    @Override
+    public void selectBySubId(int id) {
+        this.playStop = 1;
+        this.numberSubTrack = id;
         super.executeCommand(getFullLink());
     }
 
@@ -93,6 +105,7 @@ public class VVVVPlayer extends HttpPlayer implements PlayerCommands {
     public String getFullLink(){
         String currentLink = "vvvv?" +
                 "track=" + this.numberTrack + "&" +
+                "subTrack=" + this.numberSubTrack + "&" +
                 "playStop=" + this.playStop + "&" +
                 "volumeOnOff=" + this.volumeOnOff + "&" +
                 "volume=" + this.volume + "&" +

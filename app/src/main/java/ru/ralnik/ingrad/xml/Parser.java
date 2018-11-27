@@ -38,17 +38,70 @@ public class Parser extends Thread implements Runnable {
     public void run() {
         super.run();
         try {
+            int AddressNumber = 0;
+            String deliveryPeriod = null;
+
+            //*********************Получиение некоторых данных из другого источника
             //если файл брать по HTTP ссылке
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
             //factory.setNamespaceAware(true); //если надо
             XmlPullParser parser = factory.newPullParser();
-            URL input = new URL(url); //url удаленного документа
+            String url1 = url;
+            //Log.d("myDebug","url: "+url1.replace("ApartmentListWithsExportParam","AddressListDataWithsExportParam"));
+            URL input = new URL(url1.replace("ApartmentListWithsExportParam","AddressListDataWithsExportParam")); //url удаленного документа
+
+            parser.setInput(input.openStream(), null);
+            String nameTAG = null;
+            //  AppDatabase db = AppDatabase.getInstance(context);
+            while (parser.getEventType() != XmlPullParser.END_DOCUMENT) {
+                // Log.d(TAG, parser.getText());
+
+                switch (parser.getEventType()){
+                    case XmlPullParser.START_TAG:
+                        nameTAG = parser.getName();
+                       //  Log.d(TAG,"<"+nameTAG+">");
+                        if(nameTAG.equals("a:Building")){
+
+                        }
+                        break;
+                    case XmlPullParser.TEXT:
+                        // Log.d(TAG, parser.getText());
+                        //Log.d("myDebug","nameTAG: "+nameTAG);
+                        if(nameTAG.equals("a:AddressNumber")) {
+                            //Log.d("myDebug","AddressNumber: "+parser.getText());
+                            AddressNumber = Integer.valueOf(parser.getText());
+                        }
+
+                        if(nameTAG.equals("a:DeliveryPeriod")) {
+                          //  Log.d("myDebug","deliveryPeriod: "+parser.getText());
+                            deliveryPeriod = parser.getText();
+                        }
+                        break;
+                    case XmlPullParser.END_TAG:
+                      //  Log.d(TAG,"</"+parser.getName()+">");
+
+                    default:
+                        break;
+                }
+                parser.next();
+            }
+            //*********************************************************************
+
+
+
+
+
+            //если файл брать по HTTP ссылке
+            factory = XmlPullParserFactory.newInstance();
+            //factory.setNamespaceAware(true); //если надо
+            parser = factory.newPullParser();
+            input = new URL(url); //url удаленного документа
 
             parser.setInput(input.openStream(), null);
 
             // Log.d(TAG, url);
 
-            String nameTAG = null;
+            nameTAG = null;
             Flat flat = null;
             //  AppDatabase db = AppDatabase.getInstance(context);
             while (parser.getEventType() != XmlPullParser.END_DOCUMENT) {
@@ -60,6 +113,8 @@ public class Parser extends Thread implements Runnable {
                         // Log.d(TAG,"<"+nameTAG+">");
                         if(nameTAG.equals("a:Apartment")){
                             flat = new Flat();
+                            flat.setAddressNumber(AddressNumber);
+                            flat.setDeliveryPeriod(deliveryPeriod);
                         }
                         break;
 
@@ -123,6 +178,8 @@ public class Parser extends Thread implements Runnable {
 
                         if(nameTAG.equals("a:TownHouse")) {
                             flat.setTownHouse(parser.getText());
+
+
                         }
 
                         if(nameTAG.equals("a:PentHouse")) {
@@ -167,13 +224,13 @@ public class Parser extends Thread implements Runnable {
 
                         if(parser.getName().equals("a:Apartment")){
                             //будет вставленa новая запись, если запись уже есть, то тогда она обновится полностью по всем полям
-                            new FlatRepository(context).insert(flat);
-                            /*int f = new FlatRepository(context).findByIds(new String[]{flat.getArticleId()}).size();
+                            //new FlatRepository(context).insert(flat);
+                            int f = new FlatRepository(context).findByIds(new String[]{flat.getArticleId()}).size();
                             if(f == 0) {
                                 new FlatRepository(context).insert(flat);
                             }else {
                                 new FlatRepository(context).update(flat);
-                            }*/
+                            }
 
                         }
                         break;

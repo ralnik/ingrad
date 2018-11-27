@@ -210,7 +210,35 @@ public class FlatRepository {
 
         @Override
         protected Void doInBackground(final Flat... param) {
-            mAsyncFlatDao.update(param[0]);
+            Flat flat =param[0];
+            mAsyncFlatDao.update(
+                    flat.getArticleId(),
+                    flat.getArticleSubType(),
+                    flat.getLayoutUrl(),
+                    flat.getBeforeBtiNumber(),
+                    flat.getCategory(),
+                    flat.getAddressId(),
+                    flat.getAddressName(),
+                    flat.getAddressNumber(),
+                    flat.getSectionNumber(),
+                    flat.getFloor(),
+                    flat.getRooms(),
+                    flat.getQuantity(),
+                    flat.getDiscountMax(),
+                    flat.getFinishTypeId(),
+                    flat.getStatusCodeName(),
+                    flat.getTownHouse(),
+                    flat.getPentHouse(),
+                    flat.getTwoLevel(),
+                    flat.getSeparateEntrance(),
+                    flat.getWithWindow(),
+                    flat.getFirePlace(),
+                    flat.getTerrace(),
+                    flat.getCountBalcony(),
+                    flat.getCountLoggia(),
+                    flat.getCountTerrace(),
+                    flat.getDeliveryPeriod()
+            );
             return null;
         }
     }

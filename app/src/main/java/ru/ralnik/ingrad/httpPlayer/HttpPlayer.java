@@ -37,6 +37,10 @@ public class HttpPlayer {
         this.host = new String(host.split(":")[0]);
     }
 
+    public void setHost(String host) {
+        this.host = host;
+    }
+
     public void executeCommand(String url){
         HttpCommandRun commandRun = new  HttpCommandRun(url);
         commandRun.execute();

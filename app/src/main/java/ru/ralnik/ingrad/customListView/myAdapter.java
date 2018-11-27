@@ -51,6 +51,7 @@ public class myAdapter extends CursorAdapter {
         ImageView picDoubleFloorHouse = (ImageView) root.findViewById(R.id.picDoubleFloorHouse);
         ImageView picTwoEnterHouse = (ImageView) root.findViewById(R.id.picTwoEnterHouse);
         ImageView picTerrasa = (ImageView) root.findViewById(R.id.picTerrasa);
+        ImageView picBalcon = (ImageView) root.findViewById(R.id.picBalcon);
 
 
         /*
@@ -79,6 +80,7 @@ public class myAdapter extends CursorAdapter {
         holder.picDoubleFloorHouse = picDoubleFloorHouse;
         holder.picTwoEnterHouse = picTwoEnterHouse;
         holder.picTerrasa = picTerrasa;
+        holder.picBalcon = picBalcon;
         holder.selected = row;
 
         root.setTag(holder);
@@ -94,19 +96,21 @@ public class myAdapter extends CursorAdapter {
 
         int ID = cursor.getColumnIndex("_id");
         int ARTICLEID = cursor.getColumnIndex("ArticleId");
-        int KORPUS = cursor.getColumnIndex("_id");
+        int KORPUS = cursor.getColumnIndex("AddressNumber");
+        int SECTION = cursor.getColumnIndex("SectionNumber");
         int FLAT = cursor.getColumnIndex("BeforeBtiNumber");
         int FLOOR = cursor.getColumnIndex("Floor");
         int ROOMS= cursor.getColumnIndex("Rooms");
         int SQUARE= cursor.getColumnIndex("Quantity");
         int COST= cursor.getColumnIndex("DiscountMax");
-        int SROK= cursor.getColumnIndex("Terrace");
+        int SROK= cursor.getColumnIndex("DeliveryPeriod");
 
         int TOWNHOUSE = cursor.getColumnIndex("TownHouse");
         int PENTHOUSE = cursor.getColumnIndex("PentHouse");
         int DOUBLEFLOORHOUSE = cursor.getColumnIndex("TwoLevel");
         int TWOENTERHOUSE = cursor.getColumnIndex("SeparateEntrance");
         int TERRASA = cursor.getColumnIndex("Terrace");
+        int BALCON = cursor.getColumnIndex("Terrace");
 
 
 
@@ -119,42 +123,74 @@ public class myAdapter extends CursorAdapter {
 
 
             holder.position = cursor.getPosition();
-            holder.column1.setText(cursor.getString(ID));
+            holder.column1.setText(cursor.getString(KORPUS) + "/" + cursor.getString(SECTION));
             holder.column2.setText(cursor.getString(FLAT));
             holder.column3.setText(getCorrectType(cursor.getInt(FLOOR)));
             holder.column4.setText(String.valueOf(cursor.getInt(ROOMS)));
             holder.column5.setText(String.valueOf(cursor.getFloat(SQUARE)));
-            holder.column6.setText(String.valueOf(cursor.getInt(COST)));
-            holder.column7.setText("-----");
+            holder.column6.setText(String.valueOf(makePrettyCost(cursor.getString(COST))));
+            holder.column7.setText(cursor.getString(SROK));
 
-            if(cursor.getInt(TOWNHOUSE) == 1){
-                holder.picTownHouse.setVisibility(View.VISIBLE);
-            }else{
+            if(cursor.getString(TOWNHOUSE) != null) {
+                if (cursor.getString(TOWNHOUSE).equals("True")) {
+                    holder.picTownHouse.setVisibility(View.VISIBLE);
+                } else {
+                    holder.picTownHouse.setVisibility(View.GONE);
+                }
+            }else {
                 holder.picTownHouse.setVisibility(View.GONE);
             }
 
-            if(cursor.getInt(PENTHOUSE) == 1){
-                holder.picPentHouse.setVisibility(View.VISIBLE);
-            }else{
+            if(cursor.getString(PENTHOUSE) != null) {
+                if (cursor.getString(PENTHOUSE).equals("True")) {
+                    holder.picPentHouse.setVisibility(View.VISIBLE);
+                } else {
+                    holder.picPentHouse.setVisibility(View.GONE);
+                }
+            }else {
                 holder.picPentHouse.setVisibility(View.GONE);
             }
 
-            if(cursor.getInt(DOUBLEFLOORHOUSE) == 1){
-                holder.picDoubleFloorHouse.setVisibility(View.VISIBLE);
-            }else{
+            if(cursor.getString(DOUBLEFLOORHOUSE) != null) {
+                if (cursor.getString(DOUBLEFLOORHOUSE).equals("True")) {
+                    holder.picDoubleFloorHouse.setVisibility(View.VISIBLE);
+                } else {
+                    holder.picDoubleFloorHouse.setVisibility(View.GONE);
+                }
+            }else {
                 holder.picDoubleFloorHouse.setVisibility(View.GONE);
             }
 
-            if(cursor.getInt(TWOENTERHOUSE) == 1){
-                holder.picTwoEnterHouse.setVisibility(View.VISIBLE);
-            }else{
+            if(cursor.getString(TWOENTERHOUSE) != null) {
+                if (cursor.getString(TWOENTERHOUSE).equals("True")) {
+                    holder.picTwoEnterHouse.setVisibility(View.VISIBLE);
+                } else {
+                    holder.picTwoEnterHouse.setVisibility(View.GONE);
+                }
+            } else {
                 holder.picTwoEnterHouse.setVisibility(View.GONE);
             }
-            if(cursor.getInt(TERRASA) == 1){
-                holder.picTerrasa.setVisibility(View.VISIBLE);
-            }else{
+
+            if(cursor.getString(TERRASA) != null) {
+                if (cursor.getString(TERRASA).equals("True")) {
+                    holder.picTerrasa.setVisibility(View.VISIBLE);
+                } else {
+                    holder.picTerrasa.setVisibility(View.GONE);
+                }
+            } else {
                 holder.picTerrasa.setVisibility(View.GONE);
             }
+
+            if(cursor.getString(BALCON) != null) {
+                if (cursor.getString(BALCON).equals("True")) {
+                    holder.picBalcon.setVisibility(View.VISIBLE);
+                } else {
+                    holder.picBalcon.setVisibility(View.GONE);
+                }
+            } else {
+                holder.picBalcon.setVisibility(View.GONE);
+            }
+
 
             holder.classID = cursor.getInt(ID);
             holder.ArticleId = cursor.getString(ARTICLEID);
@@ -258,6 +294,7 @@ public class myAdapter extends CursorAdapter {
         public ImageView picDoubleFloorHouse;
         public ImageView picTwoEnterHouse;
         public ImageView picTerrasa;
+        public ImageView picBalcon;
         public LinearLayout selected ;
 
         public long classID;

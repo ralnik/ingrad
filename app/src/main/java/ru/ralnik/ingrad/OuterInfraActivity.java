@@ -7,7 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import ru.ralnik.ingrad.config.myConfig;
-import ru.ralnik.ingrad.httpPlayer.VVVVPlayer;
+import ru.ralnik.ingrad.httpPlayer.HttpPlayerFactory;
+import ru.ralnik.ingrad.httpPlayer.PlayerCommands;
 
 public class OuterInfraActivity {
     private final Activity activity;
@@ -23,7 +24,7 @@ public class OuterInfraActivity {
     private ImageView btnClose;
 
     private myConfig cfg;
-    private VVVVPlayer vvvv;
+    private PlayerCommands vvvv;
 
     public OuterInfraActivity(Activity activity) {
         this.activity = activity;
@@ -35,7 +36,7 @@ public class OuterInfraActivity {
 
         cfg = new myConfig(activity.getApplicationContext());
 
-        vvvv = new VVVVPlayer(cfg.getHost());
+        vvvv = HttpPlayerFactory.getInstance(activity.getApplicationContext()).getCommand();
     }
 
     private void show() {
@@ -98,31 +99,31 @@ public class OuterInfraActivity {
             switch (v.getId()){
                 case R.id.btnChildgarden:
                     btnChildGarden.setImageResource(R.drawable.button_childgarden_down);
-                    vvvv.selectById(13);
+                    vvvv.selectBySubId(1);
                     break;
                 case R.id.btnSchools:
                     btnSchools.setImageResource(R.drawable.button_schools_down);
-                    vvvv.selectById(14);
+                    vvvv.selectBySubId(2);
                     break;
                 case R.id.btnMedicine:
                     btnMedicine.setImageResource(R.drawable.button_medicine_down);
-                    vvvv.selectById(15);
+                    vvvv.selectBySubId(3);
                     break;
                 case R.id.btnSport:
                     btnSport.setImageResource(R.drawable.button_sport_down);
-                    vvvv.selectById(16);
+                    vvvv.selectBySubId(4);
                     break;
                 case R.id.btnObjectOfCreation:
                     btnObjectOfCreation.setImageResource(R.drawable.button_object_of_creation_down);
-                    vvvv.selectById(17);
+                    vvvv.selectBySubId(5);
                     break;
                 case R.id.btnBusinessCenter:
                     btnBusiness.setImageResource(R.drawable.button_business_center_down);
-                    vvvv.selectById(18);
+                    vvvv.selectBySubId(6);
                     break;
                 case R.id.btnShops:
                     btnShops.setImageResource(R.drawable.button_shops_down);
-                    vvvv.selectById(19);
+                    vvvv.selectBySubId(7);
                     break;
                 /*case R.id.btnClose:
                     this.a

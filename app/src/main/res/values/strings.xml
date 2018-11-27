@@ -15,4 +15,5 @@
     <string name="cost">СТОИМОСТЬ</string>
     <string name="srok">СРОК ГК</string>
     <string name="Other">ПРИМЕЧАНИЕ</string>
+    <string name="no_row">Нет записей удовлетворяющих заданным условиям.</string>
 </resources>

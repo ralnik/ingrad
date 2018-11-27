@@ -231,208 +231,208 @@
                             android:id="@+id/build_3_1"
                             android:layout_width="48dp"
                             android:layout_height="46dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="19dp"
                             android:translationY="83dp"
-                            app:srcCompat="@drawable/build_3_1"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_3_1" />
 
                         <ImageView
                             android:id="@+id/build_3_2"
                             android:layout_width="46dp"
                             android:layout_height="43dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="53dp"
                             android:translationY="64dp"
-                            app:srcCompat="@drawable/build_3_2"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_3_2" />
 
                         <ImageView
                             android:id="@+id/build_4"
                             android:layout_width="50dp"
                             android:layout_height="48dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="83dp"
                             android:translationY="40dp"
-                            app:srcCompat="@drawable/build_4"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_4" />
 
                         <ImageView
                             android:id="@+id/build_5"
                             android:layout_width="46dp"
                             android:layout_height="30dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="125dp"
                             android:translationY="40dp"
-                            app:srcCompat="@drawable/build_5"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_5" />
 
                         <ImageView
                             android:id="@+id/build_6"
                             android:layout_width="43dp"
                             android:layout_height="27dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="169dp"
                             android:translationY="40dp"
-                            app:srcCompat="@drawable/build_6"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_6" />
 
                         <ImageView
                             android:id="@+id/build_7"
                             android:layout_width="46dp"
                             android:layout_height="27dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="201dp"
                             android:translationY="41dp"
-                            app:srcCompat="@drawable/build_7"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_7" />
 
                         <ImageView
                             android:id="@+id/build_8"
                             android:layout_width="86dp"
                             android:layout_height="65dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="223dp"
                             android:translationY="46dp"
-                            app:srcCompat="@drawable/build_8"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_8" />
 
                         <ImageView
                             android:id="@+id/build_9"
                             android:layout_width="45dp"
                             android:layout_height="56dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="315dp"
                             android:translationY="90dp"
-                            app:srcCompat="@drawable/build_9"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_9" />
 
                         <ImageView
                             android:id="@+id/build_10"
                             android:layout_width="44dp"
                             android:layout_height="44dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="341dp"
                             android:translationY="68dp"
-                            app:srcCompat="@drawable/build_10"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_10" />
 
                         <ImageView
                             android:id="@+id/build_11"
                             android:layout_width="56dp"
                             android:layout_height="38dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="370dp"
                             android:translationY="57dp"
-                            app:srcCompat="@drawable/build_11"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_11" />
 
                         <ImageView
                             android:id="@+id/build_12"
                             android:layout_width="75dp"
                             android:layout_height="74dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="419dp"
                             android:translationY="56dp"
-                            app:srcCompat="@drawable/build_12"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_12" />
 
                         <ImageView
                             android:id="@+id/build_13"
                             android:layout_width="43dp"
                             android:layout_height="48dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="455dp"
                             android:translationY="99dp"
-                            app:srcCompat="@drawable/build_13"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_13" />
 
                         <ImageView
                             android:id="@+id/build_14"
                             android:layout_width="45dp"
                             android:layout_height="45dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="463dp"
                             android:translationY="146dp"
-                            app:srcCompat="@drawable/build_14"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_14" />
 
                         <ImageView
                             android:id="@+id/build_15"
                             android:layout_width="49dp"
                             android:layout_height="47dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="430dp"
                             android:translationY="165dp"
-                            app:srcCompat="@drawable/build_15"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_15" />
 
                         <ImageView
                             android:id="@+id/build_16"
                             android:layout_width="47dp"
                             android:layout_height="30dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="392dp"
                             android:translationY="185dp"
-                            app:srcCompat="@drawable/build_16"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_16" />
 
                         <ImageView
                             android:id="@+id/build_17"
                             android:layout_width="40dp"
                             android:layout_height="30dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="355dp"
                             android:translationY="185dp"
-                            app:srcCompat="@drawable/build_17"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_17" />
 
                         <ImageView
                             android:id="@+id/build_18"
                             android:layout_width="45dp"
                             android:layout_height="31dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="315dp"
                             android:translationY="185dp"
-                            app:srcCompat="@drawable/build_18"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_18" />
 
                         <ImageView
                             android:id="@+id/build_19"
                             android:layout_width="37dp"
                             android:layout_height="50dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="280dp"
                             android:translationY="167dp"
-                            app:srcCompat="@drawable/build_19"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_19" />
 
                         <ImageView
                             android:id="@+id/build_20"
                             android:layout_width="61dp"
                             android:layout_height="72dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="231dp"
                             android:translationY="145dp"
-                            app:srcCompat="@drawable/build_20"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_20" />
 
                         <ImageView
                             android:id="@+id/build_21_1"
                             android:layout_width="50dp"
                             android:layout_height="28dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="90dp"
                             android:translationY="192dp"
-                            app:srcCompat="@drawable/build_21_1"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_21_1" />
 
                         <ImageView
                             android:id="@+id/build_21_2"
                             android:layout_width="45dp"
                             android:layout_height="45dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="119dp"
                             android:translationY="167dp"
-                            app:srcCompat="@drawable/build_21_2"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_21_2" />
 
                         <ImageView
                             android:id="@+id/build_21_3"
                             android:layout_width="50dp"
                             android:layout_height="40dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="144dp"
                             android:translationY="148dp"
-                            app:srcCompat="@drawable/build_21_3"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_21_3" />
 
                         <ImageView
                             android:id="@+id/build_23"
                             android:layout_width="86dp"
                             android:layout_height="64dp"
+                            android:onClick="buildsOnClick"
                             android:translationX="24dp"
                             android:translationY="135dp"
-                            app:srcCompat="@drawable/build_23"
-                            android:onClick="buildsOnClick"/>
+                            app:srcCompat="@drawable/build_23" />
 
                     </FrameLayout>
 
@@ -589,18 +589,18 @@
                             android:layout_marginEnd="23dp"
                             android:layout_weight="0"
                             android:adjustViewBounds="true"
+                            android:onClick="titleCost_BudgetOnClick"
                             android:scaleType="fitStart"
-                            app:srcCompat="@drawable/title_budget"
-                            android:onClick="titleCost_BudgetOnClick"/>
+                            app:srcCompat="@drawable/title_budget" />
 
                         <ImageView
                             android:id="@+id/titleCost"
                             android:layout_width="wrap_content"
                             android:layout_height="15dp"
                             android:layout_weight="0"
+                            android:onClick="titleCost_BudgetOnClick"
                             android:scaleType="fitStart"
-                            app:srcCompat="@drawable/title_cost"
-                            android:onClick="titleCost_BudgetOnClick"/>
+                            app:srcCompat="@drawable/title_cost" />
 
                     </LinearLayout>
 
@@ -908,9 +908,18 @@
                             android:id="@+id/btnBathRoomWithWindow"
                             android:layout_width="86dp"
                             android:layout_height="79dp"
+                            android:layout_marginEnd="@dimen/buttons2_house_margin_right"
                             android:adjustViewBounds="true"
                             android:onClick="addAttrButtonsOnClick"
                             app:srcCompat="@drawable/button_bathroom_with_window" />
+
+                        <ImageView
+                            android:id="@+id/btnBalcon"
+                            android:layout_width="86dp"
+                            android:layout_height="79dp"
+                            android:adjustViewBounds="true"
+                            android:onClick="addAttrButtonsOnClick"
+                            app:srcCompat="@drawable/button_balcon" />
 
                     </LinearLayout>
 
@@ -930,7 +939,7 @@
                             android:layout_weight="25"
                             android:adjustViewBounds="true"
                             android:onClick="buttonsSearchOnClick"
-                            app:srcCompat="@drawable/button_clear" />
+                            app:srcCompat="@drawable/button_clearfilter_pressed" />
 
                         <FrameLayout
                             android:layout_width="match_parent"
@@ -946,7 +955,7 @@
                             android:layout_weight="25"
                             android:adjustViewBounds="true"
                             android:onClick="buttonsSearchOnClick"
-                            app:srcCompat="@drawable/button_search" />
+                            app:srcCompat="@drawable/button_applyfilter_pressed" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -959,7 +968,6 @@
             android:id="@+id/resultPanel"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:orientation="vertical"
             android:visibility="gone">
 
@@ -988,8 +996,8 @@
                     android:gravity="center"
                     android:onClick="titleOfListviewOnClick"
                     android:text="@string/section"
-                    android:textColor="@color/colorBackGround"
-                    android:textSize="8sp"
+                    android:textColor="@color/colorTextTitleTable"
+                    android:textSize="7sp"
                     android:textStyle="bold" />
 
                 <FrameLayout
@@ -1005,8 +1013,8 @@
                     android:gravity="center"
                     android:onClick="titleOfListviewOnClick"
                     android:text="@string/num_flat"
-                    android:textColor="@color/colorBackGround"
-                    android:textSize="8sp"
+                    android:textColor="@color/colorTextTitleTable"
+                    android:textSize="7sp"
                     android:textStyle="bold" />
 
                 <FrameLayout
@@ -1022,8 +1030,8 @@
                     android:gravity="center"
                     android:onClick="titleOfListviewOnClick"
                     android:text="@string/floor"
-                    android:textColor="@color/colorBackGround"
-                    android:textSize="8sp"
+                    android:textColor="@color/colorTextTitleTable"
+                    android:textSize="7sp"
                     android:textStyle="bold" />
 
                 <FrameLayout
@@ -1039,8 +1047,8 @@
                     android:gravity="center"
                     android:onClick="titleOfListviewOnClick"
                     android:text="@string/count_room"
-                    android:textColor="@color/colorBackGround"
-                    android:textSize="8sp"
+                    android:textColor="@color/colorTextTitleTable"
+                    android:textSize="7sp"
                     android:textStyle="bold" />
 
                 <FrameLayout
@@ -1056,8 +1064,8 @@
                     android:gravity="center"
                     android:onClick="titleOfListviewOnClick"
                     android:text="@string/square"
-                    android:textColor="@color/colorBackGround"
-                    android:textSize="8sp"
+                    android:textColor="@color/colorTextTitleTable"
+                    android:textSize="7sp"
                     android:textStyle="bold" />
 
                 <FrameLayout
@@ -1073,8 +1081,8 @@
                     android:gravity="center"
                     android:onClick="titleOfListviewOnClick"
                     android:text="@string/cost"
-                    android:textColor="@color/colorBackGround"
-                    android:textSize="8sp"
+                    android:textColor="@color/colorTextTitleTable"
+                    android:textSize="7sp"
                     android:textStyle="bold" />
 
                 <FrameLayout
@@ -1090,8 +1098,8 @@
                     android:gravity="center"
                     android:onClick="titleOfListviewOnClick"
                     android:text="@string/srok"
-                    android:textColor="@color/colorBackGround"
-                    android:textSize="8sp"
+                    android:textColor="@color/colorTextTitleTable"
+                    android:textSize="7sp"
                     android:textStyle="bold" />
 
                 <FrameLayout
@@ -1106,13 +1114,22 @@
                     android:layout_weight="1"
                     android:background="@color/titleListView"
                     android:gravity="center"
-                    android:onClick="titleOfListviewOnClick"
                     android:text="@string/Other"
-                    android:textColor="@color/colorBackGround"
-                    android:textSize="8sp"
+                    android:textColor="@color/colorTextTitleTable"
+                    android:textSize="7sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/textNoRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="250dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/no_row"
+                android:textColor="@color/colorTextTitleTable"
+                android:visibility="visible" />
 
             <ListView
                 android:id="@+id/listview"
@@ -1121,6 +1138,8 @@
                 android:choiceMode="singleChoice"
                 android:divider="#00000000" />
         </LinearLayout>
+
+
 
         <LinearLayout
             android:id="@+id/settingsPanel"
