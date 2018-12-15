@@ -16,4 +16,31 @@
     <string name="srok">СРОК ГК</string>
     <string name="Other">ПРИМЕЧАНИЕ</string>
     <string name="no_row">Нет записей удовлетворяющих заданным условиям.</string>
+
+    <string name="build3_1">Корпус 8 / Секция 1</string>
+    <string name="build3_2">Корпус 8 / Секция 2</string>
+    <string name="build4">Корпус 8 / Секция 3</string>
+    <string name="build5">Корпус 8 / Секция 4</string>
+    <string name="build6">Корпус 8 / Секция 5</string>
+    <string name="build8">Корпус 5 / Секция 1</string>
+    <string name="build9">Корпус 4 / Секция 1</string>
+    <string name="build10">Корпус 4 / Секция 2</string>
+    <string name="build11">Корпус 4 / Секция 3</string>
+    <string name="build12">Корпус 1 / Секция 1</string>
+    <string name="build14">Корпус 2 / Секция 5</string>
+    <string name="build15">Корпус 2 / Секция 4</string>
+    <string name="build16">Корпус 2 / Секция 3</string>
+    <string name="build17">Корпус 2 / Секция 2</string>
+    <string name="build18">Корпус 2 / Секция 1</string>
+    <string name="build20">Корпус 3 / Секция 1</string>
+    <string name="build21_1">Корпус 6 / Секция 1</string>
+    <string name="build21_2">Корпус 6 / Секция 2</string>
+    <string name="build21_3">Корпус 6 / Секция 3</string>
+    <string name="build23">Корпус 7 / Секция 1</string>
+
+
+
+
+
+
 </resources>

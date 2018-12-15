@@ -45,6 +45,7 @@ public class VVVVPlayer extends HttpPlayer implements PlayerCommands {
     public void selectById(int id) {
         this.playStop = 1;
         this.numberTrack = id;
+        if(id == 7){this.numberSubTrack = 0;}
         super.executeCommand(getFullLink());
     }
 

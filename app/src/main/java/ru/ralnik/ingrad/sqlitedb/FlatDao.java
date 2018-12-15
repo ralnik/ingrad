@@ -42,31 +42,31 @@ public interface FlatDao {
     void deleteAll();
 
     //**************Floor
-    @Query("SELECT min(Floor) FROM flats")
+    @Query("SELECT min(Floor) FROM flats where (discountmax/Quantity) > 1")
     int getMinFloor();
 
-    @Query("SELECT max(Floor) FROM flats")
+    @Query("SELECT max(Floor) FROM flats where (discountmax/Quantity) > 1")
     int getMaxFloor();
 
     //**************SQUARE
-    @Query("SELECT min(Quantity) FROM flats")
+    @Query("SELECT min(Quantity) FROM flats where (discountmax/Quantity) > 1")
     Float getMinSquare();
 
-    @Query("SELECT max(Quantity) FROM flats")
+    @Query("SELECT max(Quantity) FROM flats where (discountmax/Quantity) > 1")
     Float getMaxSquare();
 
     //**************COST
-    @Query("SELECT min(DiscountMax) FROM flats where (discountmax/Quantity) > 1")
+    @Query("SELECT min(DiscountMax/Quantity) FROM flats where (discountmax/Quantity) > 1")
     Float getMinCost();
 
-    @Query("SELECT max(DiscountMax) FROM flats where (discountmax/Quantity) > 1")
+    @Query("SELECT max(DiscountMax/Quantity) FROM flats where (discountmax/Quantity) > 1")
     Float getMaxCost();
 
     //**************Budget
-    @Query("SELECT min(DiscountMax/Quantity) FROM flats where (discountmax/Quantity) > 1")
+    @Query("SELECT min(DiscountMax) FROM flats where (discountmax/Quantity) > 1")
     Float getMinBudget();
 
-    @Query("SELECT max(DiscountMax/Quantity) FROM flats where (discountmax/Quantity) > 1")
+    @Query("SELECT max(DiscountMax) FROM flats where (discountmax/Quantity) > 1")
     Float getMaxBudget();
 
     @Query("UPDATE flats set ArticleSubType = :ArticleSubType, LayoutUrl = :LayoutUrl, BeforeBtiNumber = :BeforeBtiNumber, Category = :Category, AddressId = :AddressId, AddressName = :AddressName, AddressNumber = :AddressNumber, SectionNumber = :SectionNumber, Floor = :Floor, Rooms = :Rooms, Quantity = :Quantity, DiscountMax = :DiscountMax,FinishTypeId = :FinishTypeId, StatusCodeName = :StatusCodeName, TownHouse = :TownHouse, PentHouse = :PentHouse, TwoLevel = :TwoLevel, SeparateEntrance = :SeparateEntrance, WithWindow = :WithWindow, FirePlace = :FirePlace, Terrace = :Terrace, CountBalcony = :CountBalcony, CountLoggia = :CountLoggia, CountTerrace = :CountTerrace, DeliveryPeriod = :DeliveryPeriod where ArticleId = :ArticleId")

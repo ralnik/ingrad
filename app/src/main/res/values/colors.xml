@@ -18,4 +18,6 @@
     <color name="colorTextTitleTable">#d4d4d4</color>
     <color name="colorBorderTitleTable">#d4d4d4</color>
     <color name="colorTextTitleBeforeTable">#ffffff</color>
+    <color name="colorHint">#428bc0</color>
+    <color name="colorHintText">#ffffff</color>
 </resources>

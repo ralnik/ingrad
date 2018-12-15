@@ -2,6 +2,7 @@ package ru.ralnik.ingrad;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -86,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView btnBalcon;
 
   // ---------- buttons period----------
-    private ImageView check_period_2_2022;
+    private ImageView check_period_4_2021;
     private ImageView check_period_3_2022;
     private ImageView check_period_4_2022;
 
@@ -155,6 +156,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView build_21_2;
     private ImageView build_21_3;
     private ImageView build_23;
+
+    private TextView hint;
 
     //------title cost and budget
     private ImageView titleCost;
@@ -303,10 +306,10 @@ public class MainActivity extends AppCompatActivity {
         btnWithoutRemont.setTag(0);
         btnWithRemont.setTag(0);
 
-        check_period_2_2022 = (ImageView) findViewById(R.id.btnSrok_2_2022);
+        check_period_4_2021 = (ImageView) findViewById(R.id.btnSrok_4_2021);
         check_period_3_2022 = (ImageView) findViewById(R.id.btnSrok_3_2022);
         check_period_4_2022 = (ImageView) findViewById(R.id.btnSrok_4_2022);
-        check_period_2_2022.setTag(0);
+        check_period_4_2021.setTag(0);
         check_period_3_2022.setTag(0);
         check_period_4_2022.setTag(0);
 
@@ -433,6 +436,15 @@ public class MainActivity extends AppCompatActivity {
         build_21_2.setTag(0);
         build_21_3.setTag(0);
         build_23.setTag(0);
+
+        hint = (TextView) findViewById(R.id.hint);
+        hint.setTypeface(Typeface.createFromAsset(
+                getAssets(), "fonts/panroman.ttf"));
+        hint.setVisibility(View.GONE);
+
+//        build_3_1.setOnTouchListener(new ShowHint(this));
+//        build_3_1.setOnLongClickListener(new ShowHint(this));
+
     }
 
     private void setValuesToSeekBar(){
@@ -469,14 +481,14 @@ public class MainActivity extends AppCompatActivity {
         if((Integer) titleCost.getTag() == 1) {
             seekbarCost.setMinValue(cfg.getMinCost());
             seekbarCost.setMaxValue(cfg.getMaxCost());
-            min = cfg.getMinCost() / 1000000;
-            max = cfg.getMaxCost() / 1000000;
+            min = cfg.getMinCost() / 1000;
+            max = cfg.getMaxCost() / 1000;
         }
         if((Integer) titleBudget.getTag() == 1){
             seekbarCost.setMinValue(cfg.getMinBudget());
             seekbarCost.setMaxValue(cfg.getMaxBudget());
-            min = cfg.getMinBudget() / 100000;
-            max = cfg.getMaxBudget() / 100000;
+            min = cfg.getMinBudget() / 1000000;
+            max = cfg.getMaxBudget() / 1000000;
         }
 
         //Log.d(TAG,"min="+min);
@@ -519,12 +531,12 @@ public class MainActivity extends AppCompatActivity {
                 float min = 0;
                 float max = 0;
                 if((Integer) titleCost.getTag() == 1) {
-                    min = Float.valueOf(minValue.toString()) / 1000000;
-                    max = Float.valueOf(maxValue.toString()) / 1000000;
+                    min = Float.valueOf(minValue.toString()) / 1000;
+                    max = Float.valueOf(maxValue.toString()) / 1000;
                 }
                 if((Integer) titleBudget.getTag() == 1){
-                    min = Float.valueOf(minValue.toString()) / 100000;
-                    max = Float.valueOf(maxValue.toString()) / 100000;
+                    min = Float.valueOf(minValue.toString()) / 1000000;
+                    max = Float.valueOf(maxValue.toString()) / 1000000;
                 }
                 //Log.d(TAG,"min="+min);
                 String formattedDoubleMin = String.valueOf(min).substring(0,String.valueOf(min).indexOf(".")+2);
@@ -903,14 +915,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void periodOnClick(View view){
         switch (view.getId()){
-            case R.id.btnSrok_2_2022:
-                if((Integer) check_period_2_2022.getTag() == 1 ){
-                    check_period_2_2022.setImageResource(R.drawable.checkbox_srok_2_2022);
-                    check_period_2_2022.setTag(0);
+            case R.id.btnSrok_4_2021:
+                if((Integer) check_period_4_2021.getTag() == 1 ){
+                    check_period_4_2021.setImageResource(R.drawable.checkbox_srok_4_2021);
+                    check_period_4_2021.setTag(0);
                     clearFilterActivate(false);
                 }else{
-                    check_period_2_2022.setImageResource(R.drawable.checkbox_srok_2_2022_down);
-                    check_period_2_2022.setTag(1);
+                    check_period_4_2021.setImageResource(R.drawable.checkbox_srok_4_2021_down);
+                    check_period_4_2021.setTag(1);
                     clearFilterActivate(true);
                 }
                 break;
@@ -1117,12 +1129,12 @@ public class MainActivity extends AppCompatActivity {
         query = "select * from flats where ";
 
         query = query + " (floor >= "+seekbarFloor.getSelectedMinValue() + " and floor <= "+seekbarFloor.getSelectedMaxValue()+") ";
-        query = query + " and (Quantity >= " + seekbarSquare.getSelectedMinValue() + " and Quantity <= "+seekbarSquare.getSelectedMaxValue() + ") ";
+        query = query + " and (Quantity >= " + seekbarSquare.getSelectedMinValue() + " and Quantity <= "+((Float) seekbarSquare.getSelectedMaxValue()+0.1) + ") ";
         if((Integer) titleCost.getTag() == 1) {
-            query = query + " and (DiscountMax >= " + minCostEdit.getText() + "*1000000" + " and DiscountMax <= " + maxCostEdit.getText() + "*1000000" + ") ";
+            query = query + " and ((DiscountMax/Quantity) >= " + minCostEdit.getText() + "*1000" + " and (DiscountMax/Quantity) <= " + maxCostEdit.getText() + "*1000" + ") ";
         }
         if((Integer) titleBudget.getTag() == 1){
-            query = query + " and ((DiscountMax/Quantity) >= " + minCostEdit.getText() + "*100000" + " and (DiscountMax/Quantity) <= " + maxCostEdit.getText() + "*100000" + ") ";
+            query = query + " and (DiscountMax >= " + minCostEdit.getText() + "*1000000" + " and DiscountMax <= " + maxCostEdit.getText() + "*1000000" + ") ";
         }
 
         //Count ROOMS;
@@ -1174,7 +1186,7 @@ public class MainActivity extends AppCompatActivity {
         if((Integer) build_8.getTag() == 1 ){query = query + " and (SectionNumber=1 and AddressNumber=5)";}
         if((Integer) build_9.getTag() == 1 ){query = query + " and (SectionNumber=1 and AddressNumber=4)";}
         if((Integer) build_10.getTag() == 1 ){query = query + " and (SectionNumber=2 and AddressNumber=4)";}
-        if((Integer) build_11.getTag() == 1 ){query = query + " and (SectionNumber=3 and AddressNumber=8)";}
+        if((Integer) build_11.getTag() == 1 ){query = query + " and (SectionNumber=3 and AddressNumber=4)";}
         if((Integer) build_12.getTag() == 1 ){query = query + " and (SectionNumber=1 and AddressNumber=1)";}
         //if((Integer) build_13.getTag() == 1 ){query = query + " and (SectionNumber=3 and AddressNumber=8)";}
         if((Integer) build_14.getTag() == 1 ){query = query + " and (SectionNumber=5 and AddressNumber=2)";}
@@ -1190,7 +1202,7 @@ public class MainActivity extends AppCompatActivity {
         if((Integer) build_23.getTag() == 1 ){query = query + " and (SectionNumber=1 and AddressNumber=7)";}
 
 
-        if((Integer) check_period_2_2022.getTag() == 1){query = query + " and DeliveryPeriod = '2к2022'";}
+        if((Integer) check_period_4_2021.getTag() == 1){query = query + " and DeliveryPeriod = '4к2021'";}
         if((Integer) check_period_3_2022.getTag() == 1){query = query + " and DeliveryPeriod = '3к2022'";}
         if((Integer) check_period_4_2022.getTag() == 1){query = query + " and DeliveryPeriod = '4к2022'";}
 
@@ -1202,6 +1214,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void clearFilter() {
+        hint.setVisibility(View.GONE);
         btnClear.setImageResource(R.drawable.button_clear);
         //btnClear.setEnabled(flag);
         ListClearFilter.clear();
@@ -1238,10 +1251,10 @@ public class MainActivity extends AppCompatActivity {
         btnWithoutRemont.setTag(0);
         btnWithRemont.setTag(0);
 
-        check_period_2_2022.setImageResource(R.drawable.checkbox_srok_2_2022);
+        check_period_4_2021.setImageResource(R.drawable.checkbox_srok_4_2021);
         check_period_3_2022.setImageResource(R.drawable.checkbox_srok_3_2022);
         check_period_4_2022.setImageResource(R.drawable.checkbox_srok_4_2022);
-        check_period_2_2022.setTag(0);
+        check_period_4_2021.setTag(0);
         check_period_3_2022.setTag(0);
         check_period_4_2022.setTag(0);
 
@@ -1314,14 +1327,17 @@ public class MainActivity extends AppCompatActivity {
     public void buildsOnClick(View v){
         switch (v.getId()){
             case R.id.build_3_1:
+
                 if((Integer) build_3_1.getTag() == 0){
                    build_3_1.setTag(1);
                    build_3_1.setImageResource(R.drawable.build_3_1);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build3_1));
                 } else{
                     build_3_1.setTag(0);
                     build_3_1.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build3_1));
                 }
             break;
             case R.id.build_3_2:
@@ -1329,10 +1345,12 @@ public class MainActivity extends AppCompatActivity {
                     build_3_2.setTag(1);
                     build_3_2.setImageResource(R.drawable.build_3_2);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build3_2));
                 } else{
                     build_3_2.setTag(0);
                     build_3_2.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build3_2));
                 }
                 break;
             case R.id.build_4:
@@ -1340,10 +1358,12 @@ public class MainActivity extends AppCompatActivity {
                     build_4.setTag(1);
                     build_4.setImageResource(R.drawable.build_4);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build4));
                 } else{
                     build_4.setTag(0);
                     build_4.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build4));
                 }
                 break;
             case R.id.build_5:
@@ -1351,10 +1371,12 @@ public class MainActivity extends AppCompatActivity {
                     build_5.setTag(1);
                     build_5.setImageResource(R.drawable.build_5);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build5));
                 } else{
                     build_5.setTag(0);
                     build_5.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build5));
                 }
                 break;
             case R.id.build_6:
@@ -1362,10 +1384,12 @@ public class MainActivity extends AppCompatActivity {
                     build_6.setTag(1);
                     build_6.setImageResource(R.drawable.build_6);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build6));
                 } else{
                     build_6.setTag(0);
                     build_6.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build6));
                 }
                 break;
             case R.id.build_7:
@@ -1384,10 +1408,12 @@ public class MainActivity extends AppCompatActivity {
                     build_8.setTag(1);
                     build_8.setImageResource(R.drawable.build_8);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build8));
                 } else{
                     build_8.setTag(0);
                     build_8.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build8));
                 }
                 break;
             case R.id.build_9:
@@ -1395,10 +1421,12 @@ public class MainActivity extends AppCompatActivity {
                     build_9.setTag(1);
                     build_9.setImageResource(R.drawable.build_9);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build9));
                 } else{
                     build_9.setTag(0);
                     build_9.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build9));
                 }
                 break;
             case R.id.build_10:
@@ -1406,10 +1434,12 @@ public class MainActivity extends AppCompatActivity {
                     build_10.setTag(1);
                     build_10.setImageResource(R.drawable.build_10);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build10));
                 } else{
                     build_10.setTag(0);
                     build_10.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build10));
                 }
                 break;
             case R.id.build_11:
@@ -1417,10 +1447,12 @@ public class MainActivity extends AppCompatActivity {
                     build_11.setTag(1);
                     build_11.setImageResource(R.drawable.build_11);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build11));
                 } else{
                     build_11.setTag(0);
                     build_11.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build11));
                 }
                 break;
             case R.id.build_12:
@@ -1428,10 +1460,12 @@ public class MainActivity extends AppCompatActivity {
                     build_12.setTag(1);
                     build_12.setImageResource(R.drawable.build_12);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build12));
                 } else{
                     build_12.setTag(0);
                     build_12.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build12));
                 }
                 break;
             case R.id.build_13:
@@ -1439,6 +1473,7 @@ public class MainActivity extends AppCompatActivity {
                     build_13.setTag(1);
                     build_13.setImageResource(R.drawable.build_13);
                     clearFilterActivate(true);
+
                 } else{
                     build_13.setTag(0);
                     build_13.setImageResource(R.drawable.empty);
@@ -1450,10 +1485,12 @@ public class MainActivity extends AppCompatActivity {
                     build_14.setTag(1);
                     build_14.setImageResource(R.drawable.build_14);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build14));
                 } else{
                     build_14.setTag(0);
                     build_14.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build14));
                 }
                 break;
             case R.id.build_15:
@@ -1461,10 +1498,12 @@ public class MainActivity extends AppCompatActivity {
                     build_15.setTag(1);
                     build_15.setImageResource(R.drawable.build_15);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build15));
                 } else{
                     build_15.setTag(0);
                     build_15.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build15));
                 }
                 break;
             case R.id.build_16:
@@ -1472,10 +1511,12 @@ public class MainActivity extends AppCompatActivity {
                     build_16.setTag(1);
                     build_16.setImageResource(R.drawable.build_16);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build16));
                 } else{
                     build_16.setTag(0);
                     build_16.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build16));
                 }
                 break;
             case R.id.build_17:
@@ -1483,10 +1524,12 @@ public class MainActivity extends AppCompatActivity {
                     build_17.setTag(1);
                     build_17.setImageResource(R.drawable.build_17);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build17));
                 } else{
                     build_17.setTag(0);
                     build_17.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build17));
                 }
                 break;
             case R.id.build_18:
@@ -1494,10 +1537,12 @@ public class MainActivity extends AppCompatActivity {
                     build_18.setTag(1);
                     build_18.setImageResource(R.drawable.build_18);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build18));
                 } else{
                     build_18.setTag(0);
                     build_18.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build18));
                 }
                 break;
             case R.id.build_19:
@@ -1505,6 +1550,7 @@ public class MainActivity extends AppCompatActivity {
                     build_19.setTag(1);
                     build_19.setImageResource(R.drawable.build_19);
                     clearFilterActivate(true);
+
                 } else{
                     build_19.setTag(0);
                     build_19.setImageResource(R.drawable.empty);
@@ -1516,10 +1562,12 @@ public class MainActivity extends AppCompatActivity {
                     build_20.setTag(1);
                     build_20.setImageResource(R.drawable.build_20);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build20));
                 } else{
                     build_20.setTag(0);
                     build_20.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build20));
                 }
                 break;
             case R.id.build_21_1:
@@ -1527,10 +1575,12 @@ public class MainActivity extends AppCompatActivity {
                     build_21_1.setTag(1);
                     build_21_1.setImageResource(R.drawable.build_21_1);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build21_1));
                 } else{
                     build_21_1.setTag(0);
                     build_21_1.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build21_1));
                 }
                 break;
             case R.id.build_21_2:
@@ -1538,10 +1588,12 @@ public class MainActivity extends AppCompatActivity {
                     build_21_2.setTag(1);
                     build_21_2.setImageResource(R.drawable.build_21_2);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build21_2));
                 } else{
                     build_21_2.setTag(0);
                     build_21_2.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build21_2));
                 }
                 break;
             case R.id.build_21_3:
@@ -1549,10 +1601,12 @@ public class MainActivity extends AppCompatActivity {
                     build_21_3.setTag(1);
                     build_21_3.setImageResource(R.drawable.build_21_3);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build21_3));
                 } else{
                     build_21_3.setTag(0);
                     build_21_3.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build21_3));
                 }
                 break;
             case R.id.build_23:
@@ -1560,10 +1614,12 @@ public class MainActivity extends AppCompatActivity {
                     build_23.setTag(1);
                     build_23.setImageResource(R.drawable.build_23);
                     clearFilterActivate(true);
+                    ShowHint(v,true, getString(R.string.build23));
                 } else{
                     build_23.setTag(0);
                     build_23.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
+                    ShowHint(v,false, getString(R.string.build23));
                 }
                 break;
         }
@@ -1620,6 +1676,18 @@ public class MainActivity extends AppCompatActivity {
         if(cfg.getDisableTimer() == false){
             timer.start();
         }
+    }
+
+    private void ShowHint(View view, boolean activateHint, String text){
+        if (activateHint == true) {
+            hint.setText(text);
+            hint.setVisibility(View.VISIBLE);
+            hint.setTranslationX(view.getTranslationX());
+            hint.setTranslationY(view.getTranslationY() - 50);
+        }else{
+            hint.setVisibility(View.GONE);
+        }
+
     }
 
     private void clearFilterActivate(Boolean flag) {

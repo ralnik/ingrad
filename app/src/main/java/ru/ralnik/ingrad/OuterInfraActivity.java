@@ -142,7 +142,10 @@ public class OuterInfraActivity {
 
         @Override
         public void onClick(View view) {
+            //vvvv.selectBySubId(0);
             dialog.dismiss();
         }
     }
+
+
 }
