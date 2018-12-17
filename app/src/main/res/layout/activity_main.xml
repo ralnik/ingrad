@@ -12,7 +12,11 @@
     android:weightSum="100"
     tools:context="ru.ralnik.ingrad.MainActivity">
 
-
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
     <LinearLayout
         android:id="@+id/leftPanel"
         android:layout_width="89dp"
@@ -213,19 +217,10 @@
                     android:orientation="vertical">
 
                     <FrameLayout
+                        android:id="@+id/genPlanLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1">
-
-                        <TextView
-                            android:id="@+id/hint2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/hint"
-                            android:text="корпус 3 / секция"
-                            android:textColor="@color/colorHintText"
-                            android:textSize="8sp"
-                            android:visibility="visible" />
 
                         <ImageView
                             android:id="@+id/imgGenplan"
@@ -442,6 +437,17 @@
                             android:translationX="12dp"
                             android:translationY="68dp"
                             app:srcCompat="@drawable/build_23" />
+
+                        <TextView
+                            android:id="@+id/hint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/hint"
+                            android:text="корпус 3 / секция 1"
+                            android:textColor="@color/colorHintText"
+                            android:textSize="4sp"
+                            android:translationY="25dp"
+                            android:visibility="visible" />
 
                     </FrameLayout>
 

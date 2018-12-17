@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,7 +12,11 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.webkit.WebView;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -170,10 +175,11 @@ public class MainActivity extends AppCompatActivity {
     private String query;
     //private VVVVPlayer vvvv;
     private PlayerCommands vvvv;
+    private WebView webView;
     private myTimer timer;
 
     ArrayList<Integer> ListClearFilter = new ArrayList<>();
-
+    Animation animation;
 
 
     @Override
@@ -187,6 +193,8 @@ public class MainActivity extends AppCompatActivity {
         cfg = new myConfig(this);
 
         //vvvv = new VVVVPlayer(cfg.getHost());
+        webView = (WebView) findViewById(R.id.webView);
+        GlobalVars.webView = webView;
         vvvv = HttpPlayerFactory.getInstance(this).getCommand();
 
          //load data from web xml links
@@ -438,9 +446,11 @@ public class MainActivity extends AppCompatActivity {
         build_23.setTag(0);
 
         hint = (TextView) findViewById(R.id.hint);
-        hint.setTypeface(Typeface.createFromAsset(
-                getAssets(), "fonts/panroman.ttf"));
-        hint.setVisibility(View.GONE);
+        hint.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/panroman.ttf"));
+        hint.setText("корпус 3 / секция 1");
+        hint.setVisibility(View.INVISIBLE);
+
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.hint_alpha);
 
 //        build_3_1.setOnTouchListener(new ShowHint(this));
 //        build_3_1.setOnLongClickListener(new ShowHint(this));
@@ -1177,30 +1187,44 @@ public class MainActivity extends AppCompatActivity {
         if(Integer.valueOf(btnBathRoomWithWindow.getTag().toString()) > 0){ query = query + " and WithWindow = 'True'";}
         //if(Integer.valueOf(btnBalcon.getTag().toString()) > 0){ query = query + " and Balcon = 'True'";}
 
-        if((Integer) build_3_1.getTag() == 1 ){query = query + " and (SectionNumber=1 and AddressNumber=8)";}
-        if((Integer) build_3_2.getTag() == 1 ){query = query + " and (SectionNumber=2 and AddressNumber=8)";}
-        if((Integer) build_4.getTag() == 1 ){query = query + " and (SectionNumber=3 and AddressNumber=8)";}
-        if((Integer) build_5.getTag() == 1 ){query = query + " and (SectionNumber=4 and AddressNumber=8)";}
-        if((Integer) build_6.getTag() == 1 ){query = query + " and (SectionNumber=5 and AddressNumber=8)";}
-        //if((Integer) build_7.getTag() == 1 ){query = query + " and (SectionNumber=1 and AddressNumber=8)";}
-        if((Integer) build_8.getTag() == 1 ){query = query + " and (SectionNumber=1 and AddressNumber=5)";}
-        if((Integer) build_9.getTag() == 1 ){query = query + " and (SectionNumber=1 and AddressNumber=4)";}
-        if((Integer) build_10.getTag() == 1 ){query = query + " and (SectionNumber=2 and AddressNumber=4)";}
-        if((Integer) build_11.getTag() == 1 ){query = query + " and (SectionNumber=3 and AddressNumber=4)";}
-        if((Integer) build_12.getTag() == 1 ){query = query + " and (SectionNumber=1 and AddressNumber=1)";}
-        //if((Integer) build_13.getTag() == 1 ){query = query + " and (SectionNumber=3 and AddressNumber=8)";}
-        if((Integer) build_14.getTag() == 1 ){query = query + " and (SectionNumber=5 and AddressNumber=2)";}
-        if((Integer) build_15.getTag() == 1 ){query = query + " and (SectionNumber=4 and AddressNumber=2)";}
-        if((Integer) build_16.getTag() == 1 ){query = query + " and (SectionNumber=3 and AddressNumber=2)";}
-        if((Integer) build_17.getTag() == 1 ){query = query + " and (SectionNumber=2 and AddressNumber=2)";}
-        if((Integer) build_18.getTag() == 1 ){query = query + " and (SectionNumber=1 and AddressNumber=2)";}
-        //if((Integer) build_19.getTag() == 1 ){query = query + " and (SectionNumber=3 and AddressNumber=8)";}
-        if((Integer) build_20.getTag() == 1 ){query = query + " and (SectionNumber=1 and AddressNumber=3)";}
-        if((Integer) build_21_1.getTag() == 1 ){query = query + " and (SectionNumber=1 and AddressNumber=6)";}
-        if((Integer) build_21_2.getTag() == 1 ){query = query + " and (SectionNumber=2 and AddressNumber=6)";}
-        if((Integer) build_21_3.getTag() == 1 ){query = query + " and (SectionNumber=3 and AddressNumber=6)";}
-        if((Integer) build_23.getTag() == 1 ){query = query + " and (SectionNumber=1 and AddressNumber=7)";}
+        String buildQuery;
+        List<String> countBuild = new ArrayList<>();
+        if((Integer) build_3_1.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=8)");}
+        if((Integer) build_3_2.getTag() == 1 ){countBuild.add("(SectionNumber=2 and AddressNumber=8)");}
+        if((Integer) build_4.getTag() == 1 ){countBuild.add("(SectionNumber=3 and AddressNumber=8)");}
+        if((Integer) build_5.getTag() == 1 ){countBuild.add("(SectionNumber=4 and AddressNumber=8)");}
+        if((Integer) build_6.getTag() == 1 ){countBuild.add("(SectionNumber=5 and AddressNumber=8)");}
+        //if((Integer) build_7.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=8)");}
+        if((Integer) build_8.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=5)");}
+        if((Integer) build_9.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=4)");}
+        if((Integer) build_10.getTag() == 1 ){countBuild.add("(SectionNumber=2 and AddressNumber=4)");}
+        if((Integer) build_11.getTag() == 1 ){countBuild.add("(SectionNumber=3 and AddressNumber=4)");}
+        if((Integer) build_12.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=1)");}
+        //if((Integer) build_13.getTag() == 1 ){countBuild.add("(SectionNumber=3 and AddressNumber=8)");}
+        if((Integer) build_14.getTag() == 1 ){countBuild.add("(SectionNumber=5 and AddressNumber=2)");}
+        if((Integer) build_15.getTag() == 1 ){countBuild.add("(SectionNumber=4 and AddressNumber=2)");}
+        if((Integer) build_16.getTag() == 1 ){countBuild.add("(SectionNumber=3 and AddressNumber=2)");}
+        if((Integer) build_17.getTag() == 1 ){countBuild.add("(SectionNumber=2 and AddressNumber=2)");}
+        if((Integer) build_18.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=2)");}
+        //if((Integer) build_19.getTag() == 1 ){countBuild.add("(SectionNumber=3 and AddressNumber=8)");}
+        if((Integer) build_20.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=3)");}
+        if((Integer) build_21_1.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=6)");}
+        if((Integer) build_21_2.getTag() == 1 ){countBuild.add("(SectionNumber=2 and AddressNumber=6)");}
+        if((Integer) build_21_3.getTag() == 1 ){countBuild.add("(SectionNumber=3 and AddressNumber=6)");}
+        if((Integer) build_23.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=7)");}
 
+        if(countBuild.size()>0){
+            String countBuildString = "";
+            for(int i = 0 ; i<countBuild.size();i++){
+                if (countBuildString.length() == 0) {
+                    countBuildString = countBuild.get(i);
+                } else {
+                    countBuildString = countBuildString + " or " + countBuild.get(i);
+                }
+            }
+            countBuildString = " and (" + countBuildString + ") ";
+            query = query + countBuildString;
+        }
 
         if((Integer) check_period_4_2021.getTag() == 1){query = query + " and DeliveryPeriod = '4к2021'";}
         if((Integer) check_period_3_2022.getTag() == 1){query = query + " and DeliveryPeriod = '3к2022'";}
@@ -1214,7 +1238,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void clearFilter() {
-        hint.setVisibility(View.GONE);
+        hint.setVisibility(View.INVISIBLE);
         btnClear.setImageResource(R.drawable.button_clear);
         //btnClear.setEnabled(flag);
         ListClearFilter.clear();
@@ -1679,15 +1703,61 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void ShowHint(View view, boolean activateHint, String text){
+        FrameLayout genPlan = (FrameLayout) findViewById(R.id.genPlanLayout);
+
         if (activateHint == true) {
             hint.setText(text);
-            hint.setVisibility(View.VISIBLE);
-            hint.setTranslationX(view.getTranslationX());
-            hint.setTranslationY(view.getTranslationY() - 50);
-        }else{
-            hint.setVisibility(View.GONE);
-        }
 
+                animation.cancel();
+                hint.setVisibility(View.INVISIBLE);
+
+            hint.setVisibility(View.VISIBLE);
+
+            hint.setTranslationY(view.getTranslationY() - 50);
+            if(view.getTranslationX()+hint.getWidth() > genPlan.getWidth()){
+                hint.setTranslationX(genPlan.getWidth() - hint.getWidth());
+            }else {
+                hint.setTranslationX(view.getTranslationX());
+            }
+            hideHint();
+        }else{
+
+            hint.setVisibility(View.INVISIBLE);
+
+        }
+    }
+
+    private void hideHint(){
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+
+                animation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+
+                        hint.setVisibility(View.INVISIBLE);
+
+
+                       // Log.d("myDebug","скрылся hint");
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                if(hint.getVisibility() == View.VISIBLE) {
+                    hint.startAnimation(animation);
+                }
+            }
+        }, 1000);
     }
 
     private void clearFilterActivate(Boolean flag) {

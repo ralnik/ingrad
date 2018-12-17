@@ -1,9 +1,16 @@
 package ru.ralnik.ingrad.httpPlayer;
 
+import android.webkit.WebView;
+
 public abstract class VLCPlayer extends HttpPlayer implements PlayerCommands {
 
     public VLCPlayer(String host, int port, String username, String password) {
         super(host, port, username, password);
+    }
+
+    @Override
+    public void setWebView(WebView webView) {
+        super.setWebView(webView);
     }
 
     @Override

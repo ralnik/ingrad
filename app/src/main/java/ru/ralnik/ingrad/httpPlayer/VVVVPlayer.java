@@ -1,5 +1,7 @@
 package ru.ralnik.ingrad.httpPlayer;
 
+import android.webkit.WebView;
+
 import ru.ralnik.ingrad.model.Flat;
 
 public class VVVVPlayer extends HttpPlayer implements PlayerCommands {
@@ -19,6 +21,11 @@ public class VVVVPlayer extends HttpPlayer implements PlayerCommands {
         if(flat == null ) {
             flat = new Flat();
         }
+    }
+
+    @Override
+    public void setWebView(WebView webView) {
+        super.setWebView(webView);
     }
 
     @Override

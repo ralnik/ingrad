@@ -1,22 +1,13 @@
 package ru.ralnik.ingrad.httpPlayer;
 
-import android.os.AsyncTask;
+import android.net.http.SslError;
 import android.util.Log;
+import android.webkit.HttpAuthHandler;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.CredentialsProvider;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.impl.client.BasicCredentialsProvider;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import ru.ralnik.ingrad.GlobalVars;
 
 public class HttpPlayer {
 
@@ -24,6 +15,7 @@ public class HttpPlayer {
     public int port = 0;
     public String username = null;
     public String password = null;
+    private WebView webView;
 
     public HttpPlayer(String host, int port, String username, String password) {
         this.host = new String(host.split(":")[0]);
@@ -33,65 +25,50 @@ public class HttpPlayer {
         this.password = password;
     }
 
+
+
     public HttpPlayer(String host){
         this.host = new String(host.split(":")[0]);
+        this.webView = GlobalVars.webView;
+        connectToServer();
     }
 
     public void setHost(String host) {
         this.host = host;
     }
 
-    public void executeCommand(String url){
-        HttpCommandRun commandRun = new  HttpCommandRun(url);
-        commandRun.execute();
+    public void setWebView(WebView webView) {
+        this.webView = webView;
+        connectToServer();
     }
 
-    class HttpCommandRun extends AsyncTask<Void, Void, Void>{
+    public void executeCommand(String url){
+        String current_link = (port != 0) ? "http://"+host+":"+port+"/"+url :  "http://"+host+"/"+url;
+        Log.d("myDebug",current_link);
+        this.webView.loadUrl(current_link);
+    }
 
-        private String url;
-        public HttpCommandRun(String url) {
-            this.url = url;
-        }
-        @Override
-        protected Void doInBackground(Void... voids) {
-            try {
-                CloseableHttpClient client = HttpClients.createDefault();
-                HttpClientContext httpContext = HttpClientContext.create();
+    private void connectToServer() {
 
-                if(username != null && password != null) {
-                    CredentialsProvider credsProvider = new BasicCredentialsProvider();
-                    credsProvider.setCredentials(
-                            new AuthScope(host, port),
-                            new UsernamePasswordCredentials(username, password));
-                    //Log.d("myDebug", "login" + username + "_password" + password);
-                    httpContext.setCredentialsProvider(credsProvider);
-                }
+        // включаем поддержку JavaScript
+        this.webView.getSettings().setJavaScriptEnabled(true);
+        // указываем страницу загрузки+
 
-                String url = (port != 0) ? "http://"+host+":"+port+"/"+this.url :  "http://"+host+"/"+this.url;
-
-                Log.d("myDebug",url);
-
-                HttpGet httpget = new HttpGet(url);
-
-                CloseableHttpResponse response = client.execute(httpget,httpContext);
-                HttpEntity entity = response.getEntity();
-
-                if(entity != null){
-                    BufferedReader in = new BufferedReader(new InputStreamReader(entity.getContent()));
-                    String inputLine;
-                    StringBuffer buffer = new StringBuffer();
-
-                    while ((inputLine = in.readLine()) != null) {
-                        buffer.append(inputLine);
-                        //Log.d("myDebug",inputLine.toString());
-                    }
-                    in.close();
-                }
-            } catch (IOException e) {
-                Log.d("myDebug","error motherFucker: "+e.toString());
-                e.printStackTrace();
+        // mwebView.setHttpAuthUsernamePassword(HOST, "realest", null, PASSWORD);
+        this.webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return super.shouldOverrideUrlLoading(view, url);
             }
-            return null;
-        }
+
+            @Override
+            public void onReceivedHttpAuthRequest(WebView view, HttpAuthHandler handler, String host, String realm) {
+                handler.proceed(null, password);
+            }
+
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                handler.proceed();
+            }
+        });
     }
 }
