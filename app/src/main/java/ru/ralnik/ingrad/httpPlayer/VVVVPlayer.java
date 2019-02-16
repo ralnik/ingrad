@@ -29,6 +29,21 @@ public class VVVVPlayer extends HttpPlayer implements PlayerCommands {
     }
 
     @Override
+    public void setVolumeOnOff(int volumeOnOff) {
+        this.volumeOnOff = volumeOnOff;
+    }
+
+    @Override
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    @Override
+    public void setVolEffect(int volEffect) {
+        this.volEffect = volEffect;
+    }
+
+    @Override
     public void changeHost(String host) {
         setHost(host);
     }

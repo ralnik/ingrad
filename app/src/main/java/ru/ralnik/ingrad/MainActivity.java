@@ -196,7 +196,8 @@ public class MainActivity extends AppCompatActivity {
         webView = (WebView) findViewById(R.id.webView);
         GlobalVars.webView = webView;
         vvvv = HttpPlayerFactory.getInstance(this).getCommand();
-
+        vvvv.setVolume(cfg.getVolumeProgress());
+        vvvv.setVolEffect(cfg.getEffectProgress());
          //load data from web xml links
          //loadDataFromXML();
 
@@ -615,6 +616,7 @@ public class MainActivity extends AppCompatActivity {
                 //Log.d(TAG,String.valueOf(musicSeekBar.getProgress()));
                 //GlobalVar.volume = String.valueOf(VolumeSeekBar.getProgress());
                 //GlobalVar.lastLink = VVVV.fullLink();
+                vvvv.volume(seekBar.getProgress());
             }
         });
 
@@ -631,9 +633,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                Log.d(TAG,String.valueOf(effectSeekBar.getProgress()));
+                //Log.d(TAG,String.valueOf(effectSeekBar.getProgress()));
                 //GlobalVar.volEffects = String.valueOf(EffectSeekBar.getProgress());
                 //GlobalVar.lastLink = VVVV.fullLink();
+                vvvv.volEffect(seekBar.getProgress());
             }
         });
         switcherTimer.setOnClickListener(new View.OnClickListener() {

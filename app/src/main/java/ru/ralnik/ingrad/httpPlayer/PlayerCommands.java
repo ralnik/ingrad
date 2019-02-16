@@ -23,5 +23,8 @@ public interface PlayerCommands {
 
     void setFlatInfo(Flat flat);
     void changeHost(String host);
+    void setVolumeOnOff(int volumeOnOff);
+    void setVolume(int volume);
+    void setVolEffect(int volEffect);
 
 }
