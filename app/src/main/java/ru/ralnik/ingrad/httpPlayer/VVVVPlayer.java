@@ -51,7 +51,7 @@ public class VVVVPlayer extends HttpPlayer implements PlayerCommands {
     @Override
     public void play() {
         this.playStop = 1;
-        super.executeCommand(getFullLink());
+        executeCommand(getFullLink());
     }
 
     @Override
@@ -60,7 +60,7 @@ public class VVVVPlayer extends HttpPlayer implements PlayerCommands {
     @Override
     public void stop() {
         this.playStop = 0;
-        super.executeCommand(getFullLink());
+        executeCommand(getFullLink());
     }
 
     @Override
@@ -68,32 +68,32 @@ public class VVVVPlayer extends HttpPlayer implements PlayerCommands {
         this.playStop = 1;
         this.numberTrack = id;
         if(id == 7){this.numberSubTrack = 0;}
-        super.executeCommand(getFullLink());
+        executeCommand(getFullLink());
     }
 
     @Override
     public void selectBySubId(int id) {
         this.playStop = 1;
         this.numberSubTrack = id;
-        super.executeCommand(getFullLink());
+        executeCommand(getFullLink());
     }
 
     @Override
     public void volume(int vol) {
         this.volume = vol;
-        super.executeCommand(getFullLink());
+        executeCommand(getFullLink());
     }
 
     @Override
     public void volEffect(int vol) {
         this.volEffect = vol;
-        super.executeCommand(getFullLink());
+        executeCommand(getFullLink());
     }
 
     @Override
     public void volumeOnOff() {
         volumeOnOff = (volumeOnOff == 1) ? 0: 1;
-        super.executeCommand(getFullLink());
+        executeCommand(getFullLink());
     }
 
     @Override
@@ -125,20 +125,24 @@ public class VVVVPlayer extends HttpPlayer implements PlayerCommands {
         this.flat = flat;
     }
 
-    public String getFullLink(){
-        String currentLink = "vvvv?" +
-                "track=" + this.numberTrack + "&" +
-                "subTrack=" + this.numberSubTrack + "&" +
-                "playStop=" + this.playStop + "&" +
-                "volumeOnOff=" + this.volumeOnOff + "&" +
-                "volume=" + this.volume + "&" +
-                "volEffect=" + this.volEffect + "&" +
-                flat.toString();
+    @Override
+    public void executeCommand(String url){
 
-        if (this.lastLink.equals(currentLink)){
-            return lastLink;
+        if (!this.lastLink.equals(url)){
+            this.lastLink = url;
+            super.executeCommand(url);
         }
-        this.lastLink = currentLink;
-        return currentLink;
+
+    }
+
+    public String getFullLink(){
+        return "vvvv?" +
+               "track=" + this.numberTrack + "&" +
+               "subTrack=" + this.numberSubTrack + "&" +
+               "playStop=" + this.playStop + "&" +
+               "volumeOnOff=" + this.volumeOnOff + "&" +
+               "volume=" + this.volume + "&" +
+               "volEffect=" + this.volEffect + "&" +
+               flat.toString();
     }
 }

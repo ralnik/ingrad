@@ -337,7 +337,7 @@ public class Flat {
 //                "CountTerrace=" + CountTerrace;
                 return
                 "LayoutUrl=" + LayoutUrl + "&" +
-                "AddressId=" + AddressId + "&" +
+                "ArticleId=" + ArticleId + "&" +
                 "SectionNumber=" + SectionNumber + "&" +
                 "Floor=" + Floor + "&" +
                 "Rooms=" + Rooms + "&" +
@@ -353,6 +353,9 @@ public class Flat {
                 "Terrace=" + Terrace + "&" +
                 "CountBalcony=" + CountBalcony + "&" +
                 "CountLoggia=" + CountLoggia + "&" +
-                "CountTerrace=" + CountTerrace;
+                "CountTerrace=" + CountTerrace + "&" +
+                "BeforeBtiNumber=" + BeforeBtiNumber + "&" +
+                "AddressNumber=" + AddressNumber + "&" +
+                "DeliveryPeriod=" + DeliveryPeriod ;
     }
 }

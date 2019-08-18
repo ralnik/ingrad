@@ -1139,7 +1139,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void applyFilter() {
-        query = "select * from flats where ";
+        query = "select * from flats where (StatusCodeName='Свободно' or StatusCodeName='Ус. Бронь') and ";
 
         query = query + " (floor >= "+seekbarFloor.getSelectedMinValue() + " and floor <= "+seekbarFloor.getSelectedMaxValue()+") ";
         query = query + " and (Quantity >= " + seekbarSquare.getSelectedMinValue() + " and Quantity <= "+((Float) seekbarSquare.getSelectedMaxValue()+0.1) + ") ";

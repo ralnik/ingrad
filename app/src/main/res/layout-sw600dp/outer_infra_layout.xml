@@ -43,7 +43,7 @@
             android:layout_width="116dp"
             android:layout_height="79dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/button_childgarden"/>
+            app:srcCompat="@drawable/button_childgarden" />
 
         <ImageView
             android:id="@+id/btnSchools"

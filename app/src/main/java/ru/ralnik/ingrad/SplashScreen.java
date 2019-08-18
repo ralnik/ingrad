@@ -38,7 +38,7 @@ public class SplashScreen extends AppCompatActivity {
         int progress = 0;
         try {
             Parser parser1 = new Parser(this);
-            parser1.setUrl("http://crm.dmfs.ru:8080/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=D9AF2F75-A99F-E811-80F9-005056BA18B6&export=false");
+            parser1.setUrl("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=D9AF2F75-A99F-E811-80F9-005056BA18B6&export=false");
             parser1.execute();
 
             Thread.sleep(1000);
@@ -46,7 +46,7 @@ public class SplashScreen extends AppCompatActivity {
             mProgress.setProgress(progress);
 
             Parser parser2 = new Parser(this);
-            parser2.setUrl("http://crm.dmfs.ru:8080/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=517BA460-B39F-E811-80F9-005056BA18B6&export=false");
+            parser2.setUrl("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=517BA460-B39F-E811-80F9-005056BA18B6&export=false");
             parser2.execute();
 
             Thread.sleep(1000);
@@ -54,7 +54,7 @@ public class SplashScreen extends AppCompatActivity {
             mProgress.setProgress(progress);
 
             Parser parser3 = new Parser(this);
-            parser3.setUrl("http://crm.dmfs.ru:8080/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=C545D97A-B39F-E811-80F9-005056BA18B6&export=false");
+            parser3.setUrl("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=C545D97A-B39F-E811-80F9-005056BA18B6&export=false");
             parser3.execute();
 
             Thread.sleep(1000);
@@ -62,7 +62,7 @@ public class SplashScreen extends AppCompatActivity {
             mProgress.setProgress(progress);
 
             Parser parser4 = new Parser(this);
-            parser4.setUrl("http://crm.dmfs.ru:8080/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=E8671A06-B49F-E811-80F9-005056BA18B6&export=false");
+            parser4.setUrl("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=E8671A06-B49F-E811-80F9-005056BA18B6&export=false");
             parser4.execute();
 
             Thread.sleep(1000);
@@ -70,7 +70,7 @@ public class SplashScreen extends AppCompatActivity {
             mProgress.setProgress(progress);
 
             Parser parser5 = new Parser(this);
-            parser5.setUrl("http://crm.dmfs.ru:8080/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=6F035221-B49F-E811-80F9-005056BA18B6&export=false");
+            parser5.setUrl("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=6F035221-B49F-E811-80F9-005056BA18B6&export=false");
             parser5.execute();
 
             Thread.sleep(1000);
@@ -78,7 +78,7 @@ public class SplashScreen extends AppCompatActivity {
             mProgress.setProgress(progress);
 
             Parser parser6 = new Parser(this);
-            parser6.setUrl("http://crm.dmfs.ru:8080/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=739AB24A-B49F-E811-80F9-005056BA18B6&export=false");
+            parser6.setUrl("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=739AB24A-B49F-E811-80F9-005056BA18B6&export=false");
             parser6.execute();
 
             Thread.sleep(1000);
@@ -86,7 +86,7 @@ public class SplashScreen extends AppCompatActivity {
             mProgress.setProgress(progress);
 
             Parser parser7 = new Parser(this);
-            parser7.setUrl("http://crm.dmfs.ru:8080/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=B22CD269-B49F-E811-80F9-005056BA18B6&export=false");
+            parser7.setUrl("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=B22CD269-B49F-E811-80F9-005056BA18B6&export=false");
             parser7.execute();
 
             Thread.sleep(1000);
@@ -94,7 +94,7 @@ public class SplashScreen extends AppCompatActivity {
             mProgress.setProgress(progress);
 
             Parser parser8 = new Parser(this);
-            parser8.setUrl("http://crm.dmfs.ru:8080/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=70FCF484-B49F-E811-80F9-005056BA18B6&export=false");
+            parser8.setUrl("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=70FCF484-B49F-E811-80F9-005056BA18B6&export=false");
             parser8.execute();
 
             Thread.sleep(1000);
