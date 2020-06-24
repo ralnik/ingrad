@@ -39,130 +39,155 @@
                 android:visibility="visible"
                 app:srcCompat="@drawable/bg" />
 
-            <LinearLayout
+            <ScrollView
+                android:id="@+id/scrollViewLeftPanel"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:scrollY="-130dp">
+                android:visibility="visible"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="130dp"
+                app:layout_constraintBottom_toBottomOf="parent">
 
-                <ImageView
-                    android:id="@+id/btnFull"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:onClick="leftPanelButtonOnCLick"
-                    app:srcCompat="@drawable/button_full" />
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/btnLocation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:onClick="leftPanelButtonOnCLick"
-                    app:srcCompat="@drawable/button_location" />
+                    <ImageView
+                        android:id="@+id/btnFull"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:onClick="leftPanelButtonOnCLick"
+                        app:srcCompat="@drawable/button_full" />
 
-                <ImageView
-                    android:id="@+id/btnAbout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:onClick="leftPanelButtonOnCLick"
-                    app:srcCompat="@drawable/button_about" />
+                    <ImageView
+                        android:id="@+id/btnLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:onClick="leftPanelButtonOnCLick"
+                        app:srcCompat="@drawable/button_location" />
 
-                <ImageView
-                    android:id="@+id/btnTransport"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:onClick="leftPanelButtonOnCLick"
-                    app:srcCompat="@drawable/button_transport" />
+                    <ImageView
+                        android:id="@+id/btnAbout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:onClick="leftPanelButtonOnCLick"
+                        app:srcCompat="@drawable/button_about" />
 
-                <ImageView
-                    android:id="@+id/btnArea"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:onClick="leftPanelButtonOnCLick"
-                    app:srcCompat="@drawable/button_area" />
+                    <ImageView
+                        android:id="@+id/btnTransport"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:onClick="leftPanelButtonOnCLick"
+                        app:srcCompat="@drawable/button_transport" />
 
-                <ImageView
-                    android:id="@+id/btnNaturals"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:onClick="leftPanelButtonOnCLick"
-                    app:srcCompat="@drawable/button_naturales" />
+                    <ImageView
+                        android:id="@+id/btnArea"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:onClick="leftPanelButtonOnCLick"
+                        app:srcCompat="@drawable/button_area" />
 
-                <ImageView
-                    android:id="@+id/btnInfra"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:onClick="leftPanelButtonOnCLick"
-                    app:srcCompat="@drawable/button_infra" />
+                    <ImageView
+                        android:id="@+id/btnNaturals"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:onClick="leftPanelButtonOnCLick"
+                        app:srcCompat="@drawable/button_naturales" />
 
-                <ImageView
-                    android:id="@+id/btnOutsideInfra"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:onClick="leftPanelButtonOnCLick"
-                    app:srcCompat="@drawable/button_outside_infra" />
+                    <ImageView
+                        android:id="@+id/btnInfra"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:onClick="leftPanelButtonOnCLick"
+                        app:srcCompat="@drawable/button_infra" />
 
-                <ImageView
-                    android:id="@+id/btnTorpedo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:onClick="leftPanelButtonOnCLick"
-                    app:srcCompat="@drawable/button_torpedo" />
+                    <ImageView
+                        android:id="@+id/btnOutsideInfra"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:onClick="leftPanelButtonOnCLick"
+                        app:srcCompat="@drawable/button_outside_infra" />
 
-                <ImageView
-                    android:id="@+id/btnSurround"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:onClick="leftPanelButtonOnCLick"
-                    app:srcCompat="@drawable/button_surround" />
+                    <ImageView
+                        android:id="@+id/btnTorpedo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:onClick="leftPanelButtonOnCLick"
+                        app:srcCompat="@drawable/button_torpedo" />
 
-                <ImageView
-                    android:id="@+id/btnAdvantageProject"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:onClick="leftPanelButtonOnCLick"
-                    app:srcCompat="@drawable/button_advantage_project" />
+                    <ImageView
+                        android:id="@+id/btnSurround"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:onClick="leftPanelButtonOnCLick"
+                        app:srcCompat="@drawable/button_surround" />
 
-                <ImageView
-                    android:id="@+id/btnGallary"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:onClick="leftPanelButtonOnCLick"
-                    app:srcCompat="@drawable/button_gallary" />
+                    <ImageView
+                        android:id="@+id/btnAdvantageProject"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:onClick="leftPanelButtonOnCLick"
+                        app:srcCompat="@drawable/button_advantage_project" />
 
-                <ImageView
-                    android:id="@+id/btnProcessBuildings"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:onClick="leftPanelButtonOnCLick"
-                    app:srcCompat="@drawable/button_process_buildings" />
-            </LinearLayout>
+                    <ImageView
+                        android:id="@+id/btnGallary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:onClick="leftPanelButtonOnCLick"
+                        app:srcCompat="@drawable/button_gallary" />
 
+                    <ImageView
+                        android:id="@+id/btnProcessBuildings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:onClick="leftPanelButtonOnCLick"
+                        app:srcCompat="@drawable/button_process_buildings" />
+
+                    <ImageView
+                        android:id="@+id/btn3d"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:onClick="leftPanelButtonOnCLick"
+                        app:srcCompat="@drawable/button_3d" />
+
+                    <ImageView
+                        android:id="@+id/btnCamera"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:onClick="leftPanelButtonOnCLick"
+                        app:srcCompat="@drawable/button_camera" />
+                </LinearLayout>
+            </ScrollView>
         </FrameLayout>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/rightPanel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
+        android:layout_height="match_parent"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
         android:orientation="vertical">
 
-        <LinearLayout
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/audioPanel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -171,43 +196,80 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/btnPlayPause"
+                android:id="@+id/btnRiverSky"
                 android:layout_width="58dp"
                 android:layout_height="68dp"
+                app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginEnd="32dp"
                 android:adjustViewBounds="true"
                 android:onClick="conlrolPanelButtonOnClick"
-                app:srcCompat="@drawable/button_playpause" />
+                app:srcCompat="@drawable/button_riversky"
+                tools:ignore="MissingConstraints"/>
+
+            <ImageView
+                android:id="@+id/btnFoRiver"
+                android:layout_width="58dp"
+                android:layout_height="68dp"
+                app:layout_constraintStart_toEndOf="@id/btnRiverSky"
+                android:adjustViewBounds="true"
+                android:onClick="conlrolPanelButtonOnClick"
+                app:srcCompat="@drawable/button_foriver"
+                tools:ignore="MissingConstraints"/>
+
+            <ImageView
+                android:id="@+id/btnRTypePlan"
+                android:layout_width="58dp"
+                android:layout_height="68dp"
+                android:adjustViewBounds="true"
+                android:onClick="conlrolPanelButtonOnClick"
+                app:layout_constraintStart_toEndOf="@id/btnFoRiver"
+                app:srcCompat="@drawable/button_typeplan"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/btnPlayPause"
+                android:layout_width="58dp"
+                android:layout_height="68dp"
+                app:layout_constraintRight_toRightOf="parent"
+                android:adjustViewBounds="true"
+                android:onClick="conlrolPanelButtonOnClick"
+                app:srcCompat="@drawable/button_playpause"
+                tools:ignore="MissingConstraints"/>
 
             <ImageView
                 android:id="@+id/btnVolume"
                 android:layout_width="58dp"
                 android:layout_height="68dp"
+                app:layout_constraintRight_toLeftOf="@id/btnPlayPause"
                 android:layout_marginEnd="32dp"
                 android:adjustViewBounds="true"
                 android:onClick="conlrolPanelButtonOnClick"
-                app:srcCompat="@drawable/button_volume" />
+                app:srcCompat="@drawable/button_volume"
+                tools:ignore="MissingConstraints"/>
 
             <ImageView
                 android:id="@+id/btnOptions"
                 android:layout_width="58dp"
                 android:layout_height="68dp"
+                app:layout_constraintRight_toLeftOf="@id/btnVolume"
                 android:adjustViewBounds="true"
+                android:layout_marginEnd="32dp"
+                android:onClick="conlrolPanelButtonOnClick"
                 app:srcCompat="@drawable/button_options_pressed"
-                android:onClick="conlrolPanelButtonOnClick"/>
+                tools:ignore="MissingConstraints"/>
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ScrollView
             android:id="@+id/scrollViewRight"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -220,7 +282,8 @@
                         android:id="@+id/genPlanLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:visibility="gone">
 
                         <ImageView
                             android:id="@+id/imgGenplan"
@@ -447,6 +510,14 @@
                             android:textColor="@color/colorHintText"
                             android:translationY="50dp"
                             android:visibility="visible" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/genPlanLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone">
 
                     </FrameLayout>
 
@@ -1159,7 +1230,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="gone">
 
         </LinearLayout>
 

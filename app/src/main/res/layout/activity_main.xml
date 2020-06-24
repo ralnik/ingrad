@@ -39,11 +39,19 @@
                 android:visibility="visible"
                 app:srcCompat="@drawable/bg" />
 
+            <ScrollView
+                android:id="@+id/scrollViewLeftPanel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="75dp"
+                app:layout_constraintBottom_toBottomOf="parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:scrollY="-75dp">
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/btnFull"
@@ -148,8 +156,23 @@
                     android:adjustViewBounds="true"
                     android:onClick="leftPanelButtonOnCLick"
                     app:srcCompat="@drawable/button_process_buildings" />
-            </LinearLayout>
+                <ImageView
+                    android:id="@+id/btn3d"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:onClick="leftPanelButtonOnCLick"
+                    app:srcCompat="@drawable/button_3d" />
 
+                <ImageView
+                    android:id="@+id/btnCamera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:onClick="leftPanelButtonOnCLick"
+                    app:srcCompat="@drawable/button_camera" />
+            </LinearLayout>
+            </ScrollView>
         </FrameLayout>
     </LinearLayout>
 
@@ -162,22 +185,52 @@
         android:layout_marginEnd="16dp"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/audioPanel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
-            android:gravity="end"
-            android:orientation="horizontal">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/audioPanel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/rightpanel_control_margin_bottom"
+                android:gravity="end"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/btnRiverSky"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginEnd="32dp"
+                    android:adjustViewBounds="true"
+                    android:onClick="conlrolPanelButtonOnClick"
+                    app:srcCompat="@drawable/button_foriver"
+                    tools:ignore="MissingConstraints"/>
 
+                <ImageView
+                    android:id="@+id/btnFoRiver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    app:layout_constraintStart_toEndOf="@id/btnRiverSky"
+                    android:adjustViewBounds="true"
+                    android:onClick="conlrolPanelButtonOnClick"
+                    app:srcCompat="@drawable/button_foriver"
+                    tools:ignore="MissingConstraints"/>
+
+                <ImageView
+                    android:id="@+id/btnRTypePlan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:adjustViewBounds="true"
+                    android:onClick="conlrolPanelButtonOnClick"
+                    app:layout_constraintStart_toEndOf="@id/btnFoRiver"
+                    app:srcCompat="@drawable/button_foriver"
+                    tools:ignore="MissingConstraints" />
             <ImageView
                 android:id="@+id/btnPlayPause"
                 android:layout_width="29dp"
                 android:layout_height="34dp"
-                android:layout_marginEnd="16dp"
                 android:adjustViewBounds="true"
+                app:layout_constraintRight_toRightOf="parent"
                 android:onClick="conlrolPanelButtonOnClick"
-                app:srcCompat="@drawable/button_playpause" />
+                app:srcCompat="@drawable/button_playpause"
+                tools:ignore="MissingConstraints" />
 
             <ImageView
                 android:id="@+id/btnVolume"
@@ -185,18 +238,23 @@
                 android:layout_height="34dp"
                 android:layout_marginEnd="16dp"
                 android:adjustViewBounds="true"
+                app:layout_constraintRight_toLeftOf="@id/btnPlayPause"
                 android:onClick="conlrolPanelButtonOnClick"
-                app:srcCompat="@drawable/button_volume" />
+                app:srcCompat="@drawable/button_volume"
+                tools:ignore="MissingConstraints" />
 
             <ImageView
                 android:id="@+id/btnOptions"
                 android:layout_width="29dp"
                 android:layout_height="34dp"
                 android:adjustViewBounds="true"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintRight_toLeftOf="@id/btnVolume"
                 android:onClick="conlrolPanelButtonOnClick"
-                app:srcCompat="@drawable/button_options_pressed" />
+                app:srcCompat="@drawable/button_options_pressed"
+                tools:ignore="MissingConstraints" />
 
-        </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ScrollView
             android:id="@+id/scrollViewRight"
@@ -520,14 +578,6 @@
                             app:srcCompat="@drawable/button_room_evro" />
                     </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/titleFloor"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/titles_before_seekbar_margin_bottom"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/title_floor" />
-
                     <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
                         android:id="@+id/seekBarFloor"
                         android:layout_width="match_parent"
@@ -631,6 +681,14 @@
                         app:max_value="115.5"
                         app:min_value="31.5"
                         app:right_thumb_color="@color/seekbarColor" />
+
+                    <ImageView
+                        android:id="@+id/titleFloor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/titles_before_seekbar_margin_bottom"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/title_floor" />
 
                     <LinearLayout
                         android:id="@+id/costLayoutSelector"
