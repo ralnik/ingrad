@@ -1,13 +1,13 @@
 package ru.ralnik.ingrad.sqlitedb;
 
-import android.arch.persistence.db.SimpleSQLiteQuery;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
 
-import java.util.List;
-import java.util.concurrent.ExecutionException;
+import androidx.sqlite.db.SimpleSQLiteQuery;
 
+import java.util.List;
+import lombok.SneakyThrows;
 import ru.ralnik.ingrad.model.Flat;
 
 public class FlatRepository {
@@ -17,68 +17,37 @@ public class FlatRepository {
         mFlatDao = db.flatDao();
     }
 
+    @SneakyThrows
     public Cursor getFlatsByQuery(String query){
-        try {
-            return new getFlatsByQueryAsyncTask(mFlatDao).execute(query).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return new getFlatsByQueryAsyncTask(mFlatDao).execute(query).get();
     }
 
     public void insert(Flat flat){
         new insertAsyncTask(mFlatDao).execute(flat);
-        //mFlatDao.insertAll(flat);
     }
 
     public void update(Flat flat){
         new updateAsyncTask(mFlatDao).execute(flat);
     }
 
+    @SneakyThrows
     public List<Flat> findByIds(String[] strings){
-        try {
-            return new findByIdsAsyncTask(mFlatDao).execute(strings).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return new findByIdsAsyncTask(mFlatDao).execute(strings).get();
     }
     
+    @SneakyThrows
     public Flat findById(String ArticleId){
-        try {
-            return new findByIdAsyncTask(mFlatDao).execute(ArticleId).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return new findByIdAsyncTask(mFlatDao).execute(ArticleId).get();
     }
 
+    @SneakyThrows
     public List<Flat> getAll(){
-        try {
-            return new getAllAsyncTask(mFlatDao).execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return new getAllAsyncTask(mFlatDao).execute().get();
     }
 
+    @SneakyThrows
     public Cursor getFlats(){
-        try {
-            return new getFlatsAsyncTask(mFlatDao).execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return new getFlatsAsyncTask(mFlatDao).execute().get();
     }
 
     public void delete(Flat flat){
@@ -89,30 +58,18 @@ public class FlatRepository {
         new deleteAllAsyncTask(mFlatDao).execute();
     }
 
+    @SneakyThrows
     public Object getMin(String param){
-        try {
-            return new getMinAsyncTask(mFlatDao).execute(param).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return new getMinAsyncTask(mFlatDao).execute(param).get();
     }
 
+    @SneakyThrows
     public Object getMax(String param){
-        try {
-            return new getMaxAsyncTask(mFlatDao).execute(param).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return new getMaxAsyncTask(mFlatDao).execute(param).get();
     }
 
-    //************--------============ PUBLIC CLASSES ==========-------------------*****************//
-    public class getFlatsByQueryAsyncTask extends AsyncTask<String,Void, Cursor>{
+    //************--------============ PRIVATE CLASSES ==========-------------------*****************//
+    private class getFlatsByQueryAsyncTask extends AsyncTask<String,Void, Cursor>{
         private FlatDao mAsyncFlatDao;
         public getFlatsByQueryAsyncTask(FlatDao mAsyncFlatDao) {
             this.mAsyncFlatDao = mAsyncFlatDao;
@@ -126,7 +83,7 @@ public class FlatRepository {
     }
 
 
-    public class getMinAsyncTask extends AsyncTask<String,Void,Object>{
+    private class getMinAsyncTask extends AsyncTask<String,Void,Object>{
         private FlatDao mAsyncFlatDao;
 
         public getMinAsyncTask(FlatDao mAsyncFlatDao) {
@@ -150,7 +107,7 @@ public class FlatRepository {
         }
     }
 
-    public class getMaxAsyncTask extends AsyncTask<String,Void,Object>{
+    private class getMaxAsyncTask extends AsyncTask<String,Void,Object>{
         private FlatDao mAsyncFlatDao;
 
         public getMaxAsyncTask(FlatDao mAsyncFlatDao) {
@@ -174,7 +131,7 @@ public class FlatRepository {
         }
     }
 
-    public class getFlatsAsyncTask extends AsyncTask<Void,Void,Cursor>{
+    private class getFlatsAsyncTask extends AsyncTask<Void,Void,Cursor>{
         private FlatDao mAsyncFlatDao;
 
         public getFlatsAsyncTask(FlatDao mAsyncFlatDao) {
@@ -187,7 +144,7 @@ public class FlatRepository {
         }
     }
 
-    public class insertAsyncTask extends AsyncTask<Flat, Void, Void>{
+    private class insertAsyncTask extends AsyncTask<Flat, Void, Void>{
         private FlatDao mAsyncFlatDao;
 
         public insertAsyncTask(FlatDao mAsyncFlatDao) {
@@ -201,7 +158,7 @@ public class FlatRepository {
         }
     }
 
-    public class updateAsyncTask extends AsyncTask<Flat, Void, Void>{
+    private class updateAsyncTask extends AsyncTask<Flat, Void, Void>{
         private FlatDao mAsyncFlatDao;
 
         public updateAsyncTask(FlatDao mAsyncFlatDao) {
@@ -210,7 +167,7 @@ public class FlatRepository {
 
         @Override
         protected Void doInBackground(final Flat... param) {
-            Flat flat =param[0];
+            Flat flat = param[0];
             mAsyncFlatDao.update(
                     flat.getArticleId(),
                     flat.getArticleSubType(),

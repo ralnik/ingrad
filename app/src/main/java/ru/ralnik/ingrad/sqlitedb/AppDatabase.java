@@ -1,11 +1,12 @@
 package ru.ralnik.ingrad.sqlitedb;
 
-import android.arch.persistence.db.SupportSQLiteDatabase;
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.Room;
-import android.arch.persistence.room.RoomDatabase;
+import androidx.room.Database;
+import androidx.room.migration.Migration;
+import androidx.sqlite.db.SupportSQLiteDatabase;
+import androidx.room.RoomDatabase;
+import androidx.room.Room;
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import ru.ralnik.ingrad.model.Flat;
 
@@ -25,6 +26,7 @@ public abstract class AppDatabase extends RoomDatabase {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             AppDatabase.class, "ingrad.db")
                             //.allowMainThreadQueries()
+                            //.addMigrations(MIGRATION_1_2)
                             .addCallback(sRoomDatabaseCallback)
                             .build();
                 }
@@ -45,8 +47,13 @@ public abstract class AppDatabase extends RoomDatabase {
             // If you want to keep the data through app restarts,
             // comment out the following line.
             //new PopulateDbAsync(INSTANCE).execute();
-
         }
-
     };
+
+//    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+//        @Override
+//        public void migrate(SupportSQLiteDatabase database) {
+//            // Since we didn't alter the table, there's nothing else to do here.
+//        }
+//    };
 }

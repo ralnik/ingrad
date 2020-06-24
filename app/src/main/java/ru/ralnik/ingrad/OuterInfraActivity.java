@@ -2,9 +2,10 @@ package ru.ralnik.ingrad;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AlertDialog;
 
 import ru.ralnik.ingrad.config.myConfig;
 import ru.ralnik.ingrad.httpPlayer.HttpPlayerFactory;

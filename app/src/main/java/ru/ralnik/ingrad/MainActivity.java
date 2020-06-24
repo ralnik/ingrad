@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -32,6 +32,8 @@ import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import ru.ralnik.ingrad.config.myConfig;
 import ru.ralnik.ingrad.customListView.listviewItemSelected;
 import ru.ralnik.ingrad.customListView.myAdapter;
@@ -43,62 +45,67 @@ import ru.ralnik.ingrad.xml.Parser;
 
 public class MainActivity extends AppCompatActivity {
 //---------MAIN LAYOUT----------
-    LinearLayout leftPanel;
-    ScrollView scrollViewRight;
-    LinearLayout resultPanel;
-    LinearLayout settingsPanel;
+    @BindView(R.id.leftPanel)LinearLayout leftPanel;
+    @BindView(R.id.scrollViewRight)ScrollView scrollViewRight;
+    @BindView(R.id.resultPanel)LinearLayout resultPanel;
+    @BindView(R.id.settingsPanel)LinearLayout settingsPanel;
 
 //---------Components------------
   //------leftPanel----------------
-    private ImageView btnFull;
-    private ImageView btnLocation;
-    private ImageView btnAbout;
-    private ImageView btnTransport;
-    private ImageView btnArea;
-    private ImageView btnNaturales;
-    private ImageView btnInfra;
-    private ImageView btnOutsideInfra;
-    private ImageView btnTorpedo;
-    private ImageView btnSurround;
-    private ImageView btnAdvantageProject;
-    private ImageView btnGallary;
-    private ImageView btnProcessBuildings;
+    @BindView(R.id.btnFull) ImageView btnFull;
+    @BindView(R.id.btnLocation) ImageView btnLocation;
+    @BindView(R.id.btnAbout) ImageView btnAbout;
+    @BindView(R.id.btnTransport) ImageView btnTransport;
+    @BindView(R.id.btnArea) ImageView btnArea;
+    @BindView(R.id.btnNaturals) ImageView btnNaturales;
+    @BindView(R.id.btnInfra) ImageView btnInfra;
+    @BindView(R.id.btnOutsideInfra) ImageView btnOutsideInfra;
+    @BindView(R.id.btnTorpedo) ImageView btnTorpedo;
+    @BindView(R.id.btnSurround) ImageView btnSurround;
+    @BindView(R.id.btnAdvantageProject) ImageView btnAdvantageProject;
+    @BindView(R.id.btnGallary) ImageView btnGallary;
+    @BindView(R.id.btnProcessBuildings) ImageView btnProcessBuildings;
+    @BindView(R.id.btn3d) ImageView btn3d;
+    @BindView(R.id.btnCamera) ImageView btnCamera;
   //---------Control panel-------------
-    private ImageView btnPlayPause;
-    private ImageView btnOptions;
-    private ImageView btnVolume;
+    @BindView(R.id.btnPlayPause)ImageView btnPlayPause;
+    @BindView(R.id.btnOptions)ImageView btnOptions;
+    @BindView(R.id.btnVolume)ImageView btnVolume;
+    @BindView(R.id.btnRiverSky)ImageView btnRiverSky;
+    @BindView(R.id.btnFoRiver)ImageView btnFoRiver;
+    @BindView(R.id.btnRTypePlan)ImageView btnTypePlan;
 
   //---------count room buttons-------
-    private ImageView btnRoom1;
-    private ImageView btnRoom2;
-    private ImageView btnRoom3;
-    private ImageView btnRoom4;
-    private ImageView btnRoom5;
-    private ImageView btnRoomEvro;
+    @BindView(R.id.btnRoom1)ImageView btnRoom1;
+    @BindView(R.id.btnRoom2)ImageView btnRoom2;
+    @BindView(R.id.btnRoom3)ImageView btnRoom3;
+    @BindView(R.id.btnRoom4)ImageView btnRoom4;
+    @BindView(R.id.btnRoom5)ImageView btnRoom5;
+    @BindView(R.id.btnRoomEvro)ImageView btnRoomEvro;
 
   //----------remont buttons------
-    private ImageView btnWithoutRemont;
-    private ImageView btnWithRemont;
-    private ImageView btnWhiteBox;
+    @BindView(R.id.btnWithoutRemont)ImageView btnWithoutRemont;
+    @BindView(R.id.btnWithRemont)ImageView btnWithRemont;
+    @BindView(R.id.btnWhiteBox)ImageView btnWhiteBox;
 
   //---------Additional Attributes-----
-    private ImageView btnTownHouse;
-    private ImageView btnPentHouse;
-    private ImageView btnDoubleFloorHouse;
-    private ImageView btnTwoEnterHouse;
-    private ImageView btnTerrasa;
-    private ImageView btnWithFirePlace;
-    private ImageView btnBathRoomWithWindow;
-    private ImageView btnBalcon;
+    @BindView(R.id.btnTownHouse)ImageView btnTownHouse;
+    @BindView(R.id.btnPentHouse)ImageView btnPentHouse;
+    @BindView(R.id.btnDoubleFloorHouse)ImageView btnDoubleFloorHouse;
+    @BindView(R.id.btnTwoEnterHouse)ImageView btnTwoEnterHouse;
+    @BindView(R.id.btnTerrasa)ImageView btnTerrasa;
+    @BindView(R.id.btnWithFirePlace)ImageView btnWithFirePlace;
+    @BindView(R.id.btnBathRoomWithWindow)ImageView btnBathRoomWithWindow;
+    @BindView(R.id.btnBalcon)ImageView btnBalcon;
 
   // ---------- buttons period----------
-    private ImageView check_period_4_2021;
-    private ImageView check_period_3_2022;
-    private ImageView check_period_4_2022;
+    @BindView(R.id.btnSrok_4_2021)ImageView check_period_4_2021;
+    @BindView(R.id.btnSrok_3_2022)ImageView check_period_3_2022;
+    @BindView(R.id.btnSrok_4_2022)ImageView check_period_4_2022;
 
   //---------Buttons filter---------
-    private ImageView btnClear;
-    private ImageView btnSearch;
+    @BindView(R.id.btnClear)ImageView btnClear;
+    @BindView(R.id.btnSearch)ImageView btnSearch;
 
  //--------Controll Settings--------
     private View viewSettingPanel;
@@ -110,63 +117,65 @@ public class MainActivity extends AppCompatActivity {
     private ImageView btnSave;
 
  //------- SEEKBAR-------------
-    private CrystalRangeSeekbar seekbarFloor;
-    private CrystalRangeSeekbar seekbarCost;
-    private CrystalRangeSeekbar seekbarSquare;
+    @BindView(R.id.seekBarFloor)CrystalRangeSeekbar seekbarFloor;
+    @BindView(R.id.seekBarCost)CrystalRangeSeekbar seekbarCost;
+    @BindView(R.id.seekBarSquare)CrystalRangeSeekbar seekbarSquare;
 
-    private EditText minFloorEdit;
-    private EditText maxFloorEdit;
+    @BindView(R.id.minFloorEdit)EditText minFloorEdit;
+    @BindView(R.id.maxFloorEdit)EditText maxFloorEdit;
 
-    private EditText minCostEdit;
-    private EditText maxCostEdit;
+    @BindView(R.id.minCostEdit)EditText minCostEdit;
+    @BindView(R.id.maxCostEdit)EditText maxCostEdit;
 
-    private EditText minSquareEdit;
-    private EditText maxSquareEdit;
+    @BindView(R.id.minSquareEdit)EditText minSquareEdit;
+    @BindView(R.id.maxSquareEdit)EditText maxSquareEdit;
 
  //---------RESULT-----------
-    private ListView listview;
-    private TextView textNoRow;
- //---------Column name of listview
+    @BindView(R.id.listview)ListView listview;
+    @BindView(R.id.textNoRow)TextView textNoRow;
 
-    private TextView colKorpus;
-    private TextView colFlat;
-    private TextView colFloor;
-    private TextView colRooms;
-    private TextView colSquare;
-    private TextView colCost;
-    private TextView colOther;
+ //---------Column name of listview
+    @BindView(R.id.colKorpus)TextView colKorpus;
+    @BindView(R.id.colFlat)TextView colFlat;
+    @BindView(R.id.colFloor)TextView colFloor;
+    @BindView(R.id.colRooms)TextView colRooms;
+    @BindView(R.id.colSquare)TextView colSquare;
+    @BindView(R.id.colCost)TextView colCost;
+    @BindView(R.id.colOther)TextView colOther;
 
   // -------BUILDs-------------
 
-    private ImageView build_3_1;
-    private ImageView build_3_2;
-    private ImageView build_4;
-    private ImageView build_5;
-    private ImageView build_6;
-    private ImageView build_7;
-    private ImageView build_8;
-    private ImageView build_9;
-    private ImageView build_10;
-    private ImageView build_11;
-    private ImageView build_12;
-    private ImageView build_13;
-    private ImageView build_14;
-    private ImageView build_15;
-    private ImageView build_16;
-    private ImageView build_17;
-    private ImageView build_18;
-    private ImageView build_19;
-    private ImageView build_20;
-    private ImageView build_21_1;
-    private ImageView build_21_2;
-    private ImageView build_21_3;
-    private ImageView build_23;
+    @BindView(R.id.build_3_1)ImageView build_3_1;
+    @BindView(R.id.build_3_2)ImageView build_3_2;
+    @BindView(R.id.build_4)ImageView build_4;
+    @BindView(R.id.build_5)ImageView build_5;
+    @BindView(R.id.build_6)ImageView build_6;
+    @BindView(R.id.build_7)ImageView build_7;
+    @BindView(R.id.build_8)ImageView build_8;
+    @BindView(R.id.build_9)ImageView build_9;
+    @BindView(R.id.build_10)ImageView build_10;
+    @BindView(R.id.build_11)ImageView build_11;
+    @BindView(R.id.build_12)ImageView build_12;
+    @BindView(R.id.build_13)ImageView build_13;
+    @BindView(R.id.build_14)ImageView build_14;
+    @BindView(R.id.build_15)ImageView build_15;
+    @BindView(R.id.build_16)ImageView build_16;
+    @BindView(R.id.build_17)ImageView build_17;
+    @BindView(R.id.build_18)ImageView build_18;
+    @BindView(R.id.build_19)ImageView build_19;
+    @BindView(R.id.build_20)ImageView build_20;
+    @BindView(R.id.build_21_1)ImageView build_21_1;
+    @BindView(R.id.build_21_2)ImageView build_21_2;
+    @BindView(R.id.build_21_3)ImageView build_21_3;
+    @BindView(R.id.build_23)ImageView build_23;
 
-    private TextView hint;
+    @BindView(R.id.hint)TextView hint;
+    @BindView(R.id.genPlanLayout) FrameLayout genPlanRiverSky;
+    @BindView(R.id.genPlanLayout2) FrameLayout genPlanFoRiver;
 
     //------title cost and budget
-    private ImageView titleCost;
-    private ImageView titleBudget;
+    @BindView(R.id.titleCost)ImageView titleCost;
+    @BindView(R.id.titleBudget)ImageView titleBudget;
 
     //My variables
     AlertDialog alertDialog;
@@ -175,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
     private String query;
     //private VVVVPlayer vvvv;
     private PlayerCommands vvvv;
-    private WebView webView;
+    @BindView(R.id.webView)WebView webView;
     private myTimer timer;
 
     ArrayList<Integer> ListClearFilter = new ArrayList<>();
@@ -188,20 +197,15 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                              WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-
+        ButterKnife.bind(this);
         //initialize config
         cfg = new myConfig(this);
 
         //vvvv = new VVVVPlayer(cfg.getHost());
-        webView = (WebView) findViewById(R.id.webView);
         GlobalVars.webView = webView;
         vvvv = HttpPlayerFactory.getInstance(this).getCommand();
         vvvv.setVolume(cfg.getVolumeProgress());
         vvvv.setVolEffect(cfg.getEffectProgress());
-         //load data from web xml links
-         //loadDataFromXML();
-
-
 
         //initialization all component
         init();
@@ -213,94 +217,17 @@ public class MainActivity extends AppCompatActivity {
             scrollViewRight.setVisibility(View.VISIBLE);
             resultPanel.setVisibility(View.GONE);
         }
-
-        //AppDatabase db = AppDatabase.getInstance(this);
-        /*
-        new Thread(new Runnable() {
-            public void run() {
-                Log.d(TAG, "mas_size" + new FlatRepository(getApplicationContext()).findByIds(new String[]{"9f8f62ae-63a0-e811-80f9-005056ba18b6"}).size());
-            }
-        }).start();
-        */
-
-
-
-       //scrollViewRight.setVisibility(View.GONE);
-        //resultPanel.setVisibility(View.VISIBLE);
-        //settingsPanel.setVisibility(View.GONE);
-    }
-
-    private void loadDataFromXML() {
-            Parser parser1 = new Parser(this);
-            parser1.setUrl("http://crm.dmfs.ru:8080/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=D9AF2F75-A99F-E811-80F9-005056BA18B6&export=false");
-            parser1.execute();
-
-            Parser parser2 = new Parser(this);
-            parser2.setUrl("http://crm.dmfs.ru:8080/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=517BA460-B39F-E811-80F9-005056BA18B6&export=false");
-            parser2.execute();
-
-            Parser parser3 = new Parser(this);
-            parser3.setUrl("http://crm.dmfs.ru:8080/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=C545D97A-B39F-E811-80F9-005056BA18B6&export=false");
-            parser3.execute();
-
-            Parser parser4= new Parser(this);
-            parser4.setUrl("http://crm.dmfs.ru:8080/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=E8671A06-B49F-E811-80F9-005056BA18B6&export=false");
-            parser4.execute();
-
-            Parser parser5 = new Parser(this);
-            parser5.setUrl("http://crm.dmfs.ru:8080/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=6F035221-B49F-E811-80F9-005056BA18B6&export=false");
-            parser5.execute();
-
-            Parser parser6 = new Parser(this);
-            parser6.setUrl("http://crm.dmfs.ru:8080/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=739AB24A-B49F-E811-80F9-005056BA18B6&export=false");
-            parser6.execute();
-
-            Parser parser7 = new Parser(this);
-            parser7.setUrl("http://crm.dmfs.ru:8080/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=B22CD269-B49F-E811-80F9-005056BA18B6&export=false");
-            parser7.execute();
-
-            Parser parser8 = new Parser(this);
-            parser8.setUrl("http://crm.dmfs.ru:8080/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=70FCF484-B49F-E811-80F9-005056BA18B6&export=false");
-            parser8.execute();
-
     }
 
     private void init(){
-        leftPanel = (LinearLayout) findViewById(R.id.leftPanel);
-        scrollViewRight = (ScrollView) findViewById(R.id.scrollViewRight);
-        resultPanel = (LinearLayout) findViewById(R.id.resultPanel);
-        settingsPanel = (LinearLayout) findViewById(R.id.settingsPanel);
         leftPanel.setVisibility(View.INVISIBLE);
         scrollViewRight.setVisibility(View.INVISIBLE);
         resultPanel.setVisibility(View.GONE);
         settingsPanel.setVisibility(View.GONE);
 
-        btnFull = (ImageView) findViewById(R.id.btnFull);
-        btnLocation = (ImageView) findViewById(R.id.btnLocation);
-        btnAbout = (ImageView) findViewById(R.id.btnAbout);
-        btnTransport = (ImageView) findViewById(R.id.btnTransport);
-        btnArea = (ImageView) findViewById(R.id.btnArea);
-        btnNaturales = (ImageView) findViewById(R.id.btnNaturals);
-        btnInfra = (ImageView) findViewById(R.id.btnInfra);
-        btnOutsideInfra = (ImageView) findViewById(R.id.btnOutsideInfra);
-        btnTorpedo = (ImageView) findViewById(R.id.btnTorpedo);
-        btnSurround = (ImageView) findViewById(R.id.btnSurround);
-        btnAdvantageProject = (ImageView) findViewById(R.id.btnAdvantageProject);
-        btnGallary = (ImageView) findViewById(R.id.btnGallary);
-        btnProcessBuildings = (ImageView) findViewById(R.id.btnProcessBuildings);
-
-        btnPlayPause = (ImageView) findViewById(R.id.btnPlayPause);
-        btnVolume = (ImageView) findViewById(R.id.btnVolume);
-        btnOptions = (ImageView) findViewById(R.id.btnOptions);
         btnPlayPause.setTag(0);
         btnVolume.setTag(0);
 
-        btnRoom1 = (ImageView) findViewById(R.id.btnRoom1);
-        btnRoom2 = (ImageView) findViewById(R.id.btnRoom2);
-        btnRoom3 = (ImageView) findViewById(R.id.btnRoom3);
-        btnRoom4 = (ImageView) findViewById(R.id.btnRoom4);
-        btnRoom5 = (ImageView) findViewById(R.id.btnRoom5);
-        btnRoomEvro = (ImageView) findViewById(R.id.btnRoomEvro);
         btnRoom1.setTag(0);
         btnRoom2.setTag(0);
         btnRoom3.setTag(0);
@@ -308,28 +235,14 @@ public class MainActivity extends AppCompatActivity {
         btnRoom5.setTag(0);
         btnRoomEvro.setTag(0);
 
-        btnWithoutRemont = (ImageView) findViewById(R.id.btnWithoutRemont);
-        btnWithRemont = (ImageView) findViewById(R.id.btnWithRemont);
-        btnWhiteBox = (ImageView) findViewById(R.id.btnWhiteBox);
         btnWhiteBox.setTag(0);
         btnWithoutRemont.setTag(0);
         btnWithRemont.setTag(0);
 
-        check_period_4_2021 = (ImageView) findViewById(R.id.btnSrok_4_2021);
-        check_period_3_2022 = (ImageView) findViewById(R.id.btnSrok_3_2022);
-        check_period_4_2022 = (ImageView) findViewById(R.id.btnSrok_4_2022);
         check_period_4_2021.setTag(0);
         check_period_3_2022.setTag(0);
         check_period_4_2022.setTag(0);
 
-        btnTownHouse = (ImageView) findViewById(R.id.btnTownHouse);
-        btnPentHouse = (ImageView) findViewById(R.id.btnPentHouse);
-        btnDoubleFloorHouse = (ImageView) findViewById(R.id.btnDoubleFloorHouse);
-        btnTwoEnterHouse = (ImageView) findViewById(R.id.btnTwoEnterHouse);
-        btnTerrasa = (ImageView) findViewById(R.id.btnTerrasa);
-        btnWithFirePlace = (ImageView) findViewById(R.id.btnWithFirePlace);
-        btnBathRoomWithWindow = (ImageView) findViewById(R.id.btnBathRoomWithWindow);
-        btnBalcon = (ImageView) findViewById(R.id.btnBalcon);
         btnTownHouse.setTag(0);
         btnPentHouse.setTag(0);
         btnDoubleFloorHouse.setTag(0);
@@ -339,64 +252,15 @@ public class MainActivity extends AppCompatActivity {
         btnBathRoomWithWindow.setTag(0);
         btnBalcon.setTag(0);
 
-        btnClear = (ImageView) findViewById(R.id.btnClear);
-        btnSearch = (ImageView) findViewById(R.id.btnSearch);
-
-        titleCost = (ImageView) findViewById(R.id.titleCost);
-        titleBudget = (ImageView) findViewById(R.id.titleBudget);
         titleCost.setTag(1);
         titleBudget.setTag(0);
         titleBudget.setImageResource(R.drawable.title_budget);
         titleCost .setImageResource(R.drawable.title_cost_down);
 
-        seekbarFloor  = (CrystalRangeSeekbar) findViewById(R.id.seekBarFloor);
-        seekbarCost   = (CrystalRangeSeekbar) findViewById(R.id.seekBarCost);
-        seekbarSquare = (CrystalRangeSeekbar) findViewById(R.id.seekBarSquare);
-        minFloorEdit = (EditText) findViewById(R.id.minFloorEdit);
-        maxFloorEdit = (EditText) findViewById(R.id.maxFloorEdit);;
-        minCostEdit = (EditText) findViewById(R.id.minCostEdit);
-        maxCostEdit = (EditText) findViewById(R.id.maxCostEdit);
-        minSquareEdit = (EditText) findViewById(R.id.minSquareEdit);
-        maxSquareEdit = (EditText) findViewById(R.id.maxSquareEdit);
         SeekbarSquareOnChange();
         SeekbarFloorOnChange();
         SeekbarCostOnChange();
         setValuesToSeekBar();
-
-        listview = (ListView) findViewById(R.id.listview);
-        textNoRow = (TextView) findViewById(R.id.textNoRow);
-
-        colKorpus = (TextView) findViewById(R.id.colKorpus);
-        colFlat  = (TextView) findViewById(R.id.colFlat);
-        colFloor = (TextView) findViewById(R.id.colFloor);
-        colRooms = (TextView) findViewById(R.id.colRooms);
-        colSquare = (TextView) findViewById(R.id.colSquare);
-        colCost = (TextView) findViewById(R.id.colCost);
-        colOther = (TextView) findViewById(R.id.colOther);
-
-        build_3_1 = (ImageView) findViewById(R.id.build_3_1);
-        build_3_2 = (ImageView) findViewById(R.id.build_3_2);
-        build_4   = (ImageView) findViewById(R.id.build_4);
-        build_5   = (ImageView) findViewById(R.id.build_5);
-        build_6   = (ImageView) findViewById(R.id.build_6);
-        build_7   = (ImageView) findViewById(R.id.build_7);
-        build_8   = (ImageView) findViewById(R.id.build_8);
-        build_9   = (ImageView) findViewById(R.id.build_9);
-        build_10  = (ImageView) findViewById(R.id.build_10);
-        build_11  = (ImageView) findViewById(R.id.build_11);
-        build_12  = (ImageView) findViewById(R.id.build_12);
-        build_13  = (ImageView) findViewById(R.id.build_13);
-        build_14  = (ImageView) findViewById(R.id.build_14);
-        build_15  = (ImageView) findViewById(R.id.build_15);
-        build_16  = (ImageView) findViewById(R.id.build_16);
-        build_17  = (ImageView) findViewById(R.id.build_17);
-        build_18  = (ImageView) findViewById(R.id.build_18);
-        build_19  = (ImageView) findViewById(R.id.build_19);
-        build_20  = (ImageView) findViewById(R.id.build_20);
-        build_21_1 = (ImageView) findViewById(R.id.build_21_1);
-        build_21_2 = (ImageView) findViewById(R.id.build_21_2);
-        build_21_3 = (ImageView) findViewById(R.id.build_21_3);
-        build_23  = (ImageView) findViewById(R.id.build_23);
 
         build_3_1.setImageResource(R.drawable.empty);
         build_3_2.setImageResource(R.drawable.empty);
@@ -446,7 +310,9 @@ public class MainActivity extends AppCompatActivity {
         build_21_3.setTag(0);
         build_23.setTag(0);
 
-        hint = (TextView) findViewById(R.id.hint);
+        /**устанавка генплана по умолчанию*/
+        setGenPlan(1);
+
         hint.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/panroman.ttf"));
         hint.setText("корпус 3 / секция 1");
         hint.setVisibility(View.INVISIBLE);
@@ -746,6 +612,8 @@ public class MainActivity extends AppCompatActivity {
         btnAdvantageProject.setImageResource(R.drawable.button_advantage_project);
         btnGallary.setImageResource(R.drawable.button_gallary);
         btnProcessBuildings.setImageResource(R.drawable.button_process_buildings);
+        btn3d.setImageResource(R.drawable.button_3d);
+        btnCamera.setImageResource(R.drawable.button_camera);
         switch (view.getId()){
             case R.id.btnFull:
                 btnFull.setImageResource(R.drawable.button_full_down);
@@ -813,6 +681,12 @@ public class MainActivity extends AppCompatActivity {
                 vvvv.selectById(12);
                 play();
                 break;
+            case R.id.btn3d:
+                btn3d.setImageResource(R.drawable.button_3d_down);
+                break;
+            case R.id.btnCamera:
+                btnCamera.setImageResource(R.drawable.button_camera_down);
+                break;
         }
     }
 
@@ -850,8 +724,37 @@ public class MainActivity extends AppCompatActivity {
                 resultPanel.setVisibility(View.GONE);
                 settingsPanel.setVisibility(View.VISIBLE);
                 break;
+            case R.id.btnRiverSky:
+                setGenPlan(1);
+                break;
+            case R.id.btnFoRiver:
+                setGenPlan(2);
+                break;
+            case R.id.btnRTypePlan:
+                btnTypePlan.setImageResource(R.drawable.button_typeplan_down);
+                break;
         }
 
+    }
+
+    private void setGenPlan(int genPlan) {
+        if (genPlan > 2) {
+            genPlan = 1;
+        }
+        switch (genPlan) {
+            case 1:
+                btnRiverSky.setImageResource(R.drawable.button_riversky_down);
+                btnFoRiver.setImageResource(R.drawable.button_foriver);
+                genPlanRiverSky.setVisibility(View.VISIBLE);
+                genPlanFoRiver.setVisibility(View.GONE);
+                break;
+            case 2:
+                btnRiverSky.setImageResource(R.drawable.button_riversky);
+                btnFoRiver.setImageResource(R.drawable.button_foriver_down);
+                genPlanRiverSky.setVisibility(View.GONE);
+                genPlanFoRiver.setVisibility(View.VISIBLE);
+                break;
+        }
     }
 
     public void countRoomButtonOnClick(View view){
@@ -1700,14 +1603,12 @@ public class MainActivity extends AppCompatActivity {
         timer = new myTimer(this, minute * 60000, 1000);
         //номер трека в плейлисте на время простоя
         timer.setTimerTrack(20);
-        if(cfg.getDisableTimer() == false){
+        if (cfg.getDisableTimer() == false) {
             timer.start();
         }
     }
 
     private void ShowHint(View view, boolean activateHint, String text){
-        FrameLayout genPlan = (FrameLayout) findViewById(R.id.genPlanLayout);
-
         if (activateHint == true) {
             hint.setText(text);
 
@@ -1717,8 +1618,8 @@ public class MainActivity extends AppCompatActivity {
             hint.setVisibility(View.VISIBLE);
 
             hint.setTranslationY(view.getTranslationY() - 50);
-            if(view.getTranslationX()+hint.getWidth() > genPlan.getWidth()){
-                hint.setTranslationX(genPlan.getWidth() - hint.getWidth());
+            if(view.getTranslationX()+hint.getWidth() > genPlanRiverSky.getWidth()){
+                hint.setTranslationX(genPlanRiverSky.getWidth() - hint.getWidth());
             }else {
                 hint.setTranslationX(view.getTranslationX());
             }
