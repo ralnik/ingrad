@@ -34,6 +34,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ru.ralnik.ingrad.camera.CameraActivity;
 import ru.ralnik.ingrad.config.myConfig;
 import ru.ralnik.ingrad.customListView.listviewItemSelected;
 import ru.ralnik.ingrad.customListView.myAdapter;
@@ -41,7 +42,6 @@ import ru.ralnik.ingrad.httpPlayer.HttpPlayerFactory;
 import ru.ralnik.ingrad.httpPlayer.PlayerCommands;
 import ru.ralnik.ingrad.permissions.MyPermissions;
 import ru.ralnik.ingrad.sqlitedb.FlatRepository;
-import ru.ralnik.ingrad.xml.Parser;
 
 public class MainActivity extends AppCompatActivity {
 //---------MAIN LAYOUT----------
@@ -686,6 +686,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btnCamera:
                 btnCamera.setImageResource(R.drawable.button_camera_down);
+                new CameraActivity(this);
                 break;
         }
     }

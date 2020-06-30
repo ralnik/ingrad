@@ -14,7 +14,6 @@ import ru.ralnik.ingrad.httpPlayer.PlayerCommands;
 public class OuterInfraActivity {
     private final Activity activity;
     private View view;
-    private AlertDialog alertDialog;
     private ImageView btnChildGarden;
     private ImageView btnSchools;
     private ImageView btnMedicine;
@@ -143,7 +142,6 @@ public class OuterInfraActivity {
 
         @Override
         public void onClick(View view) {
-            //vvvv.selectBySubId(0);
             dialog.dismiss();
         }
     }
