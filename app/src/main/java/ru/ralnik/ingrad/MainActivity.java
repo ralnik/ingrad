@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btnAdvantageProject) ImageView btnAdvantageProject;
     @BindView(R.id.btnGallary) ImageView btnGallary;
     @BindView(R.id.btnProcessBuildings) ImageView btnProcessBuildings;
+    @BindView(R.id.btnAdvantageRiversky)ImageView btnAdvantageRiversky;
+    @BindView(R.id.btnAdvantageForiver)ImageView btnAdvantageForiver;
     @BindView(R.id.btn3d) ImageView btn3d;
     @BindView(R.id.btnCamera) ImageView btnCamera;
   //---------Control panel-------------
@@ -169,7 +171,21 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.build_21_3)ImageView build_21_3;
     @BindView(R.id.build_23)ImageView build_23;
 
+    /**Корпуса 2 очереди foriver*/
+    @BindView(R.id.buttonG2K1)ImageView buttonG2K1;
+    @BindView(R.id.buttonG2K2)ImageView buttonG2K2;
+    @BindView(R.id.buttonG2K3)ImageView buttonG2K3;
+    @BindView(R.id.buttonG2K4)ImageView buttonG2K4;
+    @BindView(R.id.buttonG2K5)ImageView buttonG2K5;
+    @BindView(R.id.buttonG2K6)ImageView buttonG2K6;
+    @BindView(R.id.buttonG2K7)ImageView buttonG2K7;
+    @BindView(R.id.buttonG2K8)ImageView buttonG2K8;
+    @BindView(R.id.buttonG2K9)ImageView buttonG2K9;
+    @BindView(R.id.buttonG2K10)ImageView buttonG2K10;
+    @BindView(R.id.buttonG2K11)ImageView buttonG2K11;
+
     @BindView(R.id.hint)TextView hint;
+    @BindView(R.id.hint2)TextView hint2;
     @BindView(R.id.genPlanLayout) FrameLayout genPlanRiverSky;
     @BindView(R.id.genPlanLayout2) FrameLayout genPlanFoRiver;
 
@@ -310,12 +326,28 @@ public class MainActivity extends AppCompatActivity {
         build_21_3.setTag(0);
         build_23.setTag(0);
 
+        buttonG2K1.setTag(0);
+        buttonG2K2.setTag(0);
+        buttonG2K3.setTag(0);
+        buttonG2K4.setTag(0);
+        buttonG2K5.setTag(0);
+        buttonG2K6.setTag(0);
+        buttonG2K7.setTag(0);
+        buttonG2K8.setTag(0);
+        buttonG2K9.setTag(0);
+        buttonG2K10.setTag(0);
+        buttonG2K11.setTag(0);
+
         /**устанавка генплана по умолчанию*/
         setGenPlan(1);
 
         hint.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/panroman.ttf"));
         hint.setText("корпус 3 / секция 1");
         hint.setVisibility(View.INVISIBLE);
+
+        hint2.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/panroman.ttf"));
+        hint2.setText("корпус 1");
+        hint2.setVisibility(View.INVISIBLE);
 
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.hint_alpha);
 
@@ -612,6 +644,8 @@ public class MainActivity extends AppCompatActivity {
         btnAdvantageProject.setImageResource(R.drawable.button_advantage_project);
         btnGallary.setImageResource(R.drawable.button_gallary);
         btnProcessBuildings.setImageResource(R.drawable.button_process_buildings);
+        btnAdvantageRiversky.setImageResource(R.drawable.button_advantage_riversky);
+        btnAdvantageForiver.setImageResource(R.drawable.button_advantage_foriver);
         btn3d.setImageResource(R.drawable.button_3d);
         btnCamera.setImageResource(R.drawable.button_camera);
         switch (view.getId()){
@@ -681,6 +715,16 @@ public class MainActivity extends AppCompatActivity {
                 vvvv.selectById(12);
                 play();
                 break;
+            case R.id.btnAdvantageRiversky:
+                btnAdvantageRiversky.setImageResource(R.drawable.button_advantage_riversky_down);
+                //vvvv.selectById(13);
+                //play();
+                break;
+            case R.id.btnAdvantageForiver:
+                btnAdvantageForiver.setImageResource(R.drawable.button_advantage_foriver_down);
+                //vvvv.selectById(14);
+                //play();
+                break;
             case R.id.btn3d:
                 btn3d.setImageResource(R.drawable.button_3d_down);
                 break;
@@ -742,6 +786,7 @@ public class MainActivity extends AppCompatActivity {
         if (genPlan > 2) {
             genPlan = 1;
         }
+        clearFilter();
         switch (genPlan) {
             case 1:
                 btnRiverSky.setImageResource(R.drawable.button_riversky_down);
@@ -1146,6 +1191,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void clearFilter() {
         hint.setVisibility(View.INVISIBLE);
+        hint2.setVisibility(View.INVISIBLE);
         btnClear.setImageResource(R.drawable.button_clear);
         //btnClear.setEnabled(flag);
         ListClearFilter.clear();
@@ -1252,23 +1298,76 @@ public class MainActivity extends AppCompatActivity {
         build_21_3.setImageResource(R.drawable.empty);
         build_23.setTag(0);
         build_23.setImageResource(R.drawable.empty);
+
+        buttonG2K1.setTag(0);
+        buttonG2K1.setImageResource(R.drawable.empty);
+        buttonG2K2.setTag(0);
+        buttonG2K2.setImageResource(R.drawable.empty);
+        buttonG2K3.setTag(0);
+        buttonG2K3.setImageResource(R.drawable.empty);
+        buttonG2K4.setTag(0);
+        buttonG2K4.setImageResource(R.drawable.empty);
+        buttonG2K5.setTag(0);
+        buttonG2K5.setImageResource(R.drawable.empty);
+        buttonG2K6.setTag(0);
+        buttonG2K6.setImageResource(R.drawable.empty);
+        buttonG2K7.setTag(0);
+        buttonG2K7.setImageResource(R.drawable.empty);
+        buttonG2K8.setTag(0);
+        buttonG2K8.setImageResource(R.drawable.empty);
+        buttonG2K9.setTag(0);
+        buttonG2K9.setImageResource(R.drawable.empty);
+        buttonG2K10.setTag(0);
+        buttonG2K10.setImageResource(R.drawable.empty);
+        buttonG2K11.setTag(0);
+        buttonG2K11.setImageResource(R.drawable.empty);
     }
 
+    public void genplan2KorpusesOnClick(View view) {
+        if ((Integer) view.getTag() == 0) {
+            view.setTag(1);
+            clearFilterActivate(true);
+            if (view.getId() == R.id.buttonG2K1) {buttonG2K1.setImageResource(R.drawable.genplan2_k1); ShowHint(view,true, getString(R.string.G2K1), hint2);}
+            if (view.getId() == R.id.buttonG2K2) {buttonG2K2.setImageResource(R.drawable.genplan2_k2); ShowHint(view,true, getString(R.string.G2K2), hint2);}
+            if (view.getId() == R.id.buttonG2K3) {buttonG2K3.setImageResource(R.drawable.genplan2_k3); ShowHint(view,true, getString(R.string.G2K3), hint2);}
+            if (view.getId() == R.id.buttonG2K4) {buttonG2K4.setImageResource(R.drawable.genplan2_k4); ShowHint(view,true, getString(R.string.G2K4), hint2);}
+            if (view.getId() == R.id.buttonG2K5) {buttonG2K5.setImageResource(R.drawable.genplan2_k5); ShowHint(view,true, getString(R.string.G2K5), hint2);}
+            if (view.getId() == R.id.buttonG2K6) {buttonG2K6.setImageResource(R.drawable.genplan2_k6); ShowHint(view,true, getString(R.string.G2K6), hint2);}
+            if (view.getId() == R.id.buttonG2K7) {buttonG2K7.setImageResource(R.drawable.genplan2_k7); ShowHint(view,true, getString(R.string.G2K7), hint2);}
+            if (view.getId() == R.id.buttonG2K8) {buttonG2K8.setImageResource(R.drawable.genplan2_k8); ShowHint(view,true, getString(R.string.G2K8), hint2);}
+            if (view.getId() == R.id.buttonG2K9) {buttonG2K9.setImageResource(R.drawable.genplan2_k9); ShowHint(view,true, getString(R.string.G2K9), hint2);}
+            if (view.getId() == R.id.buttonG2K10) {buttonG2K10.setImageResource(R.drawable.genplan2_k10); ShowHint(view,true, getString(R.string.G2K10), hint2);}
+            if (view.getId() == R.id.buttonG2K11) {buttonG2K11.setImageResource(R.drawable.genplan2_k11); ShowHint(view,true, getString(R.string.G2K11), hint2);}
+        } else {
+            view.setTag(0);
+            clearFilterActivate(false);
+            if (view.getId() == R.id.buttonG2K1) {buttonG2K1.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K1), hint2);}
+            if (view.getId() == R.id.buttonG2K2) {buttonG2K2.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K2), hint2);}
+            if (view.getId() == R.id.buttonG2K3) {buttonG2K3.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K3), hint2);}
+            if (view.getId() == R.id.buttonG2K4) {buttonG2K4.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K4), hint2);}
+            if (view.getId() == R.id.buttonG2K5) {buttonG2K5.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K5), hint2);}
+            if (view.getId() == R.id.buttonG2K6) {buttonG2K6.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K6), hint2);}
+            if (view.getId() == R.id.buttonG2K7) {buttonG2K7.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K7), hint2);}
+            if (view.getId() == R.id.buttonG2K8) {buttonG2K8.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K8), hint2);}
+            if (view.getId() == R.id.buttonG2K9) {buttonG2K9.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K9), hint2);}
+            if (view.getId() == R.id.buttonG2K10) {buttonG2K10.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K10), hint2);}
+            if (view.getId() == R.id.buttonG2K11) {buttonG2K11.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K11), hint2);}
+        }
+    }
 
     public void buildsOnClick(View v){
         switch (v.getId()){
             case R.id.build_3_1:
-
                 if((Integer) build_3_1.getTag() == 0){
                    build_3_1.setTag(1);
                    build_3_1.setImageResource(R.drawable.build_3_1);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build3_1));
+                    ShowHint(v,true, getString(R.string.build3_1), hint);
                 } else{
                     build_3_1.setTag(0);
                     build_3_1.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build3_1));
+                    ShowHint(v,false, getString(R.string.build3_1), hint);
                 }
             break;
             case R.id.build_3_2:
@@ -1276,12 +1375,12 @@ public class MainActivity extends AppCompatActivity {
                     build_3_2.setTag(1);
                     build_3_2.setImageResource(R.drawable.build_3_2);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build3_2));
+                    ShowHint(v,true, getString(R.string.build3_2), hint);
                 } else{
                     build_3_2.setTag(0);
                     build_3_2.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build3_2));
+                    ShowHint(v,false, getString(R.string.build3_2), hint);
                 }
                 break;
             case R.id.build_4:
@@ -1289,12 +1388,12 @@ public class MainActivity extends AppCompatActivity {
                     build_4.setTag(1);
                     build_4.setImageResource(R.drawable.build_4);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build4));
+                    ShowHint(v,true, getString(R.string.build4), hint);
                 } else{
                     build_4.setTag(0);
                     build_4.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build4));
+                    ShowHint(v,false, getString(R.string.build4), hint);
                 }
                 break;
             case R.id.build_5:
@@ -1302,12 +1401,12 @@ public class MainActivity extends AppCompatActivity {
                     build_5.setTag(1);
                     build_5.setImageResource(R.drawable.build_5);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build5));
+                    ShowHint(v,true, getString(R.string.build5), hint);
                 } else{
                     build_5.setTag(0);
                     build_5.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build5));
+                    ShowHint(v,false, getString(R.string.build5), hint);
                 }
                 break;
             case R.id.build_6:
@@ -1315,12 +1414,12 @@ public class MainActivity extends AppCompatActivity {
                     build_6.setTag(1);
                     build_6.setImageResource(R.drawable.build_6);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build6));
+                    ShowHint(v,true, getString(R.string.build6), hint);
                 } else{
                     build_6.setTag(0);
                     build_6.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build6));
+                    ShowHint(v,false, getString(R.string.build6), hint);
                 }
                 break;
             case R.id.build_7:
@@ -1339,12 +1438,12 @@ public class MainActivity extends AppCompatActivity {
                     build_8.setTag(1);
                     build_8.setImageResource(R.drawable.build_8);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build8));
+                    ShowHint(v,true, getString(R.string.build8), hint);
                 } else{
                     build_8.setTag(0);
                     build_8.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build8));
+                    ShowHint(v,false, getString(R.string.build8), hint);
                 }
                 break;
             case R.id.build_9:
@@ -1352,12 +1451,12 @@ public class MainActivity extends AppCompatActivity {
                     build_9.setTag(1);
                     build_9.setImageResource(R.drawable.build_9);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build9));
+                    ShowHint(v,true, getString(R.string.build9), hint);
                 } else{
                     build_9.setTag(0);
                     build_9.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build9));
+                    ShowHint(v,false, getString(R.string.build9), hint);
                 }
                 break;
             case R.id.build_10:
@@ -1365,12 +1464,12 @@ public class MainActivity extends AppCompatActivity {
                     build_10.setTag(1);
                     build_10.setImageResource(R.drawable.build_10);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build10));
+                    ShowHint(v,true, getString(R.string.build10), hint);
                 } else{
                     build_10.setTag(0);
                     build_10.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build10));
+                    ShowHint(v,false, getString(R.string.build10), hint);
                 }
                 break;
             case R.id.build_11:
@@ -1378,12 +1477,12 @@ public class MainActivity extends AppCompatActivity {
                     build_11.setTag(1);
                     build_11.setImageResource(R.drawable.build_11);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build11));
+                    ShowHint(v,true, getString(R.string.build11), hint);
                 } else{
                     build_11.setTag(0);
                     build_11.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build11));
+                    ShowHint(v,false, getString(R.string.build11), hint);
                 }
                 break;
             case R.id.build_12:
@@ -1391,12 +1490,12 @@ public class MainActivity extends AppCompatActivity {
                     build_12.setTag(1);
                     build_12.setImageResource(R.drawable.build_12);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build12));
+                    ShowHint(v,true, getString(R.string.build12), hint);
                 } else{
                     build_12.setTag(0);
                     build_12.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build12));
+                    ShowHint(v,false, getString(R.string.build12), hint);
                 }
                 break;
             case R.id.build_13:
@@ -1416,12 +1515,12 @@ public class MainActivity extends AppCompatActivity {
                     build_14.setTag(1);
                     build_14.setImageResource(R.drawable.build_14);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build14));
+                    ShowHint(v,true, getString(R.string.build14), hint);
                 } else{
                     build_14.setTag(0);
                     build_14.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build14));
+                    ShowHint(v,false, getString(R.string.build14), hint);
                 }
                 break;
             case R.id.build_15:
@@ -1429,12 +1528,12 @@ public class MainActivity extends AppCompatActivity {
                     build_15.setTag(1);
                     build_15.setImageResource(R.drawable.build_15);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build15));
+                    ShowHint(v,true, getString(R.string.build15), hint);
                 } else{
                     build_15.setTag(0);
                     build_15.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build15));
+                    ShowHint(v,false, getString(R.string.build15), hint);
                 }
                 break;
             case R.id.build_16:
@@ -1442,12 +1541,12 @@ public class MainActivity extends AppCompatActivity {
                     build_16.setTag(1);
                     build_16.setImageResource(R.drawable.build_16);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build16));
+                    ShowHint(v,true, getString(R.string.build16), hint);
                 } else{
                     build_16.setTag(0);
                     build_16.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build16));
+                    ShowHint(v,false, getString(R.string.build16), hint);
                 }
                 break;
             case R.id.build_17:
@@ -1455,12 +1554,12 @@ public class MainActivity extends AppCompatActivity {
                     build_17.setTag(1);
                     build_17.setImageResource(R.drawable.build_17);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build17));
+                    ShowHint(v,true, getString(R.string.build17), hint);
                 } else{
                     build_17.setTag(0);
                     build_17.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build17));
+                    ShowHint(v,false, getString(R.string.build17), hint);
                 }
                 break;
             case R.id.build_18:
@@ -1468,12 +1567,12 @@ public class MainActivity extends AppCompatActivity {
                     build_18.setTag(1);
                     build_18.setImageResource(R.drawable.build_18);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build18));
+                    ShowHint(v,true, getString(R.string.build18), hint);
                 } else{
                     build_18.setTag(0);
                     build_18.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build18));
+                    ShowHint(v,false, getString(R.string.build18), hint);
                 }
                 break;
             case R.id.build_19:
@@ -1493,12 +1592,12 @@ public class MainActivity extends AppCompatActivity {
                     build_20.setTag(1);
                     build_20.setImageResource(R.drawable.build_20);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build20));
+                    ShowHint(v,true, getString(R.string.build20), hint);
                 } else{
                     build_20.setTag(0);
                     build_20.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build20));
+                    ShowHint(v,false, getString(R.string.build20), hint);
                 }
                 break;
             case R.id.build_21_1:
@@ -1506,12 +1605,12 @@ public class MainActivity extends AppCompatActivity {
                     build_21_1.setTag(1);
                     build_21_1.setImageResource(R.drawable.build_21_1);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build21_1));
+                    ShowHint(v,true, getString(R.string.build21_1), hint);
                 } else{
                     build_21_1.setTag(0);
                     build_21_1.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build21_1));
+                    ShowHint(v,false, getString(R.string.build21_1), hint);
                 }
                 break;
             case R.id.build_21_2:
@@ -1519,12 +1618,12 @@ public class MainActivity extends AppCompatActivity {
                     build_21_2.setTag(1);
                     build_21_2.setImageResource(R.drawable.build_21_2);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build21_2));
+                    ShowHint(v,true, getString(R.string.build21_2), hint);
                 } else{
                     build_21_2.setTag(0);
                     build_21_2.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build21_2));
+                    ShowHint(v,false, getString(R.string.build21_2), hint);
                 }
                 break;
             case R.id.build_21_3:
@@ -1532,12 +1631,12 @@ public class MainActivity extends AppCompatActivity {
                     build_21_3.setTag(1);
                     build_21_3.setImageResource(R.drawable.build_21_3);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build21_3));
+                    ShowHint(v,true, getString(R.string.build21_3), hint);
                 } else{
                     build_21_3.setTag(0);
                     build_21_3.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build21_3));
+                    ShowHint(v,false, getString(R.string.build21_3), hint);
                 }
                 break;
             case R.id.build_23:
@@ -1545,12 +1644,12 @@ public class MainActivity extends AppCompatActivity {
                     build_23.setTag(1);
                     build_23.setImageResource(R.drawable.build_23);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build23));
+                    ShowHint(v,true, getString(R.string.build23), hint);
                 } else{
                     build_23.setTag(0);
                     build_23.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build23));
+                    ShowHint(v,false, getString(R.string.build23), hint);
                 }
                 break;
         }
@@ -1609,30 +1708,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void ShowHint(View view, boolean activateHint, String text){
+    private void ShowHint(View view, boolean activateHint, String text, TextView vHint){
         if (activateHint == true) {
-            hint.setText(text);
+            TextView vvHint = new TextView(getApplicationContext());
+            vvHint = vHint;
+            vvHint.setVisibility(View.VISIBLE);
 
-                animation.cancel();
-                hint.setVisibility(View.INVISIBLE);
+            vvHint.setText(text);
 
-            hint.setVisibility(View.VISIBLE);
+            //animation.cancel();
+//            vHint.setVisibility(View.INVISIBLE);
+//
+//            vHint.setVisibility(View.VISIBLE);
 
-            hint.setTranslationY(view.getTranslationY() - 50);
-            if(view.getTranslationX()+hint.getWidth() > genPlanRiverSky.getWidth()){
-                hint.setTranslationX(genPlanRiverSky.getWidth() - hint.getWidth());
+            vHint.setTranslationY(view.getTranslationY() - 50);
+            if(view.getTranslationX()+vvHint.getWidth() > genPlanRiverSky.getWidth()){
+                vvHint.setTranslationX(genPlanRiverSky.getWidth() - vvHint.getWidth());
             }else {
-                hint.setTranslationX(view.getTranslationX());
+                vvHint.setTranslationX(view.getTranslationX());
             }
-            hideHint();
-        }else{
-
-            hint.setVisibility(View.INVISIBLE);
-
-        }
+            hideHint(vvHint);
+        }/**else{
+            vHint.setVisibility(View.INVISIBLE);
+        }*/
     }
 
-    private void hideHint(){
+    private void hideHint(TextView vHint){
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -1647,7 +1748,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onAnimationEnd(Animation animation) {
 
-                        hint.setVisibility(View.INVISIBLE);
+                        vHint.setVisibility(View.INVISIBLE);
 
 
                        // Log.d("myDebug","скрылся hint");
@@ -1658,8 +1759,8 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-                if(hint.getVisibility() == View.VISIBLE) {
-                    hint.startAnimation(animation);
+                if(vHint.getVisibility() == View.VISIBLE) {
+                    vHint.startAnimation(animation);
                 }
             }
         }, 1000);

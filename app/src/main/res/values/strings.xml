@@ -37,4 +37,16 @@
     <string name="build21_2">Корпус 6 / Секция 2</string>
     <string name="build21_3">Корпус 6 / Секция 3</string>
     <string name="build23">Корпус 7 / Секция 1</string>
+
+    <string name="G2K1">корпус 1</string>
+    <string name="G2K2">корпус 2</string>
+    <string name="G2K3">корпус 3</string>
+    <string name="G2K4">корпус 4</string>
+    <string name="G2K5">корпус 5</string>
+    <string name="G2K6">корпус 6</string>
+    <string name="G2K7">корпус 7</string>
+    <string name="G2K8">корпус 8</string>
+    <string name="G2K9">корпус 9</string>
+    <string name="G2K10">корпус 10</string>
+    <string name="G2K11">корпус 11</string>
 </resources>

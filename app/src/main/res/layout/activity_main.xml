@@ -156,6 +156,23 @@
                     android:adjustViewBounds="true"
                     android:onClick="leftPanelButtonOnCLick"
                     app:srcCompat="@drawable/button_process_buildings" />
+
+                <ImageView
+                    android:id="@+id/btnAdvantageRiversky"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:onClick="leftPanelButtonOnCLick"
+                    app:srcCompat="@drawable/button_advantage_riversky" />
+
+                <ImageView
+                    android:id="@+id/btnAdvantageForiver"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:onClick="leftPanelButtonOnCLick"
+                    app:srcCompat="@drawable/button_advantage_foriver" />
+
                 <ImageView
                     android:id="@+id/btn3d"
                     android:layout_width="match_parent"
@@ -200,7 +217,7 @@
                     android:layout_marginEnd="32dp"
                     android:adjustViewBounds="true"
                     android:onClick="conlrolPanelButtonOnClick"
-                    app:srcCompat="@drawable/button_foriver"
+                    app:srcCompat="@drawable/button_riversky"
                     tools:ignore="MissingConstraints"/>
 
                 <ImageView
@@ -220,7 +237,7 @@
                     android:adjustViewBounds="true"
                     android:onClick="conlrolPanelButtonOnClick"
                     app:layout_constraintStart_toEndOf="@id/btnFoRiver"
-                    app:srcCompat="@drawable/button_foriver"
+                    app:srcCompat="@drawable/button_typeplan"
                     tools:ignore="MissingConstraints" />
             <ImageView
                 android:id="@+id/btnPlayPause"
@@ -278,7 +295,8 @@
                         android:id="@+id/genPlanLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:visibility="gone">
 
                         <ImageView
                             android:id="@+id/imgGenplan"
@@ -505,6 +523,133 @@
                             android:textColor="@color/colorHintText"
                             android:textSize="4sp"
                             android:translationY="25dp"
+                            android:visibility="visible" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/genPlanLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:id="@+id/imgGenplan2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/genplan_margin_bottom"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/genplan2" />
+
+                        <ImageView
+                            android:id="@+id/buttonG2K1"
+                            android:layout_width="31dp"
+                            android:layout_height="23dp"
+                            android:onClick="genplan2KorpusesOnClick"
+                            android:translationX="252dp"
+                            android:translationY="70dp"
+                            app:srcCompat="@drawable/genplan2_k1" />
+
+                        <ImageView
+                            android:id="@+id/buttonG2K2"
+                            android:layout_width="69dp"
+                            android:layout_height="47dp"
+                            android:onClick="genplan2KorpusesOnClick"
+                            android:translationX="180dp"
+                            android:translationY="70dp"
+                            app:srcCompat="@drawable/genplan2_k2" />
+
+                        <ImageView
+                            android:id="@+id/buttonG2K3"
+                            android:layout_width="49dp"
+                            android:layout_height="41dp"
+                            android:onClick="genplan2KorpusesOnClick"
+                            android:translationX="114dp"
+                            android:translationY="51dp"
+                            app:srcCompat="@drawable/genplan2_k3" />
+
+                        <ImageView
+                            android:id="@+id/buttonG2K4"
+                            android:layout_width="29dp"
+                            android:layout_height="22dp"
+                            android:onClick="genplan2KorpusesOnClick"
+                            android:translationX="119dp"
+                            android:translationY="22dp"
+                            app:srcCompat="@drawable/genplan2_k4" />
+
+                        <ImageView
+                            android:id="@+id/buttonG2K5"
+                            android:layout_width="20dp"
+                            android:layout_height="23dp"
+                            android:onClick="genplan2KorpusesOnClick"
+                            android:translationX="163dp"
+                            android:translationY="34dp"
+                            app:srcCompat="@drawable/genplan2_k5" />
+
+                        <ImageView
+                            android:id="@+id/buttonG2K6"
+                            android:layout_width="21dp"
+                            android:layout_height="27dp"
+                            android:onClick="genplan2KorpusesOnClick"
+                            android:translationX="197dp"
+                            android:translationY="43dp"
+                            app:srcCompat="@drawable/genplan2_k6" />
+
+                        <ImageView
+                            android:id="@+id/buttonG2K7"
+                            android:layout_width="21dp"
+                            android:layout_height="25dp"
+                            android:onClick="genplan2KorpusesOnClick"
+                            android:translationX="84dp"
+                            android:translationY="23dp"
+                            app:srcCompat="@drawable/genplan2_k7" />
+
+                        <ImageView
+                            android:id="@+id/buttonG2K8"
+                            android:layout_width="41dp"
+                            android:layout_height="28dp"
+                            android:onClick="genplan2KorpusesOnClick"
+                            android:translationX="59dp"
+                            android:translationY="59dp"
+                            app:srcCompat="@drawable/genplan2_k8" />
+
+                        <ImageView
+                            android:id="@+id/buttonG2K9"
+                            android:layout_width="41dp"
+                            android:layout_height="37dp"
+                            android:onClick="genplan2KorpusesOnClick"
+                            android:translationX="12dp"
+                            android:translationY="63dp"
+                            app:srcCompat="@drawable/genplan2_k9" />
+
+                        <ImageView
+                            android:id="@+id/buttonG2K10"
+                            android:layout_width="23dp"
+                            android:layout_height="22dp"
+                            android:onClick="genplan2KorpusesOnClick"
+                            android:translationX="9dp"
+                            android:translationY="38dp"
+                            app:srcCompat="@drawable/genplan2_k10" />
+
+                        <ImageView
+                            android:id="@+id/buttonG2K11"
+                            android:layout_width="27dp"
+                            android:layout_height="26dp"
+                            android:onClick="genplan2KorpusesOnClick"
+                            android:translationX="45dp"
+                            android:translationY="26dp"
+                            app:srcCompat="@drawable/genplan2_k11" />
+                        <TextView
+                            android:id="@+id/hint2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/hint"
+                            android:text="корпус 3 / секция 1"
+                            android:textColor="@color/colorHintText"
+                            android:translationY="25dp"
+                            android:textSize="12sp"
                             android:visibility="visible" />
 
                     </FrameLayout>

@@ -8,7 +8,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
-        versionName "1.0.28"
+        versionName "1.0.29"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -41,12 +41,18 @@ dependencies {
     /**Room*/
     implementation "androidx.room:room-runtime:2.3.0-alpha01"
     annotationProcessor "androidx.room:room-compiler:2.3.0-alpha01"
+
+    /**JUnit test*/
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
     implementation 'org.jsoup:jsoup:1.11.1'
     implementation 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
     /**butterKnife*/
     implementation 'com.jakewharton:butterknife:10.1.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+    /**simple-xml*/
+    implementation 'org.simpleframework:simple-xml:2.7.1'
+
 }
