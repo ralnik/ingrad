@@ -9,23 +9,14 @@ import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import ru.ralnik.ingrad.OuterInfraActivity;
 import ru.ralnik.ingrad.R;
+import ru.ralnik.ingrad.for3d.ButtonListener;
 
 public class CameraActivity {
     private final Activity activity;
     private View rootView;
 
-    @BindView(R.id.button_up)
-    ImageView button_up;
-    @BindView(R.id.button_down)
-    ImageView button_down;
-    @BindView(R.id.button_left)
-    ImageView button_left;
-    @BindView(R.id.button_right)
-    ImageView button_right;
-    @BindView(R.id.button_close)
-    ImageView button_close;
+    @BindView(R.id.button_close)ImageView button_close;
 
     public CameraActivity(Activity activity) {
         this.activity = activity;
@@ -45,14 +36,11 @@ public class CameraActivity {
         builder.setCancelable(true);
         builder.create();
         Dialog dialog = builder.show();
-        button_close.setOnClickListener(new ButtonListener(dialog, ButtonListener.CLOSE));
+        button_close.setOnClickListener(new CamerasButtonOnClick(dialog, ButtonListener.CLOSE));
     }
 
     private void init() {
-        button_down.setOnClickListener(new ButtonListener(ButtonListener.DOWN));
-        button_up.setOnClickListener(new ButtonListener(ButtonListener.UP));
-        button_left.setOnClickListener(new ButtonListener(ButtonListener.LEFT));
-        button_right.setOnClickListener(new ButtonListener(ButtonListener.RIGHT));
+
     }
 
 }

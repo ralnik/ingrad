@@ -38,6 +38,7 @@ import ru.ralnik.ingrad.camera.CameraActivity;
 import ru.ralnik.ingrad.config.myConfig;
 import ru.ralnik.ingrad.customListView.listviewItemSelected;
 import ru.ralnik.ingrad.customListView.myAdapter;
+import ru.ralnik.ingrad.for3d.For3DActivity;
 import ru.ralnik.ingrad.httpPlayer.HttpPlayerFactory;
 import ru.ralnik.ingrad.httpPlayer.PlayerCommands;
 import ru.ralnik.ingrad.permissions.MyPermissions;
@@ -727,6 +728,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn3d:
                 btn3d.setImageResource(R.drawable.button_3d_down);
+                new For3DActivity(this);
                 break;
             case R.id.btnCamera:
                 btnCamera.setImageResource(R.drawable.button_camera_down);

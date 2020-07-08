@@ -1,4 +1,4 @@
-package ru.ralnik.ingrad.camera;
+package ru.ralnik.ingrad.for3d;
 
 import android.app.Dialog;
 import android.view.View;
