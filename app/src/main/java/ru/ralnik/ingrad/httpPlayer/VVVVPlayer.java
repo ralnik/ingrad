@@ -4,7 +4,7 @@ import android.webkit.WebView;
 
 import ru.ralnik.ingrad.model.Flat;
 
-public class VVVVPlayer extends HttpPlayer implements PlayerCommands {
+public class VVVVPlayer extends HttpPlayer  {
 
     private int playStop = 0;
     private int volumeOnOff = 1;
@@ -21,11 +21,6 @@ public class VVVVPlayer extends HttpPlayer implements PlayerCommands {
         if(flat == null ) {
             flat = new Flat();
         }
-    }
-
-    @Override
-    public void setWebView(WebView webView) {
-        super.setWebView(webView);
     }
 
     @Override
@@ -97,28 +92,44 @@ public class VVVVPlayer extends HttpPlayer implements PlayerCommands {
     }
 
     @Override
-    public void toggleLoop() {}
+    public void toggleLoop() {
+
+    }
 
     @Override
-    public void repeat() {}
+    public void repeat() {
+
+    }
 
     @Override
-    public void random() {}
+    public void random() {
+
+    }
 
     @Override
-    public void nextTrack() {}
+    public void nextTrack() {
+
+    }
 
     @Override
-    public void previousTrack() {}
+    public void previousTrack() {
+
+    }
 
     @Override
-    public void fullscreen() {}
+    public void fullscreen() {
+
+    }
 
     @Override
-    public void playlistEmpty() {}
+    public void playlistEmpty() {
+
+    }
 
     @Override
-    public void deleteById(int id) {}
+    public void deleteById(int id) {
+
+    }
 
     @Override
     public void setFlatInfo(Flat flat){
@@ -127,12 +138,10 @@ public class VVVVPlayer extends HttpPlayer implements PlayerCommands {
 
     @Override
     public void executeCommand(String url){
-
         if (!this.lastLink.equals(url)){
             this.lastLink = url;
             super.executeCommand(url);
         }
-
     }
 
     public String getFullLink(){

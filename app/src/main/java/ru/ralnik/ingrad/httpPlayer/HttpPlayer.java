@@ -1,74 +1,74 @@
 package ru.ralnik.ingrad.httpPlayer;
 
-import android.net.http.SslError;
 import android.util.Log;
-import android.webkit.HttpAuthHandler;
-import android.webkit.SslErrorHandler;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
-import ru.ralnik.ingrad.GlobalVars;
+import java.io.IOException;
+import java.net.Authenticator;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.PasswordAuthentication;
+import java.net.ProtocolException;
+import java.net.URL;
 
-public class HttpPlayer {
-
-    public String host = "192.168.1.103";
+public abstract class HttpPlayer implements PlayerCommands {
+    public String host = "192.168.1.200";
     public int port = 0;
     public String username = null;
     public String password = null;
-    private WebView webView;
 
     public HttpPlayer(String host, int port, String username, String password) {
-        this.host = new String(host.split(":")[0]);
+        this.host = host.split(":")[0];
         //Log.d("myDebug","Чистый IP:"+this.host);
         this.port = port;
         this.username = username;
         this.password = password;
     }
 
-
-
-    public HttpPlayer(String host){
-        this.host = new String(host.split(":")[0]);
-        this.webView = GlobalVars.webView;
-        connectToServer();
+    public HttpPlayer(String host) {
+        this.host = host.split(":")[0];
     }
 
     public void setHost(String host) {
         this.host = host;
     }
 
-    public void setWebView(WebView webView) {
-        this.webView = webView;
-        connectToServer();
-    }
-
-    public void executeCommand(String url){
-        String current_link = (port != 0) ? "http://"+host+":"+port+"/"+url :  "http://"+host+"/"+url;
-        Log.d("myDebug",current_link);
-        this.webView.loadUrl(current_link);
-    }
-
-    private void connectToServer() {
-
-        // включаем поддержку JavaScript
-        this.webView.getSettings().setJavaScriptEnabled(true);
-        // указываем страницу загрузки+
-
-        // mwebView.setHttpAuthUsernamePassword(HOST, "realest", null, PASSWORD);
-        this.webView.setWebViewClient(new WebViewClient() {
+    public synchronized void executeCommand(final String url) {
+        new Thread(new Runnable() {
             @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                return super.shouldOverrideUrlLoading(view, url);
-            }
+            public void run() {
+                String current_link = (port != 0) ? "http://" + host + ":" + port + "/" + url : "http://" + host + "/" + url;
+                Log.d("myDebug", current_link);
 
-            @Override
-            public void onReceivedHttpAuthRequest(WebView view, HttpAuthHandler handler, String host, String realm) {
-                handler.proceed(null, password);
-            }
+                HttpURLConnection urlConnection = null;
+                try {
+                    //URL url = new URL(current_link);
+                    urlConnection = (HttpURLConnection) new URL(current_link).openConnection();
+                    urlConnection.setRequestMethod("GET");
+                    urlConnection.setRequestProperty("Content-length", "0");
+                    urlConnection.setUseCaches(false);
+                    urlConnection.setAllowUserInteraction(false);
+                    urlConnection.setConnectTimeout(5000);
 
-            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-                handler.proceed();
+                    Authenticator.setDefault(new Authenticator() {
+                        protected PasswordAuthentication getPasswordAuthentication() {
+                            return new PasswordAuthentication(username, password.toCharArray());
+                        }
+                    });
+                    urlConnection.connect();
+
+                    int responseCode = urlConnection.getResponseCode();
+
+                    if (responseCode == HttpURLConnection.HTTP_OK) {
+                        Log.d("myDebug", "server connected");
+                    }
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (ProtocolException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-        });
+        }).start();
     }
 }
