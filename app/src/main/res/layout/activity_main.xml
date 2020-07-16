@@ -139,7 +139,15 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:onClick="leftPanelButtonOnCLick"
-                    app:srcCompat="@drawable/button_advantage_project" />
+                    app:srcCompat="@drawable/button_advantage_riversky" />
+
+                <ImageView
+                    android:id="@+id/btnAdvantageForiver"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:onClick="leftPanelButtonOnCLick"
+                    app:srcCompat="@drawable/button_advantage_foriver" />
 
                 <ImageView
                     android:id="@+id/btnGallary"
@@ -156,22 +164,6 @@
                     android:adjustViewBounds="true"
                     android:onClick="leftPanelButtonOnCLick"
                     app:srcCompat="@drawable/button_process_buildings" />
-
-                <ImageView
-                    android:id="@+id/btnAdvantageRiversky"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:onClick="leftPanelButtonOnCLick"
-                    app:srcCompat="@drawable/button_advantage_riversky" />
-
-                <ImageView
-                    android:id="@+id/btnAdvantageForiver"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:onClick="leftPanelButtonOnCLick"
-                    app:srcCompat="@drawable/button_advantage_foriver" />
 
                 <ImageView
                     android:id="@+id/btn3d"

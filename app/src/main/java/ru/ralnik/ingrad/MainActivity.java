@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btnAdvantageProject) ImageView btnAdvantageProject;
     @BindView(R.id.btnGallary) ImageView btnGallary;
     @BindView(R.id.btnProcessBuildings) ImageView btnProcessBuildings;
-    @BindView(R.id.btnAdvantageRiversky)ImageView btnAdvantageRiversky;
     @BindView(R.id.btnAdvantageForiver)ImageView btnAdvantageForiver;
     @BindView(R.id.btn3d) ImageView btn3d;
     @BindView(R.id.btnCamera) ImageView btnCamera;
@@ -217,7 +216,9 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         //initialize config
         cfg = new myConfig(this);
-
+        if (cfg.getHost().isEmpty()) {
+            cfg.setHost("192.168.1.200");
+        }
         //vvvv = new VVVVPlayer(cfg.getHost());
         GlobalVars.webView = webView;
         vvvv = HttpPlayerFactory.getInstance(this).getCommand();
@@ -642,10 +643,9 @@ public class MainActivity extends AppCompatActivity {
         btnOutsideInfra.setImageResource(R.drawable.button_outside_infra);
         btnTorpedo.setImageResource(R.drawable.button_torpedo);
         btnSurround.setImageResource(R.drawable.button_surround);
-        btnAdvantageProject.setImageResource(R.drawable.button_advantage_project);
+        btnAdvantageProject.setImageResource(R.drawable.button_advantage_riversky);
         btnGallary.setImageResource(R.drawable.button_gallary);
         btnProcessBuildings.setImageResource(R.drawable.button_process_buildings);
-        btnAdvantageRiversky.setImageResource(R.drawable.button_advantage_riversky);
         btnAdvantageForiver.setImageResource(R.drawable.button_advantage_foriver);
         btn3d.setImageResource(R.drawable.button_3d);
         btnCamera.setImageResource(R.drawable.button_camera);
@@ -702,7 +702,7 @@ public class MainActivity extends AppCompatActivity {
                 play();
                 break;
             case R.id.btnAdvantageProject:
-                btnAdvantageProject.setImageResource(R.drawable.button_advantage_project_down);
+                btnAdvantageProject.setImageResource(R.drawable.button_advantage_riversky_down);
                 vvvv.selectById(10);
                 play();
                 break;
@@ -716,15 +716,10 @@ public class MainActivity extends AppCompatActivity {
                 vvvv.selectById(12);
                 play();
                 break;
-            case R.id.btnAdvantageRiversky:
-                btnAdvantageRiversky.setImageResource(R.drawable.button_advantage_riversky_down);
-                //vvvv.selectById(13);
-                //play();
-                break;
             case R.id.btnAdvantageForiver:
                 btnAdvantageForiver.setImageResource(R.drawable.button_advantage_foriver_down);
-                //vvvv.selectById(14);
-                //play();
+                vvvv.selectById(14);
+                play();
                 break;
             case R.id.btn3d:
                 btn3d.setImageResource(R.drawable.button_3d_down);
