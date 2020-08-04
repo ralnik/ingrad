@@ -14,6 +14,8 @@ import lombok.Setter;
 @Data
 @NoArgsConstructor
 public class Flat {
+    public static final String RIVERSKY = "Riversky";
+    public static final String FORIVER = "Foriver";
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "_id")
@@ -31,6 +33,9 @@ public class Flat {
 
     @ColumnInfo(name = "BeforeBtiNumber")
     private int BeforeBtiNumber;        //№ квартиры / № машино - места
+
+    @ColumnInfo(name = "BuildingGroup")
+    private String buildingGroup;
 
     @ColumnInfo(name = "Category")
     private String Category;
@@ -98,6 +103,14 @@ public class Flat {
     @ColumnInfo(name = "DeliveryPeriod")
     private String DeliveryPeriod;      //Период ввода в эксплуатацию
 
+    public void setBuildingGroup(String buildingGroup) {
+        if (buildingGroup.toUpperCase().contains("FORIVER")) {
+            this.buildingGroup = FORIVER;
+        } else if (buildingGroup.toUpperCase().contains("RIVERSKY")) {
+            this.buildingGroup = RIVERSKY;
+        }
+    }
+
     @Override
     public String toString() {
                 return
@@ -121,6 +134,7 @@ public class Flat {
                 "CountTerrace=" + CountTerrace + "&" +
                 "BeforeBtiNumber=" + BeforeBtiNumber + "&" +
                 "AddressNumber=" + AddressNumber + "&" +
-                "DeliveryPeriod=" + DeliveryPeriod ;
+                "DeliveryPeriod=" + DeliveryPeriod + "&" +
+                "buildingGroup=" + buildingGroup;
     }
 }

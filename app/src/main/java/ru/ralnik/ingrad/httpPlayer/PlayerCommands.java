@@ -5,26 +5,29 @@ import ru.ralnik.ingrad.model.Flat;
 public interface PlayerCommands {
 
     void play();
-    void pause();
+    default void pause() {}
     void stop();
     void selectById(int id);
     void selectBySubId(int id);
     void volume(int vol);
     void volEffect(int vol);
     void volumeOnOff();
-    void toggleLoop();
-    void repeat();     //repeat or not repeat
-    void random();    //random
-    void nextTrack();
-    void previousTrack();
-    void fullscreen();
-    void playlistEmpty();
-    void deleteById(int id);
+    default void toggleLoop() {}
+    default void repeat() {}     //repeat or not repeat
+    default void random() {}    //random
+    default void nextTrack() {}
+    default void previousTrack() {}
+    default void fullscreen() {}
+    default void playlistEmpty() {}
+    default void deleteById(int id) {}
 
     void setFlatInfo(Flat flat);
     void changeHost(String host);
-    void setVolumeOnOff(int volumeOnOff);
+    default void setVolumeOnOff(int volumeOnOff) {}
     void setVolume(int volume);
     void setVolEffect(int volEffect);
+    void playVideo(int videoTrack);
+    void showGallary(int gallary);
+    void gallaryControl(int control);
 
 }

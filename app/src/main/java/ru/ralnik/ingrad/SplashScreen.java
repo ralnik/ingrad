@@ -6,6 +6,9 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ru.ralnik.ingrad.xml.Parser;
 
 public class SplashScreen extends AppCompatActivity {
@@ -36,71 +39,33 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private void loadDataFromXML() {
+        List<String> urls = new ArrayList<>();
+        urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=D9AF2F75-A99F-E811-80F9-005056BA18B6&export=false");
+        urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=517BA460-B39F-E811-80F9-005056BA18B6&export=false");
+        urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=C545D97A-B39F-E811-80F9-005056BA18B6&export=false");
+        urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=C545D97A-B39F-E811-80F9-005056BA18B6&export=false");
+        urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=E8671A06-B49F-E811-80F9-005056BA18B6&export=false");
+        urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=6F035221-B49F-E811-80F9-005056BA18B6&export=false");
+        urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=739AB24A-B49F-E811-80F9-005056BA18B6&export=false");
+        urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=B22CD269-B49F-E811-80F9-005056BA18B6&export=false");
+        urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=70FCF484-B49F-E811-80F9-005056BA18B6&export=false");
+
+        //новый корпуса
+        urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=EF6BF3A0-F8AA-EA11-8129-005056BA18B6&export=false");
+        urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=6F6F2DC9-F9AA-EA11-8129-005056BA18B6&export=false");
+        urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=D1238044-DCB9-EA11-812B-005056BA18B6&export=false");
+        urls.add(" https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=51B7E73A-9ABA-EA11-812B-005056BA18B6&export=false");
         int progress = 0;
         try {
-            Parser parser1 = new Parser(this);
-            parser1.setUrl("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=D9AF2F75-A99F-E811-80F9-005056BA18B6&export=false");
-            parser1.execute();
+            for (String url : urls) {
+                Parser parser = new Parser(this);
+                parser.setUrl(url);
+                parser.execute();
 
-            Thread.sleep(1000);
-            progress += 12.5;
-            mProgress.setProgress(progress);
-
-            Parser parser2 = new Parser(this);
-            parser2.setUrl("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=517BA460-B39F-E811-80F9-005056BA18B6&export=false");
-            parser2.execute();
-
-            Thread.sleep(1000);
-            progress += 12.5;
-            mProgress.setProgress(progress);
-
-            Parser parser3 = new Parser(this);
-            parser3.setUrl("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=C545D97A-B39F-E811-80F9-005056BA18B6&export=false");
-            parser3.execute();
-
-            Thread.sleep(1000);
-            progress += 12.5;
-            mProgress.setProgress(progress);
-
-            Parser parser4 = new Parser(this);
-            parser4.setUrl("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=E8671A06-B49F-E811-80F9-005056BA18B6&export=false");
-            parser4.execute();
-
-            Thread.sleep(1000);
-            progress += 12.5;
-            mProgress.setProgress(progress);
-
-            Parser parser5 = new Parser(this);
-            parser5.setUrl("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=6F035221-B49F-E811-80F9-005056BA18B6&export=false");
-            parser5.execute();
-
-            Thread.sleep(1000);
-            progress += 12.5;
-            mProgress.setProgress(progress);
-
-            Parser parser6 = new Parser(this);
-            parser6.setUrl("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=739AB24A-B49F-E811-80F9-005056BA18B6&export=false");
-            parser6.execute();
-
-            Thread.sleep(1000);
-            progress += 12.5;
-            mProgress.setProgress(progress);
-
-            Parser parser7 = new Parser(this);
-            parser7.setUrl("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=B22CD269-B49F-E811-80F9-005056BA18B6&export=false");
-            parser7.execute();
-
-            Thread.sleep(1000);
-            progress += 12.5;
-            mProgress.setProgress(progress);
-
-            Parser parser8 = new Parser(this);
-            parser8.setUrl("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=70FCF484-B49F-E811-80F9-005056BA18B6&export=false");
-            parser8.execute();
-
-            Thread.sleep(1000);
-            progress += 12.5;
-            mProgress.setProgress(progress);
+                Thread.sleep(1000);
+                progress += (100/urls.size());
+                mProgress.setProgress(progress);
+            }
 
         } catch (InterruptedException e) {
             e.printStackTrace();

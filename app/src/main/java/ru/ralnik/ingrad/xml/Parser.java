@@ -48,7 +48,7 @@ public class Parser extends Thread implements Runnable {
             XmlPullParser parser = factory.newPullParser();
             String url1 = url;
             //Log.d("myDebug","url: "+url1.replace("ApartmentListWithsExportParam","AddressListDataWithsExportParam"));
-            URL input = new URL(url1.replace("ApartmentListWithsExportParam","AddressListDataWithsExportParam")); //url удаленного документа
+                URL input = new URL(url1.replace("ApartmentListWithsExportParam","AddressListDataWithsExportParam")); //url удаленного документа
 
             parser.setInput(input.openStream(), null);
             String nameTAG = null;
@@ -134,6 +134,10 @@ public class Parser extends Thread implements Runnable {
 
                         if(nameTAG.equals("a:BeforeBtiNumber")) {
                             flat.setBeforeBtiNumber(Integer.valueOf(parser.getText()));
+                        }
+
+                        if ("a:BuildingGroup".equals(nameTAG)) {
+                            flat.setBuildingGroup(parser.getText());
                         }
 
                         if(nameTAG.equals("a:Category")) {

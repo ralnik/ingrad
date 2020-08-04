@@ -21,4 +21,7 @@
     <color name="colorHint">#428bc0</color>
     <color name="colorBorderHint">#ffffff</color>
     <color name="colorHintText">#ffffff</color>
+    <color name="colorTitle">#d9e8f2</color>
+    <color name="colorTitleText">#428bc0</color>
+    <color name="colorSplitter">#428bc0</color>
 </resources>

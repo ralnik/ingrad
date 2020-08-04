@@ -34,6 +34,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ru.ralnik.ingrad.activity.gallary.GallaryActivity;
 import ru.ralnik.ingrad.camera.CameraActivity;
 import ru.ralnik.ingrad.config.myConfig;
 import ru.ralnik.ingrad.customListView.listviewItemSelected;
@@ -41,6 +42,7 @@ import ru.ralnik.ingrad.customListView.myAdapter;
 import ru.ralnik.ingrad.for3d.For3DActivity;
 import ru.ralnik.ingrad.httpPlayer.HttpPlayerFactory;
 import ru.ralnik.ingrad.httpPlayer.PlayerCommands;
+import ru.ralnik.ingrad.model.Flat;
 import ru.ralnik.ingrad.permissions.MyPermissions;
 import ru.ralnik.ingrad.sqlitedb.FlatRepository;
 
@@ -202,6 +204,7 @@ public class MainActivity extends AppCompatActivity {
     private PlayerCommands vvvv;
     @BindView(R.id.webView)WebView webView;
     private myTimer timer;
+    private String gkType;
 
     ArrayList<Integer> ListClearFilter = new ArrayList<>();
     Animation animation;
@@ -224,6 +227,9 @@ public class MainActivity extends AppCompatActivity {
         vvvv = HttpPlayerFactory.getInstance(this).getCommand();
         vvvv.setVolume(cfg.getVolumeProgress());
         vvvv.setVolEffect(cfg.getEffectProgress());
+
+        //Инициализация генплана по умолчанию(необходим для выборки из базы)
+        gkType = Flat.RIVERSKY;
 
         //initialization all component
         init();
@@ -709,7 +715,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnGallary:
                 btnGallary.setImageResource(R.drawable.button_gallary_down);
                 vvvv.selectById(11);
-                play();
+                GallaryActivity gallaryActivity = new GallaryActivity(this);
+                //play();
                 break;
             case R.id.btnProcessBuildings:
                 btnProcessBuildings.setImageResource(R.drawable.button_process_buildings_down);
@@ -768,9 +775,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btnRiverSky:
                 setGenPlan(1);
+                gkType = getGenPlanName();
                 break;
             case R.id.btnFoRiver:
                 setGenPlan(2);
+                gkType = getGenPlanName();
                 break;
             case R.id.btnRTypePlan:
                 btnTypePlan.setImageResource(R.drawable.button_typeplan_down);
@@ -798,6 +807,17 @@ public class MainActivity extends AppCompatActivity {
                 genPlanFoRiver.setVisibility(View.VISIBLE);
                 break;
         }
+    }
+
+    private String getGenPlanName() {
+        if (genPlanRiverSky.getVisibility() == View.VISIBLE &&
+                genPlanFoRiver.getVisibility() == View.GONE) {
+            return Flat.RIVERSKY;
+        } else if (genPlanRiverSky.getVisibility() == View.GONE &&
+                genPlanFoRiver.getVisibility() == View.VISIBLE) {
+            return Flat.FORIVER;
+        }
+        return null;
     }
 
     public void countRoomButtonOnClick(View view){
@@ -1085,9 +1105,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void applyFilter() {
-        query = "select * from flats where (StatusCodeName='Свободно' or StatusCodeName='Ус. Бронь') and ";
+        query = "select * from flats where (StatusCodeName='Свободно' or StatusCodeName='Ус. Бронь') ";
 
-        query = query + " (floor >= "+seekbarFloor.getSelectedMinValue() + " and floor <= "+seekbarFloor.getSelectedMaxValue()+") ";
+        query = query + " and BuildingGroup = '" + gkType + "' ";
+
+        query = query + " and (floor >= "+seekbarFloor.getSelectedMinValue() + " and floor <= "+seekbarFloor.getSelectedMaxValue()+") ";
         query = query + " and (Quantity >= " + seekbarSquare.getSelectedMinValue() + " and Quantity <= "+((Float) seekbarSquare.getSelectedMaxValue()+0.1) + ") ";
         if((Integer) titleCost.getTag() == 1) {
             query = query + " and ((DiscountMax/Quantity) >= " + minCostEdit.getText() + "*1000" + " and (DiscountMax/Quantity) <= " + maxCostEdit.getText() + "*1000" + ") ";
@@ -1161,6 +1183,19 @@ public class MainActivity extends AppCompatActivity {
         if((Integer) build_21_2.getTag() == 1 ){countBuild.add("(SectionNumber=2 and AddressNumber=6)");}
         if((Integer) build_21_3.getTag() == 1 ){countBuild.add("(SectionNumber=3 and AddressNumber=6)");}
         if((Integer) build_23.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=7)");}
+
+        //для корпусок ЖК forRiver
+        if ((Integer) buttonG2K1.getTag() == 1) countBuild.add("AddressNumber = 1");
+        if ((Integer) buttonG2K2.getTag() == 1) countBuild.add("AddressNumber = 2");
+        if ((Integer) buttonG2K3.getTag() == 1) countBuild.add("AddressNumber = 3");
+        if ((Integer) buttonG2K4.getTag() == 1) countBuild.add("AddressNumber = 4");
+        if ((Integer) buttonG2K5.getTag() == 1) countBuild.add("AddressNumber = 5");
+        if ((Integer) buttonG2K6.getTag() == 1) countBuild.add("AddressNumber = 6");
+        if ((Integer) buttonG2K7.getTag() == 1) countBuild.add("AddressNumber = 7");
+        if ((Integer) buttonG2K8.getTag() == 1) countBuild.add("AddressNumber = 8");
+        if ((Integer) buttonG2K9.getTag() == 1) countBuild.add("AddressNumber = 9");
+        if ((Integer) buttonG2K10.getTag() == 1) countBuild.add("AddressNumber = 10");
+        if ((Integer) buttonG2K11.getTag() == 1) countBuild.add("AddressNumber = 11");
 
         if(countBuild.size()>0){
             String countBuildString = "";

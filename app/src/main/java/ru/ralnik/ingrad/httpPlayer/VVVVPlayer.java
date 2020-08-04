@@ -1,10 +1,12 @@
 package ru.ralnik.ingrad.httpPlayer;
 
-import android.webkit.WebView;
-
+import lombok.Getter;
+import lombok.Setter;
 import ru.ralnik.ingrad.model.Flat;
 
-public class VVVVPlayer extends HttpPlayer  {
+@Getter
+@Setter
+public class  VVVVPlayer extends HttpPlayer {
 
     private int playStop = 0;
     private int volumeOnOff = 1;
@@ -14,6 +16,9 @@ public class VVVVPlayer extends HttpPlayer  {
     private int numberTrack;
     private int numberSubTrack;
     private Flat flat = null;
+    private int videoTrack;
+    private int gallary;
+    private int gallaryControl;
 
 
     public VVVVPlayer(String host) {
@@ -48,9 +53,6 @@ public class VVVVPlayer extends HttpPlayer  {
         this.playStop = 1;
         executeCommand(getFullLink());
     }
-
-    @Override
-    public void pause() {}
 
     @Override
     public void stop() {
@@ -92,46 +94,6 @@ public class VVVVPlayer extends HttpPlayer  {
     }
 
     @Override
-    public void toggleLoop() {
-
-    }
-
-    @Override
-    public void repeat() {
-
-    }
-
-    @Override
-    public void random() {
-
-    }
-
-    @Override
-    public void nextTrack() {
-
-    }
-
-    @Override
-    public void previousTrack() {
-
-    }
-
-    @Override
-    public void fullscreen() {
-
-    }
-
-    @Override
-    public void playlistEmpty() {
-
-    }
-
-    @Override
-    public void deleteById(int id) {
-
-    }
-
-    @Override
     public void setFlatInfo(Flat flat){
         this.flat = flat;
     }
@@ -144,6 +106,24 @@ public class VVVVPlayer extends HttpPlayer  {
         }
     }
 
+    @Override
+    public void playVideo(int videoTrack) {
+        this.videoTrack = videoTrack;
+        super.executeCommand(getFullLink());
+    }
+
+    @Override
+    public void showGallary(int gallary) {
+        this.gallary = gallary;
+        super.executeCommand(getFullLink());
+    }
+
+    @Override
+    public void gallaryControl(int control) {
+        this.gallaryControl = control;
+        super.executeCommand(getFullLink());
+    }
+
     public String getFullLink(){
         return "vvvv?" +
                "track=" + this.numberTrack + "&" +
@@ -152,6 +132,9 @@ public class VVVVPlayer extends HttpPlayer  {
                "volumeOnOff=" + this.volumeOnOff + "&" +
                "volume=" + this.volume + "&" +
                "volEffect=" + this.volEffect + "&" +
-               flat.toString();
+               flat.toString() + "&" +
+                "gallary=" + this.gallary + "&" +
+                "gallaryControl=" + this.gallaryControl + "&" +
+                "video=" + this.videoTrack;
     }
 }
