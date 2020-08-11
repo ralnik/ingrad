@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.ralnik.ingrad.context.IngradContex;
 import ru.ralnik.ingrad.xml.Parser;
 
 public class SplashScreen extends AppCompatActivity {
@@ -34,6 +35,12 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private void startApp() {
+        /** первоначальная инизиализация контекста
+         *  и запись в него самого главного контекста программы
+         *  теперь applicationContext можно вызывать в любом месте программы
+         */
+        IngradContex.getInstance(getApplicationContext());
+
         Intent intent = new Intent(SplashScreen.this, MainActivity.class);
         startActivity(intent);
     }

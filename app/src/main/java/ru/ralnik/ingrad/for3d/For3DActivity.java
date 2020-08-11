@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.ralnik.ingrad.R;
+import ru.ralnik.ingrad.activity.DialogButtonListener;
 
 public class For3DActivity {
     private final Activity activity;
@@ -45,13 +46,13 @@ public class For3DActivity {
         builder.setCancelable(true);
         builder.create();
         Dialog dialog = builder.show();
-        button_close.setOnClickListener(new ButtonListener(dialog, ButtonListener.CLOSE));
+        button_close.setOnClickListener(new DialogButtonListener(dialog, DialogButtonListener.BUTTON_CLOSE));
     }
 
     private void init() {
-        button_down.setOnClickListener(new ButtonListener(ButtonListener.DOWN));
-        button_up.setOnClickListener(new ButtonListener(ButtonListener.UP));
-        button_left.setOnClickListener(new ButtonListener(ButtonListener.LEFT));
-        button_right.setOnClickListener(new ButtonListener(ButtonListener.RIGHT));
+        button_down.setOnTouchListener(new ButtonListener(ButtonListener.DOWN, activity.getApplicationContext()));
+        button_up.setOnTouchListener(new ButtonListener(ButtonListener.UP, activity.getApplicationContext()));
+        button_left.setOnTouchListener(new ButtonListener(ButtonListener.LEFT, activity.getApplicationContext()));
+        button_right.setOnTouchListener(new ButtonListener(ButtonListener.RIGHT, activity.getApplicationContext()));
     }
 }

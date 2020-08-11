@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.video.VideoActivity"></activity>
+        <activity android:name=".activity.exception.ExceptionActivity"></activity>
+        <activity android:name=".activity.video.VideoActivity" />
         <activity android:name=".activity.gallary.GallaryActivity" />
         <activity
             android:name=".for3d.For3DActivity"

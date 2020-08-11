@@ -18,7 +18,10 @@ public class  VVVVPlayer extends HttpPlayer {
     private Flat flat = null;
     private int videoTrack;
     private int gallary;
-    private int gallaryControl;
+    private int gallaryPlay = 0;
+    private int gallaryForward = 0;
+    private int gallaryBack = 0;
+    private int for3d = 0;
 
 
     public VVVVPlayer(String host) {
@@ -119,8 +122,26 @@ public class  VVVVPlayer extends HttpPlayer {
     }
 
     @Override
-    public void gallaryControl(int control) {
-        this.gallaryControl = control;
+    public void gallaryBack(int back) {
+        this.gallaryBack = back;
+        super.executeCommand(getFullLink());
+    }
+
+    @Override
+    public void gallaryForward(int forward) {
+        this.gallaryForward = forward;
+        super.executeCommand(getFullLink());
+    }
+
+    @Override
+    public void gallaryPlay(int play) {
+        this.gallaryPlay = play;
+        super.executeCommand(getFullLink());
+    }
+
+    @Override
+    public void for3d(int value) {
+        this.for3d = value;
         super.executeCommand(getFullLink());
     }
 
@@ -134,7 +155,10 @@ public class  VVVVPlayer extends HttpPlayer {
                "volEffect=" + this.volEffect + "&" +
                flat.toString() + "&" +
                 "gallary=" + this.gallary + "&" +
-                "gallaryControl=" + this.gallaryControl + "&" +
-                "video=" + this.videoTrack;
+                "gallaryPlay=" + this.gallaryPlay + "&" +
+                "gallaryForward=" + this.gallaryForward + "&" +
+                "gallaryBack=" + this.gallaryBack + "&" +
+                "video=" + this.videoTrack  + "&" +
+                "3d=" + this.for3d;
     }
 }

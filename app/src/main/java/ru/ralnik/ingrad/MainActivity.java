@@ -35,13 +35,17 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.ralnik.ingrad.activity.gallary.GallaryActivity;
+import ru.ralnik.ingrad.activity.video.VideoActivity;
 import ru.ralnik.ingrad.camera.CameraActivity;
 import ru.ralnik.ingrad.config.myConfig;
+import ru.ralnik.ingrad.context.IngradContex;
 import ru.ralnik.ingrad.customListView.listviewItemSelected;
 import ru.ralnik.ingrad.customListView.myAdapter;
 import ru.ralnik.ingrad.for3d.For3DActivity;
+import ru.ralnik.ingrad.httpPlayer.EnumHost;
 import ru.ralnik.ingrad.httpPlayer.HttpPlayerFactory;
 import ru.ralnik.ingrad.httpPlayer.PlayerCommands;
+import ru.ralnik.ingrad.httpPlayer.VVVVPlayer;
 import ru.ralnik.ingrad.model.Flat;
 import ru.ralnik.ingrad.permissions.MyPermissions;
 import ru.ralnik.ingrad.sqlitedb.FlatRepository;
@@ -71,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btnAdvantageForiver)ImageView btnAdvantageForiver;
     @BindView(R.id.btn3d) ImageView btn3d;
     @BindView(R.id.btnCamera) ImageView btnCamera;
+    @BindView(R.id.btnVideo)ImageView btnVideo;
   //---------Control panel-------------
     @BindView(R.id.btnPlayPause)ImageView btnPlayPause;
     @BindView(R.id.btnOptions)ImageView btnOptions;
@@ -118,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editWaitTime;
     private ImageView switcherTimer;
     private EditText editIP;
+    private EditText editIP2;
     private ImageView btnSave;
 
  //------- SEEKBAR-------------
@@ -200,8 +206,8 @@ public class MainActivity extends AppCompatActivity {
     String TAG = "myDebug";
     private myConfig cfg;
     private String query;
-    //private VVVVPlayer vvvv;
     private PlayerCommands vvvv;
+    private PlayerCommands vvvv2;
     @BindView(R.id.webView)WebView webView;
     private myTimer timer;
     private String gkType;
@@ -222,11 +228,23 @@ public class MainActivity extends AppCompatActivity {
         if (cfg.getHost().isEmpty()) {
             cfg.setHost("192.168.1.200");
         }
-        //vvvv = new VVVVPlayer(cfg.getHost());
-        GlobalVars.webView = webView;
-        vvvv = HttpPlayerFactory.getInstance(this).getCommand();
+        if (cfg.getHost1().isEmpty()) {
+            cfg.setHost1("192.168.1.200");
+        }
+        if (cfg.getHost2().isEmpty()) {
+            cfg.setHost2("192.168.1.201");
+        }
+        //vvvv = new VVVVPlayer(cfg.getHost1());
+        //GlobalVars.webView = webView;
+        //vvvv = HttpPlayerFactory.getInstance(this).selectHost(EnumHost.SERVER_1).getCommand();
+        vvvv = IngradContex.getInstance(this).getVvvv();
         vvvv.setVolume(cfg.getVolumeProgress());
         vvvv.setVolEffect(cfg.getEffectProgress());
+
+        //vvvv2 = new VVVVPlayer(cfg.getHost2());
+        vvvv2 = IngradContex.getInstance(this).getVvvv2();
+        vvvv2.setVolume(cfg.getVolumeProgress());
+        vvvv2.setVolEffect(cfg.getEffectProgress());
 
         //Инициализация генплана по умолчанию(необходим для выборки из базы)
         gkType = Flat.RIVERSKY;
@@ -495,12 +513,14 @@ public class MainActivity extends AppCompatActivity {
         editWaitTime = (EditText) viewSettingPanel.findViewById(R.id.editWaitTime);
         switcherTimer = (ImageView) viewSettingPanel.findViewById(R.id.switcherTimer);
         editIP = (EditText) viewSettingPanel.findViewById(R.id.editIP);
+        editIP2 = (EditText) viewSettingPanel.findViewById(R.id.editIP2);
         btnSave = (ImageView) viewSettingPanel.findViewById(R.id.btnSave);
         settingsPanel.addView(viewSettingPanel);
         musicSeekBar.setProgress(cfg.getVolumeProgress());
         effectSeekBar.setProgress(cfg.getEffectProgress());
         editWaitTime.setText(String.valueOf(cfg.getTimer()));
-        editIP.setText(cfg.getHost());
+        editIP.setText(cfg.getHost1());
+        editIP2.setText(cfg.getHost2());
 
         if(cfg.getDisableTimer()) {
             switcherTimer.setTag("on");
@@ -523,19 +543,16 @@ public class MainActivity extends AppCompatActivity {
                 //GlobalVar.volume = String.valueOf(VolumeSeekBar.getProgress());
                 //GlobalVar.lastLink = VVVV.fullLink();
                 vvvv.volume(seekBar.getProgress());
+                vvvv2.volume(seekBar.getProgress());
             }
         });
 
         effectSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-
-            }
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {}
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) {}
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
@@ -543,6 +560,7 @@ public class MainActivity extends AppCompatActivity {
                 //GlobalVar.volEffects = String.valueOf(EffectSeekBar.getProgress());
                 //GlobalVar.lastLink = VVVV.fullLink();
                 vvvv.volEffect(seekBar.getProgress());
+                vvvv2.volEffect(seekBar.getProgress());
             }
         });
         switcherTimer.setOnClickListener(new View.OnClickListener() {
@@ -567,7 +585,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void saveSettings() {
-        if(!editIP.getText().toString().equals(cfg.getHost())) {
+        if(!editIP.getText().toString().equals(cfg.getHost1())
+           || !editIP2.getText().toString().equals(cfg.getHost2())) {
             showPasswordWindow();
         }
 
@@ -610,8 +629,13 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 //Вводим текст и отображаем в строке ввода на основном экране:
                                 if(String.valueOf(userInput.getText()).equals("realred34")){
-                                    cfg.setHost(editIP.getText().toString());
-                                    vvvv.changeHost(cfg.getHost());
+                                    cfg.setHost1(editIP.getText().toString());
+                                    cfg.setHost2(editIP2.getText().toString());
+                                    vvvv.changeHost(cfg.getHost1());
+                                    vvvv2.changeHost(cfg.getHost2());
+                                    Toast toast2 = Toast.makeText(getApplicationContext(), "Данные сохранены!", Toast.LENGTH_LONG);
+                                    toast2.setGravity(Gravity.CENTER, 0, 0);
+                                    toast2.show();
                                 }else
                                 {
                                     Toast toast2 = Toast.makeText(getApplicationContext(), "Неверный пароль!", Toast.LENGTH_LONG);
@@ -655,77 +679,92 @@ public class MainActivity extends AppCompatActivity {
         btnAdvantageForiver.setImageResource(R.drawable.button_advantage_foriver);
         btn3d.setImageResource(R.drawable.button_3d);
         btnCamera.setImageResource(R.drawable.button_camera);
+        btnVideo.setImageResource(R.drawable.button_video);
         switch (view.getId()){
             case R.id.btnFull:
                 btnFull.setImageResource(R.drawable.button_full_down);
                 vvvv.selectById(0);
+                vvvv2.selectById(0);
                 play();
                 break;
             case R.id.btnLocation:
                 btnLocation.setImageResource(R.drawable.button_location_down);
                 vvvv.selectById(1);
+                vvvv2.selectById(1);
                 play();
                 break;
             case R.id.btnAbout:
                 btnAbout.setImageResource(R.drawable.button_about_down);
                 vvvv.selectById(2);
+                vvvv2.selectById(2);
                 play();
                 break;
             case R.id.btnTransport:
                 btnTransport.setImageResource(R.drawable.button_transport_down);
                 vvvv.selectById(3);
+                vvvv2.selectById(3);
                 play();
                 break;
             case R.id.btnArea:
                 btnArea.setImageResource(R.drawable.button_area_down);
                 vvvv.selectById(4);
+                vvvv2.selectById(4);
                 play();
                 break;
             case R.id.btnNaturals:
                 btnNaturales.setImageResource(R.drawable.button_naturales_down);
                 vvvv.selectById(5);
+                vvvv2.selectById(5);
                 play();
                 break;
             case R.id.btnInfra:
                 btnInfra.setImageResource(R.drawable.button_infra_down);
                 vvvv.selectById(6);
+                vvvv2.selectById(6);
                 play();
                 break;
             case R.id.btnOutsideInfra:
                 btnOutsideInfra.setImageResource(R.drawable.button_outside_infra_down);
                 vvvv.selectById(7);
+                vvvv2.selectById(7);
                 play();
                 new OuterInfraActivity(this);
                 break;
             case R.id.btnTorpedo:
                 btnTorpedo.setImageResource(R.drawable.button_torpedo_down);
                 vvvv.selectById(8);
+                vvvv2.selectById(8);
                 play();
                 break;
             case R.id.btnSurround:
                 btnSurround.setImageResource(R.drawable.button_surround_down);
                 vvvv.selectById(9);
+                vvvv2.selectById(9);
                 play();
                 break;
             case R.id.btnAdvantageProject:
                 btnAdvantageProject.setImageResource(R.drawable.button_advantage_riversky_down);
                 vvvv.selectById(10);
+                vvvv2.selectById(10);
                 play();
                 break;
             case R.id.btnGallary:
                 btnGallary.setImageResource(R.drawable.button_gallary_down);
                 vvvv.selectById(11);
+                vvvv2.selectById(11);
                 GallaryActivity gallaryActivity = new GallaryActivity(this);
                 //play();
                 break;
             case R.id.btnProcessBuildings:
                 btnProcessBuildings.setImageResource(R.drawable.button_process_buildings_down);
                 vvvv.selectById(12);
+                vvvv2.selectById(12);
                 play();
                 break;
             case R.id.btnAdvantageForiver:
                 btnAdvantageForiver.setImageResource(R.drawable.button_advantage_foriver_down);
                 vvvv.selectById(14);
+                vvvv2.selectById(14);
                 play();
                 break;
             case R.id.btn3d:
@@ -735,6 +774,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnCamera:
                 btnCamera.setImageResource(R.drawable.button_camera_down);
                 new CameraActivity(this);
+                break;
+            case R.id.btnVideo:
+                btnVideo.setImageResource(R.drawable.button_video_down);
+                new VideoActivity(this);
                 break;
         }
     }
@@ -751,10 +794,12 @@ public class MainActivity extends AppCompatActivity {
                     btnPlayPause.setImageResource(R.drawable.button_playpause);
                     btnPlayPause.setTag(0);
                     vvvv.stop();
+                    vvvv2.stop();
                 }else{
                     btnPlayPause.setImageResource(R.drawable.button_playpause_down);
                     btnPlayPause.setTag(1);
                     vvvv.play();
+                    vvvv2.play();
                 }
                 break;
             case R.id.btnVolume:
@@ -762,10 +807,12 @@ public class MainActivity extends AppCompatActivity {
                     btnVolume.setImageResource(R.drawable.button_volume);
                     btnVolume.setTag(0);
                     vvvv.volumeOnOff();
+                    vvvv2.volumeOnOff();
                 }else{
                     btnVolume.setImageResource(R.drawable.button_volume_down);
                     btnVolume.setTag(1);
                     vvvv.volumeOnOff();
+                    vvvv2.volumeOnOff();
                 }
                 break;
             case R.id.btnOptions:

@@ -29,6 +29,9 @@ public class myConfig {
     private String APP_PREF_MINBUDGET = "minBudget";
     private String APP_PREF_MAXBUDGET = "maxBudget";
 
+    private String APP_HOST1 = "host1";
+    private String APP_HOST2 = "host2";
+
     private static float minSquare=13.40F, maxSquare=149.77F, minCost=0, maxCost=17.7F;
     private static int minFloor=0,maxFloor=23;
 
@@ -145,6 +148,32 @@ public class myConfig {
         if (mSettings.contains(APP_PREF_IP)) {
             //получаем число из настроек
          return mSettings.getString(APP_PREF_IP, "192.168.1.103");
+        }
+        return "";
+    }
+
+    public void setHost1(String host){
+        editor.putString(APP_HOST1,host);
+        editor.apply();
+    }
+
+    public String getHost1(){
+        if (mSettings.contains(APP_HOST1)) {
+            //получаем число из настроек
+            return mSettings.getString(APP_HOST1, "192.168.1.103");
+        }
+        return "";
+    }
+
+    public void setHost2(String host){
+        editor.putString(APP_HOST2,host);
+        editor.apply();
+    }
+
+    public String getHost2(){
+        if (mSettings.contains(APP_HOST2)) {
+            //получаем число из настроек
+            return mSettings.getString(APP_HOST2, "192.168.1.104");
         }
         return "";
     }

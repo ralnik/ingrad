@@ -180,6 +180,13 @@
                     android:adjustViewBounds="true"
                     android:onClick="leftPanelButtonOnCLick"
                     app:srcCompat="@drawable/button_camera" />
+                <ImageView
+                    android:id="@+id/btnVideo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:onClick="leftPanelButtonOnCLick"
+                    app:srcCompat="@drawable/button_video" />
             </LinearLayout>
             </ScrollView>
         </FrameLayout>

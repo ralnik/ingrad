@@ -10,9 +10,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.List;
+
 import butterknife.BindView;
+import butterknife.BindViews;
 import butterknife.ButterKnife;
 import ru.ralnik.ingrad.R;
+import ru.ralnik.ingrad.activity.DialogButtonListener;
 import ru.ralnik.ingrad.for3d.ButtonListener;
 
 public class VideoActivity {
@@ -20,16 +24,24 @@ public class VideoActivity {
     private View rootView;
     private Context context;
 
-    @BindView(R.id.btnClose)
+    @BindView(R.id.button_close)
     ImageView buttonClose;
 
-    @BindView(R.id.buttonVideo1)ImageView buttonVideo1;
-    @BindView(R.id.buttonVideo2)ImageView buttonVideo2;
-    @BindView(R.id.buttonVideo3)ImageView buttonVideo3;
-    @BindView(R.id.buttonVideo4)ImageView buttonVideo4;
-    @BindView(R.id.buttonVideo5)ImageView buttonVideo5;
-    @BindView(R.id.buttonVideo6)ImageView buttonVideo6;
-    @BindView(R.id.buttonVideo7)ImageView buttonVideo7;
+//    @BindView(R.id.buttonVideo1)ImageView buttonVideo1;
+//    @BindView(R.id.buttonVideo2)ImageView buttonVideo2;
+//    @BindView(R.id.buttonVideo3)ImageView buttonVideo3;
+//    @BindView(R.id.buttonVideo4)ImageView buttonVideo4;
+//    @BindView(R.id.buttonVideo5)ImageView buttonVideo5;
+//    @BindView(R.id.buttonVideo6)ImageView buttonVideo6;
+//    @BindView(R.id.buttonVideo7)ImageView buttonVideo7;
+
+    @BindViews({R.id.buttonVideo1,
+            R.id.buttonVideo2,
+            R.id.buttonVideo3,
+            R.id.buttonVideo4,
+            R.id.buttonVideo5,
+            R.id.buttonVideo6,
+            R.id.buttonVideo7})List<ImageView> videoButtons;
 
     public VideoActivity(Activity activity) {
         this.activity = activity;
@@ -48,17 +60,16 @@ public class VideoActivity {
         builder.setCancelable(true);
         builder.create();
         Dialog dialog = builder.show();
-        buttonClose.setOnClickListener(new ButtonListener(dialog, ButtonListener.CLOSE));
+        buttonClose.setOnClickListener(new DialogButtonListener(dialog, DialogButtonListener.BUTTON_CLOSE));
     }
 
     private void init() {
-        buttonVideo1.setOnClickListener(new VideoActivityButtonListener(context));
-        buttonVideo2.setOnClickListener(new VideoActivityButtonListener(context));
-        buttonVideo3.setOnClickListener(new VideoActivityButtonListener(context));
-        buttonVideo4.setOnClickListener(new VideoActivityButtonListener(context));
-        buttonVideo5.setOnClickListener(new VideoActivityButtonListener(context));
-        buttonVideo6.setOnClickListener(new VideoActivityButtonListener(context));
-        buttonVideo7.setOnClickListener(new VideoActivityButtonListener(context));
+        for (ImageView button : videoButtons) {
+            VideoActivityButtonListener buttonListener = new VideoActivityButtonListener(context);
+            buttonListener.setVideoButtons(videoButtons);
+            buttonListener.initButtons();
+            button.setOnClickListener(buttonListener);
+        }
     }
 
 }

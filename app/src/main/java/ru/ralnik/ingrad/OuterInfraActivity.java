@@ -8,8 +8,10 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AlertDialog;
 
 import ru.ralnik.ingrad.config.myConfig;
+import ru.ralnik.ingrad.context.IngradContex;
 import ru.ralnik.ingrad.httpPlayer.HttpPlayerFactory;
 import ru.ralnik.ingrad.httpPlayer.PlayerCommands;
+import ru.ralnik.ingrad.httpPlayer.VVVVPlayer;
 
 public class OuterInfraActivity {
     private final Activity activity;
@@ -23,8 +25,8 @@ public class OuterInfraActivity {
     private ImageView btnShops;
     private ImageView btnClose;
 
-    private myConfig cfg;
     private PlayerCommands vvvv;
+    private PlayerCommands vvvv2;
 
     public OuterInfraActivity(Activity activity) {
         this.activity = activity;
@@ -33,10 +35,8 @@ public class OuterInfraActivity {
         init();
         // show activity
         show();
-
-        cfg = new myConfig(activity.getApplicationContext());
-
-        vvvv = HttpPlayerFactory.getInstance(activity.getApplicationContext()).getCommand();
+        vvvv = IngradContex.getInstance(activity.getApplicationContext()).getVvvv();
+        vvvv2 = IngradContex.getInstance(activity.getApplicationContext()).getVvvv2();
     }
 
     private void show() {
@@ -100,30 +100,37 @@ public class OuterInfraActivity {
                 case R.id.btnChildgarden:
                     btnChildGarden.setImageResource(R.drawable.button_childgarden_down);
                     vvvv.selectBySubId(1);
+                    vvvv2.selectBySubId(1);
                     break;
                 case R.id.btnSchools:
                     btnSchools.setImageResource(R.drawable.button_schools_down);
                     vvvv.selectBySubId(2);
+                    vvvv2.selectBySubId(2);
                     break;
                 case R.id.btnMedicine:
                     btnMedicine.setImageResource(R.drawable.button_medicine_down);
                     vvvv.selectBySubId(3);
+                    vvvv2.selectBySubId(3);
                     break;
                 case R.id.btnSport:
                     btnSport.setImageResource(R.drawable.button_sport_down);
                     vvvv.selectBySubId(4);
+                    vvvv2.selectBySubId(4);
                     break;
                 case R.id.btnObjectOfCreation:
                     btnObjectOfCreation.setImageResource(R.drawable.button_object_of_creation_down);
                     vvvv.selectBySubId(5);
+                    vvvv2.selectBySubId(5);
                     break;
                 case R.id.btnBusinessCenter:
                     btnBusiness.setImageResource(R.drawable.button_business_center_down);
                     vvvv.selectBySubId(6);
+                    vvvv2.selectBySubId(6);
                     break;
                 case R.id.btnShops:
                     btnShops.setImageResource(R.drawable.button_shops_down);
                     vvvv.selectBySubId(7);
+                    vvvv2.selectBySubId(7);
                     break;
                 /*case R.id.btnClose:
                     this.a

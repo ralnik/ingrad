@@ -28,6 +28,9 @@ public interface PlayerCommands {
     void setVolEffect(int volEffect);
     void playVideo(int videoTrack);
     void showGallary(int gallary);
-    void gallaryControl(int control);
+    void gallaryBack(int back);
+    void gallaryForward(int forward);
+    void gallaryPlay(int play);
+    void for3d(int value);
 
 }

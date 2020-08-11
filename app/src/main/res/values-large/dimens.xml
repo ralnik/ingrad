@@ -41,7 +41,7 @@
     <dimen name="buttons2_house_margin_bottom">20dp</dimen>
 
     <!-- button on activity gallary -->
-    <dimen name="buttons_width">152dp</dimen>
-    <dimen name="buttons_height">190dp</dimen>
+    <dimen name="buttons_width">95dp</dimen>
+    <dimen name="buttons_height">94dp</dimen>
     <dimen name="buttons_marginRight">32dp</dimen>
 </resources>

@@ -15,18 +15,18 @@
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
+                android:layout_height="49dp"
                 android:background="@color/titleOfForms"
                 android:gravity="center"
                 android:text="КАМЕРА"
-                android:textSize="10sp" />
+                android:textSize="14sp" />
 
             <ImageView
                 android:id="@+id/button_close"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:layout_gravity="center_vertical|end"
-                android:layout_marginEnd="7dp"
+                android:layout_marginEnd="13dp"
                 app:srcCompat="@drawable/button_close" />
         </FrameLayout>
 </LinearLayout>
