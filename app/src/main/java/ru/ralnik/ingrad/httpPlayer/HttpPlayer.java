@@ -47,7 +47,7 @@ public abstract class HttpPlayer implements PlayerCommands {
                     urlConnection.setRequestProperty("Content-length", "0");
                     urlConnection.setUseCaches(false);
                     urlConnection.setAllowUserInteraction(false);
-                    urlConnection.setConnectTimeout(5000);
+                    urlConnection.setConnectTimeout(50000);
 
                     Authenticator.setDefault(new Authenticator() {
                         protected PasswordAuthentication getPasswordAuthentication() {
