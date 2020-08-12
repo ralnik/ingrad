@@ -95,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
   //----------remont buttons------
     @BindView(R.id.btnWithoutRemont)ImageView btnWithoutRemont;
     @BindView(R.id.btnWithRemont)ImageView btnWithRemont;
-    @BindView(R.id.btnWhiteBox)ImageView btnWhiteBox;
 
   //---------Additional Attributes-----
     @BindView(R.id.btnTownHouse)ImageView btnTownHouse;
@@ -106,11 +105,6 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btnWithFirePlace)ImageView btnWithFirePlace;
     @BindView(R.id.btnBathRoomWithWindow)ImageView btnBathRoomWithWindow;
     @BindView(R.id.btnBalcon)ImageView btnBalcon;
-
-  // ---------- buttons period----------
-    @BindView(R.id.btnSrok_4_2021)ImageView check_period_4_2021;
-    @BindView(R.id.btnSrok_3_2022)ImageView check_period_3_2022;
-    @BindView(R.id.btnSrok_4_2022)ImageView check_period_4_2022;
 
   //---------Buttons filter---------
     @BindView(R.id.btnClear)ImageView btnClear;
@@ -277,13 +271,8 @@ public class MainActivity extends AppCompatActivity {
         btnRoom5.setTag(0);
         btnRoomEvro.setTag(0);
 
-        btnWhiteBox.setTag(0);
         btnWithoutRemont.setTag(0);
         btnWithRemont.setTag(0);
-
-        check_period_4_2021.setTag(0);
-        check_period_3_2022.setTag(0);
-        check_period_4_2022.setTag(0);
 
         btnTownHouse.setTag(0);
         btnPentHouse.setTag(0);
@@ -939,27 +928,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void periodOnClick(View view){
-        switch (view.getId()){
-            case R.id.btnSrok_4_2021:
-                if((Integer) check_period_4_2021.getTag() == 1 ){
-                    check_period_4_2021.setImageResource(R.drawable.checkbox_srok_4_2021);
-                    check_period_4_2021.setTag(0);
-                    clearFilterActivate(false);
-                }else{
-                    check_period_4_2021.setImageResource(R.drawable.checkbox_srok_4_2021_down);
-                    check_period_4_2021.setTag(1);
-                    clearFilterActivate(true);
-                }
-                break;
-            case R.id.btnSrok_3_2022:
-                break;
-
-            case R.id.btnSrok_4_2022:
-                break;
-        }
-    }
-
     public void remontButtonOnClick(View view){
         switch (view.getId()){
             case R.id.btnWithoutRemont:
@@ -981,17 +949,6 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     btnWithRemont.setImageResource(R.drawable.button_with_remont_down);
                     btnWithRemont.setTag(1);
-                    clearFilterActivate(true);
-                }
-                break;
-            case R.id.btnWhiteBox:
-                if((Integer) btnWhiteBox.getTag() == 1 ){
-                    btnWhiteBox.setImageResource(R.drawable.button_remont_whitebox);
-                    btnWhiteBox.setTag(0);
-                    clearFilterActivate(false);
-                }else{
-                    btnWhiteBox.setImageResource(R.drawable.button_remont_whitebox_down);
-                    btnWhiteBox.setTag(1);
                     clearFilterActivate(true);
                 }
                 break;
@@ -1257,10 +1214,6 @@ public class MainActivity extends AppCompatActivity {
             query = query + countBuildString;
         }
 
-        if((Integer) check_period_4_2021.getTag() == 1){query = query + " and DeliveryPeriod = '4к2021'";}
-        if((Integer) check_period_3_2022.getTag() == 1){query = query + " and DeliveryPeriod = '3к2022'";}
-        if((Integer) check_period_4_2022.getTag() == 1){query = query + " and DeliveryPeriod = '4к2022'";}
-
         //выводить только тех у кого цена за кв.метр не равна 1
         query += " and (discountmax/Quantity) > 1";
 
@@ -1302,17 +1255,8 @@ public class MainActivity extends AppCompatActivity {
 
         btnWithoutRemont.setImageResource(R.drawable.button_without_remont);
         btnWithRemont.setImageResource(R.drawable.button_with_remont);
-        btnWhiteBox.setImageResource(R.drawable.button_remont_whitebox);
-        btnWhiteBox.setTag(0);
         btnWithoutRemont.setTag(0);
         btnWithRemont.setTag(0);
-
-        check_period_4_2021.setImageResource(R.drawable.checkbox_srok_4_2021);
-        check_period_3_2022.setImageResource(R.drawable.checkbox_srok_3_2022);
-        check_period_4_2022.setImageResource(R.drawable.checkbox_srok_4_2022);
-        check_period_4_2021.setTag(0);
-        check_period_3_2022.setTag(0);
-        check_period_4_2022.setTag(0);
 
         btnTownHouse.setImageResource(R.drawable.button_townhouse);
         btnPentHouse.setImageResource(R.drawable.button_penthouse);

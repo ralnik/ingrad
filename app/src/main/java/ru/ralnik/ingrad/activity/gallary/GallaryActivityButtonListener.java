@@ -35,7 +35,7 @@ public class GallaryActivityButtonListener {
     private static final int BACK_ENABLE = 1;
     private static final int BACK_DISABLE = 0;
     private static final int FORWARD_ENABLE = 1;
-    private static final int FORWARD_DISABLE = 1;
+    private static final int FORWARD_DISABLE = 0;
 
     public static final int GALLARY_MEDIA_BUTTONS = 1;
     public static final int GALLARY_BUTTONS = 2;

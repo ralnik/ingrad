@@ -722,6 +722,14 @@
                             app:srcCompat="@drawable/button_room_evro" />
                     </LinearLayout>
 
+                    <ImageView
+                        android:id="@+id/titleFloor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/titles_before_seekbar_margin_bottom"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/title_floor" />
+
                     <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
                         android:id="@+id/seekBarFloor"
                         android:layout_width="match_parent"
@@ -825,14 +833,6 @@
                         app:max_value="115.5"
                         app:min_value="31.5"
                         app:right_thumb_color="@color/seekbarColor" />
-
-                    <ImageView
-                        android:id="@+id/titleFloor"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/titles_before_seekbar_margin_bottom"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/title_floor" />
 
                     <LinearLayout
                         android:id="@+id/costLayoutSelector"
@@ -950,49 +950,6 @@
                     </LinearLayout>
 
                     <ImageView
-                        android:id="@+id/titleSrokEnter"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/titles_margin_top"
-                        android:layout_marginBottom="@dimen/titles_margin_bottom"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/title_srok_enter" />
-
-                    <LinearLayout
-                        android:id="@+id/barSrokEnter"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/btnSrok_4_2021"
-                            android:layout_width="45dp"
-                            android:layout_height="12dp"
-                            android:layout_marginEnd="30dp"
-                            android:adjustViewBounds="true"
-                            android:onClick="periodOnClick"
-                            app:srcCompat="@drawable/checkbox_srok_4_2021" />
-
-                        <ImageView
-                            android:id="@+id/btnSrok_3_2022"
-                            android:layout_width="45dp"
-                            android:layout_height="12dp"
-                            android:layout_marginEnd="30dp"
-                            android:adjustViewBounds="true"
-                            app:srcCompat="@drawable/checkbox_srok_3_2022" />
-
-                        <ImageView
-                            android:id="@+id/btnSrok_4_2022"
-                            android:layout_width="45dp"
-                            android:layout_height="12dp"
-                            android:layout_gravity="end"
-                            android:adjustViewBounds="true"
-                            app:srcCompat="@drawable/checkbox_srok_4_2022" />
-
-
-                    </LinearLayout>
-
-                    <ImageView
                         android:id="@+id/titleRemont"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1024,15 +981,6 @@
                             android:adjustViewBounds="true"
                             android:onClick="remontButtonOnClick"
                             app:srcCompat="@drawable/button_with_remont" />
-
-                        <ImageView
-                            android:id="@+id/btnWhiteBox"
-                            android:layout_width="43dp"
-                            android:layout_height="39dp"
-                            android:layout_marginRight="@dimen/buttons_remont_margin_right"
-                            android:adjustViewBounds="true"
-                            android:onClick="remontButtonOnClick"
-                            app:srcCompat="@drawable/button_remont_whitebox" />
 
                     </LinearLayout>
 
