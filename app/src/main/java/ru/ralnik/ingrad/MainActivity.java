@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,6 +23,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarFinalValueListener;
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
@@ -42,74 +43,246 @@ import ru.ralnik.ingrad.context.IngradContex;
 import ru.ralnik.ingrad.customListView.listviewItemSelected;
 import ru.ralnik.ingrad.customListView.myAdapter;
 import ru.ralnik.ingrad.for3d.For3DActivity;
-import ru.ralnik.ingrad.httpPlayer.EnumHost;
-import ru.ralnik.ingrad.httpPlayer.HttpPlayerFactory;
 import ru.ralnik.ingrad.httpPlayer.PlayerCommands;
-import ru.ralnik.ingrad.httpPlayer.VVVVPlayer;
 import ru.ralnik.ingrad.model.Flat;
 import ru.ralnik.ingrad.permissions.MyPermissions;
 import ru.ralnik.ingrad.sqlitedb.FlatRepository;
 
 public class MainActivity extends AppCompatActivity {
-//---------MAIN LAYOUT----------
-    @BindView(R.id.leftPanel)LinearLayout leftPanel;
-    @BindView(R.id.scrollViewRight)ScrollView scrollViewRight;
-    @BindView(R.id.resultPanel)LinearLayout resultPanel;
-    @BindView(R.id.settingsPanel)LinearLayout settingsPanel;
+    //---------MAIN LAYOUT----------
+    @BindView(R.id.leftPanel)
+    LinearLayout leftPanel;
+    @BindView(R.id.scrollViewRight)
+    ScrollView scrollViewRight;
+    @BindView(R.id.resultPanel)
+    LinearLayout resultPanel;
+    @BindView(R.id.settingsPanel)
+    LinearLayout settingsPanel;
 
-//---------Components------------
-  //------leftPanel----------------
-    @BindView(R.id.btnFull) ImageView btnFull;
-    @BindView(R.id.btnLocation) ImageView btnLocation;
-    @BindView(R.id.btnAbout) ImageView btnAbout;
-    @BindView(R.id.btnTransport) ImageView btnTransport;
-    @BindView(R.id.btnArea) ImageView btnArea;
-    @BindView(R.id.btnNaturals) ImageView btnNaturales;
-    @BindView(R.id.btnInfra) ImageView btnInfra;
-    @BindView(R.id.btnOutsideInfra) ImageView btnOutsideInfra;
-    @BindView(R.id.btnTorpedo) ImageView btnTorpedo;
-    @BindView(R.id.btnSurround) ImageView btnSurround;
-    @BindView(R.id.btnAdvantageProject) ImageView btnAdvantageProject;
-    @BindView(R.id.btnGallary) ImageView btnGallary;
-    @BindView(R.id.btnProcessBuildings) ImageView btnProcessBuildings;
-    @BindView(R.id.btnAdvantageForiver)ImageView btnAdvantageForiver;
-    @BindView(R.id.btn3d) ImageView btn3d;
-    @BindView(R.id.btnVideo)ImageView btnVideo;
-  //---------Control panel-------------
-    @BindView(R.id.btnPlayPause)ImageView btnPlayPause;
-    @BindView(R.id.btnOptions)ImageView btnOptions;
-    @BindView(R.id.btnVolume)ImageView btnVolume;
-    @BindView(R.id.btnRiverSky)ImageView btnRiverSky;
-    @BindView(R.id.btnFoRiver)ImageView btnFoRiver;
-    @BindView(R.id.btnRTypePlan)ImageView btnTypePlan;
+    //---------Components------------
+    //------leftPanel----------------
+    @BindView(R.id.btnFull)
+    ImageView btnFull;
+    @BindView(R.id.btnLocation)
+    ImageView btnLocation;
+    @BindView(R.id.btnAbout)
+    ImageView btnAbout;
+    @BindView(R.id.btnTransport)
+    ImageView btnTransport;
+    @BindView(R.id.btnArea)
+    ImageView btnArea;
+    @BindView(R.id.btnNaturals)
+    ImageView btnNaturales;
+    @BindView(R.id.btnInfra)
+    ImageView btnInfra;
+    @BindView(R.id.btnOutsideInfra)
+    ImageView btnOutsideInfra;
+    @BindView(R.id.btnTorpedo)
+    ImageView btnTorpedo;
+    @BindView(R.id.btnSurround)
+    ImageView btnSurround;
+    @BindView(R.id.btnAdvantageProject)
+    ImageView btnAdvantageProject;
+    @BindView(R.id.btnGallary)
+    ImageView btnGallary;
+    @BindView(R.id.btnProcessBuildings)
+    ImageView btnProcessBuildings;
+    @BindView(R.id.btnAdvantageForiver)
+    ImageView btnAdvantageForiver;
+    @BindView(R.id.btn3d)
+    ImageView btn3d;
+    @BindView(R.id.btnVideo)
+    ImageView btnVideo;
+    //---------Control panel-------------
+    @BindView(R.id.btnPlayPause)
+    ImageView btnPlayPause;
+    @BindView(R.id.btnOptions)
+    ImageView btnOptions;
+    @BindView(R.id.btnVolume)
+    ImageView btnVolume;
+    @BindView(R.id.btnRiverSky)
+    ImageView btnRiverSky;
+    @BindView(R.id.btnFoRiver)
+    ImageView btnFoRiver;
+    @BindView(R.id.btnRTypePlan)
+    ImageView btnTypePlan;
 
-  //---------count room buttons-------
-    @BindView(R.id.btnRoom1)ImageView btnRoom1;
-    @BindView(R.id.btnRoom2)ImageView btnRoom2;
-    @BindView(R.id.btnRoom3)ImageView btnRoom3;
-    @BindView(R.id.btnRoom4)ImageView btnRoom4;
-    @BindView(R.id.btnRoom5)ImageView btnRoom5;
-    @BindView(R.id.btnRoomEvro)ImageView btnRoomEvro;
+    //---------count room buttons-------
+    @BindView(R.id.btnRoom1)
+    ImageView btnRoom1;
+    @BindView(R.id.btnRoom2)
+    ImageView btnRoom2;
+    @BindView(R.id.btnRoom3)
+    ImageView btnRoom3;
+    @BindView(R.id.btnRoom4)
+    ImageView btnRoom4;
+    @BindView(R.id.btnRoom5)
+    ImageView btnRoom5;
+    @BindView(R.id.btnRoomEvro)
+    ImageView btnRoomEvro;
 
-  //----------remont buttons------
-    @BindView(R.id.btnWithoutRemont)ImageView btnWithoutRemont;
-    @BindView(R.id.btnWithRemont)ImageView btnWithRemont;
+    //----------remont buttons------
+    @BindView(R.id.btnWithoutRemont)
+    ImageView btnWithoutRemont;
+    @BindView(R.id.btnWithRemont)
+    ImageView btnWithRemont;
 
-  //---------Additional Attributes-----
-    @BindView(R.id.btnTownHouse)ImageView btnTownHouse;
-    @BindView(R.id.btnPentHouse)ImageView btnPentHouse;
-    @BindView(R.id.btnDoubleFloorHouse)ImageView btnDoubleFloorHouse;
-    @BindView(R.id.btnTwoEnterHouse)ImageView btnTwoEnterHouse;
-    @BindView(R.id.btnTerrasa)ImageView btnTerrasa;
-    @BindView(R.id.btnWithFirePlace)ImageView btnWithFirePlace;
-    @BindView(R.id.btnBathRoomWithWindow)ImageView btnBathRoomWithWindow;
-    @BindView(R.id.btnBalcon)ImageView btnBalcon;
+    //---------Additional Attributes-----
+    @BindView(R.id.btnTownHouse)
+    ImageView btnTownHouse;
+    @BindView(R.id.btnPentHouse)
+    ImageView btnPentHouse;
+    @BindView(R.id.btnDoubleFloorHouse)
+    ImageView btnDoubleFloorHouse;
+    @BindView(R.id.btnTwoEnterHouse)
+    ImageView btnTwoEnterHouse;
+    @BindView(R.id.btnTerrasa)
+    ImageView btnTerrasa;
+    @BindView(R.id.btnWithFirePlace)
+    ImageView btnWithFirePlace;
+    @BindView(R.id.btnBathRoomWithWindow)
+    ImageView btnBathRoomWithWindow;
+    @BindView(R.id.btnBalcon)
+    ImageView btnBalcon;
 
-  //---------Buttons filter---------
-    @BindView(R.id.btnClear)ImageView btnClear;
-    @BindView(R.id.btnSearch)ImageView btnSearch;
+    //---------Buttons filter---------
+    @BindView(R.id.btnClear)
+    ImageView btnClear;
+    @BindView(R.id.btnSearch)
+    ImageView btnSearch;
+    //------- SEEKBAR-------------
+    @BindView(R.id.seekBarFloor)
+    CrystalRangeSeekbar seekbarFloor;
+    @BindView(R.id.seekBarCost)
+    CrystalRangeSeekbar seekbarCost;
+    @BindView(R.id.seekBarSquare)
+    CrystalRangeSeekbar seekbarSquare;
+    @BindView(R.id.minFloorEdit)
+    EditText minFloorEdit;
+    @BindView(R.id.maxFloorEdit)
+    EditText maxFloorEdit;
+    @BindView(R.id.minCostEdit)
+    EditText minCostEdit;
+    @BindView(R.id.maxCostEdit)
+    EditText maxCostEdit;
+    @BindView(R.id.minSquareEdit)
+    EditText minSquareEdit;
+    @BindView(R.id.maxSquareEdit)
+    EditText maxSquareEdit;
+    //---------RESULT-----------
+    @BindView(R.id.listview)
+    ListView listview;
+    @BindView(R.id.textNoRow)
+    TextView textNoRow;
+    //---------Column name of listview
+    @BindView(R.id.colKorpus)
+    TextView colKorpus;
+    @BindView(R.id.colFlat)
+    TextView colFlat;
+    @BindView(R.id.colFloor)
+    TextView colFloor;
+    @BindView(R.id.colRooms)
+    TextView colRooms;
+    @BindView(R.id.colSquare)
+    TextView colSquare;
+    @BindView(R.id.colCost)
+    TextView colCost;
+    @BindView(R.id.colOther)
+    TextView colOther;
+    @BindView(R.id.build_3_1)
+    ImageView build_3_1;
+    @BindView(R.id.build_3_2)
+    ImageView build_3_2;
+    @BindView(R.id.build_4)
+    ImageView build_4;
+    @BindView(R.id.build_5)
+    ImageView build_5;
+    @BindView(R.id.build_6)
+    ImageView build_6;
+    @BindView(R.id.build_7)
+    ImageView build_7;
+    @BindView(R.id.build_8)
+    ImageView build_8;
+    @BindView(R.id.build_9)
+    ImageView build_9;
 
- //--------Controll Settings--------
+    // -------BUILDs-------------
+    @BindView(R.id.build_10)
+    ImageView build_10;
+    @BindView(R.id.build_11)
+    ImageView build_11;
+    @BindView(R.id.build_12)
+    ImageView build_12;
+    @BindView(R.id.build_13)
+    ImageView build_13;
+    @BindView(R.id.build_14)
+    ImageView build_14;
+    @BindView(R.id.build_15)
+    ImageView build_15;
+    @BindView(R.id.build_16)
+    ImageView build_16;
+    @BindView(R.id.build_17)
+    ImageView build_17;
+    @BindView(R.id.build_18)
+    ImageView build_18;
+    @BindView(R.id.build_19)
+    ImageView build_19;
+    @BindView(R.id.build_20)
+    ImageView build_20;
+    @BindView(R.id.build_21_1)
+    ImageView build_21_1;
+    @BindView(R.id.build_21_2)
+    ImageView build_21_2;
+    @BindView(R.id.build_21_3)
+    ImageView build_21_3;
+    @BindView(R.id.build_23)
+    ImageView build_23;
+    /**
+     * Корпуса 2 очереди foriver
+     */
+    @BindView(R.id.buttonG2K1)
+    ImageView buttonG2K1;
+    @BindView(R.id.buttonG2K2)
+    ImageView buttonG2K2;
+    @BindView(R.id.buttonG2K3)
+    ImageView buttonG2K3;
+    @BindView(R.id.buttonG2K4)
+    ImageView buttonG2K4;
+    @BindView(R.id.buttonG2K5)
+    ImageView buttonG2K5;
+    @BindView(R.id.buttonG2K6)
+    ImageView buttonG2K6;
+    @BindView(R.id.buttonG2K7)
+    ImageView buttonG2K7;
+    @BindView(R.id.buttonG2K8)
+    ImageView buttonG2K8;
+    @BindView(R.id.buttonG2K9)
+    ImageView buttonG2K9;
+    @BindView(R.id.buttonG2K10)
+    ImageView buttonG2K10;
+    @BindView(R.id.buttonG2K11)
+    ImageView buttonG2K11;
+    @BindView(R.id.hint)
+    TextView hint;
+    @BindView(R.id.hint2)
+    TextView hint2;
+    @BindView(R.id.genPlanLayout)
+    FrameLayout genPlanRiverSky;
+    @BindView(R.id.genPlanLayout2)
+    FrameLayout genPlanFoRiver;
+    //------title cost and budget
+    @BindView(R.id.titleCost)
+    ImageView titleCost;
+    @BindView(R.id.titleBudget)
+    ImageView titleBudget;
+    //My variables
+    AlertDialog alertDialog;
+    String TAG = "myDebug";
+    @BindView(R.id.webView)
+    WebView webView;
+    ArrayList<Integer> ListClearFilter = new ArrayList<>();
+    Animation animation;
+    //--------Controll Settings--------
     private View viewSettingPanel;
     private SeekBar musicSeekBar;
     private SeekBar effectSeekBar;
@@ -118,102 +291,18 @@ public class MainActivity extends AppCompatActivity {
     private EditText editIP;
     private EditText editIP2;
     private ImageView btnSave;
-
- //------- SEEKBAR-------------
-    @BindView(R.id.seekBarFloor)CrystalRangeSeekbar seekbarFloor;
-    @BindView(R.id.seekBarCost)CrystalRangeSeekbar seekbarCost;
-    @BindView(R.id.seekBarSquare)CrystalRangeSeekbar seekbarSquare;
-
-    @BindView(R.id.minFloorEdit)EditText minFloorEdit;
-    @BindView(R.id.maxFloorEdit)EditText maxFloorEdit;
-
-    @BindView(R.id.minCostEdit)EditText minCostEdit;
-    @BindView(R.id.maxCostEdit)EditText maxCostEdit;
-
-    @BindView(R.id.minSquareEdit)EditText minSquareEdit;
-    @BindView(R.id.maxSquareEdit)EditText maxSquareEdit;
-
- //---------RESULT-----------
-    @BindView(R.id.listview)ListView listview;
-    @BindView(R.id.textNoRow)TextView textNoRow;
-
- //---------Column name of listview
-    @BindView(R.id.colKorpus)TextView colKorpus;
-    @BindView(R.id.colFlat)TextView colFlat;
-    @BindView(R.id.colFloor)TextView colFloor;
-    @BindView(R.id.colRooms)TextView colRooms;
-    @BindView(R.id.colSquare)TextView colSquare;
-    @BindView(R.id.colCost)TextView colCost;
-    @BindView(R.id.colOther)TextView colOther;
-
-  // -------BUILDs-------------
-
-    @BindView(R.id.build_3_1)ImageView build_3_1;
-    @BindView(R.id.build_3_2)ImageView build_3_2;
-    @BindView(R.id.build_4)ImageView build_4;
-    @BindView(R.id.build_5)ImageView build_5;
-    @BindView(R.id.build_6)ImageView build_6;
-    @BindView(R.id.build_7)ImageView build_7;
-    @BindView(R.id.build_8)ImageView build_8;
-    @BindView(R.id.build_9)ImageView build_9;
-    @BindView(R.id.build_10)ImageView build_10;
-    @BindView(R.id.build_11)ImageView build_11;
-    @BindView(R.id.build_12)ImageView build_12;
-    @BindView(R.id.build_13)ImageView build_13;
-    @BindView(R.id.build_14)ImageView build_14;
-    @BindView(R.id.build_15)ImageView build_15;
-    @BindView(R.id.build_16)ImageView build_16;
-    @BindView(R.id.build_17)ImageView build_17;
-    @BindView(R.id.build_18)ImageView build_18;
-    @BindView(R.id.build_19)ImageView build_19;
-    @BindView(R.id.build_20)ImageView build_20;
-    @BindView(R.id.build_21_1)ImageView build_21_1;
-    @BindView(R.id.build_21_2)ImageView build_21_2;
-    @BindView(R.id.build_21_3)ImageView build_21_3;
-    @BindView(R.id.build_23)ImageView build_23;
-
-    /**Корпуса 2 очереди foriver*/
-    @BindView(R.id.buttonG2K1)ImageView buttonG2K1;
-    @BindView(R.id.buttonG2K2)ImageView buttonG2K2;
-    @BindView(R.id.buttonG2K3)ImageView buttonG2K3;
-    @BindView(R.id.buttonG2K4)ImageView buttonG2K4;
-    @BindView(R.id.buttonG2K5)ImageView buttonG2K5;
-    @BindView(R.id.buttonG2K6)ImageView buttonG2K6;
-    @BindView(R.id.buttonG2K7)ImageView buttonG2K7;
-    @BindView(R.id.buttonG2K8)ImageView buttonG2K8;
-    @BindView(R.id.buttonG2K9)ImageView buttonG2K9;
-    @BindView(R.id.buttonG2K10)ImageView buttonG2K10;
-    @BindView(R.id.buttonG2K11)ImageView buttonG2K11;
-
-    @BindView(R.id.hint)TextView hint;
-    @BindView(R.id.hint2)TextView hint2;
-    @BindView(R.id.genPlanLayout) FrameLayout genPlanRiverSky;
-    @BindView(R.id.genPlanLayout2) FrameLayout genPlanFoRiver;
-
-    //------title cost and budget
-    @BindView(R.id.titleCost)ImageView titleCost;
-    @BindView(R.id.titleBudget)ImageView titleBudget;
-
-    //My variables
-    AlertDialog alertDialog;
-    String TAG = "myDebug";
     private myConfig cfg;
     private String query;
     private PlayerCommands vvvv;
     private PlayerCommands vvvv2;
-    @BindView(R.id.webView)WebView webView;
     private myTimer timer;
     private String gkType;
-
-    ArrayList<Integer> ListClearFilter = new ArrayList<>();
-    Animation animation;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                             WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         //initialize config
@@ -247,14 +336,14 @@ public class MainActivity extends AppCompatActivity {
         initSettings();
 
         //verify permissions read/write
-        if(new MyPermissions(this,this).verifyStoragePermissions()){
+        if (new MyPermissions(this, this).verifyStoragePermissions()) {
             leftPanel.setVisibility(View.VISIBLE);
             scrollViewRight.setVisibility(View.VISIBLE);
             resultPanel.setVisibility(View.GONE);
         }
     }
 
-    private void init(){
+    private void init() {
         leftPanel.setVisibility(View.INVISIBLE);
         scrollViewRight.setVisibility(View.INVISIBLE);
         resultPanel.setVisibility(View.GONE);
@@ -285,7 +374,7 @@ public class MainActivity extends AppCompatActivity {
         titleCost.setTag(1);
         titleBudget.setTag(0);
         titleBudget.setImageResource(R.drawable.title_budget);
-        titleCost .setImageResource(R.drawable.title_cost_down);
+        titleCost.setImageResource(R.drawable.title_cost_down);
 
         SeekbarSquareOnChange();
         SeekbarFloorOnChange();
@@ -370,7 +459,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setValuesToSeekBar(){
+    private void setValuesToSeekBar() {
 //    try {
         cfg.setMinBudget(Float.valueOf(new FlatRepository(this).getMin("Budget").toString()));
         cfg.setMaxBudget(Float.valueOf(new FlatRepository(this).getMax("Budget").toString()));
@@ -401,13 +490,13 @@ public class MainActivity extends AppCompatActivity {
     private void setDataToCostSeekBar() {
         float min = 0;
         float max = 0;
-        if((Integer) titleCost.getTag() == 1) {
+        if ((Integer) titleCost.getTag() == 1) {
             seekbarCost.setMinValue(cfg.getMinCost());
             seekbarCost.setMaxValue(cfg.getMaxCost());
             min = cfg.getMinCost() / 1000;
             max = cfg.getMaxCost() / 1000;
         }
-        if((Integer) titleBudget.getTag() == 1){
+        if ((Integer) titleBudget.getTag() == 1) {
             seekbarCost.setMinValue(cfg.getMinBudget());
             seekbarCost.setMaxValue(cfg.getMaxBudget());
             min = cfg.getMinBudget() / 1000000;
@@ -415,16 +504,16 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Log.d(TAG,"min="+min);
-        String formattedDoubleMin = String.valueOf(min).substring(0,String.valueOf(min).indexOf(".")+2);
-        String formattedDoubleMax = String.valueOf(max).substring(0,String.valueOf(max).indexOf(".")+2);
+        String formattedDoubleMin = String.valueOf(min).substring(0, String.valueOf(min).indexOf(".") + 2);
+        String formattedDoubleMax = String.valueOf(max).substring(0, String.valueOf(max).indexOf(".") + 2);
         //Log.d(TAG,"minSork="+formattedDouble);
-        minCostEdit.setText(formattedDoubleMin.replace(",","."));
-        maxCostEdit.setText(formattedDoubleMax.replace(",","."));
+        minCostEdit.setText(formattedDoubleMin.replace(",", "."));
+        maxCostEdit.setText(formattedDoubleMax.replace(",", "."));
 //        minCostEdit.setText(seekbarCost.getSelectedMinValue().toString());
 //        maxCostEdit.setText(seekbarCost.getSelectedMaxValue().toString());
     }
 
-    public void SeekbarSquareOnChange(){
+    public void SeekbarSquareOnChange() {
         seekbarSquare.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
             @Override
             public void valueChanged(Number minValue, Number maxValue) {
@@ -434,8 +523,8 @@ public class MainActivity extends AppCompatActivity {
                 а нужно обязательно точка т.к. данные из этого Edit конвертируется обратно во float и передается другому activity
                 и если стоит запятая конвертация не проходит, вываливается ошибка.
                 */
-                minSquareEdit.setText(String.format("%.2f", minValue).replace(",","."));
-                maxSquareEdit.setText(String.format("%.2f", maxValue).replace(",","."));
+                minSquareEdit.setText(String.format("%.2f", minValue).replace(",", "."));
+                maxSquareEdit.setText(String.format("%.2f", maxValue).replace(",", "."));
 
             }
         });
@@ -447,26 +536,26 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void SeekbarCostOnChange(){
+    public void SeekbarCostOnChange() {
         seekbarCost.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
             @Override
             public void valueChanged(Number minValue, Number maxValue) {
                 float min = 0;
                 float max = 0;
-                if((Integer) titleCost.getTag() == 1) {
+                if ((Integer) titleCost.getTag() == 1) {
                     min = Float.valueOf(minValue.toString()) / 1000;
                     max = Float.valueOf(maxValue.toString()) / 1000;
                 }
-                if((Integer) titleBudget.getTag() == 1){
+                if ((Integer) titleBudget.getTag() == 1) {
                     min = Float.valueOf(minValue.toString()) / 1000000;
                     max = Float.valueOf(maxValue.toString()) / 1000000;
                 }
                 //Log.d(TAG,"min="+min);
-                String formattedDoubleMin = String.valueOf(min).substring(0,String.valueOf(min).indexOf(".")+2);
-                String formattedDoubleMax = String.valueOf(max).substring(0,String.valueOf(max).indexOf(".")+2);
+                String formattedDoubleMin = String.valueOf(min).substring(0, String.valueOf(min).indexOf(".") + 2);
+                String formattedDoubleMax = String.valueOf(max).substring(0, String.valueOf(max).indexOf(".") + 2);
                 //Log.d(TAG,"minSork="+formattedDouble);
-                minCostEdit.setText(formattedDoubleMin.replace(",","."));
-                maxCostEdit.setText(formattedDoubleMax.replace(",","."));
+                minCostEdit.setText(formattedDoubleMin.replace(",", "."));
+                maxCostEdit.setText(formattedDoubleMax.replace(",", "."));
 
             }
         });
@@ -478,7 +567,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void SeekbarFloorOnChange(){
+    public void SeekbarFloorOnChange() {
         seekbarFloor.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
             @Override
             public void valueChanged(Number minValue, Number maxValue) {
@@ -494,15 +583,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void initSettings(){
+    private void initSettings() {
         viewSettingPanel = this.getLayoutInflater().inflate(R.layout.activity_settings, null);
-        musicSeekBar = (SeekBar) viewSettingPanel.findViewById(R.id.musicSeekBar);
-        effectSeekBar = (SeekBar) viewSettingPanel.findViewById(R.id.effectSeekBar);
-        editWaitTime = (EditText) viewSettingPanel.findViewById(R.id.editWaitTime);
-        switcherTimer = (ImageView) viewSettingPanel.findViewById(R.id.switcherTimer);
-        editIP = (EditText) viewSettingPanel.findViewById(R.id.editIP);
-        editIP2 = (EditText) viewSettingPanel.findViewById(R.id.editIP2);
-        btnSave = (ImageView) viewSettingPanel.findViewById(R.id.btnSave);
+        musicSeekBar = viewSettingPanel.findViewById(R.id.musicSeekBar);
+        effectSeekBar = viewSettingPanel.findViewById(R.id.effectSeekBar);
+        editWaitTime = viewSettingPanel.findViewById(R.id.editWaitTime);
+        switcherTimer = viewSettingPanel.findViewById(R.id.switcherTimer);
+        editIP = viewSettingPanel.findViewById(R.id.editIP);
+        editIP2 = viewSettingPanel.findViewById(R.id.editIP2);
+        btnSave = viewSettingPanel.findViewById(R.id.btnSave);
         settingsPanel.addView(viewSettingPanel);
         musicSeekBar.setProgress(cfg.getVolumeProgress());
         effectSeekBar.setProgress(cfg.getEffectProgress());
@@ -510,20 +599,22 @@ public class MainActivity extends AppCompatActivity {
         editIP.setText(cfg.getHost1());
         editIP2.setText(cfg.getHost2());
 
-        if(cfg.getDisableTimer()) {
+        if (cfg.getDisableTimer()) {
             switcherTimer.setTag("on");
             switcherTimer.setImageResource(R.drawable.button_on_wait);
-        }else {
+        } else {
             switcherTimer.setTag("off");
             switcherTimer.setImageResource(R.drawable.button_off_wait);
         }
 
         musicSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {}
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+            }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
@@ -537,10 +628,12 @@ public class MainActivity extends AppCompatActivity {
 
         effectSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {}
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+            }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
@@ -554,10 +647,10 @@ public class MainActivity extends AppCompatActivity {
         switcherTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(switcherTimer.getTag().equals("on")){
+                if (switcherTimer.getTag().equals("on")) {
                     switcherTimer.setTag("off");
                     switcherTimer.setImageResource(R.drawable.button_off_wait);
-                }else{
+                } else {
                     switcherTimer.setTag("on");
                     switcherTimer.setImageResource(R.drawable.button_on_wait);
                 }
@@ -573,15 +666,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void saveSettings() {
-        if(!editIP.getText().toString().equals(cfg.getHost1())
-           || !editIP2.getText().toString().equals(cfg.getHost2())) {
+        if (!editIP.getText().toString().equals(cfg.getHost1())
+                || !editIP2.getText().toString().equals(cfg.getHost2())) {
             showPasswordWindow();
         }
 
         //Log.d(TAG,"save config");
-        if(switcherTimer.getTag().equals("on")) {
+        if (switcherTimer.getTag().equals("on")) {
             cfg.setDisableTimer(true);
-        }else{
+        } else {
             cfg.setDisableTimer(false);
         }
 
@@ -595,7 +688,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void showPasswordWindow(){
+    private void showPasswordWindow() {
         //Получаем вид с файла prompt.xml, который применим для диалогового окна:
         LayoutInflater li = LayoutInflater.from(this);
         View promptsView = li.inflate(R.layout.prompt, null);
@@ -607,7 +700,7 @@ public class MainActivity extends AppCompatActivity {
         mDialogBuilder.setView(promptsView);
 
         //Настраиваем отображение поля для ввода текста в открытом диалоге:
-        final EditText userInput = (EditText) promptsView.findViewById(R.id.input_text);
+        final EditText userInput = promptsView.findViewById(R.id.input_text);
 
         //Настраиваем сообщение в диалоговом окне:
         mDialogBuilder
@@ -616,7 +709,7 @@ public class MainActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 //Вводим текст и отображаем в строке ввода на основном экране:
-                                if(String.valueOf(userInput.getText()).equals("realred34")){
+                                if (String.valueOf(userInput.getText()).equals("realred34")) {
                                     cfg.setHost1(editIP.getText().toString());
                                     cfg.setHost2(editIP2.getText().toString());
                                     vvvv.changeHost(cfg.getHost1());
@@ -624,8 +717,7 @@ public class MainActivity extends AppCompatActivity {
                                     Toast toast2 = Toast.makeText(getApplicationContext(), "Данные сохранены!", Toast.LENGTH_LONG);
                                     toast2.setGravity(Gravity.CENTER, 0, 0);
                                     toast2.show();
-                                }else
-                                {
+                                } else {
                                     Toast toast2 = Toast.makeText(getApplicationContext(), "Неверный пароль!", Toast.LENGTH_LONG);
                                     toast2.setGravity(Gravity.CENTER, 0, 0);
                                     toast2.show();
@@ -635,7 +727,7 @@ public class MainActivity extends AppCompatActivity {
                         })
                 .setNegativeButton("Отмена",
                         new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,int id) {
+                            public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
                             }
                         });
@@ -650,7 +742,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void leftPanelButtonOnCLick(View view){
+    public void leftPanelButtonOnCLick(View view) {
         btnFull.setImageResource(R.drawable.button_full);
         btnLocation.setImageResource(R.drawable.button_location);
         btnAbout.setImageResource(R.drawable.button_about);
@@ -667,7 +759,7 @@ public class MainActivity extends AppCompatActivity {
         btnAdvantageForiver.setImageResource(R.drawable.button_advantage_foriver);
         btn3d.setImageResource(R.drawable.button_3d);
         btnVideo.setImageResource(R.drawable.button_video);
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btnFull:
                 btnFull.setImageResource(R.drawable.button_full_down);
                 vvvv.selectById(0);
@@ -737,15 +829,15 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btnGallary:
                 btnGallary.setImageResource(R.drawable.button_gallary_down);
-                vvvv.selectById(11);
-                vvvv2.selectById(11);
+                vvvv.setTrackTv(1);
+                vvvv2.setTrackTv(1);
                 GallaryActivity gallaryActivity = new GallaryActivity(this);
                 //play();
                 break;
             case R.id.btnProcessBuildings:
                 btnProcessBuildings.setImageResource(R.drawable.button_process_buildings_down);
-                vvvv.selectById(12);
-                vvvv2.selectById(12);
+                vvvv.setTrackTv(2);
+                vvvv2.setTrackTv(2);
                 new CameraActivity(this);
                 play();
                 break;
@@ -756,30 +848,35 @@ public class MainActivity extends AppCompatActivity {
                 play();
                 break;
             case R.id.btn3d:
+                vvvv.setTrackTv(3);
+                vvvv2.setTrackTv(3);
                 btn3d.setImageResource(R.drawable.button_3d_down);
                 new For3DActivity(this);
                 break;
             case R.id.btnVideo:
+                vvvv.setTrackTv(4);
+                vvvv2.setTrackTv(4);
                 btnVideo.setImageResource(R.drawable.button_video_down);
                 new VideoActivity(this);
                 break;
         }
     }
 
-    private void play(){
+    private void play() {
         btnPlayPause.setImageResource(R.drawable.button_playpause_down);
         btnPlayPause.setTag(1);
         setTimer(cfg.getTimer());
     }
-    public void conlrolPanelButtonOnClick(View view){
-        switch (view.getId()){
+
+    public void conlrolPanelButtonOnClick(View view) {
+        switch (view.getId()) {
             case R.id.btnPlayPause:
-                if((Integer) btnPlayPause.getTag() == 1 ){
+                if ((Integer) btnPlayPause.getTag() == 1) {
                     btnPlayPause.setImageResource(R.drawable.button_playpause);
                     btnPlayPause.setTag(0);
                     vvvv.stop();
                     vvvv2.stop();
-                }else{
+                } else {
                     btnPlayPause.setImageResource(R.drawable.button_playpause_down);
                     btnPlayPause.setTag(1);
                     vvvv.play();
@@ -787,12 +884,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btnVolume:
-                if((Integer) btnVolume.getTag() == 1 ){
+                if ((Integer) btnVolume.getTag() == 1) {
                     btnVolume.setImageResource(R.drawable.button_volume);
                     btnVolume.setTag(0);
                     vvvv.volumeOnOff();
                     vvvv2.volumeOnOff();
-                }else{
+                } else {
                     btnVolume.setImageResource(R.drawable.button_volume_down);
                     btnVolume.setTag(1);
                     vvvv.volumeOnOff();
@@ -851,70 +948,70 @@ public class MainActivity extends AppCompatActivity {
         return null;
     }
 
-    public void countRoomButtonOnClick(View view){
-        switch (view.getId()){
+    public void countRoomButtonOnClick(View view) {
+        switch (view.getId()) {
             case R.id.btnRoom1:
-                if((Integer) btnRoom1.getTag() == 1 ){
+                if ((Integer) btnRoom1.getTag() == 1) {
                     btnRoom1.setImageResource(R.drawable.button_room1);
                     btnRoom1.setTag(0);
                     clearFilterActivate(false);
 
-                }else{
+                } else {
                     btnRoom1.setImageResource(R.drawable.button_room1_down);
                     btnRoom1.setTag(1);
                     clearFilterActivate(true);
                 }
                 break;
             case R.id.btnRoom2:
-                if((Integer) btnRoom2.getTag() == 2 ){
+                if ((Integer) btnRoom2.getTag() == 2) {
                     btnRoom2.setImageResource(R.drawable.button_room2);
                     btnRoom2.setTag(0);
                     clearFilterActivate(false);
-                }else{
+                } else {
                     btnRoom2.setImageResource(R.drawable.button_room2_down);
                     btnRoom2.setTag(2);
                     clearFilterActivate(true);
                 }
                 break;
             case R.id.btnRoom3:
-                if((Integer) btnRoom3.getTag() == 3 ){
+                if ((Integer) btnRoom3.getTag() == 3) {
                     btnRoom3.setImageResource(R.drawable.button_room3);
                     btnRoom3.setTag(0);
                     clearFilterActivate(false);
-                }else{
+                } else {
                     btnRoom3.setImageResource(R.drawable.button_room3_down);
                     btnRoom3.setTag(3);
                     clearFilterActivate(true);
                 }
                 break;
             case R.id.btnRoom4:
-                if((Integer) btnRoom4.getTag() == 4 ){
+                if ((Integer) btnRoom4.getTag() == 4) {
                     btnRoom4.setImageResource(R.drawable.button_room4);
                     btnRoom4.setTag(0);
                     clearFilterActivate(false);
-                }else{
+                } else {
                     btnRoom4.setImageResource(R.drawable.button_room4_down);
                     btnRoom4.setTag(4);
                     clearFilterActivate(true);
                 }
                 break;
             case R.id.btnRoom5:
-                if((Integer) btnRoom5.getTag() == 5 ){
+                if ((Integer) btnRoom5.getTag() == 5) {
                     btnRoom5.setImageResource(R.drawable.button_room5);
                     btnRoom5.setTag(0);
                     clearFilterActivate(false);
-                }else{
+                } else {
                     btnRoom5.setImageResource(R.drawable.button_room5_down);
                     btnRoom5.setTag(5);
                     clearFilterActivate(true);
                 }
                 break;
             case R.id.btnRoomEvro:
-                if((Integer) btnRoomEvro.getTag() == 1 ){
+                if ((Integer) btnRoomEvro.getTag() == 1) {
                     btnRoomEvro.setImageResource(R.drawable.button_room_evro);
                     btnRoomEvro.setTag(0);
                     clearFilterActivate(false);
-                }else{
+                } else {
                     btnRoomEvro.setImageResource(R.drawable.button_room_evro_down);
                     btnRoomEvro.setTag(1);
                     clearFilterActivate(true);
@@ -923,25 +1020,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void remontButtonOnClick(View view){
-        switch (view.getId()){
+    public void remontButtonOnClick(View view) {
+        switch (view.getId()) {
             case R.id.btnWithoutRemont:
-                if((Integer) btnWithoutRemont.getTag() == 1 ){
+                if ((Integer) btnWithoutRemont.getTag() == 1) {
                     btnWithoutRemont.setImageResource(R.drawable.button_without_remont);
                     btnWithoutRemont.setTag(0);
                     clearFilterActivate(false);
-                }else{
+                } else {
                     btnWithoutRemont.setImageResource(R.drawable.button_without_remont_down);
                     btnWithoutRemont.setTag(1);
                     clearFilterActivate(true);
                 }
                 break;
             case R.id.btnWithRemont:
-                if((Integer) btnWithRemont.getTag() == 1 ){
+                if ((Integer) btnWithRemont.getTag() == 1) {
                     btnWithRemont.setImageResource(R.drawable.button_with_remont);
                     btnWithRemont.setTag(0);
                     clearFilterActivate(false);
-                }else{
+                } else {
                     btnWithRemont.setImageResource(R.drawable.button_with_remont_down);
                     btnWithRemont.setTag(1);
                     clearFilterActivate(true);
@@ -952,91 +1049,91 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void addAttrButtonsOnClick(View view){
-        switch (view.getId()){
+    public void addAttrButtonsOnClick(View view) {
+        switch (view.getId()) {
             case R.id.btnTownHouse:
-                if((Integer) btnTownHouse.getTag() == 1 ){
+                if ((Integer) btnTownHouse.getTag() == 1) {
                     btnTownHouse.setImageResource(R.drawable.button_townhouse);
                     btnTownHouse.setTag(0);
                     clearFilterActivate(false);
-                }else{
+                } else {
                     btnTownHouse.setImageResource(R.drawable.button_townhouse_down);
                     btnTownHouse.setTag(1);
                     clearFilterActivate(true);
                 }
                 break;
             case R.id.btnPentHouse:
-                if((Integer) btnPentHouse.getTag() == 1 ){
+                if ((Integer) btnPentHouse.getTag() == 1) {
                     btnPentHouse.setImageResource(R.drawable.button_penthouse);
                     btnPentHouse.setTag(0);
                     clearFilterActivate(false);
-                }else{
+                } else {
                     btnPentHouse.setImageResource(R.drawable.button_penthouse_down);
                     btnPentHouse.setTag(1);
                     clearFilterActivate(true);
                 }
                 break;
             case R.id.btnDoubleFloorHouse:
-                if((Integer) btnDoubleFloorHouse.getTag() == 1 ){
+                if ((Integer) btnDoubleFloorHouse.getTag() == 1) {
                     btnDoubleFloorHouse.setImageResource(R.drawable.button_doublefloorhouse);
                     btnDoubleFloorHouse.setTag(0);
                     clearFilterActivate(false);
-                }else{
+                } else {
                     btnDoubleFloorHouse.setImageResource(R.drawable.button_doublefloorhouse_down);
                     btnDoubleFloorHouse.setTag(1);
                     clearFilterActivate(true);
                 }
                 break;
             case R.id.btnTwoEnterHouse:
-                if((Integer) btnTwoEnterHouse.getTag() == 1 ){
+                if ((Integer) btnTwoEnterHouse.getTag() == 1) {
                     btnTwoEnterHouse.setImageResource(R.drawable.button_twoenterhouse);
                     btnTwoEnterHouse.setTag(0);
                     clearFilterActivate(false);
-                }else{
+                } else {
                     btnTwoEnterHouse.setImageResource(R.drawable.button_twoenterhouse_down);
                     btnTwoEnterHouse.setTag(1);
                     clearFilterActivate(true);
                 }
                 break;
             case R.id.btnTerrasa:
-                if((Integer) btnTerrasa.getTag() == 1 ){
+                if ((Integer) btnTerrasa.getTag() == 1) {
                     btnTerrasa.setImageResource(R.drawable.button_terrasa);
                     btnTerrasa.setTag(0);
                     clearFilterActivate(false);
-                }else{
+                } else {
                     btnTerrasa.setImageResource(R.drawable.button_terrasa_down);
                     btnTerrasa.setTag(1);
                     clearFilterActivate(true);
                 }
                 break;
             case R.id.btnWithFirePlace:
-                if((Integer) btnWithFirePlace.getTag() == 1 ){
+                if ((Integer) btnWithFirePlace.getTag() == 1) {
                     btnWithFirePlace.setImageResource(R.drawable.button_with_fireplace);
                     btnWithFirePlace.setTag(0);
                     clearFilterActivate(false);
-                }else{
+                } else {
                     btnWithFirePlace.setImageResource(R.drawable.button_with_fireplace_down);
                     btnWithFirePlace.setTag(1);
                     clearFilterActivate(true);
                 }
                 break;
             case R.id.btnBathRoomWithWindow:
-                if((Integer) btnBathRoomWithWindow.getTag() == 1 ){
+                if ((Integer) btnBathRoomWithWindow.getTag() == 1) {
                     btnBathRoomWithWindow.setImageResource(R.drawable.button_bathroom_with_window);
                     btnBathRoomWithWindow.setTag(0);
                     clearFilterActivate(false);
-                }else{
+                } else {
                     btnBathRoomWithWindow.setImageResource(R.drawable.button_bathroom_with_window_down);
                     btnBathRoomWithWindow.setTag(1);
                     clearFilterActivate(true);
                 }
                 break;
             case R.id.btnBalcon:
-                if((Integer) btnBalcon.getTag() == 1 ){
+                if ((Integer) btnBalcon.getTag() == 1) {
                     btnBalcon.setImageResource(R.drawable.button_balcon);
                     btnBalcon.setTag(0);
                     clearFilterActivate(false);
-                }else{
+                } else {
                     btnBalcon.setImageResource(R.drawable.button_balcon_down);
                     btnBalcon.setTag(1);
                     clearFilterActivate(true);
@@ -1047,8 +1144,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void buttonsSearchOnClick(View view){
-        switch (view.getId()){
+    public void buttonsSearchOnClick(View view) {
+        switch (view.getId()) {
             case R.id.btnClear:
                 clearFilter();
                 break;
@@ -1058,9 +1155,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void titleOfListviewOnClick(View view){
+    public void titleOfListviewOnClick(View view) {
         String order = null;
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.colKorpus:
                 order = " order by category,sectionNumber";
                 break;
@@ -1086,13 +1183,13 @@ public class MainActivity extends AppCompatActivity {
         loadFromSqlite(query + order);
     }
 
-    private void loadFromSqlite(String sql){
+    private void loadFromSqlite(String sql) {
         //Log.d(TAG, "mas_size" + new FlatRepository(getApplicationContext()).getAll().size());
-        myAdapter adapter = new myAdapter(this, new FlatRepository(this).getFlatsByQuery(sql),0);
+        myAdapter adapter = new myAdapter(this, new FlatRepository(this).getFlatsByQuery(sql), 0);
         //Log.d("myDebug","adapter.size="+adapter.getCount());
-        if(adapter.getCount() == 0 ){
+        if (adapter.getCount() == 0) {
             textNoRow.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             textNoRow.setVisibility(View.GONE);
         }
         listview.setAdapter(adapter);
@@ -1108,27 +1205,37 @@ public class MainActivity extends AppCompatActivity {
 
         query = query + " and BuildingGroup = '" + gkType + "' ";
 
-        query = query + " and (floor >= "+seekbarFloor.getSelectedMinValue() + " and floor <= "+seekbarFloor.getSelectedMaxValue()+") ";
-        query = query + " and (Quantity >= " + seekbarSquare.getSelectedMinValue() + " and Quantity <= "+((Float) seekbarSquare.getSelectedMaxValue()+0.1) + ") ";
-        if((Integer) titleCost.getTag() == 1) {
+        query = query + " and (floor >= " + seekbarFloor.getSelectedMinValue() + " and floor <= " + seekbarFloor.getSelectedMaxValue() + ") ";
+        query = query + " and (Quantity >= " + seekbarSquare.getSelectedMinValue() + " and Quantity <= " + ((Float) seekbarSquare.getSelectedMaxValue() + 0.1) + ") ";
+        if ((Integer) titleCost.getTag() == 1) {
             query = query + " and ((DiscountMax/Quantity) >= " + minCostEdit.getText() + "*1000" + " and (DiscountMax/Quantity) <= " + maxCostEdit.getText() + "*1000" + ") ";
         }
-        if((Integer) titleBudget.getTag() == 1){
+        if ((Integer) titleBudget.getTag() == 1) {
             query = query + " and (DiscountMax >= " + minCostEdit.getText() + "*1000000" + " and DiscountMax <= " + maxCostEdit.getText() + "*1000000" + ") ";
         }
 
         //Count ROOMS;
         List<Integer> countRoom = new ArrayList<>();
-        if(Integer.valueOf(btnRoom1.getTag().toString()) > 0) { countRoom.add(Integer.valueOf(btnRoom1.getTag().toString())); }
-        if(Integer.valueOf(btnRoom2.getTag().toString()) > 0) { countRoom.add(Integer.valueOf(btnRoom2.getTag().toString())); }
-        if(Integer.valueOf(btnRoom3.getTag().toString()) > 0) { countRoom.add(Integer.valueOf(btnRoom3.getTag().toString())); }
-        if(Integer.valueOf(btnRoom4.getTag().toString()) > 0) { countRoom.add(Integer.valueOf(btnRoom4.getTag().toString())); }
-        if(Integer.valueOf(btnRoom5.getTag().toString()) > 0) { countRoom.add(Integer.valueOf(btnRoom5.getTag().toString())); }
+        if (Integer.valueOf(btnRoom1.getTag().toString()) > 0) {
+            countRoom.add(Integer.valueOf(btnRoom1.getTag().toString()));
+        }
+        if (Integer.valueOf(btnRoom2.getTag().toString()) > 0) {
+            countRoom.add(Integer.valueOf(btnRoom2.getTag().toString()));
+        }
+        if (Integer.valueOf(btnRoom3.getTag().toString()) > 0) {
+            countRoom.add(Integer.valueOf(btnRoom3.getTag().toString()));
+        }
+        if (Integer.valueOf(btnRoom4.getTag().toString()) > 0) {
+            countRoom.add(Integer.valueOf(btnRoom4.getTag().toString()));
+        }
+        if (Integer.valueOf(btnRoom5.getTag().toString()) > 0) {
+            countRoom.add(Integer.valueOf(btnRoom5.getTag().toString()));
+        }
 
 
-        if(countRoom.size()>0){
+        if (countRoom.size() > 0) {
             String countRoomString = "";
-            for(int i = 0 ; i<countRoom.size();i++){
+            for (int i = 0; i < countRoom.size(); i++) {
                 if (countRoomString.length() == 0) {
                     countRoomString = countRoom.get(i).toString();
                 } else {
@@ -1140,7 +1247,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //evro %E% - cyrillic symbol
-        if((Integer) btnRoomEvro.getTag() == 1){
+        if ((Integer) btnRoomEvro.getTag() == 1) {
             query = query + " and Category like '%Е%' ";
         }
 
@@ -1148,40 +1255,94 @@ public class MainActivity extends AppCompatActivity {
 
 
         //additional parameter
-        if(Integer.valueOf(btnTownHouse.getTag().toString())>0){query = query + " and TownHouse = 'True'"; }
-        if(Integer.valueOf(btnPentHouse.getTag().toString())>0){query = query + " and PentHouse = 'True'"; }
-        if(Integer.valueOf(btnDoubleFloorHouse.getTag().toString())>0){query = query + " and TwoLevel = 'True'"; }
-        if(Integer.valueOf(btnTwoEnterHouse.getTag().toString())>0){query = query + " and SeparateEntrance = 'True'"; }
-        if(Integer.valueOf(btnTerrasa.getTag().toString())>0){ query = query + " and Terrace = 'True'";}
-        if(Integer.valueOf(btnWithFirePlace.getTag().toString())>0){ query = query + " and FirePlace = 'True'";}
-        if(Integer.valueOf(btnBathRoomWithWindow.getTag().toString()) > 0){ query = query + " and WithWindow = 'True'";}
+        if (Integer.valueOf(btnTownHouse.getTag().toString()) > 0) {
+            query = query + " and TownHouse = 'True'";
+        }
+        if (Integer.valueOf(btnPentHouse.getTag().toString()) > 0) {
+            query = query + " and PentHouse = 'True'";
+        }
+        if (Integer.valueOf(btnDoubleFloorHouse.getTag().toString()) > 0) {
+            query = query + " and TwoLevel = 'True'";
+        }
+        if (Integer.valueOf(btnTwoEnterHouse.getTag().toString()) > 0) {
+            query = query + " and SeparateEntrance = 'True'";
+        }
+        if (Integer.valueOf(btnTerrasa.getTag().toString()) > 0) {
+            query = query + " and Terrace = 'True'";
+        }
+        if (Integer.valueOf(btnWithFirePlace.getTag().toString()) > 0) {
+            query = query + " and FirePlace = 'True'";
+        }
+        if (Integer.valueOf(btnBathRoomWithWindow.getTag().toString()) > 0) {
+            query = query + " and WithWindow = 'True'";
+        }
         //if(Integer.valueOf(btnBalcon.getTag().toString()) > 0){ query = query + " and Balcon = 'True'";}
 
         String buildQuery;
         List<String> countBuild = new ArrayList<>();
-        if((Integer) build_3_1.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=8)");}
-        if((Integer) build_3_2.getTag() == 1 ){countBuild.add("(SectionNumber=2 and AddressNumber=8)");}
-        if((Integer) build_4.getTag() == 1 ){countBuild.add("(SectionNumber=3 and AddressNumber=8)");}
-        if((Integer) build_5.getTag() == 1 ){countBuild.add("(SectionNumber=4 and AddressNumber=8)");}
-        if((Integer) build_6.getTag() == 1 ){countBuild.add("(SectionNumber=5 and AddressNumber=8)");}
+        if ((Integer) build_3_1.getTag() == 1) {
+            countBuild.add("(SectionNumber=1 and AddressNumber=8)");
+        }
+        if ((Integer) build_3_2.getTag() == 1) {
+            countBuild.add("(SectionNumber=2 and AddressNumber=8)");
+        }
+        if ((Integer) build_4.getTag() == 1) {
+            countBuild.add("(SectionNumber=3 and AddressNumber=8)");
+        }
+        if ((Integer) build_5.getTag() == 1) {
+            countBuild.add("(SectionNumber=4 and AddressNumber=8)");
+        }
+        if ((Integer) build_6.getTag() == 1) {
+            countBuild.add("(SectionNumber=5 and AddressNumber=8)");
+        }
         //if((Integer) build_7.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=8)");}
-        if((Integer) build_8.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=5)");}
-        if((Integer) build_9.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=4)");}
-        if((Integer) build_10.getTag() == 1 ){countBuild.add("(SectionNumber=2 and AddressNumber=4)");}
-        if((Integer) build_11.getTag() == 1 ){countBuild.add("(SectionNumber=3 and AddressNumber=4)");}
-        if((Integer) build_12.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=1)");}
+        if ((Integer) build_8.getTag() == 1) {
+            countBuild.add("(SectionNumber=1 and AddressNumber=5)");
+        }
+        if ((Integer) build_9.getTag() == 1) {
+            countBuild.add("(SectionNumber=1 and AddressNumber=4)");
+        }
+        if ((Integer) build_10.getTag() == 1) {
+            countBuild.add("(SectionNumber=2 and AddressNumber=4)");
+        }
+        if ((Integer) build_11.getTag() == 1) {
+            countBuild.add("(SectionNumber=3 and AddressNumber=4)");
+        }
+        if ((Integer) build_12.getTag() == 1) {
+            countBuild.add("(SectionNumber=1 and AddressNumber=1)");
+        }
         //if((Integer) build_13.getTag() == 1 ){countBuild.add("(SectionNumber=3 and AddressNumber=8)");}
-        if((Integer) build_14.getTag() == 1 ){countBuild.add("(SectionNumber=5 and AddressNumber=2)");}
-        if((Integer) build_15.getTag() == 1 ){countBuild.add("(SectionNumber=4 and AddressNumber=2)");}
-        if((Integer) build_16.getTag() == 1 ){countBuild.add("(SectionNumber=3 and AddressNumber=2)");}
-        if((Integer) build_17.getTag() == 1 ){countBuild.add("(SectionNumber=2 and AddressNumber=2)");}
-        if((Integer) build_18.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=2)");}
+        if ((Integer) build_14.getTag() == 1) {
+            countBuild.add("(SectionNumber=5 and AddressNumber=2)");
+        }
+        if ((Integer) build_15.getTag() == 1) {
+            countBuild.add("(SectionNumber=4 and AddressNumber=2)");
+        }
+        if ((Integer) build_16.getTag() == 1) {
+            countBuild.add("(SectionNumber=3 and AddressNumber=2)");
+        }
+        if ((Integer) build_17.getTag() == 1) {
+            countBuild.add("(SectionNumber=2 and AddressNumber=2)");
+        }
+        if ((Integer) build_18.getTag() == 1) {
+            countBuild.add("(SectionNumber=1 and AddressNumber=2)");
+        }
         //if((Integer) build_19.getTag() == 1 ){countBuild.add("(SectionNumber=3 and AddressNumber=8)");}
-        if((Integer) build_20.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=3)");}
-        if((Integer) build_21_1.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=6)");}
-        if((Integer) build_21_2.getTag() == 1 ){countBuild.add("(SectionNumber=2 and AddressNumber=6)");}
-        if((Integer) build_21_3.getTag() == 1 ){countBuild.add("(SectionNumber=3 and AddressNumber=6)");}
-        if((Integer) build_23.getTag() == 1 ){countBuild.add("(SectionNumber=1 and AddressNumber=7)");}
+        if ((Integer) build_20.getTag() == 1) {
+            countBuild.add("(SectionNumber=1 and AddressNumber=3)");
+        }
+        if ((Integer) build_21_1.getTag() == 1) {
+            countBuild.add("(SectionNumber=1 and AddressNumber=6)");
+        }
+        if ((Integer) build_21_2.getTag() == 1) {
+            countBuild.add("(SectionNumber=2 and AddressNumber=6)");
+        }
+        if ((Integer) build_21_3.getTag() == 1) {
+            countBuild.add("(SectionNumber=3 and AddressNumber=6)");
+        }
+        if ((Integer) build_23.getTag() == 1) {
+            countBuild.add("(SectionNumber=1 and AddressNumber=7)");
+        }
 
         //для корпусок ЖК forRiver
         if ((Integer) buttonG2K1.getTag() == 1) countBuild.add("AddressNumber = 1");
@@ -1196,9 +1357,9 @@ public class MainActivity extends AppCompatActivity {
         if ((Integer) buttonG2K10.getTag() == 1) countBuild.add("AddressNumber = 10");
         if ((Integer) buttonG2K11.getTag() == 1) countBuild.add("AddressNumber = 11");
 
-        if(countBuild.size()>0){
+        if (countBuild.size() > 0) {
             String countBuildString = "";
-            for(int i = 0 ; i<countBuild.size();i++){
+            for (int i = 0; i < countBuild.size(); i++) {
                 if (countBuildString.length() == 0) {
                     countBuildString = countBuild.get(i);
                 } else {
@@ -1345,338 +1506,404 @@ public class MainActivity extends AppCompatActivity {
         if ((Integer) view.getTag() == 0) {
             view.setTag(1);
             clearFilterActivate(true);
-            if (view.getId() == R.id.buttonG2K1) {buttonG2K1.setImageResource(R.drawable.genplan2_k1); ShowHint(view,true, getString(R.string.G2K1), hint2);}
-            if (view.getId() == R.id.buttonG2K2) {buttonG2K2.setImageResource(R.drawable.genplan2_k2); ShowHint(view,true, getString(R.string.G2K2), hint2);}
-            if (view.getId() == R.id.buttonG2K3) {buttonG2K3.setImageResource(R.drawable.genplan2_k3); ShowHint(view,true, getString(R.string.G2K3), hint2);}
-            if (view.getId() == R.id.buttonG2K4) {buttonG2K4.setImageResource(R.drawable.genplan2_k4); ShowHint(view,true, getString(R.string.G2K4), hint2);}
-            if (view.getId() == R.id.buttonG2K5) {buttonG2K5.setImageResource(R.drawable.genplan2_k5); ShowHint(view,true, getString(R.string.G2K5), hint2);}
-            if (view.getId() == R.id.buttonG2K6) {buttonG2K6.setImageResource(R.drawable.genplan2_k6); ShowHint(view,true, getString(R.string.G2K6), hint2);}
-            if (view.getId() == R.id.buttonG2K7) {buttonG2K7.setImageResource(R.drawable.genplan2_k7); ShowHint(view,true, getString(R.string.G2K7), hint2);}
-            if (view.getId() == R.id.buttonG2K8) {buttonG2K8.setImageResource(R.drawable.genplan2_k8); ShowHint(view,true, getString(R.string.G2K8), hint2);}
-            if (view.getId() == R.id.buttonG2K9) {buttonG2K9.setImageResource(R.drawable.genplan2_k9); ShowHint(view,true, getString(R.string.G2K9), hint2);}
-            if (view.getId() == R.id.buttonG2K10) {buttonG2K10.setImageResource(R.drawable.genplan2_k10); ShowHint(view,true, getString(R.string.G2K10), hint2);}
-            if (view.getId() == R.id.buttonG2K11) {buttonG2K11.setImageResource(R.drawable.genplan2_k11); ShowHint(view,true, getString(R.string.G2K11), hint2);}
+            if (view.getId() == R.id.buttonG2K1) {
+                buttonG2K1.setImageResource(R.drawable.genplan2_k1);
+                ShowHint(view, true, getString(R.string.G2K1), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K2) {
+                buttonG2K2.setImageResource(R.drawable.genplan2_k2);
+                ShowHint(view, true, getString(R.string.G2K2), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K3) {
+                buttonG2K3.setImageResource(R.drawable.genplan2_k3);
+                ShowHint(view, true, getString(R.string.G2K3), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K4) {
+                buttonG2K4.setImageResource(R.drawable.genplan2_k4);
+                ShowHint(view, true, getString(R.string.G2K4), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K5) {
+                buttonG2K5.setImageResource(R.drawable.genplan2_k5);
+                ShowHint(view, true, getString(R.string.G2K5), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K6) {
+                buttonG2K6.setImageResource(R.drawable.genplan2_k6);
+                ShowHint(view, true, getString(R.string.G2K6), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K7) {
+                buttonG2K7.setImageResource(R.drawable.genplan2_k7);
+                ShowHint(view, true, getString(R.string.G2K7), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K8) {
+                buttonG2K8.setImageResource(R.drawable.genplan2_k8);
+                ShowHint(view, true, getString(R.string.G2K8), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K9) {
+                buttonG2K9.setImageResource(R.drawable.genplan2_k9);
+                ShowHint(view, true, getString(R.string.G2K9), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K10) {
+                buttonG2K10.setImageResource(R.drawable.genplan2_k10);
+                ShowHint(view, true, getString(R.string.G2K10), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K11) {
+                buttonG2K11.setImageResource(R.drawable.genplan2_k11);
+                ShowHint(view, true, getString(R.string.G2K11), hint2);
+            }
         } else {
             view.setTag(0);
             clearFilterActivate(false);
-            if (view.getId() == R.id.buttonG2K1) {buttonG2K1.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K1), hint2);}
-            if (view.getId() == R.id.buttonG2K2) {buttonG2K2.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K2), hint2);}
-            if (view.getId() == R.id.buttonG2K3) {buttonG2K3.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K3), hint2);}
-            if (view.getId() == R.id.buttonG2K4) {buttonG2K4.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K4), hint2);}
-            if (view.getId() == R.id.buttonG2K5) {buttonG2K5.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K5), hint2);}
-            if (view.getId() == R.id.buttonG2K6) {buttonG2K6.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K6), hint2);}
-            if (view.getId() == R.id.buttonG2K7) {buttonG2K7.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K7), hint2);}
-            if (view.getId() == R.id.buttonG2K8) {buttonG2K8.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K8), hint2);}
-            if (view.getId() == R.id.buttonG2K9) {buttonG2K9.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K9), hint2);}
-            if (view.getId() == R.id.buttonG2K10) {buttonG2K10.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K10), hint2);}
-            if (view.getId() == R.id.buttonG2K11) {buttonG2K11.setImageResource(R.drawable.empty); ShowHint(view,false, getString(R.string.G2K11), hint2);}
+            if (view.getId() == R.id.buttonG2K1) {
+                buttonG2K1.setImageResource(R.drawable.empty);
+                ShowHint(view, false, getString(R.string.G2K1), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K2) {
+                buttonG2K2.setImageResource(R.drawable.empty);
+                ShowHint(view, false, getString(R.string.G2K2), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K3) {
+                buttonG2K3.setImageResource(R.drawable.empty);
+                ShowHint(view, false, getString(R.string.G2K3), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K4) {
+                buttonG2K4.setImageResource(R.drawable.empty);
+                ShowHint(view, false, getString(R.string.G2K4), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K5) {
+                buttonG2K5.setImageResource(R.drawable.empty);
+                ShowHint(view, false, getString(R.string.G2K5), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K6) {
+                buttonG2K6.setImageResource(R.drawable.empty);
+                ShowHint(view, false, getString(R.string.G2K6), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K7) {
+                buttonG2K7.setImageResource(R.drawable.empty);
+                ShowHint(view, false, getString(R.string.G2K7), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K8) {
+                buttonG2K8.setImageResource(R.drawable.empty);
+                ShowHint(view, false, getString(R.string.G2K8), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K9) {
+                buttonG2K9.setImageResource(R.drawable.empty);
+                ShowHint(view, false, getString(R.string.G2K9), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K10) {
+                buttonG2K10.setImageResource(R.drawable.empty);
+                ShowHint(view, false, getString(R.string.G2K10), hint2);
+            }
+            if (view.getId() == R.id.buttonG2K11) {
+                buttonG2K11.setImageResource(R.drawable.empty);
+                ShowHint(view, false, getString(R.string.G2K11), hint2);
+            }
         }
     }
 
-    public void buildsOnClick(View v){
-        switch (v.getId()){
+    public void buildsOnClick(View v) {
+        switch (v.getId()) {
             case R.id.build_3_1:
-                if((Integer) build_3_1.getTag() == 0){
-                   build_3_1.setTag(1);
-                   build_3_1.setImageResource(R.drawable.build_3_1);
+                if ((Integer) build_3_1.getTag() == 0) {
+                    build_3_1.setTag(1);
+                    build_3_1.setImageResource(R.drawable.build_3_1);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build3_1), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build3_1), hint);
+                } else {
                     build_3_1.setTag(0);
                     build_3_1.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build3_1), hint);
+                    ShowHint(v, false, getString(R.string.build3_1), hint);
                 }
-            break;
+                break;
             case R.id.build_3_2:
-                if((Integer) build_3_2.getTag() == 0){
+                if ((Integer) build_3_2.getTag() == 0) {
                     build_3_2.setTag(1);
                     build_3_2.setImageResource(R.drawable.build_3_2);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build3_2), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build3_2), hint);
+                } else {
                     build_3_2.setTag(0);
                     build_3_2.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build3_2), hint);
+                    ShowHint(v, false, getString(R.string.build3_2), hint);
                 }
                 break;
             case R.id.build_4:
-                if((Integer) build_4.getTag() == 0){
+                if ((Integer) build_4.getTag() == 0) {
                     build_4.setTag(1);
                     build_4.setImageResource(R.drawable.build_4);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build4), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build4), hint);
+                } else {
                     build_4.setTag(0);
                     build_4.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build4), hint);
+                    ShowHint(v, false, getString(R.string.build4), hint);
                 }
                 break;
             case R.id.build_5:
-                if((Integer) build_5.getTag() == 0){
+                if ((Integer) build_5.getTag() == 0) {
                     build_5.setTag(1);
                     build_5.setImageResource(R.drawable.build_5);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build5), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build5), hint);
+                } else {
                     build_5.setTag(0);
                     build_5.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build5), hint);
+                    ShowHint(v, false, getString(R.string.build5), hint);
                 }
                 break;
             case R.id.build_6:
-                if((Integer) build_6.getTag() == 0){
+                if ((Integer) build_6.getTag() == 0) {
                     build_6.setTag(1);
                     build_6.setImageResource(R.drawable.build_6);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build6), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build6), hint);
+                } else {
                     build_6.setTag(0);
                     build_6.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build6), hint);
+                    ShowHint(v, false, getString(R.string.build6), hint);
                 }
                 break;
             case R.id.build_7:
-                if((Integer) build_7.getTag() == 0){
+                if ((Integer) build_7.getTag() == 0) {
                     build_7.setTag(1);
                     build_7.setImageResource(R.drawable.build_7);
                     clearFilterActivate(true);
-                } else{
+                } else {
                     build_7.setTag(0);
                     build_7.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
                 }
                 break;
             case R.id.build_8:
-                if((Integer) build_8.getTag() == 0){
+                if ((Integer) build_8.getTag() == 0) {
                     build_8.setTag(1);
                     build_8.setImageResource(R.drawable.build_8);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build8), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build8), hint);
+                } else {
                     build_8.setTag(0);
                     build_8.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build8), hint);
+                    ShowHint(v, false, getString(R.string.build8), hint);
                 }
                 break;
             case R.id.build_9:
-                if((Integer) build_9.getTag() == 0){
+                if ((Integer) build_9.getTag() == 0) {
                     build_9.setTag(1);
                     build_9.setImageResource(R.drawable.build_9);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build9), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build9), hint);
+                } else {
                     build_9.setTag(0);
                     build_9.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build9), hint);
+                    ShowHint(v, false, getString(R.string.build9), hint);
                 }
                 break;
             case R.id.build_10:
-                if((Integer) build_10.getTag() == 0){
+                if ((Integer) build_10.getTag() == 0) {
                     build_10.setTag(1);
                     build_10.setImageResource(R.drawable.build_10);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build10), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build10), hint);
+                } else {
                     build_10.setTag(0);
                     build_10.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build10), hint);
+                    ShowHint(v, false, getString(R.string.build10), hint);
                 }
                 break;
             case R.id.build_11:
-                if((Integer) build_11.getTag() == 0){
+                if ((Integer) build_11.getTag() == 0) {
                     build_11.setTag(1);
                     build_11.setImageResource(R.drawable.build_11);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build11), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build11), hint);
+                } else {
                     build_11.setTag(0);
                     build_11.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build11), hint);
+                    ShowHint(v, false, getString(R.string.build11), hint);
                 }
                 break;
             case R.id.build_12:
-                if((Integer) build_12.getTag() == 0){
+                if ((Integer) build_12.getTag() == 0) {
                     build_12.setTag(1);
                     build_12.setImageResource(R.drawable.build_12);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build12), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build12), hint);
+                } else {
                     build_12.setTag(0);
                     build_12.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build12), hint);
+                    ShowHint(v, false, getString(R.string.build12), hint);
                 }
                 break;
             case R.id.build_13:
-                if((Integer) build_13.getTag() == 0){
+                if ((Integer) build_13.getTag() == 0) {
                     build_13.setTag(1);
                     build_13.setImageResource(R.drawable.build_13);
                     clearFilterActivate(true);
 
-                } else{
+                } else {
                     build_13.setTag(0);
                     build_13.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
                 }
                 break;
             case R.id.build_14:
-                if((Integer) build_14.getTag() == 0){
+                if ((Integer) build_14.getTag() == 0) {
                     build_14.setTag(1);
                     build_14.setImageResource(R.drawable.build_14);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build14), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build14), hint);
+                } else {
                     build_14.setTag(0);
                     build_14.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build14), hint);
+                    ShowHint(v, false, getString(R.string.build14), hint);
                 }
                 break;
             case R.id.build_15:
-                if((Integer) build_15.getTag() == 0){
+                if ((Integer) build_15.getTag() == 0) {
                     build_15.setTag(1);
                     build_15.setImageResource(R.drawable.build_15);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build15), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build15), hint);
+                } else {
                     build_15.setTag(0);
                     build_15.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build15), hint);
+                    ShowHint(v, false, getString(R.string.build15), hint);
                 }
                 break;
             case R.id.build_16:
-                if((Integer) build_16.getTag() == 0){
+                if ((Integer) build_16.getTag() == 0) {
                     build_16.setTag(1);
                     build_16.setImageResource(R.drawable.build_16);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build16), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build16), hint);
+                } else {
                     build_16.setTag(0);
                     build_16.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build16), hint);
+                    ShowHint(v, false, getString(R.string.build16), hint);
                 }
                 break;
             case R.id.build_17:
-                if((Integer) build_17.getTag() == 0){
+                if ((Integer) build_17.getTag() == 0) {
                     build_17.setTag(1);
                     build_17.setImageResource(R.drawable.build_17);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build17), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build17), hint);
+                } else {
                     build_17.setTag(0);
                     build_17.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build17), hint);
+                    ShowHint(v, false, getString(R.string.build17), hint);
                 }
                 break;
             case R.id.build_18:
-                if((Integer) build_18.getTag() == 0){
+                if ((Integer) build_18.getTag() == 0) {
                     build_18.setTag(1);
                     build_18.setImageResource(R.drawable.build_18);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build18), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build18), hint);
+                } else {
                     build_18.setTag(0);
                     build_18.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build18), hint);
+                    ShowHint(v, false, getString(R.string.build18), hint);
                 }
                 break;
             case R.id.build_19:
-                if((Integer) build_19.getTag() == 0){
+                if ((Integer) build_19.getTag() == 0) {
                     build_19.setTag(1);
                     build_19.setImageResource(R.drawable.build_19);
                     clearFilterActivate(true);
 
-                } else{
+                } else {
                     build_19.setTag(0);
                     build_19.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
                 }
                 break;
             case R.id.build_20:
-                if((Integer) build_20.getTag() == 0){
+                if ((Integer) build_20.getTag() == 0) {
                     build_20.setTag(1);
                     build_20.setImageResource(R.drawable.build_20);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build20), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build20), hint);
+                } else {
                     build_20.setTag(0);
                     build_20.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build20), hint);
+                    ShowHint(v, false, getString(R.string.build20), hint);
                 }
                 break;
             case R.id.build_21_1:
-                if((Integer) build_21_1.getTag() == 0){
+                if ((Integer) build_21_1.getTag() == 0) {
                     build_21_1.setTag(1);
                     build_21_1.setImageResource(R.drawable.build_21_1);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build21_1), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build21_1), hint);
+                } else {
                     build_21_1.setTag(0);
                     build_21_1.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build21_1), hint);
+                    ShowHint(v, false, getString(R.string.build21_1), hint);
                 }
                 break;
             case R.id.build_21_2:
-                if((Integer) build_21_2.getTag() == 0){
+                if ((Integer) build_21_2.getTag() == 0) {
                     build_21_2.setTag(1);
                     build_21_2.setImageResource(R.drawable.build_21_2);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build21_2), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build21_2), hint);
+                } else {
                     build_21_2.setTag(0);
                     build_21_2.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build21_2), hint);
+                    ShowHint(v, false, getString(R.string.build21_2), hint);
                 }
                 break;
             case R.id.build_21_3:
-                if((Integer) build_21_3.getTag() == 0){
+                if ((Integer) build_21_3.getTag() == 0) {
                     build_21_3.setTag(1);
                     build_21_3.setImageResource(R.drawable.build_21_3);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build21_3), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build21_3), hint);
+                } else {
                     build_21_3.setTag(0);
                     build_21_3.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build21_3), hint);
+                    ShowHint(v, false, getString(R.string.build21_3), hint);
                 }
                 break;
             case R.id.build_23:
-                if((Integer) build_23.getTag() == 0){
+                if ((Integer) build_23.getTag() == 0) {
                     build_23.setTag(1);
                     build_23.setImageResource(R.drawable.build_23);
                     clearFilterActivate(true);
-                    ShowHint(v,true, getString(R.string.build23), hint);
-                } else{
+                    ShowHint(v, true, getString(R.string.build23), hint);
+                } else {
                     build_23.setTag(0);
                     build_23.setImageResource(R.drawable.empty);
                     clearFilterActivate(false);
-                    ShowHint(v,false, getString(R.string.build23), hint);
+                    ShowHint(v, false, getString(R.string.build23), hint);
                 }
                 break;
         }
     }
 
-    public void titleCost_BudgetOnClick(View v){
-        switch (v.getId()){
+    public void titleCost_BudgetOnClick(View v) {
+        switch (v.getId()) {
             case R.id.titleCost:
-                if((Integer) titleCost.getTag() == 0){
+                if ((Integer) titleCost.getTag() == 0) {
                     titleCost.setTag(1);
                     titleCost.setImageResource(R.drawable.title_cost_down);
                     titleBudget.setTag(0);
@@ -1685,7 +1912,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.titleBudget:
-                if((Integer) titleBudget.getTag() == 0){
+                if ((Integer) titleBudget.getTag() == 0) {
                     titleBudget.setTag(1);
                     titleBudget.setImageResource(R.drawable.title_budget_down);
                     titleCost.setTag(0);
@@ -1699,12 +1926,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // super.onBackPressed();
-        if(settingsPanel.getVisibility() == View.VISIBLE || resultPanel.getVisibility() == View.VISIBLE) {
-            if(settingsPanel.getVisibility() == View.VISIBLE){saveSettings();}
+        if (settingsPanel.getVisibility() == View.VISIBLE || resultPanel.getVisibility() == View.VISIBLE) {
+            if (settingsPanel.getVisibility() == View.VISIBLE) {
+                saveSettings();
+            }
             scrollViewRight.setVisibility(View.VISIBLE);
             settingsPanel.setVisibility(View.GONE);
             resultPanel.setVisibility(View.GONE);
-        }else {
+        } else {
             //если будет нажата кнопка назад на самом планшете, то программы свернется и не закроется
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_MAIN);
@@ -1726,7 +1955,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void ShowHint(View view, boolean activateHint, String text, TextView vHint){
+    private void ShowHint(View view, boolean activateHint, String text, TextView vHint) {
         if (activateHint == true) {
             TextView vvHint = new TextView(getApplicationContext());
             vvHint = vHint;
@@ -1740,18 +1969,18 @@ public class MainActivity extends AppCompatActivity {
 //            vHint.setVisibility(View.VISIBLE);
 
             vHint.setTranslationY(view.getTranslationY() - 50);
-            if(view.getTranslationX()+vvHint.getWidth() > genPlanRiverSky.getWidth()){
+            if (view.getTranslationX() + vvHint.getWidth() > genPlanRiverSky.getWidth()) {
                 vvHint.setTranslationX(genPlanRiverSky.getWidth() - vvHint.getWidth());
-            }else {
+            } else {
                 vvHint.setTranslationX(view.getTranslationX());
             }
             hideHint(vvHint);
         }/**else{
-            vHint.setVisibility(View.INVISIBLE);
-        }*/
+         vHint.setVisibility(View.INVISIBLE);
+         }*/
     }
 
-    private void hideHint(TextView vHint){
+    private void hideHint(TextView vHint) {
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -1769,7 +1998,7 @@ public class MainActivity extends AppCompatActivity {
                         vHint.setVisibility(View.INVISIBLE);
 
 
-                       // Log.d("myDebug","скрылся hint");
+                        // Log.d("myDebug","скрылся hint");
                     }
 
                     @Override
@@ -1777,7 +2006,7 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-                if(vHint.getVisibility() == View.VISIBLE) {
+                if (vHint.getVisibility() == View.VISIBLE) {
                     vHint.startAnimation(animation);
                 }
             }
@@ -1790,7 +2019,7 @@ public class MainActivity extends AppCompatActivity {
             btnClear.setImageResource(R.drawable.button_clear_ifhas);
             //btnClear.setEnabled(flag);
             ListClearFilter.add(1);
-           // Log.d("myDebug","count="+ListClearFilter.size());
+            // Log.d("myDebug","count="+ListClearFilter.size());
         } else {
             int count = ListClearFilter.size();
             /*
@@ -1813,7 +2042,7 @@ public class MainActivity extends AppCompatActivity {
 //                //btnClear.setEnabled(flag);
 //                ListClearFilter.clear();
 //            }
-           // Log.d("myDebug","count="+ListClearFilter.size());
+            // Log.d("myDebug","count="+ListClearFilter.size());
         }
 
     }

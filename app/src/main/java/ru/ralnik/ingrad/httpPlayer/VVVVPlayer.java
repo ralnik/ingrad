@@ -1,11 +1,8 @@
 package ru.ralnik.ingrad.httpPlayer;
 
-import lombok.Getter;
-import lombok.Setter;
 import ru.ralnik.ingrad.model.Flat;
 
-@Getter
-@Setter
+
 public class  VVVVPlayer extends HttpPlayer {
 
     private int playStop = 0;
@@ -22,6 +19,7 @@ public class  VVVVPlayer extends HttpPlayer {
     private int gallaryForward = 0;
     private int gallaryBack = 0;
     private int for3d = 0;
+    private int trackTv = 1;
 
 
     public VVVVPlayer(String host) {
@@ -145,6 +143,13 @@ public class  VVVVPlayer extends HttpPlayer {
         super.executeCommand(getFullLink());
     }
 
+    @Override
+    public void setTrackTv(int value) {
+        this.trackTv = value;
+        super.executeCommand(getFullLink());
+    }
+
+
     public String getFullLink(){
         return "vvvv?" +
                "track=" + this.numberTrack + "&" +
@@ -159,6 +164,7 @@ public class  VVVVPlayer extends HttpPlayer {
                 "gallaryForward=" + this.gallaryForward + "&" +
                 "gallaryBack=" + this.gallaryBack + "&" +
                 "video=" + this.videoTrack  + "&" +
-                "3d=" + this.for3d;
+                "3d=" + this.for3d + "&" +
+                "trackTV=" + this.trackTv;
     }
 }

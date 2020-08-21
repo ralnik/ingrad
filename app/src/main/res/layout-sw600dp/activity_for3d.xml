@@ -18,7 +18,7 @@
             android:layout_height="49dp"
             android:background="@color/titleOfForms"
             android:gravity="center"
-            android:text="КАМЕРА"
+            android:text="3D тур"
             android:textSize="14sp" />
 
         <ImageView
