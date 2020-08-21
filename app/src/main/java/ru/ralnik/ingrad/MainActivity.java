@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btnProcessBuildings) ImageView btnProcessBuildings;
     @BindView(R.id.btnAdvantageForiver)ImageView btnAdvantageForiver;
     @BindView(R.id.btn3d) ImageView btn3d;
-    @BindView(R.id.btnCamera) ImageView btnCamera;
     @BindView(R.id.btnVideo)ImageView btnVideo;
   //---------Control panel-------------
     @BindView(R.id.btnPlayPause)ImageView btnPlayPause;
@@ -667,7 +666,6 @@ public class MainActivity extends AppCompatActivity {
         btnProcessBuildings.setImageResource(R.drawable.button_process_buildings);
         btnAdvantageForiver.setImageResource(R.drawable.button_advantage_foriver);
         btn3d.setImageResource(R.drawable.button_3d);
-        btnCamera.setImageResource(R.drawable.button_camera);
         btnVideo.setImageResource(R.drawable.button_video);
         switch (view.getId()){
             case R.id.btnFull:
@@ -748,6 +746,7 @@ public class MainActivity extends AppCompatActivity {
                 btnProcessBuildings.setImageResource(R.drawable.button_process_buildings_down);
                 vvvv.selectById(12);
                 vvvv2.selectById(12);
+                new CameraActivity(this);
                 play();
                 break;
             case R.id.btnAdvantageForiver:
@@ -759,10 +758,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn3d:
                 btn3d.setImageResource(R.drawable.button_3d_down);
                 new For3DActivity(this);
-                break;
-            case R.id.btnCamera:
-                btnCamera.setImageResource(R.drawable.button_camera_down);
-                new CameraActivity(this);
                 break;
             case R.id.btnVideo:
                 btnVideo.setImageResource(R.drawable.button_video_down);
