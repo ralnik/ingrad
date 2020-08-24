@@ -8,7 +8,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
-        versionName "1.0.41"
+        versionName "1.0.43"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -57,5 +57,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
     /**simple-xml*/
     implementation 'org.simpleframework:simple-xml:2.7.1'
-
+    //from folder '/libs'
+    implementation files('libs/clickablebutton-release.aar')
 }

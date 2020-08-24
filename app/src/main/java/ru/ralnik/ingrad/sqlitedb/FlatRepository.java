@@ -3,12 +3,15 @@ package ru.ralnik.ingrad.sqlitedb;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import androidx.sqlite.db.SimpleSQLiteQuery;
 
+import java.util.ArrayList;
 import java.util.List;
 import lombok.SneakyThrows;
 import ru.ralnik.ingrad.model.Flat;
+import ru.ralnik.ingrad.model.FlatPlanBean;
 
 public class FlatRepository {
     private FlatDao mFlatDao;
@@ -20,6 +23,11 @@ public class FlatRepository {
     @SneakyThrows
     public Cursor getFlatsByQuery(String query){
         return new getFlatsByQueryAsyncTask(mFlatDao).execute(query).get();
+    }
+
+    @SneakyThrows
+    public List<FlatPlanBean> countTypeFlat(String query) {
+        return new countTypeFlatAsyncTask(mFlatDao).execute(query).get();
     }
 
     public void insert(Flat flat){
@@ -79,6 +87,46 @@ public class FlatRepository {
         protected Cursor doInBackground(String... param) {
             SimpleSQLiteQuery query = new SimpleSQLiteQuery(param[0]);
             return mAsyncFlatDao.getFlatsByQuery(query);
+        }
+    }
+
+    private class countTypeFlatAsyncTask extends AsyncTask<String,Void, List<FlatPlanBean>>{
+        private FlatDao mAsyncFlatDao;
+        public countTypeFlatAsyncTask(FlatDao mAsyncFlatDao) {
+            this.mAsyncFlatDao = mAsyncFlatDao;
+        }
+
+        @Override
+        protected List<FlatPlanBean> doInBackground(String... param) {
+            SimpleSQLiteQuery query = new SimpleSQLiteQuery(param[0]);
+            Cursor cursor = mAsyncFlatDao.countTypeFlats(query);
+
+            int ID = cursor.getColumnIndex("AddressId");
+            int SQUARE = cursor.getColumnIndex("square");
+            int COUNTROOMS = cursor.getColumnIndex("rooms");
+            int COUNTFLATS = cursor.getColumnIndex("countFlats");
+            int REALSQUARE = cursor.getColumnIndex("Quantity");
+            if (cursor == null) {
+                Log.d("myDebug", "cursor is null");
+            }
+            for (String name : cursor.getColumnNames()) {
+                Log.d("myDebug", "colname = " + name);
+            }
+            Log.d("myDebug", "query: " + param[0]);
+            Log.d("myDebug", "Cursor count: " + cursor.getCount());
+            Log.d("myDebug", "Cursor: " + cursor.toString());
+            List<FlatPlanBean> flatList = new ArrayList<>();
+            cursor.moveToFirst();
+            do {
+                FlatPlanBean flat = new FlatPlanBean();
+                flat.setId(cursor.getString(ID));
+                flat.setSquare(cursor.getInt(SQUARE));
+                flat.setRealSquare(cursor.getFloat(REALSQUARE));
+                flat.setCountRooms(cursor.getInt(COUNTROOMS));
+                flat.setCountFlats(cursor.getInt(COUNTFLATS));
+                flatList.add(flat);
+            } while (cursor.moveToNext());
+            return flatList;
         }
     }
 

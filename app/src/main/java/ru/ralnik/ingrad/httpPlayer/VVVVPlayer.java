@@ -20,6 +20,7 @@ public class  VVVVPlayer extends HttpPlayer {
     private int gallaryBack = 0;
     private int for3d = 0;
     private int trackTv = 1;
+    private int for3dVideoTrack = 0;
 
 
     public VVVVPlayer(String host) {
@@ -149,6 +150,11 @@ public class  VVVVPlayer extends HttpPlayer {
         super.executeCommand(getFullLink());
     }
 
+    @Override
+    public void for3dVideoTrack(int value) {
+        for3dVideoTrack = value;
+        super.executeCommand(getFullLink());
+    }
 
     public String getFullLink(){
         return "vvvv?" +
@@ -165,6 +171,7 @@ public class  VVVVPlayer extends HttpPlayer {
                 "gallaryBack=" + this.gallaryBack + "&" +
                 "video=" + this.videoTrack  + "&" +
                 "3d=" + this.for3d + "&" +
-                "trackTV=" + this.trackTv;
+                "trackTV=" + this.trackTv + "&" +
+                "3dTrack=" + this.for3dVideoTrack;
     }
 }

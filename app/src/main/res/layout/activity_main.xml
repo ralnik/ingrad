@@ -187,7 +187,7 @@
     <LinearLayout
         android:id="@+id/rightPanel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -268,18 +268,121 @@
             android:id="@+id/scrollViewRight"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:fillViewport="true"
             android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/filterLayoutPlanFlat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/titles_margin_top"
+                        android:adjustViewBounds="true"
+                        app:srcCompat="@drawable/title_count_room" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/bar_countroom_margin_bottom">
+
+                        <ru.ralnik.clickablebutton.ClickableButton
+                            android:id="@+id/btnRoom_1"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:adjustViewBounds="true"
+                            android:tag="1"
+                            app:cb_src_image="@drawable/r1"
+                            app:cb_src_image_down="@drawable/r1_down"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ru.ralnik.clickablebutton.ClickableButton
+                            android:id="@+id/btnRoom_2"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="@dimen/button_room_margin_right"
+                            android:adjustViewBounds="true"
+                            android:tag="2"
+                            app:cb_src_image="@drawable/r2"
+                            app:cb_src_image_down="@drawable/r2_down"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/btnRoom_1"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ru.ralnik.clickablebutton.ClickableButton
+                            android:id="@+id/btnRoom_3"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="@dimen/button_room_margin_right"
+                            android:adjustViewBounds="true"
+                            android:tag="3"
+                            app:cb_src_image="@drawable/r3"
+                            app:cb_src_image_down="@drawable/r3_down"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/btnRoom_2"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ru.ralnik.clickablebutton.ClickableButton
+                            android:id="@+id/btnRoom_4"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="@dimen/button_room_margin_right"
+                            android:adjustViewBounds="true"
+                            android:tag="4"
+                            app:cb_src_image="@drawable/r4"
+                            app:cb_src_image_down="@drawable/r4_down"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/btnRoom_3"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ru.ralnik.clickablebutton.ClickableButton
+                            android:id="@+id/btnRoom_5"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginEnd="@dimen/button_room_margin_right"
+                            android:adjustViewBounds="true"
+                            android:tag="5"
+                            app:cb_src_image="@drawable/r5"
+                            app:cb_src_image_down="@drawable/r5_down"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorTextError" />
+
+                    <GridView
+                        android:id="@+id/gridView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:columnWidth="50dp"
+                        android:gravity="center"
+                        android:horizontalSpacing="2dp"
+                        android:numColumns="auto_fit"
+                        android:stretchMode="columnWidth"
+                        android:verticalSpacing="17dp" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/filterLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:visibility="gone"
                     android:orientation="vertical">
 
                     <FrameLayout

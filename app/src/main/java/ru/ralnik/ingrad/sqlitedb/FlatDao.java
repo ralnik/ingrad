@@ -18,7 +18,10 @@ import ru.ralnik.ingrad.model.Flat;
 @Dao
 public interface FlatDao {
     @RawQuery
-   Cursor getFlatsByQuery(SupportSQLiteQuery query);
+    Cursor getFlatsByQuery(SupportSQLiteQuery query);
+
+    @RawQuery
+    Cursor countTypeFlats(SupportSQLiteQuery query);
 
     @Query("SELECT * FROM flats")
     List<Flat> getAll();
@@ -32,7 +35,7 @@ public interface FlatDao {
     @Query("SELECT * FROM flats WHERE ArticleId = :ArticleId")
     Flat findById(String ArticleId);
 
-//   В режиме REPLACE старая запись будет заменена новой. Этот режим хорошо подходит, если вам надо вставить запись, если ее еще нет в таблице или обновить запись, если она уже есть.
+    //   В режиме REPLACE старая запись будет заменена новой. Этот режим хорошо подходит, если вам надо вставить запись, если ее еще нет в таблице или обновить запись, если она уже есть.
 //   Также есть режим IGNORE. В этом режиме будет оставлена старая запись и операция вставки не будет выполнена.
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Flat... flats);
@@ -72,5 +75,5 @@ public interface FlatDao {
     Float getMaxBudget();
 
     @Query("UPDATE flats set ArticleSubType = :ArticleSubType, LayoutUrl = :LayoutUrl, BeforeBtiNumber = :BeforeBtiNumber, Category = :Category, AddressId = :AddressId, AddressName = :AddressName, AddressNumber = :AddressNumber, SectionNumber = :SectionNumber, Floor = :Floor, Rooms = :Rooms, Quantity = :Quantity, DiscountMax = :DiscountMax,FinishTypeId = :FinishTypeId, StatusCodeName = :StatusCodeName, TownHouse = :TownHouse, PentHouse = :PentHouse, TwoLevel = :TwoLevel, SeparateEntrance = :SeparateEntrance, WithWindow = :WithWindow, FirePlace = :FirePlace, Terrace = :Terrace, CountBalcony = :CountBalcony, CountLoggia = :CountLoggia, CountTerrace = :CountTerrace, DeliveryPeriod = :DeliveryPeriod where ArticleId = :ArticleId")
-    void update(String ArticleId, String ArticleSubType, String LayoutUrl, int BeforeBtiNumber, String Category, String AddressId, String AddressName, int AddressNumber,String SectionNumber, int Floor, int Rooms, Float Quantity, Float DiscountMax, String FinishTypeId, String StatusCodeName, String TownHouse, String PentHouse, String TwoLevel, String SeparateEntrance, String WithWindow, String FirePlace, String Terrace, int CountBalcony, int CountLoggia, int CountTerrace, String DeliveryPeriod);
- }
+    void update(String ArticleId, String ArticleSubType, String LayoutUrl, int BeforeBtiNumber, String Category, String AddressId, String AddressName, int AddressNumber, String SectionNumber, int Floor, int Rooms, Float Quantity, Float DiscountMax, String FinishTypeId, String StatusCodeName, String TownHouse, String PentHouse, String TwoLevel, String SeparateEntrance, String WithWindow, String FirePlace, String Terrace, int CountBalcony, int CountLoggia, int CountTerrace, String DeliveryPeriod);
+}

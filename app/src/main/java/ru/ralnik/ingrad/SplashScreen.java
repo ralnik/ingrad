@@ -40,7 +40,6 @@ public class SplashScreen extends AppCompatActivity {
          *  теперь applicationContext можно вызывать в любом месте программы
          */
         IngradContex.getInstance(getApplicationContext());
-
         Intent intent = new Intent(SplashScreen.this, MainActivity.class);
         startActivity(intent);
     }

@@ -19,7 +19,7 @@ import ru.ralnik.ingrad.R;
 public class myAdapter extends CursorAdapter {
 
     public Context context;
-    private LayoutInflater mInflater;
+        private LayoutInflater mInflater;
     //private int size;
 
     public myAdapter(Context context, Cursor c, int flags) {

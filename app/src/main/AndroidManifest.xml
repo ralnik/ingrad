@@ -12,19 +12,13 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".activity.exception.ExceptionActivity"></activity>
-        <activity android:name=".activity.video.VideoActivity" />
-        <activity android:name=".activity.gallary.GallaryActivity" />
-        <activity
-            android:name=".for3d.For3DActivity"
-            android:label="@string/title_activity_for3_d"
-            android:theme="@style/NoActionBar" />
-        <activity android:name=".camera.CameraActivity" />
+        android:usesCleartextTraffic="true"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true">
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
             android:name=".SplashScreen"
             android:screenOrientation="portrait"

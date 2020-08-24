@@ -32,6 +32,7 @@ public interface PlayerCommands {
     void gallaryForward(int forward);
     void gallaryPlay(int play);
     void for3d(int value);
+    void for3dVideoTrack(int value);
     void setTrackTv(int value);
 
 }

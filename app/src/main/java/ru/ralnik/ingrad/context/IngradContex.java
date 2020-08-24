@@ -1,8 +1,10 @@
 package ru.ralnik.ingrad.context;
 
+import android.app.Activity;
 import android.content.Context;
 
 import lombok.Getter;
+import lombok.Setter;
 import ru.ralnik.ingrad.config.myConfig;
 import ru.ralnik.ingrad.httpPlayer.PlayerCommands;
 import ru.ralnik.ingrad.httpPlayer.VVVVPlayer;
@@ -13,6 +15,9 @@ import ru.ralnik.ingrad.httpPlayer.VVVVPlayer;
 public class IngradContex {
     private static IngradContex instance;
     private static Context context;
+    @Setter
+    @Getter
+    private static Activity mainActivity;
     @Getter
     private PlayerCommands vvvv;
     @Getter
