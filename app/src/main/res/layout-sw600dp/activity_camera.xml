@@ -29,4 +29,51 @@
                 android:layout_marginEnd="13dp"
                 app:srcCompat="@drawable/button_close" />
         </FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/bar_countroom_margin_bottom">
+
+        <ru.ralnik.clickablebutton.ClickableButton
+            android:id="@+id/btnCamera1"
+            android:layout_width="61dp"
+            android:layout_height="61dp"
+            android:adjustViewBounds="true"
+            android:tag="1"
+            app:cb_src_image="@drawable/r1"
+            app:cb_src_image_down="@drawable/r1_down"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ru.ralnik.clickablebutton.ClickableButton
+            android:id="@+id/btnCamera2"
+            android:layout_width="61dp"
+            android:layout_height="61dp"
+            android:layout_marginLeft="@dimen/button_room_margin_right"
+            android:adjustViewBounds="true"
+            android:tag="2"
+            app:cb_src_image="@drawable/r2"
+            app:cb_src_image_down="@drawable/r2_down"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/btnCamera1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ru.ralnik.clickablebutton.ClickableButton
+            android:id="@+id/btnCamera3"
+            android:layout_width="61dp"
+            android:layout_height="61dp"
+            android:layout_marginLeft="@dimen/button_room_margin_right"
+            android:adjustViewBounds="true"
+            android:tag="3"
+            app:cb_src_image="@drawable/r3"
+            app:cb_src_image_down="@drawable/r3_down"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/btnCamera2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

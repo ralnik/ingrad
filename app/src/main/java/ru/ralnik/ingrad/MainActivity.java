@@ -798,12 +798,10 @@ public class MainActivity extends AppCompatActivity {
         btnVideo.setImageResource(R.drawable.button_video);
         switch (view.getId()) {
             case R.id.btnFull:
-//                btnFull.setImageResource(R.drawable.button_full_down);
-//                vvvv.selectById(0);
-//                vvvv2.selectById(0);
-//                play();
-                DbManager dbManager = new DbManager();
-                dbManager.setQuery("select * from flats");
+                btnFull.setImageResource(R.drawable.button_full_down);
+                vvvv.selectById(0);
+                vvvv2.selectById(0);
+                play();
                 break;
             case R.id.btnLocation:
                 btnLocation.setImageResource(R.drawable.button_location_down);
@@ -963,7 +961,7 @@ public class MainActivity extends AppCompatActivity {
     private void getListTypeOfPlan(){
         DbManager dbManager = new DbManager();
         String query = "select \n" +
-                " (select flats.AddressId from flats where (StatusCodeName='Свободно' or StatusCodeName='Ус. Бронь') and  Rooms=groupPlan.rooms and CAST(Quantity as INTEGER)>=groupPlan.square and CAST(Quantity as INTEGER)<groupPlan.square+1 LIMIT 1) as AddressId \n" +
+                " (select flats.ArticleId from flats where (StatusCodeName='Свободно' or StatusCodeName='Ус. Бронь') and  Rooms=groupPlan.rooms and CAST(Quantity as INTEGER)>=groupPlan.square and CAST(Quantity as INTEGER)<groupPlan.square+1 LIMIT 1) as ArticleId \n" +
                 " ,(select min(Quantity) from flats where (StatusCodeName='Свободно' or StatusCodeName='Ус. Бронь') and  Rooms=groupPlan.rooms and CAST(Quantity as INTEGER)>=groupPlan.square and CAST(Quantity as INTEGER)<groupPlan.square+1 LIMIT 1) as Quantity \n" +
                 " ,groupPlan.square \n" +
                 " , groupPlan.rooms \n" +
@@ -973,8 +971,7 @@ public class MainActivity extends AppCompatActivity {
                 " where (StatusCodeName='Свободно' or StatusCodeName='Ус. Бронь') \n" +
                 " :countRooms \n" +
                 " GROUP by CAST(Quantity as INTEGER), Rooms \n" +
-                " ) groupPlan \n" +
-                " where groupPlan.countFlats > 1";
+                " ) groupPlan";
         dbManager.setQuery(query);
 
         if (btnRoom_1.getStatus()) dbManager.whereParams(new String[] {":countRooms"}, new Object[] {" and rooms = 1"});

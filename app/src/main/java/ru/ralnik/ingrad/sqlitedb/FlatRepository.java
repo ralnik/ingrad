@@ -101,7 +101,7 @@ public class FlatRepository {
             SimpleSQLiteQuery query = new SimpleSQLiteQuery(param[0]);
             Cursor cursor = mAsyncFlatDao.countTypeFlats(query);
 
-            int ID = cursor.getColumnIndex("AddressId");
+            int ID = cursor.getColumnIndex("ArticleId");
             int SQUARE = cursor.getColumnIndex("square");
             int COUNTROOMS = cursor.getColumnIndex("rooms");
             int COUNTFLATS = cursor.getColumnIndex("countFlats");
@@ -118,6 +118,7 @@ public class FlatRepository {
             List<FlatPlanBean> flatList = new ArrayList<>();
             cursor.moveToFirst();
             do {
+                if (cursor.getCount() == 0) break;
                 FlatPlanBean flat = new FlatPlanBean();
                 flat.setId(cursor.getString(ID));
                 flat.setSquare(cursor.getInt(SQUARE));

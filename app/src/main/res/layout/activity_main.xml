@@ -274,7 +274,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="bottom">
 
                 <LinearLayout
                     android:id="@+id/filterLayoutPlanFlat"
@@ -381,9 +382,10 @@
                 <LinearLayout
                     android:id="@+id/filterLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:visibility="gone"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="bottom">
 
                     <FrameLayout
                         android:id="@+id/genPlanLayout"

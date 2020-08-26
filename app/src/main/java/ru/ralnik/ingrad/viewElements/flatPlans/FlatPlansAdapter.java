@@ -2,6 +2,7 @@ package ru.ralnik.ingrad.viewElements.flatPlans;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;

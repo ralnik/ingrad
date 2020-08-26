@@ -4,27 +4,47 @@ import android.app.Dialog;
 import android.view.View;
 import android.widget.ImageView;
 
-public class CamerasButtonOnClick implements ImageView.OnClickListener {
-    /** types of button parameters*/
-    public final static int CLOSE = 5;
+import java.util.List;
 
-    private int buttonParametr;
-    private Dialog dialog;
+import ru.ralnik.clickablebutton.ClickableButton;
+import ru.ralnik.clickablebutton.ClickableButtonOnClickListener;
+import ru.ralnik.ingrad.R;
+import ru.ralnik.ingrad.context.IngradContex;
+import ru.ralnik.ingrad.httpPlayer.PlayerCommands;
 
-    public CamerasButtonOnClick(int buttonParametr) {
-        this.buttonParametr = buttonParametr;
-    }
+public class CamerasButtonOnClick implements ClickableButtonOnClickListener {
+    private List<ClickableButton> buttonCameraList;
+    private PlayerCommands vvvv;
+    private PlayerCommands vvvv2;
 
-    public CamerasButtonOnClick(Dialog dialog, int buttonParametr) {
-        this.dialog = dialog;
-        this.buttonParametr = buttonParametr;
+    public CamerasButtonOnClick(List<ClickableButton> buttonCameraList) {
+        this.buttonCameraList = buttonCameraList;
+        vvvv = IngradContex.getInstance(IngradContex.getAppContext()).getVvvv();
+        vvvv2 = IngradContex.getInstance(IngradContex.getAppContext()).getVvvv2();
     }
 
     @Override
     public void onClick(View view) {
-        switch (buttonParametr) {
-            case CLOSE:
-                dialog.dismiss();
+        for (ClickableButton button : buttonCameraList) {
+            if (button.equals((ClickableButton) view)) {
+                button.setStatus(true);
+            } else {
+                button.setStatus(false);
+            }
+        }
+        switch (view.getId()) {
+            case R.id.btnCamera1:
+                vvvv.setCameraTrack(1);
+                vvvv2.setCameraTrack(1);
+                break;
+            case R.id.btnCamera2:
+                vvvv.setCameraTrack(2);
+                vvvv2.setCameraTrack(2);
+                break;
+            case R.id.btnCamera3:
+                vvvv.setCameraTrack(3);
+                vvvv2.setCameraTrack(3);
+                break;
         }
     }
 }

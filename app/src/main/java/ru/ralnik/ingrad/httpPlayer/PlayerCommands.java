@@ -34,5 +34,6 @@ public interface PlayerCommands {
     void for3d(int value);
     void for3dVideoTrack(int value);
     void setTrackTv(int value);
+    void setCameraTrack(int value);
 
 }
