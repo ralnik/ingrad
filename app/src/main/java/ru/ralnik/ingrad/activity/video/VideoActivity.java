@@ -27,21 +27,10 @@ public class VideoActivity {
     @BindView(R.id.button_close)
     ImageView buttonClose;
 
-//    @BindView(R.id.buttonVideo1)ImageView buttonVideo1;
-//    @BindView(R.id.buttonVideo2)ImageView buttonVideo2;
-//    @BindView(R.id.buttonVideo3)ImageView buttonVideo3;
-//    @BindView(R.id.buttonVideo4)ImageView buttonVideo4;
-//    @BindView(R.id.buttonVideo5)ImageView buttonVideo5;
-//    @BindView(R.id.buttonVideo6)ImageView buttonVideo6;
-//    @BindView(R.id.buttonVideo7)ImageView buttonVideo7;
-
     @BindViews({R.id.buttonVideo1,
             R.id.buttonVideo2,
             R.id.buttonVideo3,
-            R.id.buttonVideo4,
-            R.id.buttonVideo5,
-            R.id.buttonVideo6,
-            R.id.buttonVideo7})List<ImageView> videoButtons;
+            R.id.buttonVideo4})List<ImageView> videoButtons;
 
     public VideoActivity(Activity activity) {
         this.activity = activity;

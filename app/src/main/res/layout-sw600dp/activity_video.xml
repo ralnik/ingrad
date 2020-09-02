@@ -48,48 +48,28 @@
                 android:layout_width="@dimen/buttons_width"
                 android:layout_height="@dimen/buttons_height"
                 android:layout_marginRight="@dimen/buttons_marginRight"
+                android:scaleType="centerCrop"
                 android:src="@drawable/video_1"/>
             <ImageView
                 android:id="@+id/buttonVideo2"
                 android:layout_width="@dimen/buttons_width"
                 android:layout_height="@dimen/buttons_height"
                 android:layout_marginRight="@dimen/buttons_marginRight"
+                android:scaleType="centerCrop"
                 android:src="@drawable/video_2"/>
             <ImageView
                 android:id="@+id/buttonVideo3"
                 android:layout_width="@dimen/buttons_width"
                 android:layout_height="@dimen/buttons_height"
                 android:layout_marginRight="@dimen/buttons_marginRight"
+                android:scaleType="centerCrop"
                 android:src="@drawable/video_3"/>
             <ImageView
                 android:id="@+id/buttonVideo4"
                 android:layout_width="@dimen/buttons_width"
                 android:layout_height="@dimen/buttons_height"
+                android:scaleType="centerCrop"
                 android:src="@drawable/video_4"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="15dp">
-            <ImageView
-                android:id="@+id/buttonVideo5"
-                android:layout_width="@dimen/buttons_width"
-                android:layout_height="@dimen/buttons_height"
-                android:layout_marginRight="@dimen/buttons_marginRight"
-                android:src="@drawable/video_5"/>
-            <ImageView
-                android:id="@+id/buttonVideo6"
-                android:layout_width="@dimen/buttons_width"
-                android:layout_height="@dimen/buttons_height"
-                android:layout_marginRight="@dimen/buttons_marginRight"
-                android:src="@drawable/video_6"/>
-            <ImageView
-                android:id="@+id/buttonVideo7"
-                android:layout_width="@dimen/buttons_width"
-                android:layout_height="@dimen/buttons_height"
-                android:layout_marginRight="@dimen/buttons_marginRight"
-                android:src="@drawable/video_7"/>
         </LinearLayout>
     </LinearLayout>
 

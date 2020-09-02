@@ -20,9 +20,6 @@ public class VideoActivityButtonListener implements ImageView.OnClickListener {
     private static final int VIDEO2 = 2;
     private static final int VIDEO3 = 3;
     private static final int VIDEO4 = 4;
-    private static final int VIDEO5 = 5;
-    private static final int VIDEO6 = 6;
-    private static final int VIDEO7 = 7;
 
     private PlayerCommands vvvv;
     private PlayerCommands vvvv2;
@@ -47,9 +44,6 @@ public class VideoActivityButtonListener implements ImageView.OnClickListener {
             if (button.getId() == R.id.buttonVideo2) buttonVideo2 = button;
             if (button.getId() == R.id.buttonVideo3) buttonVideo3 = button;
             if (button.getId() == R.id.buttonVideo4) buttonVideo4 = button;
-            if (button.getId() == R.id.buttonVideo5) buttonVideo5 = button;
-            if (button.getId() == R.id.buttonVideo6) buttonVideo6 = button;
-            if (button.getId() == R.id.buttonVideo7) buttonVideo7 = button;
         }
     }
 
@@ -59,9 +53,6 @@ public class VideoActivityButtonListener implements ImageView.OnClickListener {
         buttonVideo2.setImageResource(R.drawable.video_2);
         buttonVideo3.setImageResource(R.drawable.video_3);
         buttonVideo4.setImageResource(R.drawable.video_4);
-        buttonVideo5.setImageResource(R.drawable.video_5);
-        buttonVideo6.setImageResource(R.drawable.video_6);
-        buttonVideo7.setImageResource(R.drawable.video_7);
 
         switch (view.getId()) {
             case R.id.buttonVideo1:
@@ -83,21 +74,6 @@ public class VideoActivityButtonListener implements ImageView.OnClickListener {
                 vvvv.playVideo(VIDEO4);
                 vvvv2.playVideo(VIDEO4);
                 buttonVideo4.setImageResource(R.drawable.video_4_down);
-                break;
-            case R.id.buttonVideo5:
-                vvvv.playVideo(VIDEO5);
-                vvvv2.playVideo(VIDEO5);
-                buttonVideo5.setImageResource(R.drawable.video_5_down);
-                break;
-            case R.id.buttonVideo6:
-                vvvv.playVideo(VIDEO6);
-                vvvv2.playVideo(VIDEO6);
-                buttonVideo6.setImageResource(R.drawable.video_6_down);
-                break;
-            case R.id.buttonVideo7:
-                vvvv.playVideo(VIDEO7);
-                vvvv2.playVideo(VIDEO7);
-                buttonVideo7.setImageResource(R.drawable.video_7_down);
                 break;
         }
     }
