@@ -61,12 +61,11 @@ public class listviewItemSelected implements AdapterView.OnItemClickListener {
 //        HttpPlayerFactory.getInstance(context).getCommand().setFlatInfo(flat);
 //        HttpPlayerFactory.getInstance(context).getCommand().selectById(13);
         vvvv.setFlatInfo(flat);
-        vvvv.selectById(13);
+        //vvvv.selectById(13);
+        vvvv.setTrackIdAndTrackTv(13, 5);
 
         vvvv2.setFlatInfo(flat);
-        vvvv2.selectById(13);
-
-
-
+        //vvvv2.selectById(13);
+        vvvv2.setTrackIdAndTrackTv(13, 5);
     }
 }

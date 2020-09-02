@@ -163,6 +163,12 @@ public class  VVVVPlayer extends HttpPlayer {
         super.executeCommand(getFullLink());
     }
 
+    @Override
+    public void setTrackIdAndTrackTv(int track, int trackTv) {
+        this.trackTv = trackTv;
+        selectById(track);
+    }
+
     public String getFullLink(){
         return "vvvv?" +
                "track=" + this.numberTrack + "&" +
