@@ -18,7 +18,7 @@ import ru.ralnik.ingrad.httpPlayer.VVVVPlayer;
 public class GallaryActivityButtonListener {
     private static final int RIVERSKY_ARCHITECTURE = 1;
     private static final int RIVERSKY_ENVIRONMENT = 2;
-    private static final int RIVERSKY_MOP = 3;
+    private static final int RIVERSKY_MOP_LOFT = 3;
     private static final int RIVERSKY_TOWNHOUSE = 4;
     private static final int RIVERSKY_IMPROVEMENT = 5;
     private static final int FORIVER_ARCHITECTURE = 6;
@@ -29,6 +29,7 @@ public class GallaryActivityButtonListener {
     private static final int REMONT_MODERN = 10;
     private static final int REMONT_CLASSIC = 11;
     private static final int REMONT_ARTDECO = 12;
+    private static final int RIVERSKY_MOP_ART_DECO = 13;
 
     private static final int PAUSE = 0;
     private static final int PLAY = 1;
@@ -52,7 +53,8 @@ public class GallaryActivityButtonListener {
     private ImageView buttonRiverskyArchitecture;
     private ImageView buttonRiverskyEnvironment;
     private ImageView buttonRiverskyImprovement;
-    private ImageView buttonRiverskyMop;
+    private ImageView buttonRiverskyMopLoft;
+    private ImageView buttonRiverskyMopArtDeco;
     private ImageView buttonRiverskyTownhouse;
 
     private ImageView buttonForiverArchitecture;
@@ -94,7 +96,8 @@ public class GallaryActivityButtonListener {
             if (button.getId() == R.id.buttonRiverskyArchitecture) buttonRiverskyArchitecture = button;
             if (button.getId() == R.id.buttonRiverskyImprovement) buttonRiverskyImprovement = button;
             if (button.getId() == R.id.buttonRiverskyEnvironment) buttonRiverskyEnvironment = button;
-            if (button.getId() == R.id.buttonRiverskyMop) buttonRiverskyMop = button;
+            if (button.getId() == R.id.buttonRiverskyMopLoft) buttonRiverskyMopLoft = button;
+            if (button.getId() == R.id.buttonRiverskyMopArtDeco) buttonRiverskyMopArtDeco = button;
             if (button.getId() == R.id.buttonRiverskyTownhouse) buttonRiverskyTownhouse = button;
 
             if (button.getId() == R.id.buttonForiverArchitecture) buttonForiverArchitecture = button;
@@ -169,7 +172,8 @@ public class GallaryActivityButtonListener {
             buttonRiverskyArchitecture.setImageResource(R.drawable.riversky_architecture);
             buttonRiverskyEnvironment.setImageResource(R.drawable.riversky_environment);
             buttonRiverskyImprovement.setImageResource(R.drawable.riversky_improvement);
-            buttonRiverskyMop.setImageResource(R.drawable.riversky_mop);
+            buttonRiverskyMopLoft.setImageResource(R.drawable.riversky_mop_loft);
+            buttonRiverskyMopArtDeco.setImageResource(R.drawable.riversky_mop_art_deco);
             buttonRiverskyTownhouse.setImageResource(R.drawable.riversky_townhouses);
             buttonForiverArchitecture.setImageResource(R.drawable.foriver_architecture);
             buttonForiverEnvironment.setImageResource(R.drawable.foriver_environment);
@@ -189,10 +193,15 @@ public class GallaryActivityButtonListener {
                     vvvv2.showGallary(RIVERSKY_ENVIRONMENT);
                     button.setImageResource(R.drawable.riversky_environment_down);
                     break;
-                case R.id.buttonRiverskyMop:
-                    vvvv.showGallary(RIVERSKY_MOP);
-                    vvvv2.showGallary(RIVERSKY_MOP);
-                    button.setImageResource(R.drawable.riversky_mop_down);
+                case R.id.buttonRiverskyMopLoft:
+                    vvvv.showGallary(RIVERSKY_MOP_LOFT);
+                    vvvv2.showGallary(RIVERSKY_MOP_LOFT);
+                    button.setImageResource(R.drawable.riversky_mop_loft_pressed);
+                    break;
+                case R.id.buttonRiverskyMopArtDeco:
+                    vvvv.showGallary(RIVERSKY_MOP_ART_DECO);
+                    vvvv2.showGallary(RIVERSKY_MOP_ART_DECO);
+                    button.setImageResource(R.drawable.riversky_mop_art_deco_pressed);
                     break;
                 case R.id.buttonRiverskyImprovement:
                     vvvv.showGallary(RIVERSKY_IMPROVEMENT);
