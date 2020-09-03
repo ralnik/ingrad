@@ -12,4 +12,5 @@ public class FlatPlanBean {
     private int countRooms;
     private int countFlats;
     private String buildingGroup;
+    private boolean AdditionalAtributes;
 }

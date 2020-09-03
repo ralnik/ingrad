@@ -2,7 +2,6 @@ package ru.ralnik.ingrad;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,7 +32,9 @@ import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarFinalValueListen
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.BindViews;
@@ -41,7 +42,6 @@ import butterknife.ButterKnife;
 import lombok.SneakyThrows;
 import ru.ralnik.clickablebutton.ClickableButton;
 import ru.ralnik.clickablebutton.ClickableButtonOnClickListener;
-import ru.ralnik.ingrad.activity.exception.ExceptionActivity;
 import ru.ralnik.ingrad.activity.gallary.GallaryActivity;
 import ru.ralnik.ingrad.activity.video.VideoActivity;
 import ru.ralnik.ingrad.camera.CameraActivity;
@@ -49,7 +49,6 @@ import ru.ralnik.ingrad.config.myConfig;
 import ru.ralnik.ingrad.context.IngradContex;
 import ru.ralnik.ingrad.customListView.listviewItemSelected;
 import ru.ralnik.ingrad.customListView.myAdapter;
-import ru.ralnik.ingrad.exception.IngradException;
 import ru.ralnik.ingrad.for3d.For3DActivity;
 import ru.ralnik.ingrad.httpPlayer.PlayerCommands;
 import ru.ralnik.ingrad.model.Flat;
@@ -70,8 +69,10 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.settingsPanel)
     LinearLayout settingsPanel;
 
-    @BindView(R.id.filterLayout) LinearLayout filterLayout;
-    @BindView(R.id.filterLayoutPlanFlat) LinearLayout filterLayoutPlanFlat;
+    @BindView(R.id.filterLayout)
+    LinearLayout filterLayout;
+    @BindView(R.id.filterLayoutPlanFlat)
+    LinearLayout filterLayoutPlanFlat;
 
     //---------Components------------
     //------leftPanel----------------
@@ -114,9 +115,12 @@ public class MainActivity extends AppCompatActivity {
     ImageView btnOptions;
     @BindView(R.id.btnVolume)
     ImageView btnVolume;
-    @BindView(R.id.btnRiverSky) ClickableButton btnRiverSky;
-    @BindView(R.id.btnFoRiver) ClickableButton btnFoRiver;
-    @BindView(R.id.btnRTypePlan)ClickableButton btnTypePlan;
+    @BindView(R.id.btnRiverSky)
+    ClickableButton btnRiverSky;
+    @BindView(R.id.btnFoRiver)
+    ClickableButton btnFoRiver;
+    @BindView(R.id.btnRTypePlan)
+    ClickableButton btnTypePlan;
 
     //---------count room buttons-------
     @BindView(R.id.btnRoom1)
@@ -293,6 +297,24 @@ public class MainActivity extends AppCompatActivity {
     WebView webView;
     ArrayList<Integer> ListClearFilter = new ArrayList<>();
     Animation animation;
+    @BindView(R.id.gridView1)
+    GridView gridView1;
+    @BindView(R.id.btnRoom_1)
+    ClickableButton btnRoom_1;
+    @BindView(R.id.btnRoom_2)
+    ClickableButton btnRoom_2;
+    @BindView(R.id.btnRoom_3)
+    ClickableButton btnRoom_3;
+    @BindView(R.id.btnRoom_4)
+    ClickableButton btnRoom_4;
+    @BindView(R.id.btnRoom_5)
+    ClickableButton btnRoom_5;
+    @BindViews({R.id.btnRoom_1
+            , R.id.btnRoom_2
+            , R.id.btnRoom_3
+            , R.id.btnRoom_4
+            , R.id.btnRoom_5})
+    List<ClickableButton> clickableButtonList;
     //--------Controll Settings--------
     private View viewSettingPanel;
     private SeekBar musicSeekBar;
@@ -308,19 +330,6 @@ public class MainActivity extends AppCompatActivity {
     private PlayerCommands vvvv2;
     private myTimer timer;
     private String gkType;
-
-    @BindView(R.id.gridView1)
-    GridView gridView1;
-    @BindView(R.id.btnRoom_1) ClickableButton btnRoom_1;
-    @BindView(R.id.btnRoom_2) ClickableButton btnRoom_2;
-    @BindView(R.id.btnRoom_3) ClickableButton btnRoom_3;
-    @BindView(R.id.btnRoom_4) ClickableButton btnRoom_4;
-    @BindView(R.id.btnRoom_5) ClickableButton btnRoom_5;
-    @BindViews({R.id.btnRoom_1
-            ,R.id.btnRoom_2
-            ,R.id.btnRoom_3
-            ,R.id.btnRoom_4
-            ,R.id.btnRoom_5}) List<ClickableButton> clickableButtonList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -949,7 +958,7 @@ public class MainActivity extends AppCompatActivity {
             btnRiverSky.setStatus(false);
             btnFoRiver.setStatus(false);
         }
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btnRiverSky:
                 setGenPlan(1);
                 gkType = getGenPlanName();
@@ -972,10 +981,12 @@ public class MainActivity extends AppCompatActivity {
             getListTypeOfPlan();
         }
     }
+
     /*
-    * Получить список типов планировок и вывести их на экран
-    * */
-    private void getListTypeOfPlan(){
+     * Получить список типов планировок и вывести их на экран
+     * */
+    private void getListTypeOfPlan() {
+        Map<String, Object> additionalAttr = new HashMap<>();
         DbManager dbManager = new DbManager();
         String query = "select \n" +
                 " (select flats.ArticleId from flats where (StatusCodeName='Свободно' or StatusCodeName='Ус. Бронь') and  Rooms=groupPlan.rooms and CAST(Quantity as INTEGER)>=groupPlan.square and CAST(Quantity as INTEGER)<groupPlan.square+1 LIMIT 1) as ArticleId \n" +
@@ -987,17 +998,56 @@ public class MainActivity extends AppCompatActivity {
                 " from ( \n" +
                 " select CAST(Quantity as INTEGER) as square, rooms, BuildingGroup, count(*) as countFlats from flats \n" +
                 " where (StatusCodeName='Свободно' or StatusCodeName='Ус. Бронь') \n" +
-                " :countRooms \n" +
+                " :countRooms " +
+                " :addParam1 " +
+                " :addParam2 " +
+                " :addParam3 " +
+                " :addParam4 " +
+                " :addParam5 " +
+                " :addParam6 " +
+                " :addParam7 " +
                 " and BuildingGroup = '" + gkType + "' \n" +
                 " GROUP by CAST(Quantity as INTEGER), Rooms \n" +
                 " ) groupPlan";
         dbManager.setQuery(query);
 
-        if (btnRoom_1.getStatus()) dbManager.whereParams(new String[] {":countRooms"}, new Object[] {" and rooms = 1"});
-        else if (btnRoom_2.getStatus()) dbManager.whereParams(new String[] {":countRooms"}, new Object[] {" and rooms = 2"});
-        else if (btnRoom_3.getStatus()) dbManager.whereParams(new String[] {":countRooms"}, new Object[] {" and rooms = 3"});
-        else if (btnRoom_4.getStatus()) dbManager.whereParams(new String[] {":countRooms"}, new Object[] {" and rooms >= 4"});
-        else dbManager.whereParams(new String[] {":countRooms"}, new Object[] {""});
+        if (btnRoom_1.getStatus())
+            dbManager.whereParams(new String[]{":countRooms"}, new Object[]{" and rooms = 1"});
+        else if (btnRoom_2.getStatus())
+            dbManager.whereParams(new String[]{":countRooms"}, new Object[]{" and rooms = 2"});
+        else if (btnRoom_3.getStatus())
+            dbManager.whereParams(new String[]{":countRooms"}, new Object[]{" and rooms = 3"});
+        else if (btnRoom_4.getStatus())
+            dbManager.whereParams(new String[]{":countRooms"}, new Object[]{" and rooms >= 4"});
+        else dbManager.whereParams(new String[]{":countRooms"}, new Object[]{""});
+        if (btnRoom_5.getStatus()) {
+            dbManager.whereParams(
+                    new String[]{":addParam1"
+                            , ":addParam2"
+                            , ":addParam3"
+                            , ":addParam4"
+                            , ":addParam5"
+                            , ":addParam6"
+                            , ":addParam7"},
+                    new Object[]{" and (TownHouse = 'True'"
+                            , " or PentHouse = 'True'"
+                            , " or TwoLevel = 'True'"
+                            , " or SeparateEntrance = 'True'"
+                            , " or Terrace = 'True'"
+                            , " or FirePlace = 'True'"
+                            , " or WithWindow = 'True')"});
+            additionalAttr.put("additionalAttribute", true);
+        } else {
+            dbManager.whereParams(
+                    new String[]{":addParam1"
+                            , ":addParam2"
+                            , ":addParam3"
+                            , ":addParam4"
+                            , ":addParam5"
+                            , ":addParam6"
+                            , ":addParam7"},
+                    new Object[]{"", "", "", "", "", "", ""});
+        }
         Log.d("myDebug", dbManager.getQuery());
         List<FlatPlanBean> result = new FlatRepository(this).countTypeFlat(dbManager.getQuery());
 
@@ -1009,7 +1059,7 @@ public class MainActivity extends AppCompatActivity {
         listView.add(listview);
 
         FlatPlansAdapter flatPlansAdapter = new FlatPlansAdapter(getApplicationContext(),
-                R.layout.flat_plan_item, result, listView);
+                R.layout.flat_plan_item, result, listView, additionalAttr);
         gridView1.setAdapter(flatPlansAdapter);
     }
 
@@ -1017,7 +1067,7 @@ public class MainActivity extends AppCompatActivity {
      * Видимость панели с фильтром
      * Если значение true, показываеть панель с фильтром
      * Если значение false, показывать панель с фильтром планировками квартиры
-     * */
+     */
     private void visibleFilterLayout(boolean flag) {
         if (flag) {
             filterLayout.setVisibility(View.VISIBLE);

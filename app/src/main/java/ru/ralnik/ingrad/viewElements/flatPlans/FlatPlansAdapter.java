@@ -2,7 +2,6 @@ package ru.ralnik.ingrad.viewElements.flatPlans;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +18,7 @@ import androidx.annotation.Nullable;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 import ru.ralnik.ingrad.GlobalVars;
 import ru.ralnik.ingrad.R;
@@ -30,21 +30,27 @@ import ru.ralnik.ingrad.sqlitedb.DbManager;
 import ru.ralnik.ingrad.sqlitedb.FlatRepository;
 
 public class FlatPlansAdapter extends ArrayAdapter<FlatPlanBean> {
-    private List<FlatPlanBean> list;
     private final Context context;
-    private LayoutInflater mInflater;
     int resource;
-    TextView textNoRow;
-    ScrollView scrollViewRight;
-    LinearLayout settingsPanel;
-    LinearLayout resultPanel;
-    ListView listview;
+    private TextView textNoRow;
+    private ScrollView scrollViewRight;
+    private LinearLayout settingsPanel;
+    private LinearLayout resultPanel;
+    private ListView listview;
+    private Map<String, Object> additionalAttr;
+    private List<FlatPlanBean> list;
+    private LayoutInflater mInflater;
 
-    public FlatPlansAdapter(@NonNull Context context, int resource, List<FlatPlanBean> list, List<View> listView) {
+    public FlatPlansAdapter(@NonNull Context context
+            , int resource
+            , List<FlatPlanBean> list
+            , List<View> listView
+            , Map<String, Object> additionalAttr) {
         super(context, resource, list);
         this.context = context;
         this.resource = resource;
         this.list = list;
+        this.additionalAttr = additionalAttr;
 
         textNoRow = (TextView) listView.get(0);
         scrollViewRight = (ScrollView) listView.get(1);
@@ -56,7 +62,7 @@ public class FlatPlansAdapter extends ArrayAdapter<FlatPlanBean> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View root = mInflater.from(context).inflate(resource, parent, false);
+        View root = LayoutInflater.from(context).inflate(resource, parent, false);
 
         ImageView button = (ImageView) root.findViewById(R.id.buttonFlatPlan);
         String picture_file = GlobalVars.YANDEX_DISK_FOLDER + list.get(position).getId() + "-0.png";
@@ -84,8 +90,24 @@ public class FlatPlansAdapter extends ArrayAdapter<FlatPlanBean> {
                 };
 
                 dbManager.where(" and BuildingGroup = '" + list.get(position).getBuildingGroup() + "'");
-                dbManager.whereParams(new String[] {":rooms", ":squareMin", ":squareMax"}, paramsValue);
-
+                dbManager.whereParams(new String[]{":rooms", ":squareMin", ":squareMax"}, paramsValue);
+                if ((Boolean) additionalAttr.get("additionalAttribute")) {
+                    dbManager.whereParamsOr(
+                            new String[]{"TownHouse"
+                                    , "PentHouse"
+                                    , "TwoLevel"
+                                    , "SeparateEntrance"
+                                    , "Terrace"
+                                    , "FirePlace"
+                                    , "WithWindow"},
+                            new Object[]{"True"
+                                    , "True"
+                                    , "True"
+                                    , "True"
+                                    , "True"
+                                    , "True"
+                                    , "True"});
+                }
                 Log.d("myDebug", dbManager.getQuery());
                 myAdapter adapter = new myAdapter(IngradContex.getAppContext(),
                         new FlatRepository(IngradContex.getAppContext()).getFlatsByQuery(dbManager.getQuery()), 0);
