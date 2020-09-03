@@ -203,35 +203,35 @@
             android:gravity="end"
             android:orientation="horizontal">
 
-            <ImageView
+            <ru.ralnik.clickablebutton.ClickableButton
                 android:id="@+id/btnRiverSky"
                 android:layout_width="58dp"
                 android:layout_height="68dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginEnd="32dp"
                 android:adjustViewBounds="true"
-                android:onClick="conlrolPanelButtonOnClick"
-                app:srcCompat="@drawable/button_riversky"
+                app:cb_src_image="@drawable/button_riversky"
+                app:cb_src_image_down="@drawable/button_riversky_down"
                 tools:ignore="MissingConstraints"/>
 
-            <ImageView
+            <ru.ralnik.clickablebutton.ClickableButton
                 android:id="@+id/btnFoRiver"
                 android:layout_width="58dp"
                 android:layout_height="68dp"
                 app:layout_constraintStart_toEndOf="@id/btnRiverSky"
                 android:adjustViewBounds="true"
-                android:onClick="conlrolPanelButtonOnClick"
-                app:srcCompat="@drawable/button_foriver"
+                app:cb_src_image="@drawable/button_foriver"
+                app:cb_src_image_down="@drawable/button_foriver_down"
                 tools:ignore="MissingConstraints"/>
 
-            <ImageView
+            <ru.ralnik.clickablebutton.ClickableButton
                 android:id="@+id/btnRTypePlan"
                 android:layout_width="58dp"
                 android:layout_height="68dp"
                 android:adjustViewBounds="true"
-                android:onClick="conlrolPanelButtonOnClick"
                 app:layout_constraintStart_toEndOf="@id/btnFoRiver"
-                app:srcCompat="@drawable/button_typeplan"
+                app:cb_src_image="@drawable/button_typeplan"
+                app:cb_src_image_down="@drawable/button_typeplan_down"
                 tools:ignore="MissingConstraints" />
 
             <ImageView
@@ -431,7 +431,6 @@
                             android:translationX="83dp"
                             android:translationY="40dp"
                             app:srcCompat="@drawable/build_4" />
-
                         <ImageView
                             android:id="@+id/build_5"
                             android:layout_width="46dp"

@@ -200,35 +200,36 @@
                 android:layout_marginBottom="@dimen/rightpanel_control_margin_bottom"
                 android:gravity="end"
                 android:orientation="horizontal">
-                <ImageView
+
+                <ru.ralnik.clickablebutton.ClickableButton
                     android:id="@+id/btnRiverSky"
-                    android:layout_width="wrap_content"
+                    android:layout_width="29dp"
                     android:layout_height="34dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:layout_marginEnd="32dp"
                     android:adjustViewBounds="true"
-                    android:onClick="conlrolPanelButtonOnClick"
-                    app:srcCompat="@drawable/button_riversky"
+                    app:cb_src_image="@drawable/button_riversky"
+                    app:cb_src_image_down="@drawable/button_riversky_down"
                     tools:ignore="MissingConstraints"/>
 
-                <ImageView
+                <ru.ralnik.clickablebutton.ClickableButton
                     android:id="@+id/btnFoRiver"
-                    android:layout_width="wrap_content"
+                    android:layout_width="29dp"
                     android:layout_height="34dp"
                     app:layout_constraintStart_toEndOf="@id/btnRiverSky"
                     android:adjustViewBounds="true"
-                    android:onClick="conlrolPanelButtonOnClick"
-                    app:srcCompat="@drawable/button_foriver"
+                    app:cb_src_image="@drawable/button_foriver"
+                    app:cb_src_image_down="@drawable/button_foriver_down"
                     tools:ignore="MissingConstraints"/>
 
-                <ImageView
+                <ru.ralnik.clickablebutton.ClickableButton
                     android:id="@+id/btnRTypePlan"
-                    android:layout_width="wrap_content"
+                    android:layout_width="29dp"
                     android:layout_height="34dp"
                     android:adjustViewBounds="true"
-                    android:onClick="conlrolPanelButtonOnClick"
                     app:layout_constraintStart_toEndOf="@id/btnFoRiver"
-                    app:srcCompat="@drawable/button_typeplan"
+                    app:cb_src_image="@drawable/button_typeplan"
+                    app:cb_src_image_down="@drawable/button_typeplan_down"
                     tools:ignore="MissingConstraints" />
             <ImageView
                 android:id="@+id/btnPlayPause"

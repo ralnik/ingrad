@@ -114,12 +114,9 @@ public class MainActivity extends AppCompatActivity {
     ImageView btnOptions;
     @BindView(R.id.btnVolume)
     ImageView btnVolume;
-    @BindView(R.id.btnRiverSky)
-    ImageView btnRiverSky;
-    @BindView(R.id.btnFoRiver)
-    ImageView btnFoRiver;
-    @BindView(R.id.btnRTypePlan)
-    ImageView btnTypePlan;
+    @BindView(R.id.btnRiverSky) ClickableButton btnRiverSky;
+    @BindView(R.id.btnFoRiver) ClickableButton btnFoRiver;
+    @BindView(R.id.btnRTypePlan)ClickableButton btnTypePlan;
 
     //---------count room buttons-------
     @BindView(R.id.btnRoom1)
@@ -477,6 +474,10 @@ public class MainActivity extends AppCompatActivity {
 
         /**устанавка генплана по умолчанию*/
         setGenPlan(1);
+        btnRiverSky.setStatus(true);
+        btnRiverSky.setOnDemonstrationButtonClickListener(this::buttonsGKOnClick);
+        btnFoRiver.setOnDemonstrationButtonClickListener(this::buttonsGKOnClick);
+        btnTypePlan.setOnDemonstrationButtonClickListener(this::buttonsGKOnClick);
 
         hint.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/panroman.ttf"));
         hint.setText("корпус 3 / секция 1");
@@ -938,22 +939,38 @@ public class MainActivity extends AppCompatActivity {
                 resultPanel.setVisibility(View.GONE);
                 settingsPanel.setVisibility(View.VISIBLE);
                 break;
+
+        }
+
+    }
+
+    private void buttonsGKOnClick(View view) {
+        if (view.getId() == R.id.btnRiverSky || view.getId() == R.id.btnFoRiver) {
+            btnRiverSky.setStatus(false);
+            btnFoRiver.setStatus(false);
+        }
+        switch (view.getId()){
             case R.id.btnRiverSky:
                 setGenPlan(1);
                 gkType = getGenPlanName();
-                visibleFilterLayout(true);
+                btnRiverSky.setStatus(true);
                 break;
             case R.id.btnFoRiver:
                 setGenPlan(2);
                 gkType = getGenPlanName();
-                visibleFilterLayout(true);
+                btnFoRiver.setStatus(true);
                 break;
             case R.id.btnRTypePlan:
-                visibleFilterLayout(false);
-                getListTypeOfPlan();
+                if (btnTypePlan.getStatus()) {
+                    visibleFilterLayout(false);
+                } else {
+                    visibleFilterLayout(true);
+                }
                 break;
         }
-
+        if (btnTypePlan.getStatus()) {
+            getListTypeOfPlan();
+        }
     }
     /*
     * Получить список типов планировок и вывести их на экран
@@ -966,10 +983,12 @@ public class MainActivity extends AppCompatActivity {
                 " ,groupPlan.square \n" +
                 " , groupPlan.rooms \n" +
                 " ,groupPlan.countFlats \n" +
+                " ,groupPlan.BuildingGroup \n" +
                 " from ( \n" +
-                " select CAST(Quantity as INTEGER) as square, rooms, count(*) as countFlats from flats \n" +
+                " select CAST(Quantity as INTEGER) as square, rooms, BuildingGroup, count(*) as countFlats from flats \n" +
                 " where (StatusCodeName='Свободно' or StatusCodeName='Ус. Бронь') \n" +
                 " :countRooms \n" +
+                " and BuildingGroup = '" + gkType + "' \n" +
                 " GROUP by CAST(Quantity as INTEGER), Rooms \n" +
                 " ) groupPlan";
         dbManager.setQuery(query);
@@ -979,6 +998,7 @@ public class MainActivity extends AppCompatActivity {
         else if (btnRoom_3.getStatus()) dbManager.whereParams(new String[] {":countRooms"}, new Object[] {" and rooms = 3"});
         else if (btnRoom_4.getStatus()) dbManager.whereParams(new String[] {":countRooms"}, new Object[] {" and rooms >= 4"});
         else dbManager.whereParams(new String[] {":countRooms"}, new Object[] {""});
+        Log.d("myDebug", dbManager.getQuery());
         List<FlatPlanBean> result = new FlatRepository(this).countTypeFlat(dbManager.getQuery());
 
         List<View> listView = new ArrayList<>();
@@ -1002,13 +1022,9 @@ public class MainActivity extends AppCompatActivity {
         if (flag) {
             filterLayout.setVisibility(View.VISIBLE);
             filterLayoutPlanFlat.setVisibility(View.GONE);
-            btnTypePlan.setImageResource(R.drawable.button_typeplan);
         } else {
             filterLayout.setVisibility(View.GONE);
             filterLayoutPlanFlat.setVisibility(View.VISIBLE);
-            btnTypePlan.setImageResource(R.drawable.button_typeplan_down);
-            btnRiverSky.setImageResource(R.drawable.button_riversky);
-            btnFoRiver.setImageResource(R.drawable.button_foriver);
         }
 
         if (resultPanel.getVisibility() == View.VISIBLE) {
@@ -1024,14 +1040,10 @@ public class MainActivity extends AppCompatActivity {
         clearFilter();
         switch (genPlan) {
             case 1:
-                btnRiverSky.setImageResource(R.drawable.button_riversky_down);
-                btnFoRiver.setImageResource(R.drawable.button_foriver);
                 genPlanRiverSky.setVisibility(View.VISIBLE);
                 genPlanFoRiver.setVisibility(View.GONE);
                 break;
             case 2:
-                btnRiverSky.setImageResource(R.drawable.button_riversky);
-                btnFoRiver.setImageResource(R.drawable.button_foriver_down);
                 genPlanRiverSky.setVisibility(View.GONE);
                 genPlanFoRiver.setVisibility(View.VISIBLE);
                 break;

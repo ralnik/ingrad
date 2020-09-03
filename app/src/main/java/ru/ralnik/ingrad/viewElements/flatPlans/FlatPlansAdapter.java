@@ -83,8 +83,10 @@ public class FlatPlansAdapter extends ArrayAdapter<FlatPlanBean> {
                         , " and CAST(Quantity as INTEGER) < " + list.get(position).getSquare() + "+1"
                 };
 
+                dbManager.where(" and BuildingGroup = '" + list.get(position).getBuildingGroup() + "'");
                 dbManager.whereParams(new String[] {":rooms", ":squareMin", ":squareMax"}, paramsValue);
 
+                Log.d("myDebug", dbManager.getQuery());
                 myAdapter adapter = new myAdapter(IngradContex.getAppContext(),
                         new FlatRepository(IngradContex.getAppContext()).getFlatsByQuery(dbManager.getQuery()), 0);
 

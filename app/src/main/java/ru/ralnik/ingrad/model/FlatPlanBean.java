@@ -11,4 +11,5 @@ public class FlatPlanBean {
     private Float realSquare;
     private int countRooms;
     private int countFlats;
+    private String buildingGroup;
 }

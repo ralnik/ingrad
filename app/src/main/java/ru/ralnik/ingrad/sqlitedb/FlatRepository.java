@@ -106,6 +106,7 @@ public class FlatRepository {
             int COUNTROOMS = cursor.getColumnIndex("rooms");
             int COUNTFLATS = cursor.getColumnIndex("countFlats");
             int REALSQUARE = cursor.getColumnIndex("Quantity");
+            int BUILDING_GROUP = cursor.getColumnIndex("BuildingGroup");
             if (cursor == null) {
                 Log.d("myDebug", "cursor is null");
             }
@@ -115,6 +116,7 @@ public class FlatRepository {
             Log.d("myDebug", "query: " + param[0]);
             Log.d("myDebug", "Cursor count: " + cursor.getCount());
             Log.d("myDebug", "Cursor: " + cursor.toString());
+
             List<FlatPlanBean> flatList = new ArrayList<>();
             cursor.moveToFirst();
             do {
@@ -125,6 +127,7 @@ public class FlatRepository {
                 flat.setRealSquare(cursor.getFloat(REALSQUARE));
                 flat.setCountRooms(cursor.getInt(COUNTROOMS));
                 flat.setCountFlats(cursor.getInt(COUNTFLATS));
+                flat.setBuildingGroup(cursor.getString(BUILDING_GROUP));
                 flatList.add(flat);
             } while (cursor.moveToNext());
             return flatList;
