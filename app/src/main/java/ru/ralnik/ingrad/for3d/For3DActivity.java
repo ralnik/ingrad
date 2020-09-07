@@ -40,7 +40,6 @@ public class For3DActivity {
 
     @BindView(R.id.buttonBack) ImageView buttonBack;
     @BindView(R.id.buttonForward) ImageView buttonForward;
-    @BindView(R.id.buttonHome) ImageView buttonHome;
 
     @BindView(R.id.buttonLeftHidden) FrameLayout buttonLeftHidden;
     @BindView(R.id.buttonRightHidden) FrameLayout buttonRightHidden;
@@ -85,7 +84,6 @@ public class For3DActivity {
 
         buttonBack.setOnTouchListener(new ButtonListener(ButtonListener.BACK, activity.getApplicationContext(), buttonBack));
         buttonForward.setOnTouchListener(new ButtonListener(ButtonListener.FORWARD, activity.getApplicationContext(), buttonForward));
-        buttonHome.setOnTouchListener(new ButtonListener(ButtonListener.HOME, activity.getApplicationContext(), buttonHome));
 
         int index = 1;
         for(ClickableButton button : listButtons3d) {

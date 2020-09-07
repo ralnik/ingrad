@@ -20,7 +20,6 @@ public class ButtonListener implements FrameLayout.OnTouchListener {
     public final static int EMPTY = 0;
     public final static int BACK = 6;
     public final static int FORWARD = 7;
-    public final static int HOME = 8;
 
     private int pathTo;
     private Dialog dialog;
@@ -76,10 +75,6 @@ public class ButtonListener implements FrameLayout.OnTouchListener {
                 vvvv.for3d(FORWARD);
                 vvvv2.for3d(FORWARD);
                 break;
-            case HOME:
-                vvvv.for3d(HOME);
-                vvvv2.for3d(HOME);
-                break;
             case CLOSE:
                 dialog.dismiss();
                 break;
@@ -104,6 +99,15 @@ public class ButtonListener implements FrameLayout.OnTouchListener {
                 vvvv.for3d(EMPTY);
                 vvvv2.for3d(EMPTY);
                 break;
+            case BACK:
+                vvvv.for3d(EMPTY);
+                vvvv2.for3d(EMPTY);
+                break;
+            case FORWARD:
+                vvvv.for3d(EMPTY);
+                vvvv2.for3d(EMPTY);
+                break;
+
         }
     }
 
@@ -135,10 +139,6 @@ public class ButtonListener implements FrameLayout.OnTouchListener {
             case FORWARD:
                 image = R.drawable.button_forward_3d;
                 imagePressed = R.drawable.button_forward_3d_pressed;
-                break;
-            case HOME:
-                image = R.drawable.home;
-                imagePressed = R.drawable.home_pressed;
                 break;
         }
         switch (event.getAction()) {
