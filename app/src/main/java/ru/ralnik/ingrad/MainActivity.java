@@ -987,6 +987,7 @@ public class MainActivity extends AppCompatActivity {
      * */
     private void getListTypeOfPlan() {
         Map<String, Object> additionalAttr = new HashMap<>();
+        additionalAttr.put("additionalAttribute", false);
         DbManager dbManager = new DbManager();
         String query = "select \n" +
                 " (select flats.ArticleId from flats where (StatusCodeName='Свободно' or StatusCodeName='Ус. Бронь') and  Rooms=groupPlan.rooms and CAST(Quantity as INTEGER)>=groupPlan.square and CAST(Quantity as INTEGER)<groupPlan.square+1 LIMIT 1) as ArticleId \n" +
