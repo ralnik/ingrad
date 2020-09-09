@@ -65,7 +65,7 @@ public class FlatPlansAdapter extends ArrayAdapter<FlatPlanBean> {
         View root = LayoutInflater.from(context).inflate(resource, parent, false);
 
         ImageView button = (ImageView) root.findViewById(R.id.buttonFlatPlan);
-        String picture_file = GlobalVars.YANDEX_DISK_FOLDER + list.get(position).getId() + "-0.png";
+        String picture_file = GlobalVars.YANDEX_DISK_FOLDER + list.get(position).getId() + "-0_result.png";
         if (new File(GlobalVars.YANDEX_DISK_FOLDER).exists()) {
             Log.d("myDebug", "GlobalVars.YANDEX_DISK_FOLDER: " + GlobalVars.YANDEX_DISK_FOLDER + " is exist");
         } else {
