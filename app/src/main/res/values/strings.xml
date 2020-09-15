@@ -61,4 +61,9 @@
 
     <string name="exception_button_ok">Ok</string>
     <string name="exception_button_cancel">Отмена</string>
+
+    <string name="video1_title">ОКРУЖЕНИЕ</string>
+    <string name="video2_title">КОМПЛЕКСНОЕ \n РАЗВИТИЕ</string>
+    <string name="video3_title">RIVERSKY</string>
+    <string name="video4_title">FORIVER</string>
 </resources>

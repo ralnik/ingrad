@@ -38,7 +38,7 @@
         android:layout_marginLeft="23dp"
         android:layout_marginRight="23dp"
         android:layout_marginBottom="30dp">
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -48,28 +48,87 @@
                 android:layout_height="@dimen/buttons_height"
                 android:layout_marginRight="@dimen/buttons_marginRight"
                 android:scaleType="centerCrop"
-                android:src="@drawable/video_1"/>
+                android:src="@drawable/video_1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
             <ImageView
                 android:id="@+id/buttonVideo2"
                 android:layout_width="@dimen/buttons_width"
                 android:layout_height="@dimen/buttons_height"
-                android:layout_marginRight="@dimen/buttons_marginRight"
+                android:layout_marginLeft="@dimen/buttons_marginRight"
                 android:scaleType="centerCrop"
-                android:src="@drawable/video_2"/>
+                android:src="@drawable/video_2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/buttonVideo1"/>
             <ImageView
                 android:id="@+id/buttonVideo3"
                 android:layout_width="@dimen/buttons_width"
                 android:layout_height="@dimen/buttons_height"
-                android:layout_marginRight="@dimen/buttons_marginRight"
+                android:layout_marginLeft="@dimen/buttons_marginRight"
                 android:scaleType="centerCrop"
-                android:src="@drawable/video_3"/>
+                android:src="@drawable/video_3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/buttonVideo2"/>
             <ImageView
                 android:id="@+id/buttonVideo4"
                 android:layout_width="@dimen/buttons_width"
                 android:layout_height="@dimen/buttons_height"
                 android:scaleType="centerCrop"
-                android:src="@drawable/video_4"/>
-        </LinearLayout>
+                android:src="@drawable/video_4"
+                android:layout_marginLeft="@dimen/buttons_marginRight"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/buttonVideo3"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/video1_title"
+                android:textColor="@color/colorTitleText"
+                android:fontFamily="@font/panroman"
+                android:textSize="8sp"
+                app:layout_constraintLeft_toLeftOf="@id/buttonVideo1"
+                app:layout_constraintRight_toRightOf="@id/buttonVideo1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/buttonVideo1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/video2_title"
+                android:textAlignment="center"
+                android:fontFamily="@font/panroman"
+                android:textColor="@color/colorTitleText"
+                android:textSize="8sp"
+                app:layout_constraintLeft_toLeftOf="@id/buttonVideo2"
+                app:layout_constraintRight_toRightOf="@id/buttonVideo2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/buttonVideo2"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/video3_title"
+                android:textColor="@color/colorTitleText"
+                android:textSize="8sp"
+                android:fontFamily="@font/panroman"
+                app:layout_constraintLeft_toLeftOf="@id/buttonVideo3"
+                app:layout_constraintRight_toRightOf="@id/buttonVideo3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/buttonVideo3"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/video4_title"
+                android:textColor="@color/colorTitleText"
+                android:textSize="8sp"
+                android:fontFamily="@font/panroman"
+                app:layout_constraintLeft_toLeftOf="@id/buttonVideo4"
+                app:layout_constraintRight_toRightOf="@id/buttonVideo4"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/buttonVideo4"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
 </LinearLayout>
