@@ -17,19 +17,21 @@ import ru.ralnik.ingrad.httpPlayer.VVVVPlayer;
 
 public class GallaryActivityButtonListener {
     private static final int RIVERSKY_ARCHITECTURE = 1;
-    private static final int RIVERSKY_ENVIRONMENT = 2;
-    private static final int RIVERSKY_MOP_LOFT = 3;
-    private static final int RIVERSKY_TOWNHOUSE = 4;
-    private static final int RIVERSKY_IMPROVEMENT = 5;
-    private static final int FORIVER_ARCHITECTURE = 6;
-    private static final int FORIVER_IMPROVEMENT = 7;
-    private static final int FORIVER_ENVIRONMENT = 8;
-    private static final int FORIVER_MOP = 9;
+    private static final int RIVERSKY_IMPROVEMENT = 2;
+    private static final int RIVERSKY_TOWNHOUSE = 3;
+    private static final int RIVERSKY_ENVIRONMENT = 4;
+    private static final int RIVERSKY_MOP_LOFT = 5;
+    private static final int RIVERSKY_MOP_ART_DECO = 6;
 
-    private static final int REMONT_MODERN = 10;
-    private static final int REMONT_CLASSIC = 11;
-    private static final int REMONT_ARTDECO = 12;
-    private static final int RIVERSKY_MOP_ART_DECO = 13;
+    private static final int FORIVER_ARCHITECTURE = 7;
+    private static final int FORIVER_IMPROVEMENT = 8;
+    private static final int FORIVER_MOP = 9;
+    private static final int FORIVER_ENVIRONMENT = 10;
+
+
+    private static final int REMONT_MODERN = 11;
+    private static final int REMONT_CLASSIC = 12;
+    private static final int REMONT_ARTDECO = 13;
 
     private static final int PAUSE = 0;
     private static final int PLAY = 1;
