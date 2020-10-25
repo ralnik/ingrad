@@ -22,7 +22,10 @@ public class  VVVVPlayer extends HttpPlayer {
     private int trackTv = 1;
     private int for3dVideoTrack = 0;
     private int cameraTrack;
-
+    private int action360 = 0;
+    private int foriver360 = 0;
+    private int riversky360 = 0;
+    private int actionFloor360 = 0;
 
     public VVVVPlayer(String host) {
         super(host);
@@ -169,6 +172,30 @@ public class  VVVVPlayer extends HttpPlayer {
         selectById(track);
     }
 
+    @Override
+    public void action360(int value) {
+        this.action360 = value;
+        super.executeCommand(getFullLink());
+    }
+
+    @Override
+    public void actionFloor360(int value) {
+        this.actionFloor360 = value;
+        super.executeCommand(getFullLink());
+    }
+
+    @Override
+    public void foriver360(int value) {
+        this.foriver360 = value;
+        super.executeCommand(getFullLink());
+    }
+
+    @Override
+    public void riversky360(int value) {
+        this.riversky360 = value;
+        super.executeCommand(getFullLink());
+    }
+
     public String getFullLink(){
         return "vvvv?" +
                "track=" + this.numberTrack + "&" +
@@ -186,6 +213,10 @@ public class  VVVVPlayer extends HttpPlayer {
                 "3d=" + this.for3d + "&" +
                 "trackTV=" + this.trackTv + "&" +
                 "3dTrack=" + this.for3dVideoTrack + "&" +
-                "cameraTrack=" + this.cameraTrack;
+                "cameraTrack=" + this.cameraTrack + "&" +
+                "action360=" + this.action360 + "&" +
+                "actionFloor360=" + this.actionFloor360 + "&" +
+                "riversky360=" + this.foriver360 + "&" +
+                "foriver360=" + this.riversky360;
     }
 }

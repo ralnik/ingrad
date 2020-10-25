@@ -42,6 +42,7 @@ import butterknife.ButterKnife;
 import lombok.SneakyThrows;
 import ru.ralnik.clickablebutton.ClickableButton;
 import ru.ralnik.clickablebutton.ClickableButtonOnClickListener;
+import ru.ralnik.ingrad.activity.from_window.FromWindowActivity;
 import ru.ralnik.ingrad.activity.gallary.GallaryActivity;
 import ru.ralnik.ingrad.activity.video.VideoActivity;
 import ru.ralnik.ingrad.camera.CameraActivity;
@@ -108,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView btn3d;
     @BindView(R.id.btnVideo)
     ImageView btnVideo;
+    @BindView(R.id.btn360)
+    ImageView btn360;
     //---------Control panel-------------
     @BindView(R.id.btnPlayPause)
     ImageView btnPlayPause;
@@ -805,6 +808,7 @@ public class MainActivity extends AppCompatActivity {
         btnProcessBuildings.setImageResource(R.drawable.button_process_buildings);
         btnAdvantageForiver.setImageResource(R.drawable.button_advantage_foriver);
         btn3d.setImageResource(R.drawable.button_3d);
+        btn360.setImageResource(R.drawable.button360);
         btnVideo.setImageResource(R.drawable.button_video);
         switch (view.getId()) {
             case R.id.btnFull:
@@ -905,6 +909,12 @@ public class MainActivity extends AppCompatActivity {
                 vvvv2.setTrackTv(4);
                 btnVideo.setImageResource(R.drawable.button_video_down);
                 new VideoActivity(this);
+                break;
+            case R.id.btn360:
+                vvvv.setTrackTv(5);
+                vvvv2.setTrackTv(5);
+                btn360.setImageResource(R.drawable.button360_down);
+                new FromWindowActivity(this);
                 break;
         }
     }

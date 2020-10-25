@@ -1,5 +1,6 @@
 package ru.ralnik.ingrad.for3d;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 
@@ -76,6 +77,7 @@ public class For3DActivity {
         button_close.setOnClickListener(new DialogButtonListener(dialog, DialogButtonListener.BUTTON_CLOSE));
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void init() {
         buttonDownHidden.setOnTouchListener(new ButtonListener(ButtonListener.DOWN, activity.getApplicationContext(), button_down));
         buttonUpHidden.setOnTouchListener(new ButtonListener(ButtonListener.UP, activity.getApplicationContext(), button_up));

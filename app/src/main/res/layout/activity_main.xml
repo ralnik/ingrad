@@ -179,6 +179,13 @@
                     android:adjustViewBounds="true"
                     android:onClick="leftPanelButtonOnCLick"
                     app:srcCompat="@drawable/button_video" />
+                <ImageView
+                    android:id="@+id/btn360"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:onClick="leftPanelButtonOnCLick"
+                    app:srcCompat="@drawable/button360" />
             </LinearLayout>
             </ScrollView>
         </FrameLayout>

@@ -36,5 +36,8 @@ public interface PlayerCommands {
     void setTrackTv(int value);
     void setCameraTrack(int value);
     void setTrackIdAndTrackTv(int track, int trackTv);
-
+    void action360(int value);
+    void actionFloor360(int value);
+    void foriver360(int value);
+    void riversky360(int value);
 }
