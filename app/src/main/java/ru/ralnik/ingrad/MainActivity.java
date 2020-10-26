@@ -3,6 +3,7 @@ package ru.ralnik.ingrad;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -24,6 +25,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -791,6 +793,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @SneakyThrows
     public void leftPanelButtonOnCLick(View view) {
         btnFull.setImageResource(R.drawable.button_full);
@@ -911,8 +914,8 @@ public class MainActivity extends AppCompatActivity {
                 new VideoActivity(this);
                 break;
             case R.id.btn360:
-                vvvv.setTrackTv(5);
-                vvvv2.setTrackTv(5);
+                vvvv.setTrackTv(6);
+                vvvv2.setTrackTv(6);
                 btn360.setImageResource(R.drawable.button360_down);
                 new FromWindowActivity(this);
                 break;

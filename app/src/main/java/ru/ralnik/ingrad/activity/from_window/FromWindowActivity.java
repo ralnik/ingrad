@@ -32,17 +32,17 @@ import ru.ralnik.ingrad.httpPlayer.PlayerCommands;
 public class FromWindowActivity {
     private final static int FORIVER1 = 1;
     private final static int FORIVER2 = 2;
-    private final static int FORIVER3 = 3;
-    private final static int FORIVER4 = 4;
-    private final static int FORIVER5 = 5;
+    private final static int FORIVER3 = 7;
+    private final static int FORIVER4 = 3;
+    private final static int FORIVER5 = 4;
     private final static int FORIVER6 = 6;
     //private final static int FORIVER_EMPTY = 0;
 
-    private final static int RIVERSKY1 = 1;
-    private final static int RIVERSKY2 = 2;
-    private final static int RIVERSKY3 = 3;
-    private final static int RIVERSKY4 = 4;
-    private final static int RIVERSKY5 = 5;
+    private final static int RIVERSKY1 = 11;
+    private final static int RIVERSKY2 = 12;
+    private final static int RIVERSKY3 = 13;
+    private final static int RIVERSKY4 = 14;
+    private final static int RIVERSKY5 =15;
    //private final static int RIVERSKY_EMPTY = 0;
 
     private final static int FLOOR5 = 5;
@@ -164,28 +164,28 @@ public class FromWindowActivity {
         vvvv2 = IngradContex.getInstance(IngradContex.getAppContext()).getVvvv2();
 
         //корпуса 7 и 8
-        riverskyButtonsSelector.put(1, new Integer[]{5, 10, 16, 20, 27});
+        riverskyButtonsSelector.put(RIVERSKY1, new Integer[]{5, 10, 16, 20, 27});
         //корпуса 4 и 5
-        riverskyButtonsSelector.put(2, new Integer[]{6, 12, 15, 20, 25, 29});
+        riverskyButtonsSelector.put(RIVERSKY2, new Integer[]{6, 12, 15, 20, 25, 29});
         //корпус 1
-        riverskyButtonsSelector.put(3, new Integer[]{5, 10, 15, 20, 25, 29});
+        riverskyButtonsSelector.put(RIVERSKY3, new Integer[]{5, 10, 15, 20, 25, 29});
         //корпуса 6
-        riverskyButtonsSelector.put(4, new Integer[]{5, 10, 15, 21});
+        riverskyButtonsSelector.put(RIVERSKY4, new Integer[]{5, 10, 15, 21});
         //корпуса 2 и 3
-        riverskyButtonsSelector.put(5, new Integer[]{5, 10, 17, 20, 27});
+        riverskyButtonsSelector.put(RIVERSKY5, new Integer[]{5, 10, 17, 20, 27});
         //формирование кнопок для разных корпусов
         //корпус 10;
-        foriverButtonsSelector.put(1, new Integer[]{5, 10, 15, 19});
+        foriverButtonsSelector.put(FORIVER1, new Integer[]{5, 10, 15, 19});
         //корпус 4;
-        foriverButtonsSelector.put(2, new Integer[]{5, 10, 15, 19});
+        foriverButtonsSelector.put(FORIVER2, new Integer[]{5, 10, 15, 19});
         //корпус 9;
-        foriverButtonsSelector.put(3, new Integer[]{5, 10, 15});
+        foriverButtonsSelector.put(FORIVER3, new Integer[]{5, 10, 15});
         //корпус 3;
-        foriverButtonsSelector.put(4, new Integer[]{5, 10, 15});
+        foriverButtonsSelector.put(FORIVER4, new Integer[]{5, 10, 15});
         //корпус 2;
-        foriverButtonsSelector.put(5, new Integer[]{5, 10, 15});
+        foriverButtonsSelector.put(FORIVER5, new Integer[]{5, 10, 15});
         //корпус 1;
-        foriverButtonsSelector.put(6, new Integer[]{5, 10, 15, 19});
+        foriverButtonsSelector.put(FORIVER6, new Integer[]{5, 10, 15, 19});
 
         //Делаем кнопки по умолчанию скрытими
         visibleButtonsFloor(foriverButtonsSelector, floorButtons, 0);
@@ -247,32 +247,32 @@ public class FromWindowActivity {
             case R.id.hiddenButtonRiverskyBuild1:
                 visibleButtonsFloor(riverskyButtonsSelector, floorButtons, RIVERSKY1);
                 buttonsRiverskyLayout.setImageResource(R.drawable.riversky_plan1_from_window);
-                vvvv.riversky360(RIVERSKY1);
-                vvvv2.riversky360(RIVERSKY1);
+                vvvv.corpus360(RIVERSKY1);
+                vvvv2.corpus360(RIVERSKY1);
                 break;
             case R.id.hiddenButtonRiverskyBuild2:
                 visibleButtonsFloor(riverskyButtonsSelector, floorButtons, RIVERSKY2);
                 buttonsRiverskyLayout.setImageResource(R.drawable.riversky_plan2_from_window);
-                vvvv.riversky360(RIVERSKY2);
-                vvvv2.riversky360(RIVERSKY2);
+                vvvv.corpus360(RIVERSKY2);
+                vvvv2.corpus360(RIVERSKY2);
                 break;
             case R.id.hiddenButtonRiverskyBuild3:
                 visibleButtonsFloor(riverskyButtonsSelector, floorButtons, RIVERSKY3);
                 buttonsRiverskyLayout.setImageResource(R.drawable.riversky_plan3_from_window);
-                vvvv.riversky360(RIVERSKY3);
-                vvvv2.riversky360(RIVERSKY3);
+                vvvv.corpus360(RIVERSKY3);
+                vvvv2.corpus360(RIVERSKY3);
                 break;
             case R.id.hiddenButtonRiverskyBuild4:
                 visibleButtonsFloor(riverskyButtonsSelector, floorButtons, RIVERSKY4);
                 buttonsRiverskyLayout.setImageResource(R.drawable.riversky_plan4_from_window);
-                vvvv.riversky360(RIVERSKY4);
-                vvvv2.riversky360(RIVERSKY4);
+                vvvv.corpus360(RIVERSKY4);
+                vvvv2.corpus360(RIVERSKY4);
                 break;
             case R.id.hiddenButtonRiverskyBuild5:
                 visibleButtonsFloor(riverskyButtonsSelector, floorButtons, RIVERSKY5);
                 buttonsRiverskyLayout.setImageResource(R.drawable.riversky_plan5_from_window);
-                vvvv.riversky360(RIVERSKY5);
-                vvvv2.riversky360(RIVERSKY5);
+                vvvv.corpus360(RIVERSKY5);
+                vvvv2.corpus360(RIVERSKY5);
                 break;
         }
     }
@@ -283,38 +283,38 @@ public class FromWindowActivity {
             case R.id.hiddenButtonForiverBuild1:
                 visibleButtonsFloor(foriverButtonsSelector, floorButtons, FORIVER1);
                 buttonsForiverLayout.setImageResource(R.drawable.foriver_plan1_from_window);
-                vvvv.foriver360(FORIVER1);
-                vvvv2.foriver360(FORIVER1);
+                vvvv.corpus360(FORIVER1);
+                vvvv2.corpus360(FORIVER1);
                 break;
             case R.id.hiddenButtonForiverBuild2:
                 visibleButtonsFloor(foriverButtonsSelector, floorButtons, FORIVER2);
                 buttonsForiverLayout.setImageResource(R.drawable.foriver_plan2_from_window);
-                vvvv.foriver360(FORIVER2);
-                vvvv2.foriver360(FORIVER2);
+                vvvv.corpus360(FORIVER2);
+                vvvv2.corpus360(FORIVER2);
                 break;
             case R.id.hiddenButtonForiverBuild3:
                 visibleButtonsFloor(foriverButtonsSelector, floorButtons, FORIVER3);
                 buttonsForiverLayout.setImageResource(R.drawable.foriver_plan3_from_window);
-                vvvv.foriver360(FORIVER3);
-                vvvv2.foriver360(FORIVER3);
+                vvvv.corpus360(FORIVER3);
+                vvvv2.corpus360(FORIVER3);
                 break;
             case R.id.hiddenButtonForiverBuild4:
                 visibleButtonsFloor(foriverButtonsSelector, floorButtons, FORIVER4);
                 buttonsForiverLayout.setImageResource(R.drawable.foriver_plan4_from_window);
-                vvvv.foriver360(FORIVER4);
-                vvvv2.foriver360(FORIVER4);
+                vvvv.corpus360(FORIVER4);
+                vvvv2.corpus360(FORIVER4);
                 break;
             case R.id.hiddenButtonForiverBuild5:
                 visibleButtonsFloor(foriverButtonsSelector, floorButtons, FORIVER5);
                 buttonsForiverLayout.setImageResource(R.drawable.foriver_plan5_from_window);
-                vvvv.foriver360(FORIVER5);
-                vvvv2.foriver360(FORIVER5);
+                vvvv.corpus360(FORIVER5);
+                vvvv2.corpus360(FORIVER5);
                 break;
             case R.id.hiddenButtonForiverBuild6:
                 visibleButtonsFloor(foriverButtonsSelector, floorButtons, FORIVER6);
                 buttonsForiverLayout.setImageResource(R.drawable.foriver_plan6_from_window);
-                vvvv.foriver360(FORIVER6);
-                vvvv2.foriver360(FORIVER6);
+                vvvv.corpus360(FORIVER6);
+                vvvv2.corpus360(FORIVER6);
                 break;
         }
     }
