@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -22,6 +23,7 @@ import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import ru.ralnik.clickablebutton.ClickableButton;
+import ru.ralnik.ingrad.GlobalVars;
 import ru.ralnik.ingrad.R;
 import ru.ralnik.ingrad.activity.DialogButtonListener;
 import ru.ralnik.ingrad.context.IngradContex;
@@ -248,7 +250,9 @@ public class FromWindowActivity {
                 visibleButtonsFloor(riverskyButtonsSelector, floorButtons, RIVERSKY1);
                 buttonsRiverskyLayout.setImageResource(R.drawable.riversky_plan1_from_window);
                 vvvv.corpus360(RIVERSKY1);
+                Log.d(GlobalVars.DEBUG, "VVVV_corpus: " + RIVERSKY1);
                 vvvv2.corpus360(RIVERSKY1);
+                Log.d(GlobalVars.DEBUG, "VVVV2_corpus: " + RIVERSKY1);
                 break;
             case R.id.hiddenButtonRiverskyBuild2:
                 visibleButtonsFloor(riverskyButtonsSelector, floorButtons, RIVERSKY2);
@@ -421,18 +425,6 @@ public class FromWindowActivity {
     }
 
     /**
-     * авто нажатие на кнопку с номером этажа
-     * @param floor
-     */
-    private void avtoPressedButtonFloor(Integer floor) {
-        for (ImageView button : floorButtons) {
-            if (floor.equals(Integer.valueOf((String)button.getTag()))) {
-                floorButtonsListener(button);
-            }
-        }
-    }
-
-    /**
      * Отображение кнопок с номером этажа в зависимости от выбора корпуса на плане
      * @param map - правило, какие кнопки для какого корпуса
      * @param buttons - список кнопок с номером этажа
@@ -449,7 +441,8 @@ public class FromWindowActivity {
                     .max(Comparator.comparing(Integer::valueOf))
                     .orElse(0);
         }
-        avtoPressedButtonFloor(maxFloor);
+        vvvv.setActionFloor360(maxFloor);
+        vvvv2.setActionFloor360(maxFloor);
 
         for (ImageView button : buttons) {
             if (buildings == null) {

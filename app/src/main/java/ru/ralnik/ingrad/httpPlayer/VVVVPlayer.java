@@ -178,6 +178,11 @@ public class  VVVVPlayer extends HttpPlayer {
     }
 
     @Override
+    public void setActionFloor360(int value) {
+        this.actionFloor360 = value;
+    }
+
+    @Override
     public void actionFloor360(int value) {
         this.actionFloor360 = value;
         super.executeCommand(getFullLink());

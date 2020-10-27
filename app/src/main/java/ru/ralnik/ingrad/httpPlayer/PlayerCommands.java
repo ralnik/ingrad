@@ -38,5 +38,6 @@ public interface PlayerCommands {
     void setTrackIdAndTrackTv(int track, int trackTv);
     void action360(int value);
     void actionFloor360(int value);
+    void setActionFloor360(int value);
     void corpus360(int value);
 }
