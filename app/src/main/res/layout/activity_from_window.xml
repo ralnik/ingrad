@@ -357,5 +357,14 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <ru.ralnik.clickablebutton.ClickableButton
+            android:id="@+id/switcherDayNight"
+            android:layout_width="83dp"
+            android:layout_height="40dp"
+            app:cb_src_image="@drawable/from_window_day"
+            app:cb_src_image_down="@drawable/from_window_night"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"/>
     </FrameLayout>
 </LinearLayout>

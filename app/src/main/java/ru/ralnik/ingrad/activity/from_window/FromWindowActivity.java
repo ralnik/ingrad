@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -70,11 +71,12 @@ public class FromWindowActivity {
     private PlayerCommands vvvv2;
     private final Map<Integer, Integer[]> riverskyButtonsSelector = new HashMap<>();
     private final Map<Integer, Integer[]> foriverButtonsSelector = new HashMap<>();
+    private int currentFloor = 0;
 
     @BindView(R.id.button_close)
     ImageView buttonClose;
-    @BindView(R.id.switcherPlans)
-    ClickableButton switcherPlans;
+    @BindView(R.id.switcherPlans)ClickableButton switcherPlans;
+    @BindView(R.id.switcherDayNight)ClickableButton switcherDayNight;
     @BindView(R.id.planForiverFromWindowLayout)
     FrameLayout planForiverFromWindowLayout;
     @BindView(R.id.planRiverskyFromWindowLayout)
@@ -195,6 +197,8 @@ public class FromWindowActivity {
         switcherPlans.setStatus(false);
         switcherPlans.setOnDemonstrationButtonClickListener(this::switcherOnListener);
 
+        switcherDayNight.setOnDemonstrationButtonClickListener(this::switcherDayNightOnListener);
+
         planRiverskyFromWindowLayout.setVisibility(View.VISIBLE);
         planForiverFromWindowLayout.setVisibility(View.GONE);
 
@@ -228,6 +232,17 @@ public class FromWindowActivity {
         } else {
             planForiverFromWindowLayout.setVisibility(View.GONE);
             planRiverskyFromWindowLayout.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void switcherDayNightOnListener(View view) {
+        if (switcherDayNight.getStatus()) {
+            vvvv.actionFloor360(FLOOR_EMPTY);
+            vvvv2.actionFloor360(FLOOR_EMPTY);
+        } else {
+            vvvv.actionFloor360(currentFloor);
+            vvvv2.actionFloor360(currentFloor);
         }
     }
 
@@ -424,6 +439,20 @@ public class FromWindowActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private int getMaxFloor(Map<Integer, Integer[]> map, Integer corpus) {
+        Integer[] buildings = map.get((Integer) corpus);
+
+        //устанавливаем максимальное значение этажа
+        int maxFloor = 0;
+        if (buildings != null) {
+            maxFloor = Arrays.stream(buildings)
+                    .max(Comparator.comparing(Integer::valueOf))
+                    .orElse(0);
+        }
+        return maxFloor;
+    }
+
     /**
      * Отображение кнопок с номером этажа в зависимости от выбора корпуса на плане
      * @param map - правило, какие кнопки для какого корпуса
@@ -441,6 +470,7 @@ public class FromWindowActivity {
                     .max(Comparator.comparing(Integer::valueOf))
                     .orElse(0);
         }
+        currentFloor = maxFloor;
         vvvv.setActionFloor360(maxFloor);
         vvvv2.setActionFloor360(maxFloor);
 
