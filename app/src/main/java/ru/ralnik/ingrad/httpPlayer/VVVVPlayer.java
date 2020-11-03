@@ -25,12 +25,18 @@ public class  VVVVPlayer extends HttpPlayer {
     private int action360 = 0;
     private int corpus360 = 0;
     private int actionFloor360 = 0;
+    private int plan360 = 1;
 
     public VVVVPlayer(String host) {
         super(host);
         if(flat == null ) {
             flat = new Flat();
         }
+    }
+
+    @Override
+    public void execute() {
+        executeCommand(getFullLink());
     }
 
     @Override
@@ -194,6 +200,21 @@ public class  VVVVPlayer extends HttpPlayer {
         super.executeCommand(getFullLink());
     }
 
+    @Override
+    public int getCorpus360() {
+        return corpus360;
+    }
+
+    public void setCorpus360(int value) {
+        corpus360 = value;
+    }
+
+    @Override
+    public void plan360(int value) {
+        this.plan360 = value;
+        super.executeCommand(getFullLink());
+    }
+
     public String getFullLink(){
         return "vvvv?" +
                "track=" + this.numberTrack + "&" +
@@ -214,6 +235,7 @@ public class  VVVVPlayer extends HttpPlayer {
                 "cameraTrack=" + this.cameraTrack + "&" +
                 "action360=" + this.action360 + "&" +
                 "actionFloor360=" + this.actionFloor360 + "&" +
-                "corpus360=" + this.corpus360;
+                "corpus360=" + this.corpus360 + "&" +
+                "plan360=" + this.plan360;
     }
 }

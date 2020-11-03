@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Build;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -13,26 +12,27 @@ import android.widget.ImageView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import ru.ralnik.clickablebutton.ClickableButton;
-import ru.ralnik.ingrad.GlobalVars;
 import ru.ralnik.ingrad.R;
 import ru.ralnik.ingrad.activity.DialogButtonListener;
 import ru.ralnik.ingrad.context.IngradContex;
-import ru.ralnik.ingrad.enums.TypeGK;
 import ru.ralnik.ingrad.for3d.ButtonListener;
 import ru.ralnik.ingrad.httpPlayer.PlayerCommands;
 
 public class FromWindowActivity {
+    private final static int RIVERSKY_PLAN = 1;
+    private final static int FORIVER_PLAN = 2;
+
     private final static int FORIVER1 = 1;
     private final static int FORIVER2 = 2;
     private final static int FORIVER3 = 7;
@@ -69,9 +69,12 @@ public class FromWindowActivity {
     private final View rootView;
     private PlayerCommands vvvv;
     private PlayerCommands vvvv2;
+    private Stream<PlayerCommands> players;
     private final Map<Integer, Integer[]> riverskyButtonsSelector = new HashMap<>();
     private final Map<Integer, Integer[]> foriverButtonsSelector = new HashMap<>();
     private int currentFloor = 0;
+    private int riverskyCurrentCorpus = 0;
+    private int foriverCurrentCorpus = 0;
 
     @BindView(R.id.button_close)
     ImageView buttonClose;
@@ -85,12 +88,6 @@ public class FromWindowActivity {
     ImageView buttonsForiverLayout;
     @BindView(R.id.buttonsRiverskyLayout)
     ImageView buttonsRiverskyLayout;
-
-    @BindViews({R.id.buttonFloor5, R.id.buttonFloor6, R.id.buttonFloor10, R.id.buttonFloor12,
-            R.id.buttonFloor15, R.id.buttonFloor16, R.id.buttonFloor17, R.id.buttonFloor19,
-            R.id.buttonFloor20, R.id.buttonFloor21, R.id.buttonFloor25, R.id.buttonFloor27,
-            R.id.buttonFloor29})
-    List<ImageView> buttonFloorList;
 
     @BindView(R.id.button_up)
     ImageView button_up;
@@ -166,7 +163,7 @@ public class FromWindowActivity {
     private void init() {
         vvvv = IngradContex.getInstance(IngradContex.getAppContext()).getVvvv();
         vvvv2 = IngradContex.getInstance(IngradContex.getAppContext()).getVvvv2();
-
+        players = IngradContex.getInstance(IngradContex.getAppContext()).getPlayers();
         //корпуса 7 и 8
         riverskyButtonsSelector.put(RIVERSKY1, new Integer[]{5, 10, 16, 20, 27});
         //корпуса 4 и 5
@@ -194,17 +191,16 @@ public class FromWindowActivity {
         //Делаем кнопки по умолчанию скрытими
         visibleButtonsFloor(foriverButtonsSelector, floorButtons, 0);
 
+        //устанавливаем положение в 1 - riversky
         switcherPlans.setStatus(false);
         switcherPlans.setOnDemonstrationButtonClickListener(this::switcherOnListener);
 
+        //устанавливаем в положение день
+        switcherDayNight.setStatus(false);
         switcherDayNight.setOnDemonstrationButtonClickListener(this::switcherDayNightOnListener);
 
         planRiverskyFromWindowLayout.setVisibility(View.VISIBLE);
         planForiverFromWindowLayout.setVisibility(View.GONE);
-
-        for (ImageView button : buttonFloorList) {
-            button.setOnClickListener(this::buttonFloorListener);
-        }
 
         for (FrameLayout button : hiddenForiverButtons) {
             button.setOnClickListener(this::hiddenButtonForiverListener);
@@ -224,37 +220,43 @@ public class FromWindowActivity {
         buttonRightHidden.setOnTouchListener(new FromWindowActivityButtonListener(ButtonListener.RIGHT, activity.getApplicationContext(), button_right));
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void switcherOnListener(View view) {
-
         if (switcherPlans.getStatus()) {
             planForiverFromWindowLayout.setVisibility(View.VISIBLE);
             planRiverskyFromWindowLayout.setVisibility(View.GONE);
+            visibleButtonsFloor(foriverButtonsSelector, floorButtons, foriverCurrentCorpus);
+            vvvv.setCorpus360(foriverCurrentCorpus);
+            vvvv2.setCorpus360(foriverCurrentCorpus);
+            vvvv.plan360(FORIVER_PLAN);
+            vvvv2.plan360(FORIVER_PLAN);
         } else {
             planForiverFromWindowLayout.setVisibility(View.GONE);
             planRiverskyFromWindowLayout.setVisibility(View.VISIBLE);
+            visibleButtonsFloor(riverskyButtonsSelector, floorButtons, riverskyCurrentCorpus);
+            vvvv.setCorpus360(riverskyCurrentCorpus);
+            vvvv2.setCorpus360(riverskyCurrentCorpus);
+            vvvv.plan360(RIVERSKY_PLAN);
+            vvvv2.plan360(RIVERSKY_PLAN);
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void switcherDayNightOnListener(View view) {
+        Map<Integer, Integer[]> map = new HashMap<>();
+        if (!switcherPlans.getStatus()) {
+            map = riverskyButtonsSelector;
+        } else {
+            map = foriverButtonsSelector;
+        }
         if (switcherDayNight.getStatus()) {
+            visibleButtonsFloor(map, floorButtons, vvvv.getCorpus360());
             vvvv.actionFloor360(FLOOR_EMPTY);
             vvvv2.actionFloor360(FLOOR_EMPTY);
         } else {
+            visibleButtonsFloor(map, floorButtons, vvvv.getCorpus360());
             vvvv.actionFloor360(currentFloor);
             vvvv2.actionFloor360(currentFloor);
-        }
-    }
-
-    private void buttonFloorListener(View view) {
-        for (ImageView button : buttonFloorList) {
-            button.setVisibility(View.GONE);
-        }
-        //Если switcherPlans.status = true - значит foriver включен, иначе riversky
-        if (switcherPlans.getStatus()) {
-            // здесь идут кнопки для foriver
-        } else {
-            // здесь идут кнопки для riversky
         }
     }
 
@@ -265,33 +267,36 @@ public class FromWindowActivity {
                 visibleButtonsFloor(riverskyButtonsSelector, floorButtons, RIVERSKY1);
                 buttonsRiverskyLayout.setImageResource(R.drawable.riversky_plan1_from_window);
                 vvvv.corpus360(RIVERSKY1);
-                Log.d(GlobalVars.DEBUG, "VVVV_corpus: " + RIVERSKY1);
                 vvvv2.corpus360(RIVERSKY1);
-                Log.d(GlobalVars.DEBUG, "VVVV2_corpus: " + RIVERSKY1);
+                riverskyCurrentCorpus = RIVERSKY1;
                 break;
             case R.id.hiddenButtonRiverskyBuild2:
                 visibleButtonsFloor(riverskyButtonsSelector, floorButtons, RIVERSKY2);
                 buttonsRiverskyLayout.setImageResource(R.drawable.riversky_plan2_from_window);
                 vvvv.corpus360(RIVERSKY2);
                 vvvv2.corpus360(RIVERSKY2);
+                riverskyCurrentCorpus = RIVERSKY2;
                 break;
             case R.id.hiddenButtonRiverskyBuild3:
                 visibleButtonsFloor(riverskyButtonsSelector, floorButtons, RIVERSKY3);
                 buttonsRiverskyLayout.setImageResource(R.drawable.riversky_plan3_from_window);
                 vvvv.corpus360(RIVERSKY3);
                 vvvv2.corpus360(RIVERSKY3);
+                riverskyCurrentCorpus = RIVERSKY3;
                 break;
             case R.id.hiddenButtonRiverskyBuild4:
                 visibleButtonsFloor(riverskyButtonsSelector, floorButtons, RIVERSKY4);
                 buttonsRiverskyLayout.setImageResource(R.drawable.riversky_plan4_from_window);
                 vvvv.corpus360(RIVERSKY4);
                 vvvv2.corpus360(RIVERSKY4);
+                riverskyCurrentCorpus = RIVERSKY4;
                 break;
             case R.id.hiddenButtonRiverskyBuild5:
                 visibleButtonsFloor(riverskyButtonsSelector, floorButtons, RIVERSKY5);
                 buttonsRiverskyLayout.setImageResource(R.drawable.riversky_plan5_from_window);
                 vvvv.corpus360(RIVERSKY5);
                 vvvv2.corpus360(RIVERSKY5);
+                riverskyCurrentCorpus = RIVERSKY5;
                 break;
         }
     }
@@ -304,36 +309,42 @@ public class FromWindowActivity {
                 buttonsForiverLayout.setImageResource(R.drawable.foriver_plan1_from_window);
                 vvvv.corpus360(FORIVER1);
                 vvvv2.corpus360(FORIVER1);
+                foriverCurrentCorpus = FORIVER1;
                 break;
             case R.id.hiddenButtonForiverBuild2:
                 visibleButtonsFloor(foriverButtonsSelector, floorButtons, FORIVER2);
                 buttonsForiverLayout.setImageResource(R.drawable.foriver_plan2_from_window);
                 vvvv.corpus360(FORIVER2);
                 vvvv2.corpus360(FORIVER2);
+                foriverCurrentCorpus = FORIVER2;
                 break;
             case R.id.hiddenButtonForiverBuild3:
                 visibleButtonsFloor(foriverButtonsSelector, floorButtons, FORIVER3);
                 buttonsForiverLayout.setImageResource(R.drawable.foriver_plan3_from_window);
                 vvvv.corpus360(FORIVER3);
                 vvvv2.corpus360(FORIVER3);
+                foriverCurrentCorpus = FORIVER3;
                 break;
             case R.id.hiddenButtonForiverBuild4:
                 visibleButtonsFloor(foriverButtonsSelector, floorButtons, FORIVER4);
                 buttonsForiverLayout.setImageResource(R.drawable.foriver_plan4_from_window);
                 vvvv.corpus360(FORIVER4);
                 vvvv2.corpus360(FORIVER4);
+                foriverCurrentCorpus = FORIVER4;
                 break;
             case R.id.hiddenButtonForiverBuild5:
                 visibleButtonsFloor(foriverButtonsSelector, floorButtons, FORIVER5);
                 buttonsForiverLayout.setImageResource(R.drawable.foriver_plan5_from_window);
                 vvvv.corpus360(FORIVER5);
                 vvvv2.corpus360(FORIVER5);
+                foriverCurrentCorpus = FORIVER5;
                 break;
             case R.id.hiddenButtonForiverBuild6:
                 visibleButtonsFloor(foriverButtonsSelector, floorButtons, FORIVER6);
                 buttonsForiverLayout.setImageResource(R.drawable.foriver_plan6_from_window);
                 vvvv.corpus360(FORIVER6);
                 vvvv2.corpus360(FORIVER6);
+                foriverCurrentCorpus = FORIVER6;
                 break;
         }
     }
@@ -461,14 +472,18 @@ public class FromWindowActivity {
      */
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void visibleButtonsFloor(Map<Integer, Integer[]> map, List<ImageView> buttons, Integer corpus) {
-        Integer[] buildings = map.get((Integer) corpus);
+        Integer[] buildings = null;
+        if (!switcherDayNight.getStatus()) {
+            buildings = map.get((Integer) corpus);
+        }
 
         //устанавливаем максимальное значение этажа
-        int maxFloor = 0;
+        int maxFloor = FLOOR_EMPTY;
+        //проверяем если выбрана ночь, то этаж всегда равен нулю
         if (buildings != null) {
             maxFloor = Arrays.stream(buildings)
                     .max(Comparator.comparing(Integer::valueOf))
-                    .orElse(0);
+                    .orElse(FLOOR_EMPTY);
         }
         currentFloor = maxFloor;
         vvvv.setActionFloor360(maxFloor);

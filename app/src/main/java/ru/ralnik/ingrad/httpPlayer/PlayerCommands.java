@@ -3,7 +3,7 @@ package ru.ralnik.ingrad.httpPlayer;
 import ru.ralnik.ingrad.model.Flat;
 
 public interface PlayerCommands {
-
+    void execute();
     void play();
     default void pause() {}
     void stop();
@@ -40,4 +40,7 @@ public interface PlayerCommands {
     void actionFloor360(int value);
     void setActionFloor360(int value);
     void corpus360(int value);
+    void setCorpus360(int value);
+    int getCorpus360();
+    void plan360(int value);
 }
