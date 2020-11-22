@@ -404,11 +404,13 @@
                     app:cb_src_image="@drawable/btn39"
                     app:cb_src_image_down="@drawable/btn39_pressed"
                     android:layout_marginRight="30dp"
-                    android:tag="38"/>
+                    android:tag="39"/>
                 <ru.ralnik.clickablebutton.ClickableButton
                     android:id="@+id/btn40"
                     android:layout_width="71dp"
                     android:layout_height="74dp"
+                    app:cb_src_image="@drawable/btn40"
+                    app:cb_src_image_down="@drawable/btn40_pressed"
                     android:tag="40"/>
 
             </LinearLayout>
