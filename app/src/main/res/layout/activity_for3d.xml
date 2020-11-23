@@ -409,8 +409,6 @@
                     android:id="@+id/btn40"
                     android:layout_width="71dp"
                     android:layout_height="74dp"
-                    app:cb_src_image="@drawable/btn40"
-                    app:cb_src_image_down="@drawable/btn40_pressed"
                     android:tag="40"/>
 
             </LinearLayout>

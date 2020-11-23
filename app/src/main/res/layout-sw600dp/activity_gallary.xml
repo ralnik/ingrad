@@ -185,6 +185,12 @@
                 android:layout_height="@dimen/buttons_height"
                 android:layout_marginRight="@dimen/buttons_marginRight"
                 android:src="@drawable/remont_artdeco"/>
+            <ImageView
+                android:id="@+id/buttonShowroomTerrasa"
+                android:layout_width="@dimen/buttons_width"
+                android:layout_height="@dimen/buttons_height"
+                android:layout_marginRight="@dimen/buttons_marginRight"
+                android:src="@drawable/btn_showroom_terrasa"/>
         </LinearLayout>
         <FrameLayout
             android:layout_width="match_parent"

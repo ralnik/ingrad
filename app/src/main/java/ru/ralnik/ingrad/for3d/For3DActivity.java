@@ -52,7 +52,7 @@ public class For3DActivity {
             , R.id.btn15, R.id.btn16, R.id.btn17, R.id.btn18, R.id.btn19, R.id.btn20, R.id.btn21
             , R.id.btn22, R.id.btn23, R.id.btn24, R.id.btn25, R.id.btn26, R.id.btn27, R.id.btn28
             , R.id.btn29, R.id.btn30, R.id.btn31, R.id.btn32, R.id.btn33, R.id.btn34, R.id.btn35
-            , R.id.btn36, R.id.btn37, R.id.btn38, R.id.btn39, R.id.btn40}) List<ClickableButton> listButtons3d;
+            , R.id.btn36, R.id.btn37, R.id.btn38, R.id.btn39}) List<ClickableButton> listButtons3d;
 
     public For3DActivity(Activity activity) {
         this.activity = activity;

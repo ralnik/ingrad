@@ -32,6 +32,7 @@ public class GallaryActivityButtonListener {
     private static final int REMONT_MODERN = 11;
     private static final int REMONT_CLASSIC = 12;
     private static final int REMONT_ARTDECO = 13;
+    private static final int SHOWROOM_TERRASA = 14;
 
     private static final int PAUSE = 0;
     private static final int PLAY = 1;
@@ -67,6 +68,7 @@ public class GallaryActivityButtonListener {
     private ImageView buttonRemontModern;
     private ImageView buttonRemontClassic;
     private ImageView buttonRemontArtDeco;
+    private ImageView buttonShowroomTerrasa;
 
     private ImageView buttonBack;
     private ImageView buttonForward;
@@ -110,6 +112,7 @@ public class GallaryActivityButtonListener {
             if (button.getId() == R.id.buttonRemontModern) buttonRemontModern = button;
             if (button.getId() == R.id.buttonRemontClassic) buttonRemontClassic = button;
             if (button.getId() == R.id.buttonRemontArtDeco) buttonRemontArtDeco = button;
+            if (button.getId() == R.id.buttonShowroomTerrasa) buttonShowroomTerrasa = button;
         }
     }
 
@@ -184,6 +187,7 @@ public class GallaryActivityButtonListener {
             buttonRemontModern.setImageResource(R.drawable.remont_modern);
             buttonRemontClassic.setImageResource(R.drawable.remont_classic);
             buttonRemontArtDeco.setImageResource(R.drawable.remont_artdeco);
+            buttonShowroomTerrasa.setImageResource(R.drawable.btn_showroom_terrasa);
             switch (view.getId()) {
                 case R.id.buttonRiverskyArchitecture:
                     vvvv.showGallary(RIVERSKY_ARCHITECTURE);
@@ -249,6 +253,11 @@ public class GallaryActivityButtonListener {
                     vvvv.showGallary(REMONT_ARTDECO);
                     vvvv2.showGallary(REMONT_ARTDECO);
                     button.setImageResource(R.drawable.remont_artdeco_down);
+                    break;
+                case R.id.buttonShowroomTerrasa:
+                    vvvv.showGallary(SHOWROOM_TERRASA);
+                    vvvv2.showGallary(SHOWROOM_TERRASA);
+                    button.setImageResource(R.drawable.btn_showroom_terrasa_pressed);
                     break;
             }
         }

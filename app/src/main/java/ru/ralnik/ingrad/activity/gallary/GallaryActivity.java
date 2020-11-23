@@ -60,7 +60,8 @@ public class GallaryActivity {
             R.id.buttonForiverMop,
             R.id.buttonRemontModern,
             R.id.buttonRemontClassic,
-            R.id.buttonRemontArtDeco
+            R.id.buttonRemontArtDeco,
+            R.id.buttonShowroomTerrasa
     })List<ImageView> gallaryButtons;
 
     @BindViews({R.id.buttonPlayPause,
