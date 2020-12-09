@@ -60,7 +60,10 @@ public class SplashScreen extends AppCompatActivity {
         urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=EF6BF3A0-F8AA-EA11-8129-005056BA18B6&export=false");
         urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=6F6F2DC9-F9AA-EA11-8129-005056BA18B6&export=false");
         urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=D1238044-DCB9-EA11-812B-005056BA18B6&export=false");
-        urls.add(" https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=51B7E73A-9ABA-EA11-812B-005056BA18B6&export=false");
+        urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=51B7E73A-9ABA-EA11-812B-005056BA18B6&export=false");
+        urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=77E5AA57-2DEC-EA11-812D-005056BA18B6&export=false"); // кор 8
+        urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=5A3A5696-9013-EB11-812D-005056BA18B6&export=false"); // кор 9
+        urls.add("https://crm.dmfs.ru/Service/ExportToSite.svc/ApartmentListWithsExportParam/xml?id=57371CA2-85DC-EA11-812D-005056BA18B6&export=false"); // кор 5
         int progress = 0;
         try {
             for (String url : urls) {
